@@ -8,7 +8,11 @@ draft: true
 menu:
   archive:
     parent: "browse"
-cid: ""
+files:
+  - name: ""
+    media-type: ""
+    filename: ""
+    cid: ""
 people: []
 identities: []
 year: ""
