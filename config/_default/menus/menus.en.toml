@@ -1,14 +1,8 @@
 [[archive]]
-  name = "People"
-  weight = 10
-  identifier = "people"
-  url = "/archive/people/"
-
-[[archive]]
-  name = "Identities"
+  name = "Browse"
   weight = 60
-  identifier = "identities"
-  url = "/archive/identities/"
+  identifier = "browse"
+  url = "/archive/"
 
 [[main]]
   name = "About"
