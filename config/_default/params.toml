@@ -1,10 +1,10 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "Doks"
+title = "Ace Archive"
 titleSeparator = "-"
-titleAddition = "Modern Documentation Theme"
-description = "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
+titleAddition = "Preserving Asexual History"
+description = "Ace Archive is a curated archive for preserving asexual history using Web3 technologies."
 
 ## Documentation
 # docsVersion = "0.3"
@@ -12,21 +12,15 @@ description = "Doks is a Hugo theme for building secure, fast, and SEO-ready doc
 ## Open Graph
 images = ["doks.png"]
 ogLocale = "en_US"
-domainTLD = "doks.netlify.app"
-titleHome = "Doks Theme"
-
-## Twitter Cards
-twitterSite = "@getdoks"
-twitterCreator = "@henkverlinde"
+domainTLD = "acearchive.org"
+titleHome = "Ace Archive"
 
 ## JSON-LD
 # schemaType = "Person"
 schemaType = "Organization"
-schemaName = "Doks"
-schemaAuthor = "Henk Verlinde"
-schemaAuthorTwitter = "https://twitter.com/henkverlinde"
-schemaAuthorLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
-schemaAuthorGitHub = "https://github.com/h-enk"
+schemaName = "Ace Archive"
+schemaAuthor = "Frawley"
+schemaAuthorGitHub = "https://github.com/frawleyskid"
 schemaLocale = "en-US"
 schemaLogo = "logo-doks.png"
 schemaLogoWidth = 512
@@ -34,10 +28,7 @@ schemaLogoHeight = 512
 schemaImage = "doks.png"
 schemaImageWidth = 1280
 schemaImageHeight = 640
-schemaTwitter = "https://twitter.com/getdoks"
-schemaLinkedIn = ""
-schemaGitHub = "https://github.com/h-enk/doks"
-schemaSection = "blog"
+schemaGitHub = "https://github.com/acearchive"
 
 ## Sitelinks Search Box
 siteLinksSearchBox = false
@@ -54,21 +45,20 @@ lqipWidth = "20x"
 smallLimit = "300"
 
 # Footer
-footer = "Powered by <a href=\"https://www.netlify.com/\">Netlify</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
+footer = "Powered by <a href=\"https://ipfs.io/\">IPFS</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://fleek.co/\">Fleek</a>"
 
 # Feed
-copyRight = "Copyright (c) 2020-2021 Henk Verlinde"
+copyRight = "Copyright © 2022 Frawley"
 
 # Alert
 alert = false
 alertDismissable = true
-# alertText = "Introducing the Doks child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://getdoks.org/blog/doks-v0.2/\" target=\"_blank\" rel=\"noopener\">Check out Doks v0.2</a>"
-alertText = "Introducing the Doks child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://getdoks.org/blog/doks-v0.2/\">Check out Doks v0.2</a>"
+alertText = ""
 
 # Edit Page
-docsRepo = "https://github.com/h-enk/doks"
-docsRepoBranch = "master"
-editPage = false
+docsRepo = "https://github.com/acearchive/acearchive.org"
+docsRepoBranch = "main"
+editPage = true
 
 [options]
   lazySizes = true
