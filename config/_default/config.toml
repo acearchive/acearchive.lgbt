@@ -61,6 +61,7 @@ rel  = "sitemap"
 [taxonomies]
   people = "people"
   identities = "identities"
+  year = "year"
   decade = "decade"
 
 [minify.tdewolff.html]

@@ -11,5 +11,6 @@ menu:
 cid: ""
 people: []
 identities: []
+year: ""
 decade: ""
 ---

@@ -1,0 +1,31 @@
+{{ $currentPage := . -}}
+
+<h3>Browse</h3>
+<ul class="list-unstyled">
+  {{ $active := or (eq $currentPage.Title "Archive") (eq .Type "archive") -}}
+  <li><a class="docs-link{{ if $active }} active{{ end }}" href="/archive/">All artifacts</a></li>
+</ul>
+
+<h3>Identities</h3>
+<ul class="list-unstyled">
+  {{ range .Site.Taxonomies.identities }}
+    {{ $active := eq .Page.Title $currentPage.Title -}}
+    <li><a class="docs-link d-flex{{ if $active }} active{{ end }}" href="{{ .Page.Permalink }}"><span>{{ .Page.Title | title }}</span><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4">{{ .Count }}</span></a></li>
+  {{ end }}
+</ul>
+
+<h3>Decades</h3>
+<ul class="list-unstyled">
+  {{ range .Site.Taxonomies.decade }}
+    {{ $active := eq .Page.Title $currentPage.Title -}}
+    <li><a class="docs-link d-flex{{ if $active }} active{{ end }}" href="{{ .Page.Permalink }}"><span>{{ .Page.Title | title }}</span><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4">{{ .Count }}</span></a></li>
+  {{ end }}
+</ul>
+
+<h3>People</h3>
+<ul class="list-unstyled">
+  {{ range .Site.Taxonomies.people }}
+    {{ $active := eq .Page.Title $currentPage.Title -}}
+    <li><a class="docs-link d-flex{{ if $active }} active{{ end }}" href="{{ .Page.Permalink }}"><span>{{ .Page.Title | title }}</span><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4">{{ .Count }}</span></a></li>
+  {{ end }}
+</ul>
