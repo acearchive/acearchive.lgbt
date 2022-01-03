@@ -13,7 +13,7 @@ files:
   - name: "WACZ Archive"
     filename: "coining-of-queerplatonic.wacz"
     cid: "QmX4D73PmvuarSHdDnAcnFQWmHioLBG5Qb1ACiyFT1s7zZ"
-people: ["Kaz"]
+people: ["Kaz", "Meloukhia"]
 identities: ["aromantic", "wtfromantic"]
 years: "2010"
 decades: ["2010"]
