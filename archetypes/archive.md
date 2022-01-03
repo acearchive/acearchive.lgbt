@@ -1,7 +1,7 @@
 ---
 title: ""
 description: ""
-lead: ""
+longDescription: ""
 date: {{ .Date }}
 lastmod: {{ .Date }}
 draft: true
@@ -10,7 +10,7 @@ menu:
     parent: "browse"
 files:
   - name: ""
-    media-type: ""
+    mediaType: ""
     filename: ""
     cid: ""
 people: []
