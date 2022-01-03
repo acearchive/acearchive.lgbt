@@ -16,7 +16,7 @@
 
 <h3>Decades</h3>
 <ul class="list-unstyled">
-  {{ range .Site.Taxonomies.decade }}
+  {{ range .Site.Taxonomies.decades }}
     {{ $active := eq .Page.Title $currentPage.Title -}}
     <li><a class="docs-link d-flex{{ if $active }} active{{ end }}" href="{{ .Page.Permalink }}"><span>{{ .Page.Title | title }}</span><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4">{{ .Count }}</span></a></li>
   {{ end }}

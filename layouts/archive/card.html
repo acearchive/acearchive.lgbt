@@ -2,13 +2,10 @@
   <div class="card-body">
     <h5 class="card-title mt-2"><a class="card-link stretched-link text-dark text-decoration-none" href="{{ .RelPermalink }}">{{ .Params.title | title }}</a></h5>
     <p class="card-text mb-2">{{ .Params.lead | safeHTML }}</p>
-    {{ if or .Params.people (and .Params.year .Params.decade) -}}
+    {{ if or .Params.people .Params.years -}}
       <p class="card-text mt-2">
-      {{ if and .Params.year .Params.decade -}}
-        <small>
-          <a class="stretched-link position-relative" href="{{ "/decade/" | relURL }}{{ .Params.decade | urlize }}/">{{ .Params.year }}</a>
-          {{- if .Params.people }} • {{ end -}}
-        </small>
+      {{ if .Params.years -}}
+        <small>{{ .Params.years }}{{- if .Params.people }} • {{ end -}}</small>
       {{- end }}
       {{ if .Params.people -}}
         <small>
