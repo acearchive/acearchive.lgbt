@@ -16,7 +16,7 @@ files:
     mediaType: "text/markdown"
     filename: "the-asexual-manifesto-transcript.md"
     cid: "bafkreiabjlsvc7m6vdnidwziqy5nbf42lwmbyu3zbgjhj7ocekcriejuka"
-people: ["Lisa Orlando", "Barbie Hunter Getz"]
+people: ["Lisa Orlando", "Barbara Getz"]
 identities: ["asexual"]
 years: "1972"
 decades: ["1970"]
