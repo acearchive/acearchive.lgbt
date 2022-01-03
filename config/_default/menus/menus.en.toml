@@ -1,3 +1,9 @@
+[[docs]]
+  name = "About"
+  weight = 10
+  identifier = "about"
+  url = "/docs/about/"
+
 [[archive]]
   name = "Browse"
   weight = 60
@@ -5,8 +11,8 @@
   url = "/archive/"
 
 [[main]]
-  name = "About"
-  url = "/about/"
+  name = "Docs"
+  url = "/docs/"
   weight = 10
 
 [[main]]
