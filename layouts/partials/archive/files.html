@@ -1,0 +1,28 @@
+<table class="table">
+  <thead>
+    <th scope="col">File</th>
+    <th scope="col">CID</th>
+  </thead>
+  <tbody>
+  {{- range . -}}
+  {{- $gatewayUrl := "" -}}
+
+  {{- if .filename -}}
+    {{- $gatewayUrl = printf "https://dweb.link/ipfs/%s/?filename=%s" .cid .filename -}}
+  {{- else -}}
+    {{- $gatewayUrl = printf "https://dweb.link/ipfs/%s" .cid -}}
+  {{- end -}}
+
+  {{- $truncatedCid := printf "%s...%s" (substr .cid 0 4) (substr .cid (sub (strings.RuneCount .cid) 4)) }}
+    <tr>
+      <td><a href="{{ $gatewayUrl }}">{{ .name }}</a></td>
+      <td>
+        <details>
+          <summary>{{ $truncatedCid }}</summary>
+          <span>{{ .cid }}</span>
+        </details>
+      </td>
+    </tr>
+  {{ end -}}
+  </tbody>
+</table>

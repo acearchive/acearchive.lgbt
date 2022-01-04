@@ -2,7 +2,7 @@
 <div class="row flex-xl-nowrap">
   <div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block">
     <nav class="docs-links" aria-label="Main navigation">
-      {{ partial "archive-sidebar.html" . }}
+      {{ partial "archive/sidebar.html" . }}
     </nav>
   </div>
   <main class="docs-content col-lg-11 mx-xl-auto">
@@ -19,27 +19,7 @@
     </div>
     <div class="row justify-content-center">
       <div class="col">
-        <table class="table">
-          <thead>
-            <th scope="col">File</th>
-            <th scope="col">CID</th>
-          </thead>
-          <tbody>
-          {{- range .Params.files }}
-          {{- $gatewayUrl := printf "%s%s%s%s" "https://dweb.link/ipfs/" .cid "/?filename=" .filename -}}
-          {{- $truncatedCid := printf "%s%s%s" (substr .cid 0 4) "..." (substr .cid (sub (strings.RuneCount .cid) 4)) -}}
-            <tr>
-              <td><a href="{{ $gatewayUrl }}">{{ .name }}</a></td>
-              <td>
-                <details>
-                  <summary>{{ $truncatedCid }}</summary>
-                  <span>{{ .cid }}</span>
-                </details>
-              </td>
-            </tr>
-          {{ end -}}
-          </tbody>
-        </table>
+        {{ partial "archive/files.html" .Params.files }}
       </div>
     </div>
     <div class="row justify-content-center">
