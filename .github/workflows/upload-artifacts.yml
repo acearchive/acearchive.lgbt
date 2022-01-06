@@ -1,5 +1,7 @@
 name: "Upload artifacts"
 
+concurrency: "upload-artifacts"
+
 on:
   push:
     paths: ["content/en/archive/*/index.md"]
