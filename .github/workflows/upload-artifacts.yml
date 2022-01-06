@@ -1,0 +1,30 @@
+name: "Upload artifacts"
+
+on:
+  push:
+    paths: ["content/en/archive/*/index.md"]
+    branches: ["main"]
+
+jobs:
+  upload:
+    name: "Upload"
+    runs-on: ubuntu-latest
+    services:
+      ipfs:
+        image: "ipfs/go-ipfs:latest"
+        ports:
+          - 4001:4001
+          - 5001:5001
+          - 8080:8080
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+      - name: "Upload"
+        uses: frawleyskid/w3s-upload@main
+        with:
+          w3s-token: ${{ secrets.W3S_API_TOKEN }}
+          path-glob: "content/en/archive/*/index.md"
+          ipfs-api: "/dns/ipfs/tcp/5001/http"
+          upload: true
+
+

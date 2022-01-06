@@ -1,0 +1,20 @@
+name: "Validate artifacts"
+
+on:
+  pull_request:
+    paths: ["content/en/archive/*/index.md"]
+
+jobs:
+  archive:
+    name: "Validate"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+      - name: "Validate"
+        uses: frawleyskid/w3s-upload@main
+        with:
+          path-glob: "content/en/archive/*/index.md"
+          upload: false
+
+
