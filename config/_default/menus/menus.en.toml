@@ -4,7 +4,7 @@
   weight = 10
 
 [[main]]
-  name = "Contributing"
+  name = "Contribute"
   url = "/docs/contributing/getting-started"
   weight = 20
 
