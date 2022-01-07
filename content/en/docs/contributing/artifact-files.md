@@ -8,7 +8,7 @@ draft: false
 menu:
   docs:
     parent: "contributing"
-weight: 20
+weight: 30
 ---
 
 Every artifact in the archive has an *artifact file* associated with it in the
@@ -17,47 +17,48 @@ to the files associated with it. All you have to do to add content to the
 repository is write an artifact file! This section will document the format of
 artifact files and conventions for writing them.
 
-## Create a new artifact file
+## Creating an artifact file
 
-An artifact file is a Markdown document with a YAML frontmatter block. No
+An artifact file is a markdown document with a YAML frontmatter block. No
 content goes in the body of the Markdown document, so you can just think of an
-artifact file as a YAML file. To create a new empty artifact file, run the
-following command in the repository, replaceing `<url_slug>` with the URL slug
-of the artifact. We'll talk about conventions for URL slugs later.
+artifact file as a YAML file with a `---` at the start and end of the file. A
+YAML file is a format for representing data in plain text, somewhat like the
+markup languages you might use to contribute to a wiki. You can learn more
+about how to write YAML files
+[here](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started).
 
-```
-npm run create archive/<url_slug>/index.md
-```
-
-This will create an empty Markdown document that looks something like this:
+You can [look through the
+repository](https://github.com/frawleyskid/acearchive.org/tree/main/content/en/archive)
+to see examples of artifact files, but generally an artifact file will look
+something like this:
 
 ```
 ---
 {{< highlight yaml >}}
-title: ""
-description: ""
-longDescription: ""
-date: 2022-01-07T09:51:52-05:00
-lastmod: 2022-01-07T09:51:52-05:00
-draft: true
+title: "<em>The Asexual Manifesto</em>"
+description: "A paper by the Asexual Caucus of the New York Radical Feminists"
+date: 2022-01-02T10:54:43-05:00
+lastmod: 2022-01-02T10:54:43-05:00
+draft: false
 menu:
   archive:
     parent: "browse"
 files:
-  - name: ""
-    mediaType: ""
-    filename: ""
-    cid: ""
-people: []
-identities: []
-years: ""
-decades: []
+  - name: "The Asexual Manifesto"
+    mediaType: "application/pdf"
+    filename: "the-asexual-manifesto.pdf"
+    cid: "bafybeihsf4562gmmyoya7eh5buxv65lqcdoil3wsi5jf5fceskap7yzooi"
+  - name: "The Asexual Manifesto (Transcript)"
+    mediaType: "text/markdown"
+    filename: "the-asexual-manifesto-transcript.md"
+    cid: "bafkreiabjlsvc7m6vdnidwziqy5nbf42lwmbyu3zbgjhj7ocekcriejuka"
+people: ["Lisa Orlando", "Barbara Getz"]
+identities: ["asexual"]
+years: "1972"
+decades: ["1970"]
 {{< /highlight >}}
 ---
 ```
-
-Next, we'll talk about what each of the fields in this file mean and
-conventions for filling them in.
 
 ## URL slugs
 
@@ -95,12 +96,13 @@ the artifact. This field can be ommitted, in which case it will just be the
 same as `description`.
 
 `date`
-: This is the timestamp for when the artifact file was first created, and
-should be left alone.
+: This is the timestamp in `YYYY-MM-DDTHH:MM:SS` format for when the artifact
+file was first created.
 
 `lastmod`
 : This is the date and time the artifact file was last modified. If you're
-updating an existing artifact file, you should update this.
+adding a new artifact, this should be the same as `date`. If you're updating an
+existing artifact file, you should update this.
 
 `draft`
 : You can leave this alone.
