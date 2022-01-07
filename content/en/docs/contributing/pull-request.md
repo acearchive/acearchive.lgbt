@@ -18,8 +18,8 @@ of specialized tools! Just follow these steps:
 
 1. Create an [artifact file]({{< ref "docs/contributing/artifact-files" >}}) for the new artifact.
 2. Choose a [url slug]({{< ref "docs/contributing/artifact-files#url-slugs" >}}) for the new artifact.
-3. Enter the URL slug into the box below and click "Submit," which will redirect you to GitHub.
-4. Name the new file "index.md."
+3. Enter the URL slug into the box below and click "Open PR," which will redirect you to GitHub.
+4. Name the new file `index.md`.
 5. Paste your artifact file into the page.
 6. Select "Create a new branch for this commit and start a pull request" at the
    bottom of the page and click "Propose new file."
