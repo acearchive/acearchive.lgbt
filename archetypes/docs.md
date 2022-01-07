@@ -4,7 +4,7 @@ description: ""
 lead: ""
 date: {{ .Date }}
 lastmod: {{ .Date }}
-draft: true
+draft: false
 menu:
   docs:
     parent: ""

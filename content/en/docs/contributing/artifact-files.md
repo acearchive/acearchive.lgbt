@@ -25,14 +25,15 @@ artifact file as a YAML file. To create a new empty artifact file, run the
 following command in the repository, replaceing `<url_slug>` with the URL slug
 of the artifact. We'll talk about conventions for URL slugs later.
 
-```shell
+```
 npm run create archive/<url_slug>/index.md
 ```
 
 This will create an empty Markdown document that looks something like this:
 
-```markdown
+```
 ---
+{{< highlight yaml >}}
 title: ""
 description: ""
 longDescription: ""
@@ -51,6 +52,7 @@ people: []
 identities: []
 years: ""
 decades: []
+{{< /highlight >}}
 ---
 ```
 
@@ -68,9 +70,9 @@ you can provide additional context like `context-author-short-title`. For an
 AVEN forum thread by "coolasexualperson" called "romance", the URL slug might
 be `aven-forums-coolasexualperson-romance`.
 
-## Artifact file fields
+## Artifact fields
 
-Next, we'll talk about the fields in an archive file.
+Next, we'll talk about the fields in an artifact file.
 
 `title`
 : This is the title of the artifact. If the artifact represents a work (a book,
@@ -108,7 +110,8 @@ updating an existing artifact file, you should update this.
 
 `files`
 : This section contains a list of references to the files associated with the
-artifact. We'll cover adding files to artifacts in more detail later.
+artifact. We'll cover adding files to artifacts [in more detail later]({{< ref
+"docs/contributing/uploading-files.md" >}}).
 
 `files.name`
 : The name of the file. This will appear in the list of files on the website,
@@ -131,7 +134,8 @@ must always be a valid Windows/macOS/Linux file name. Generally snake-case is
 preferred.
 
 `files.cid`
-: This is the IPFS CID of the file, which we'll talk about in a later section.
+: This is the IPFS CID of the file, which we'll talk about [in a later
+section]({{< ref "docs/contributing/uploading-files.md" >}}).
 
 `people`
 : This is a list of (usually 1-3) people closely associated with the artifact,
