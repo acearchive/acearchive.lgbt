@@ -4,7 +4,7 @@ description: ""
 longDescription: ""
 date: {{ .Date }}
 lastmod: {{ .Date }}
-draft: true
+draft: false
 menu:
   archive:
     parent: "browse"
