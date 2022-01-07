@@ -12,7 +12,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v2
       - name: "Validate"
-        uses: frawleyskid/w3s-upload@main
+        uses: acearchive/w3s-upload@main
         with:
           path-glob: "content/en/archive/*/index.md"
           upload: false

@@ -50,7 +50,7 @@ provided CIDs into the artifact file. Once your PR is merged and the files have
 been uploaded to Ace Archive storage, you can stop hosting them if you want.
 
 {{< alert icon="👉" >}}
-An important node with Web3.Storage is that, by default, it wraps uploaded
+An important note with Web3.Storage is that, by default, it wraps uploaded
 files in a directory. After you upload, you'll want to navigate into that
 directory and get the CID of the file instead of the CID of the directory.
 {{< /alert >}}

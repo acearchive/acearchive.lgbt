@@ -22,7 +22,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v2
       - name: "Upload"
-        uses: frawleyskid/w3s-upload@main
+        uses: acearchive/w3s-upload@main
         with:
           w3s-token: ${{ secrets.W3S_API_TOKEN }}
           path-glob: "content/en/archive/*/index.md"

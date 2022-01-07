@@ -3,7 +3,7 @@
 ## Homepage
 title = "Ace Archive"
 titleSeparator = "-"
-titleAddition = "Preserving Asexual History"
+titleAddition = "Preserving asexual history"
 description = "Ace Archive is a curated archive for preserving asexual history using Web3 technologies."
 
 ## Documentation
@@ -12,7 +12,7 @@ description = "Ace Archive is a curated archive for preserving asexual history u
 ## Open Graph
 images = ["doks.png"]
 ogLocale = "en_US"
-domainTLD = "acearchive.org"
+domainTLD = "acearchive.lgbt"
 titleHome = "Ace Archive"
 
 ## JSON-LD
@@ -56,7 +56,7 @@ alertDismissable = true
 alertText = ""
 
 # Edit Page
-docsRepo = "https://github.com/acearchive/acearchive.org"
+docsRepo = "https://github.com/acearchive/acearchive.lgbt"
 docsRepoBranch = "main"
 editPage = true
 
