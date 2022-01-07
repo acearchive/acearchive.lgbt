@@ -5,7 +5,7 @@ labels: ["artifact"]
 body:
   - type: markdown
     attributes:
-      value: |
+      value: >
         Thanks for your interest in Ace Archive! This is a form for suggesting
         content to be added to the archive. Alternatively, if you want to
         contribute to the archive yourself, you can [read the
@@ -15,7 +15,7 @@ body:
     id: context
     attributes:
       label: "Context and significance"
-      description: |
+      description: >
         What is the context behind this content? Why is it significant to the
         aspec community? Why should it be included in the archive?
     validations:
@@ -24,7 +24,7 @@ body:
     id: sources
     attributes:
       label: "Sources"
-      description: |
+      description: >
         Where can we find this content? Please provide URLs. If this content is
         available in multiple formats (e.g. both a PDF scan and plain text),
         provide links to both. [Wayback Machine](https://web.archive.org/)
@@ -35,7 +35,7 @@ body:
     id: people
     attributes:
       label: "People"
-      description: |
+      description: >
         List 1-3 significant people associated with this content, if
         applicable. It could be the author of a book, a commenter in a forum
         thread, or the subject of a photo.
@@ -43,13 +43,13 @@ body:
     id: identities
     attributes:
       label: "Identities"
-      description: |
+      description: >
         List any specific queer identities associated with this content. Is
         this a blog post about non-binary people? A book about asexuality?
   - type: input
     id: years
     attributes:
       label: "Years"
-      description: |
+      description: >
         When was this content published, written, posted, etc? This can be a
         range of years.
