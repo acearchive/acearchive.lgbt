@@ -11,7 +11,7 @@
         <small>
         {{ range $index, $type := .Params.people -}}
           {{- if gt $index 0 }}, {{ end -}}
-          <a class="stretched-link position-relative" href="{{ "/people/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+          <a class="stretched-link position-relative" href="{{ "/categories/people/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
         {{- end }}
         </small>
       {{- end }}

@@ -63,6 +63,12 @@ rel  = "sitemap"
   identities = "identities"
   decades = "decades"
 
+[permalinks]
+  people = "/categories/people/:title/"
+  identities = "/categories/identities/:title/"
+  decades = "/categories/decades/:title/"
+  archive = "/artifact/:filename/"
+
 [minify.tdewolff.html]
   keepWhitespace = false
 

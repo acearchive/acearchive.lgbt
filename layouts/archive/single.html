@@ -27,7 +27,7 @@
         <h2>Identities</h2>
         <ul>
         {{- range $index, $type := .Params.identities }}
-          <li><a href="{{ "/identities/" | relURL }}{{ . | urlize }}/">{{ . | title }}</a></li>
+          <li><a href="{{ "/categories/identities/" | relURL }}{{ . | urlize }}/">{{ . | title }}</a></li>
         {{ end -}}
         </ul>
       </div>
@@ -35,7 +35,7 @@
         <h2>Decades</h2>
         <ul>
         {{- range $index, $type := .Params.decades }}
-          <li><a href="{{ "/decades/" | relURL }}{{ . | urlize }}/">{{ . }}</a></li>
+          <li><a href="{{ "/categories/decades/" | relURL }}{{ . | urlize }}/">{{ . }}</a></li>
         {{ end -}}
         </ul>
       </div>
@@ -43,7 +43,7 @@
         <h2>People</h2>
         <ul>
         {{- range $index, $type := .Params.people }}
-          <li><a href="{{ "/people/" | relURL }}{{ . | urlize }}/">{{ . }}</a></li>
+          <li><a href="{{ "/categories/people/" | relURL }}{{ . | urlize }}/">{{ . }}</a></li>
         {{ end -}}
         </ul>
       </div>
