@@ -19,13 +19,17 @@ artifact files and conventions for writing them.
 
 ## Creating an artifact file
 
-An artifact file is a markdown document with a YAML frontmatter block. No
-content goes in the body of the Markdown document, so you can just think of an
-artifact file as a YAML file with a `---` at the start and end of the file. A
-YAML file is a format for representing data in plain text, somewhat like the
-markup languages you might use to contribute to a wiki. You can learn more
-about how to write YAML files
+Artifact files are written in YAML, which is is a format for representing
+structured data in plain text. Writing artifact files is somewhat like using
+the markup languages that are common when contributing to a wiki. You can learn
+more about how to write YAML files
 [here](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started).
+
+{{< alert icon="👉" >}}
+Technically, an artifact file is a markdown document with a YAML frontmatter
+block. However, no content goes in the body of the markdown document, so you
+can think of it as a YAML file with a leading and trailing `---`.
+{{< /alert >}}
 
 You can [look through the
 repository](https://github.com/frawleyskid/acearchive.org/tree/main/content/en/archive)
@@ -62,14 +66,18 @@ decades: ["1970"]
 
 ## URL slugs
 
-First, a note about URL slugs. A URL slug should always be snake-case, and will
-generally follow the format `author-short-title`. If the author has a first and
-last name (i.e. isn't a handle or username), you can just use the last name. If
-the combination of the author and the title of the work is ambiguous, (such as
-a forum thread where the title of the thread might just be "asexuality"), then
-you can provide additional context like `context-author-short-title`. For an
-AVEN forum thread by "coolasexualperson" called "romance", the URL slug might
-be `aven-forums-coolasexualperson-romance`.
+First, a note about URL slugs. Every artifact in the repository has a URL like
+`/archive/orlando-the-asexual-manifesto`. When you add a new artifact, you will
+need to choose a URL slug for it.
+
+A URL slug should always be snake-case, and will generally follow the format
+`author-short-title`. If the author has a first and last name (i.e. isn't a
+handle or username), you can just use the last name. If the combination of the
+author and the title of the work is ambiguous, (such as a forum thread where
+the title of the thread might just be "asexuality"), then you can provide
+additional context like `context-author-short-title`. For an AVEN forum thread
+by "coolasexualperson" called "romance", the URL slug might be
+`aven-forums-coolasexualperson-romance`.
 
 ## Artifact fields
 
@@ -137,7 +145,7 @@ preferred.
 
 `files.cid`
 : This is the IPFS CID of the file, which we'll talk about [in a later
-section]({{< ref "docs/contributing/uploading-files.md" >}}).
+section]({{< ref "docs/contributing/uploading-files.md#what-is-a-cid" >}}).
 
 `people`
 : This is a list of (usually 1-3) people closely associated with the artifact,

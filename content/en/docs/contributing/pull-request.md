@@ -32,4 +32,4 @@ Read on for more information about how to create an artifact file.
 
 ## Open a pull request
 
-{{< contribute-pr >}}
+{{< open-pr >}}
