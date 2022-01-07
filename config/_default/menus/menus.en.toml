@@ -1,24 +1,35 @@
-[[docs]]
+[[main]]
   name = "About"
+  url = "/docs/about"
   weight = 10
-  identifier = "about"
-  url = "/docs/about/"
-
-[[archive]]
-  name = "Browse"
-  weight = 60
-  identifier = "browse"
-  url = "/archive/"
 
 [[main]]
-  name = "Docs"
-  url = "/docs/"
-  weight = 10
+  name = "Contributing"
+  url = "/docs/contributing/getting-started"
+  weight = 20
 
 [[main]]
   name = "Archive"
   url = "/archive/"
+  weight = 30
+
+[[docs]]
+  name = "About"
+  url = "/docs/about"
+  identifier = "about"
+  weight = 10
+
+[[docs]]
+  name = "Contributing"
+  url = "/docs/contributing"
+  identifier = "contributing"
   weight = 20
+
+[[archive]]
+  name = "Browse"
+  weight = 20
+  identifier = "browse"
+  url = "/archive/"
 
 [[social]]
   name = "GitHub"
