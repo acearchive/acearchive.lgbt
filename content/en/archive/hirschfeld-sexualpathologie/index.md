@@ -1,5 +1,5 @@
 ---
-title: "Sexualpathologie"
+title: "<em>Sexualpathologie</em>"
 description: "An early example of pathologization of asexual people in medical literature and use of the term \"asexual\""
 longDescription: "An early example of pathologization of asexual people in medical literature, in which the author develops a typology of asexual people that includes the term \"asexual\""
 date: 2022-01-04T16:46:22-05:00

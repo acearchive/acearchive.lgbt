@@ -1,5 +1,5 @@
 ---
-title: "*SQUISH!*"
+title: "\"*SQUISH!*\""
 description: "The term \"squish\" is coined in an AVEN forum thread"
 date: 2022-01-03T11:56:02-05:00
 lastmod: 2022-01-03T11:56:02-05:00

@@ -1,5 +1,5 @@
 ---
-title: "A thought: \"WTFromantic\""
+title: "\"A thought: \'WTFromantic\'\""
 description: "The term \"quoiromantic\" is coined in a blog post"
 date: 2022-01-03T11:29:01-05:00
 lastmod: 2022-01-03T11:29:01-05:00

@@ -1,5 +1,5 @@
 ---
-title: "A/romanticism"
+title: "\"A/romanticism\""
 description: "The terms \"queerplatonic\" and \"zucchini\" are coined in the comments of a blog post on aromanticism"
 date: 2022-01-03T10:46:53-05:00
 lastmod: 2022-01-03T10:46:53-05:00

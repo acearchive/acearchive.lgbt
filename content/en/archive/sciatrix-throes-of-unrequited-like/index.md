@@ -1,5 +1,5 @@
 ---
-title: "Writhing in the Throes of Unrequited Like"
+title: "\"Writhing in the Throes of Unrequited Like\""
 description: "The term \"WTFromantic\" is coined in a blog post"
 date: 2022-01-03T11:14:29-05:00
 lastmod: 2022-01-03T11:14:29-05:00

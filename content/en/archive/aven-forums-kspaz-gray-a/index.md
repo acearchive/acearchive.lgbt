@@ -1,5 +1,5 @@
 ---
-title: "Gray-A's"
+title: "\"Gray-A's\""
 description: "The term \"gray-asexual\" is coined in an AVEN forum thread"
 date: 2022-01-03T18:32:04-05:00
 lastmod: 2022-01-03T18:32:04-05:00

@@ -1,5 +1,5 @@
 ---
-title: "Toby: An Asexual Person"
+title: "\"Toby: An Asexual Person\""
 description: "An excerpt from a textbook describing a neuter person"
 longDescription: "An excerpt from the book <em>Sexuality Now: Embracing Diversity</em>, which describes Toby (Jim Sinclair) as neuter and asexual"
 date: 2022-01-02T21:15:43-05:00

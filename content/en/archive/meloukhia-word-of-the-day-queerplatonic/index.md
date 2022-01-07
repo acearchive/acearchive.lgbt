@@ -1,5 +1,5 @@
 ---
-title: "Word of the Day: Queerplatonic"
+title: "\"Word of the Day: Queerplatonic\""
 description: "The term \"queerplatonic\" is first introduced on Tumblr by its coiner"
 date: 2022-01-03T15:20:46-05:00
 lastmod: 2022-01-03T15:20:46-05:00

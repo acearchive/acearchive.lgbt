@@ -1,5 +1,5 @@
 ---
-title: "Ein Weib?"
+title: "<em>Ein Weib?</em>"
 description: "An early academic paper on queer identities where the author self-identities as asexual"
 longDescription: "An early academic paper on queer identities where the author discusses asexuality using the label <em>sinnlichkeitslosigkeit</em> (asensuality) and self-identifies as such"
 date: 2022-01-04T19:07:00-05:00

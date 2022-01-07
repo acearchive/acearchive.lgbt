@@ -1,5 +1,5 @@
 ---
-title: "Asexuality: Prevalence and Associated Factors in a National Probability Sample"
+title: "\"Asexuality: Prevalence and Associated Factors in a National Probability Sample\""
 description: "An early study on the prevalence of asexuality"
 longDescription: "One of the first studies on the prevalence of asexuality which defines asexuality in terms of sexual attraction and does not pathologize asexuals"
 date: 2022-01-04T15:12:31-05:00

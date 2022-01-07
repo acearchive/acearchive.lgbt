@@ -1,5 +1,5 @@
 ---
-title: "My life as an amoeba"
+title: "\"My life as an amoeba\""
 description: "A blog post about coming out as asexual"
 date: 2022-01-02T21:41:10-05:00
 lastmod: 2022-01-02T21:41:10-05:00
