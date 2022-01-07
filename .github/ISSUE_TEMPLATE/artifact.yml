@@ -4,12 +4,13 @@ title: "[Artifact]: "
 labels: ["artifact"]
 body:
   - type: markdown
-    value: |
-      Thanks for your interest in Ace Archive! This is a form for suggesting
-      content to be added to the archive. Alternatively, if you want to
-      contribute to the archive yourself, you can [read the
-      documentation](https://acearchive.lgbt/docs/contributing/getting-started)
-      on opening a pull request!
+    attributes:
+      value: |
+        Thanks for your interest in Ace Archive! This is a form for suggesting
+        content to be added to the archive. Alternatively, if you want to
+        contribute to the archive yourself, you can [read the
+        documentation](https://acearchive.lgbt/docs/contributing/getting-started)
+        on opening a pull request!
   - type: textarea
     id: context
     attributes:
@@ -17,8 +18,8 @@ body:
       description: |
         What is the context behind this content? Why is it significant to the
         aspec community? Why should it be included in the archive?
-      validations:
-        required: true
+    validations:
+      required: true
   - type: textarea
     id: sources
     attributes:
@@ -28,8 +29,8 @@ body:
         available in multiple formats (e.g. both a PDF scan and plain text),
         provide links to both. [Wayback Machine](https://web.archive.org/)
         links are fine!
-      validations:
-        required: true
+    validations:
+      required: true
   - type: input
     id: people
     attributes:
