@@ -17,10 +17,9 @@ more involved than contributing to a wiki, but we're working on finding new
 ways to simplify it and make contributing as simple as possible.
 
 If you have content you would like to suggest be added to the archive, but
-don't want to add it yourself, you can [open an
-issue](https://github.com/acearchive/acearchive.lgbt/issues/new) on GitHub.
-However, the best way to add content to the archive is to do it yourself and
-open a pull request.
+would prefer not to add it yourself, you can [open an
+issue](https://github.com/acearchive/acearchive.lgbt/issues/new?assignees=&labels=artifact&template=artifact.yml&title=%5BArtifact%5D%3A+)
+on GitHub.
 
 If you want to learn how to contribute to the archive yourself, the rest of
 this section will document the process.
