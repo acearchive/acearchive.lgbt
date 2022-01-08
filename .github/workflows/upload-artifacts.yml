@@ -3,6 +3,7 @@ name: "Upload artifacts"
 concurrency: "upload-artifacts"
 
 on:
+  workflow_dispatch:
   push:
     paths: ["content/archive/*/index.md"]
     branches: ["main"]
