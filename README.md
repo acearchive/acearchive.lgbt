@@ -2,10 +2,11 @@
 
 This is the repository for the [Ace Archive](https://acearchive.lgbt) website.
 If you want to learn about the project, check out the [about
-page](https://acearchive.lgbt/docs/about). If you're looking for some ways to
-contribute to the project other than writing code, check out the [contributing
-documentation](https://acearchive.lgbt/docs/contributing). If you want to dive
-into the source code, you're in the right place!
+page](https://acearchive.lgbt/docs/about/what-is-ace-archive). If you're
+looking for some ways to contribute to the project other than writing code,
+check out the [contributing
+documentation](https://acearchive.lgbt/docs/contributing/getting-started). If
+you want to dive into the source code, you're in the right place!
 
 This website is a [Hugo](https://gohugo.io/) static site using the [Doks
 theme](https://getdoks.org/). The website was designed using a static site
