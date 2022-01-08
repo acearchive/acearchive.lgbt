@@ -18,7 +18,7 @@ new ways to simplify it and make contributing as simple as possible.
 
 If you have content you would like to suggest be added to the archive, but
 would prefer not to add it yourself, you can [open an
-issue](https://github.com/acearchive/acearchive.lgbt/issues/new?assignees=&labels=artifact&template=artifact.yml&title=%5BArtifact%5D%3A+)
+issue](https://github.com/acearchive/acearchive.lgbt/issues/new?labels=artifact&template=artifact.yml)
 on GitHub.
 
 If you want to learn how to contribute to the archive yourself, the rest of
