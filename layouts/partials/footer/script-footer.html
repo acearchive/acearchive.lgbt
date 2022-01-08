@@ -55,6 +55,10 @@
   {{ $slice = $slice | append $katexConfig -}}
 {{ end -}}
 
+{{ $artifactTemplate := resources.Get "artifact-template.md" -}}
+{{ $openPr := resources.Get "js/open-pr.js" | js.Build (dict "params" (dict "artifact_template" $artifactTemplate.Content)) -}}
+{{ $slice := $slice | append $openPr -}}
+
 {{ $js := $slice | resources.Concat "main.js" -}}
 
 {{ if eq (hugo.Environment) "development" -}}
