@@ -11,10 +11,10 @@ menu:
 weight: 10
 ---
 
-Anyone can contribute content to the archive by opening a pull request on
-[GitHub](https://github.com/acearchive/acearchive.lgbt). The process is a little
-more involved than contributing to a wiki, but we're working on finding new
-ways to simplify it and make contributing as simple as possible.
+Anyone can contribute content to the archive by [opening a pull request on
+GitHub]({{< ref "docs/contributing/pull-request.md" >}}). The process is a
+little more involved than contributing to a wiki, but we're working on finding
+new ways to simplify it and make contributing as simple as possible.
 
 If you have content you would like to suggest be added to the archive, but
 would prefer not to add it yourself, you can [open an
