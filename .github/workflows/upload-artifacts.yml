@@ -4,7 +4,7 @@ concurrency: "upload-artifacts"
 
 on:
   push:
-    paths: ["content/en/archive/*/index.md"]
+    paths: ["content/archive/*/index.md"]
     branches: ["main"]
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
         uses: acearchive/w3s-upload@main
         with:
           w3s-token: ${{ secrets.W3S_API_TOKEN }}
-          path-glob: "content/en/archive/*/index.md"
+          path-glob: "content/archive/*/index.md"
           ipfs-api: "/dns/ipfs/tcp/5001/http"
           upload: true
 

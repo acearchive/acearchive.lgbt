@@ -2,7 +2,7 @@ name: "Validate artifacts"
 
 on:
   pull_request:
-    paths: ["content/en/archive/*/index.md"]
+    paths: ["content/archive/*/index.md"]
 
 jobs:
   archive:
@@ -14,7 +14,7 @@ jobs:
       - name: "Validate"
         uses: acearchive/w3s-upload@main
         with:
-          path-glob: "content/en/archive/*/index.md"
+          path-glob: "content/archive/*/index.md"
           upload: false
 
 
