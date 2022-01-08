@@ -71,13 +71,15 @@ First, a note about URL slugs. Every artifact in the repository has a URL like
 need to choose a URL slug for it.
 
 A URL slug should always be snake-case, and will generally follow the format
-`author-short-title`. If the author has a first and last name (i.e. isn't a
-handle or username), you can just use the last name. If the combination of the
-author and the title of the work is ambiguous, (such as a forum thread where
-the title of the thread might just be "asexuality"), then you can provide
-additional context like `context-author-short-title`. For an AVEN forum thread
-by "coolasexualperson" called "romance", the URL slug might be
-`aven-forums-coolasexualperson-romance`.
+`author-title`. If the author has a first and last name (i.e. isn't a handle or
+username), you can just use the last name. If the title of the work is long,
+you can use a shortened version of it.
+
+If the combination of the author and the title of the work is ambiguous, (such
+as a forum thread where the title of the thread might just be "asexuality"),
+then you can provide additional context like `context-author-title`. For an
+AVEN forum thread by "coolasexualperson" called "romance", the URL slug might
+be `aven-forums-coolasexualperson-romance`.
 
 ## Artifact fields
 
@@ -124,19 +126,19 @@ artifact. We'll cover adding files to artifacts [in more detail later]({{< ref
 "docs/contributing/uploading-files.md" >}}).
 
 `files.name`
-: The name of the file. This will appear in the list of files on the website,
-and doesn't need to be a valid Windows/macOS/Linux file name and only needs to
-be unique for a given artifact. If the artifact consists of multiple works,
-this should generally be the title of the work. If the artifact consists of a
-single work, it can just be "Book", "Paper", etc. You should also generally
-provide some information about the format of the work, like specifying whether
-the file is a PDF or a plain text transcription.
+: The name of the file. This will appear in the list of files on the website; it
+doesn't need to be a valid Windows/macOS/Linux file name and it doesn't need to
+be unique. If the artifact consists of multiple works, this should generally be
+the title of the work so people can disambiguate them. If the artifact consists
+of a single work, it can just be something short like "Book", "Paper", etc. You
+should also generally provide some information about the format of the work,
+like specifying whether the file is a PDF or a plain text transcription.
 
 `files.mediaType`
 : This is an optional IANA media type (also called a MIME type) for the file.
-If the file is a format that doesn't have a well-known media type, you can
-leave this blank. If you need help figuring out the media type of a file, you
-can use a tool like [mimetype.io](https://mimetype.io/) to look it up.
+If the file is a format that doesn't have a well-known media type, you can omit
+this. If you need help figuring out the media type of a file, you can use a
+tool like [mimetype.io](https://mimetype.io/) to look it up.
 
 `files.filename`
 : This is a file name for the file to be used when downloading it, meaning it
@@ -159,10 +161,10 @@ typically goes by a pseudonym online. Also, if a person has a preferred name,
 list can be empty if the people associated with the artifact aren't clear.
 
 `identities`
-: A list of identities associated with the artifact. For example, if this is a
-blog post about aromanticism, then "aromantic" should be included in the list
-of identities. Note that Ace Archive is for hosting content of importance to
-aspec communities as a whole, and artifacts do not strictly have to involve
+: A list of queer identities associated with the artifact. For example, if this
+is a blog post about aromanticism, then "aromantic" should be included in the
+list of identities. Note that Ace Archive is for hosting content of importance
+to aspec communities as a whole, and artifacts do not strictly have to involve
 asexuality. The identity should be in adjective form, meaning it can complete
 the sentence, "Artifacts about _ people". If an identity already exists in the
 archive, prefer using it as it currently appears. This list can be empty if the
