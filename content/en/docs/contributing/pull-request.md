@@ -12,16 +12,17 @@ weight: 20
 ---
 
 The archive is hosted on GitHub, and to contribute content to the archive,
-you'll need to open a *pull request*, which is a proposal to add content to the
-website. It's easier than it sounds, and requires no programming or knowledge
-of specialized tools! Just follow these steps:
+you'll need to open a *pull request*, which is a proposal to add content to a
+code repository. It's easier than it sounds, and requires no programming or
+knowledge of specialized tools! Just follow these steps:
 
-1. Create an [artifact file]({{< ref "docs/contributing/artifact-files" >}}) for the new artifact.
-2. Choose a [url slug]({{< ref "docs/contributing/artifact-files#url-slugs" >}}) for the new artifact.
-3. Enter the URL slug into the box below and click "Open PR," which will redirect you to GitHub.
-4. Name the new file `index.md`.
-5. Paste your artifact file into the page.
-6. Select "Create a new branch for this commit and start a pull request" at the
+1. Choose a [url slug]({{< ref "docs/contributing/artifact-files#url-slugs"
+   >}}) for the new artifact.
+2. Enter the URL slug into the box below and click "Open PR," which will
+   redirect you to GitHub.
+3. Fill in the provided [artifact file]({{< ref
+   "docs/contributing/artifact-files" >}}) template in GitHub.
+4. Select "Create a new branch for this commit and start a pull request" at the
    bottom of the page and click "Propose new file."
 
 This will open the page to create a new pull request. All you have to do is
