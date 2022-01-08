@@ -1,6 +1,5 @@
-name: Artifact Suggestion
+name: Suggest Content
 description: Suggest content to be added to the archive.
-title: "[Artifact]: "
 labels: ["artifact"]
 body:
   - type: markdown
