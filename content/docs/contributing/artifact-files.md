@@ -32,7 +32,7 @@ can think of it as a YAML file with a leading and trailing `---`.
 {{< /alert >}}
 
 You can [look through the
-repository](https://github.com/acearchive/acearchive.lgbt/tree/main/content/en/archive)
+repository](https://github.com/acearchive/acearchive.lgbt/tree/main/content/archive)
 to see examples of artifact files, but generally an artifact file will look
 something like this:
 

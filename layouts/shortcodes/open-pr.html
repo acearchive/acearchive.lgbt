@@ -4,7 +4,7 @@
     function open_pr_click_handler(value) {
       const button = document.getElementById("new-pr-button");
       const input = document.getElementById("new-pr-slug-input");
-      button.href = "https://github.com/acearchive/acearchive.lgbt/new/main/?filename=content/en/archive/" + input.value + "/index.md&value=" + encodeURIComponent(value);
+      button.href = "https://github.com/acearchive/acearchive.lgbt/new/main/?filename=content/archive/" + input.value + "/index.md&value=" + encodeURIComponent(value);
     }
   </script>
   <input type="text" class="form-control is-search" placeholder="URL slug" aria-label="URL slug" aria-describedby="new-pr-button" id="new-pr-slug-input">
