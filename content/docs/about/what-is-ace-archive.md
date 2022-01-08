@@ -30,5 +30,5 @@ archive, and we have [documentation]({{< ref
 
 Something unique about Ace Archive is the use of Web3 technologies to help keep
 the archive independent and ensure ace history has a permanent home on the web.
-In the next section, we'll explain what that means and how these technologies
-help Ace Archive achieve its goals.
+[In the next section]({{< ref "docs/about/about-web3.md" >}}), we'll explain
+what that means and how these technologies help Ace Archive achieve its goals.
