@@ -8,7 +8,7 @@ draft: false
 menu:
   docs:
     parent: "contributing"
-weight: 10
+weight: 201
 ---
 
 Anyone can contribute content to the archive by [opening a pull request on
@@ -21,5 +21,6 @@ would prefer not to add it yourself, you can [open an
 issue](https://github.com/acearchive/acearchive.lgbt/issues/new?labels=artifact&template=artifact.yml)
 on GitHub.
 
-If you want to learn how to contribute to the archive yourself, the rest of
-this section will document the process.
+Another great way to contribute to Ace Archive is to [help host the
+content]({{< ref "docs/contributing/hosting-artifacts.md" >}}), which anyone
+can do thanks to Web3 technologies.

@@ -8,7 +8,7 @@ draft: false
 menu:
   docs:
     parent: "contributing"
-weight: 30
+weight: 203
 ---
 
 Every artifact in the archive has an *artifact file* associated with it in the

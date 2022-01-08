@@ -8,7 +8,7 @@ draft: false
 menu:
   docs:
     parent: "contributing"
-weight: 50
+weight: 205
 ---
 
 A lot of modern queer history is found on the web—in blogs, forums, and social

@@ -1,6 +1,6 @@
 [[main]]
   name = "About"
-  url = "/docs/about"
+  url = "/docs/about/what-is-ace-archive"
   weight = 10
 
 [[main]]

@@ -8,7 +8,7 @@ draft: false
 menu:
   docs:
     parent: "contributing"
-weight: 20
+weight: 202
 ---
 
 The archive is hosted on GitHub, and to contribute content to the archive,

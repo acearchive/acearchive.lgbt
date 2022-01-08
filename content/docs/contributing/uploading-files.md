@@ -8,7 +8,7 @@ draft: false
 menu:
   docs:
     parent: "contributing"
-weight: 40
+weight: 204
 ---
 
 ## What is a CID?
