@@ -72,7 +72,7 @@ Source:
       store: [
         "href", "title", "description"
       ],
-      index: ["title", "description", "content"]
+      index: ["title", "description", "content", "identities", "decades", "people"]
     }
   });
 
@@ -105,7 +105,10 @@ Source:
         href: "{{ .RelPermalink }}",
         title: {{ .Title | jsonify }},
         description: {{ .Params.description | jsonify }},
-        content: {{ .Content | jsonify }}
+        content: {{ .Content | jsonify }},
+        identities: {{ .Params.identities | jsonify }},
+        decades: {{ .Params.decades | jsonify }},
+        people: {{ .Params.people | jsonify }}
       })
       {{ if ne (add $index 1) $len -}}
         .add(
