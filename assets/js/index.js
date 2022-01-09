@@ -144,8 +144,8 @@ Source:
         entry.innerHTML = '<a href><span></span><span></span></a>';
 
         entry.querySelector('a').href = href;
-        entry.querySelector('span:first-child').textContent = doc.title;
-        entry.querySelector('span:nth-child(2)').textContent = doc.description;
+        entry.querySelector('span:first-child').innerHTML = doc.title;
+        entry.querySelector('span:nth-child(2)').innerHTML = doc.description;
 
         suggestions.appendChild(entry);
         if(suggestions.childElementCount == maxResult) break;
