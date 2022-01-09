@@ -58,8 +58,8 @@ files:
     cid: "bafkreiabjlsvc7m6vdnidwziqy5nbf42lwmbyu3zbgjhj7ocekcriejuka"
 people: ["Lisa Orlando", "Barbara Getz"]
 identities: ["asexual"]
-years: "1972"
-decades: ["1970"]
+fromYear: 1972
+decades: [1970]
 {{< /highlight >}}
 ---
 ```
@@ -165,11 +165,17 @@ complete the sentence, "Artifacts about _ people". This list can be empty if
 the identities associated with the work aren't clear (e.g. it's about queer
 identities as a whole).
 
-`years`
+`fromYear`
 : The year the work associated with the artifact was published (or written,
-posted, etc.). If the artifact encompasses multiple works, this can be a range
-of years using a hyphen (e.g. 1987-1999).
+posted, etc.). If the artifact encompasses multiple works that were published
+in different years, you should specify a range of years using this field and
+`toYear`.
+
+`toYear`
+: This value can be used with `fromYear` to specify a range of years. If the
+works associated with the artifact were only published in one year, this should
+be omitted.
 
 `decades`
-: This should be the same as `years`, but in the form of a list of decades. For
-example, if `years` is "1980-1999", this should be `["1980", "1990"]`.
+: The list of decades between `fromYear` and `toYear`. For example, if
+`fromYear` is 1980 and `toYear` is 1999, this should be `[1980, 1990]`.

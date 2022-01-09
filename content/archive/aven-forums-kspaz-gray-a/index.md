@@ -15,6 +15,6 @@ files:
     cid: "QmXKTUsY7u8dD19ZHdcoUUkyQM7bpFpiMrgha3Ltt39tEM"
 people: ["KSpaz"]
 identities: ["asexual", "gray-asexual"]
-years: "2006"
-decades: ["2000"]
+fromYear: 2006
+decades: [2000]
 ---

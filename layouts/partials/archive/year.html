@@ -1,0 +1,9 @@
+{{ if .Params.toYear -}}
+  {{- if eq .Params.fromYear .Params.toYear -}}
+    {{- .Params.fromYear -}}
+  {{- else -}}
+    {{- printf "%d–%d" .Params.fromYear .Params.toYear -}}
+  {{- end -}}
+{{- else -}}
+  {{- .Params.fromYear -}}
+{{- end }}

@@ -18,6 +18,6 @@ files:
     cid: "bafkreid6kvmjqet2gfmdiccqmqmh4lnwrfy3p53lfsfneuvnld7ko6jkji"
 people: ["Anthony Bogaert"]
 identities: ["asexual"]
-years: "2004"
-decades: ["2000"]
+fromYear: 2004
+decades: [2000]
 ---

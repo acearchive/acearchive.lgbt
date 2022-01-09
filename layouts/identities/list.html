@@ -9,7 +9,7 @@
     <h1 class="text-center">{{ .Title | title }}</h1>
     <p class="lead text-center">Artifacts involving {{ .Title }} people</p>
     <div class="row row-cols-1 row-cols-md-2 g-5">
-    {{ range (.Pages.ByParam "years").Reverse }}
+    {{ range (.Pages.ByParam "fromYear").Reverse }}
       <div class="col">
         {{ .Render "card" -}}
       </div>

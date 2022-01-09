@@ -14,6 +14,7 @@ files:
     cid: ""
 people: []
 identities: []
-years: ""
+fromYear: 0
+toYear: 0
 decades: []
 ---

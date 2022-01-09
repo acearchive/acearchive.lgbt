@@ -15,6 +15,6 @@ files:
     cid: "QmcidDtViFZ47WBTceyL8NaUc3u9ypU9E6otrFQv5P1Nze"
 people: ["Sciatrix"]
 identities: ["aromantic", "WTFromantic"]
-years: "2011"
-decades: ["2010"]
+fromYear: 2011
+decades: [2010]
 ---

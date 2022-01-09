@@ -18,6 +18,6 @@ files:
     cid: "bafkreiabjlsvc7m6vdnidwziqy5nbf42lwmbyu3zbgjhj7ocekcriejuka"
 people: ["Lisa Orlando", "Barbara Getz"]
 identities: ["asexual"]
-years: "1972"
-decades: ["1970"]
+fromYear: 1972
+decades: [1970]
 ---

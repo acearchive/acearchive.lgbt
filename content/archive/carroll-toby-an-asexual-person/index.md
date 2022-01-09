@@ -18,6 +18,6 @@ files:
     cid: "bafkreihtgeuushj4zbd3ur74amf5oq6sv2esgdin44z7el5ci6rzvosh2i"
 people: ["Jim Sinclair"]
 identities: ["intersex", "non-binary", "neuter", "asexual"]
-years: "2006"
-decades: ["2000"]
+fromYear: 2006
+decades: [2000]
 ---

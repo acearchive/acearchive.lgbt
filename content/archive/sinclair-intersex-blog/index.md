@@ -15,6 +15,7 @@ files:
     cid: "QmcVE7rsh4ZPZMTuCjBQzzoP5DHZsYcwxWfqSsB5uPJHzd"
 people: ["Jim Sinclair"]
 identities: ["intersex"]
-years: "1987-1999"
-decades: ["1980", "1990"]
+fromYear: 1987
+toYear: 1999
+decades: [1980, 1990]
 ---

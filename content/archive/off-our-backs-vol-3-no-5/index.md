@@ -15,6 +15,6 @@ files:
     cid: "bafybeigbbmu4rspn3lnc6ce3wo4w2kcxhlgczegsqkdrltr3lbreqlek4u"
 people: ["Barbara Getz"]
 identities: ["lesbian", "asexual"]
-years: "1973"
-decades: ["1970"]
+fromYear: 1973
+decades: [1970]
 ---

@@ -16,6 +16,6 @@ files:
     cid: "QmbtDSaaWNEGawnXyu1eyVwuGr5bc7jKhkvc2ysBrJzx7Q"
 people: ["AVENguy"]
 identities: ["asexual"]
-years: "2003"
-decades: ["2000"]
+fromYear: 2003
+decades: [2000]
 ---

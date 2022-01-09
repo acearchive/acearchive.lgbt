@@ -30,6 +30,6 @@ files:
     cid: "bafybeiafaztnfftd3oiuk65uuiremyxcyee4davleu234gmzvix2i3hywi"
 people: ["Jim Sinclair"]
 identities: ["asexual", "neuter"]
-years: "1989"
-decades: ["1980"]
+fromYear: 1989
+decades: [1980]
 ---

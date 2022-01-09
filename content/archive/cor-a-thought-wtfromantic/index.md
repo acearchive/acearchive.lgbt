@@ -15,6 +15,6 @@ files:
     cid: "QmdHrWCGz7irZUhoV4zLbR68ytiAK8tiuGhz2DkHvWeUXc"
 people: ["Cor"]
 identities: ["wtfromantic", "quoiromantic"]
-years: "2012"
-decades: ["2010"]
+fromYear: 2012
+decades: [2010]
 ---

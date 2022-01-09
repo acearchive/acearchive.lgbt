@@ -15,6 +15,6 @@ files:
     cid: "QmQQsNL3VJ6H94RWuDq5sU3fnh1tdTy32M8mJCMkDgs6EK"
 people: ["Meloukhia"]
 identities: ["aromantic"]
-years: "2011"
-decades: ["2010"]
+fromYear: 2011
+decades: [2010]
 ---

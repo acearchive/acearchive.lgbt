@@ -16,6 +16,14 @@ function inputFocus(e) {
   }
 }
 
+function rangeYears(fromYear, toYear) {
+    if (toYear === null || toYear === undefined) {
+        return [fromYear]
+    } else {
+        return Array.from(new Array(toYear - fromYear + 1), (_, i) => i + fromYear)
+    }
+}
+
 document.addEventListener('click', function(event) {
 
   var isClickInsideElement = suggestions.contains(event.target);
@@ -72,7 +80,7 @@ Source:
       store: [
         "href", "title", "description"
       ],
-      index: ["title", "description", "content", "years", "identities", "decades", "people"]
+      index: ["title", "description", "content", "years", "identities", "people"]
     }
   });
 
@@ -106,9 +114,8 @@ Source:
         title: {{ .Title | jsonify }},
         description: {{ .Params.description | jsonify }},
         content: {{ .Content | jsonify }},
-        years: {{ .Params.years | jsonify }},
+        years: rangeYears({{ .Params.fromYear | jsonify }}, {{ .Params.toYear | jsonify }}),
         identities: {{ .Params.identities | jsonify }},
-        decades: {{ .Params.decades | jsonify }},
         people: {{ .Params.people | jsonify }},
       })
       {{ if ne (add $index 1) $artifactLen -}}

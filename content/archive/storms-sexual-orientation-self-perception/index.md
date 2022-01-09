@@ -17,6 +17,6 @@ files:
     cid: "QmdsEu6YLNWwg9MCWMP6WTCSWmfUQHfPrgbdRCKRrbRPxv"
 people: ["Michael D. Storms"]
 identities: ["asexual"]
-years: "1979"
-decades: ["1970"]
+fromYear: 1979
+decades: [1970]
 ---

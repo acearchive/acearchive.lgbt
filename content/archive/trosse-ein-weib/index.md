@@ -18,6 +18,6 @@ files:
     cid: "bafkreibuxmlko3bywhq5pmicnds7juz24vjjg7cegm2ypdavcfftu3x7be"
 people: ["Emma Trosse"]
 identities: ["asexual"]
-years: "1897"
-decades: ["1890"]
+fromYear: 1897
+decades: [1890]
 ---

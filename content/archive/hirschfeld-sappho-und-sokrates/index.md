@@ -23,6 +23,6 @@ files:
     cid: "bafybeihfvrsyyvv3rv6kp3ilgb6w2i24tct7akgy7e552et52gcgglrpfm"
 people: ["Magnus Hirschfeld"]
 identities: ["asexual"]
-years: "1896"
-decades: ["1890"]
+fromYear: 1896
+decades: [1890]
 ---

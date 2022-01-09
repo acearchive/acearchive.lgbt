@@ -15,6 +15,6 @@ files:
     cid: "QmPbjrx9PpkDC4xhhxdQrLnL6B1QXiJgXvRfeaAczXk2oL"
 people: []
 identities: ["aromantic"]
-years: "2007"
-decades: ["2000"]
+fromYear: 2007
+decades: [2000]
 ---

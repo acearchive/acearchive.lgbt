@@ -15,6 +15,6 @@ files:
     cid: "QmRjq2AgwLbghybZr3HPbVJ3axwzs1NQPzm5PGtiLn2PBy"
 people: []
 identities: ["asexual"]
-years: "2003"
-decades: ["2000"]
+fromYear: 2003
+decades: [2000]
 ---

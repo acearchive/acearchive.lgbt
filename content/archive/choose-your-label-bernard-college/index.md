@@ -19,6 +19,6 @@ files:
     cid: "bafybeibfzohg3yto2heodyxs7ug4cuul3qadohizkelzbxjrbfpoeqioo4"
 people: []
 identities: []
-years: "1973"
-decades: ["1970"]
+fromYear: 1973
+decades: [1970]
 ---

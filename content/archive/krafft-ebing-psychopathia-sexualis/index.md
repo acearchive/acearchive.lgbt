@@ -22,6 +22,6 @@ files:
     cid: "QmdiqACaDyXe5is1KEiAJRhmyipczL7hUVza2EG533rKKi"
 people: ["Richard von Krafft-Ebing"]
 identities: ["asexual"]
-years: "1886"
-decades: ["1880"]
+fromYear: 1886
+decades: [1880]
 ---

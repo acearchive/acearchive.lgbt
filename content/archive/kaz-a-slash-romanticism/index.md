@@ -15,6 +15,6 @@ files:
     cid: "QmX4D73PmvuarSHdDnAcnFQWmHioLBG5Qb1ACiyFT1s7zZ"
 people: ["Kaz", "Meloukhia"]
 identities: ["aromantic", "wtfromantic"]
-years: "2010"
-decades: ["2010"]
+fromYear: 2010
+decades: [2010]
 ---

@@ -15,6 +15,6 @@ files:
     cid: "QmSgGQM9uKi9EpKddAfkfUxfRpQwp713arH94d7PEeymTU"
 people: ["Zoe O'Reilly"]
 identities: ["asexual"]
-years: "1997"
-decades: ["1990"]
+fromYear: 1997
+decades: [1990]
 ---

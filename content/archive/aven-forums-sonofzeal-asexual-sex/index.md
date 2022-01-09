@@ -15,6 +15,6 @@ files:
     cid: "QmTrNVYboGeJvzMxsSd8rngw5UHsmczFBKgde79Gcx2tsf"
 people: ["sonofzeal"]
 identities: ["asexual", "demisexual"]
-years: "2006"
-decades: ["2000"]
+fromYear: 2006
+decades: [2000]
 ---

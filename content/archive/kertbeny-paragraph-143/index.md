@@ -18,6 +18,6 @@ files:
     cid: "bafkreigc3f6w6ssxgskw6oa5lhvlryo4y7aukbuaq6ucqknbnf4emevke4"
 people: ["Karl-Maria Kertbeny"]
 identities: []
-years: "1869"
-decades: ["1860"]
+fromYear: 1869
+decades: [1860]
 ---

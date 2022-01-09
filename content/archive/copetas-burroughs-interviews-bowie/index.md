@@ -15,6 +15,6 @@ files:
     cid: "QmTzp4zxgqtsk1JhgpLGM4trDzaTGDz7NxXeDqBfQv6ek4"
 people: ["David Bowie"]
 identities: ["asexual"]
-years: "1974"
-decades: ["1970"]
+fromYear: 1974
+decades: [1970]
 ---
