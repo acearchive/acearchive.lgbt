@@ -1,12 +1,6 @@
 ---
 title: "\"Gray-A's\""
 description: "The term \"gray-asexual\" is coined in an AVEN forum thread"
-date: 2022-01-03T18:32:04-05:00
-lastmod: 2022-01-03T18:32:04-05:00
-draft: false
-menu:
-  archive:
-    parent: "browse"
 files:
   - name: "Browsable Archive"
     cid: "QmeuHp8EmCsV8rqtn32ojaywV3WFGYGYp11Pnn7xHXT9g6"

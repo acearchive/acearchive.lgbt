@@ -1,12 +1,6 @@
 ---
 title: "<em>The Asexual Manifesto</em>"
 description: "A paper by the Asexual Caucus of the New York Radical Feminists"
-date: 2022-01-02T10:54:43-05:00
-lastmod: 2022-01-02T10:54:43-05:00
-draft: false
-menu:
-  archive:
-    parent: "browse"
 files:
   - name: "The Asexual Manifesto"
     mediaType: "application/pdf"

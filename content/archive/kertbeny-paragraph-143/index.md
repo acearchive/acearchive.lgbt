@@ -2,12 +2,6 @@
 title: "Kertbeny's pamphlets protesting Prussian sodomy laws"
 description: "Pamphlets protesting Prussian sodomy laws which coined the terms \"homosexual\" and \"heterosexual\""
 longDescription: "Pamphlets protesting Prussian sodomy laws which coined the terms \"homosexual\" and \"heterosexual\", as well as \"monosexual\""
-date: 2022-01-04T17:43:55-05:00
-lastmod: 2022-01-04T17:43:55-05:00
-draft: false
-menu:
-  archive:
-    parent: "browse"
 files:
   - name: "Original Paper (Deutsch)"
     mediaType: "application/pdf"

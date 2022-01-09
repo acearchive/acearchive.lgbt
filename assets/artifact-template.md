@@ -2,11 +2,6 @@
 title: ""
 description: ""
 longDescription: ""
-date: ""
-lastmod: ""
-menu:
-  archive:
-    parent: "browse"
 files:
   - name: ""
     mediaType: ""

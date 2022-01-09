@@ -41,12 +41,6 @@ something like this:
 {{< highlight yaml >}}
 title: "<em>The Asexual Manifesto</em>"
 description: "A paper by the Asexual Caucus of the New York Radical Feminists"
-date: 2022-01-02T10:54:43-05:00
-lastmod: 2022-01-02T10:54:43-05:00
-draft: false
-menu:
-  archive:
-    parent: "browse"
 files:
   - name: "The Asexual Manifesto"
     mediaType: "application/pdf"
@@ -106,21 +100,6 @@ artifact title in the list of artifacts.
 can optionally provide a longer description that will appear in the page for
 the artifact. This field can be omitted, in which case it will just be the same
 as `description`.
-
-`date`
-: This is the timestamp in `YYYY-MM-DDTHH:MM:SS` format for when the artifact
-file was first created.
-
-`lastmod`
-: This is the date and time the artifact file was last modified. If you're
-adding a new artifact, this should be the same as `date`. If you're updating an
-existing artifact file, you should update this.
-
-`draft`
-: You can leave this alone.
-
-`menu`
-: You can leave this alone.
 
 `files`
 : This section contains a list of references to the files associated with the

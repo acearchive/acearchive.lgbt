@@ -1,12 +1,6 @@
 ---
 title: "\"My life as an amoeba\""
 description: "A blog post about coming out as asexual"
-date: 2022-01-02T21:41:10-05:00
-lastmod: 2022-01-02T21:41:10-05:00
-draft: false
-menu:
-  archive:
-    parent: "browse"
 files:
   - name: "Browsable Archive"
     cid: "bafybeic2ta33fejnwvekwvitzolhlsffaw3ac3o6a64sdplot6c5qcjwhu"

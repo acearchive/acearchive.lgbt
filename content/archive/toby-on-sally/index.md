@@ -1,12 +1,6 @@
 ---
 title: "Toby on <em>Sally</em>"
 description: "Toby (Jim Sinclair) being interviewed on the talk show <em>Sally</em>"
-date: 2022-01-02T22:00:19-05:00
-lastmod: 2022-01-02T22:00:19-05:00
-draft: false
-menu:
-  archive:
-    parent: "browse"
 files:
   - name: "Toby on Sally - Part 1"
     mediaType: "video/mp4"

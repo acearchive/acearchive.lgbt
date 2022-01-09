@@ -1,12 +1,6 @@
 ---
 title: "William Burroughs interviews David Bowie"
 description: "An interview with David Bowie in which he talks about asexuality"
-date: 2022-01-08T16:40:51-05:00
-lastmod: 2022-01-08T16:40:51-05:00
-draft: false
-menu:
-  archive:
-    parent: "browse"
 files:
   - name: "Browsable Archive"
     cid: "QmX1ehaoA3tatDmamjah44d1DrSQpAtbr5uC9n5tBN6YgJ"

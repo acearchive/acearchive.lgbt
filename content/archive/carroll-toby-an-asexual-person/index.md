@@ -2,12 +2,6 @@
 title: "\"Toby: An Asexual Person\""
 description: "An excerpt from a textbook describing a neuter person"
 longDescription: "An excerpt from the book <em>Sexuality Now: Embracing Diversity</em>, which describes Toby (Jim Sinclair) as neuter and asexual"
-date: 2022-01-02T21:15:43-05:00
-lastmod: 2022-01-02T21:15:43-05:00
-draft: false
-menu:
-  archive:
-    parent: "browse"
 files:
   - name: "Toby: An Asexual Person"
     mediaType: "image/png"

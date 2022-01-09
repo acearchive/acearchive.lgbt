@@ -2,12 +2,6 @@
 title: "<em>Sappho und Sokrates</em>"
 description: "A formative academic work in legitimizing queer identities which recognizes asexual people"
 longDescription: "A formative academic work in legitimizing queer identities which recognizes asexual people under the label \"anesthesia sexualis\""
-date: 2022-01-04T16:01:03-05:00
-lastmod: 2022-01-04T16:01:03-05:00
-draft: false
-menu:
-  archive:
-    parent: "browse"
 files:
   - name: "Original Paper (Deutsch)"
     mediaType: "application/pdf"

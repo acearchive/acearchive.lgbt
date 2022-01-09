@@ -2,12 +2,6 @@
 title: "\"Choose Your Label\" Bernard College"
 description: "A photo of activists at Bernard College inviting people to choose their own label"
 longDescription: "A photo published in the feminist news journal <em>Off Our Backs</em> depicting activists at Bernard College inviting people to choose their own label"
-date: 2022-01-02T22:32:26-05:00
-lastmod: 2022-01-02T22:32:26-05:00
-draft: false
-menu:
-  archive:
-    parent: "browse"
 files:
   - name: "Choose Your Label"
     mediaType: "image/png"
