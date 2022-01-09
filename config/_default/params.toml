@@ -5,6 +5,7 @@ title = "Ace Archive"
 titleSeparator = "-"
 titleAddition = "Preserving asexual history"
 description = "Ace Archive is a curated archive for preserving asexual history using Web3 technologies."
+seoBaseUrl = "https://acearchive.lgbt"
 
 ## Documentation
 # docsVersion = "0.3"

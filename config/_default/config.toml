@@ -1,4 +1,4 @@
-baseurl = "https://acearchive.lgbt/"
+baseurl = "/"
 relativeUrls = true
 canonifyURLs = false
 disableAliases = true
