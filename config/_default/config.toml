@@ -101,6 +101,9 @@ rel  = "sitemap"
     source = "node_modules/mermaid"
     target = "assets/js/vendor/mermaid"
   [[module.mounts]]
+    source = "node_modules/@github/clipboard-copy-element"
+    target = "assets/js/vendor/clipboard-copy-element"
+  [[module.mounts]]
     source = "assets"
     target = "assets"
   [[module.mounts]]

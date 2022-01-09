@@ -59,6 +59,12 @@
 {{ $openPr := resources.Get "js/open-pr.js" | js.Build (dict "params" (dict "artifact_template" $artifactTemplate.Content)) -}}
 {{ $slice := $slice | append $openPr -}}
 
+{{ $clipboardCopyElement := resources.Get "js/vendor/clipboard-copy-element/dist/index.esm.js" | js.Build -}}
+{{ $slice := $slice | append $clipboardCopyElement -}}
+
+{{ $clipboardCopyHandler := resources.Get "js/clipboard-copy.js" | js.Build -}}
+{{ $slice := $slice | append $clipboardCopyHandler -}}
+
 {{ $js := $slice | resources.Concat "main.js" -}}
 
 {{ if eq (hugo.Environment) "development" -}}
