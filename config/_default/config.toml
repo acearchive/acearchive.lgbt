@@ -58,9 +58,9 @@ rel  = "sitemap"
   priority = 0.5
 
 [taxonomies]
-  people = "people"
-  identities = "identities"
-  decades = "decades"
+  person = "people"
+  identity = "identities"
+  decade = "decades"
 
 [permalinks]
   people = "/categories/people/:title/"
