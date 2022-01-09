@@ -13,11 +13,11 @@
 {{ if .IsHome -}}
   <title>{{ .Site.Params.title }} {{ .Site.Params.titleSeparator }} {{ .Site.Params.titleAddition }}</title>
 {{ else -}}
-  <title>{{ .Title }} {{ .Site.Params.titleSeparator }} {{ .Site.Params.title }}</title>
+  <title>{{ .Title | plainify }} {{ .Site.Params.titleSeparator }} {{ .Site.Params.title }}</title>
 {{ end -}}
 
 {{ with .Description -}}
-  <meta name="description" content="{{ . }}">
+  <meta name="description" content="{{ . | plainify }}">
 {{ else -}}
   <meta name="description" content="{{ .Site.Params.description }}">
 {{ end -}}
