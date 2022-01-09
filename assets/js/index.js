@@ -95,22 +95,82 @@ Source:
 
   // https://discourse.gohugo.io/t/range-length-or-last-element/3803/2
 
-  {{ $list := (where .Site.Pages "Section" "archive") -}}
-  {{ $len := (len $list) -}}
+  {{ $artifactList := (where .Site.Pages "Section" "archive") -}}
+  {{ $artifactLen := (len $artifactList) -}}
 
   index.add(
-    {{ range $index, $element := $list -}}
+    {{ range $index, $element := $artifactList -}}
       {
-        id: {{ $index }},
+        id: "{{ printf "artifact-%d" $index }}",
         href: "{{ .RelPermalink }}",
         title: {{ .Title | jsonify }},
         description: {{ .Params.description | jsonify }},
         content: {{ .Content | jsonify }},
         identities: {{ .Params.identities | jsonify }},
         decades: {{ .Params.decades | jsonify }},
-        people: {{ .Params.people | jsonify }}
+        people: {{ .Params.people | jsonify }},
       })
-      {{ if ne (add $index 1) $len -}}
+      {{ if ne (add $index 1) $artifactLen -}}
+        .add(
+      {{ end -}}
+    {{ end -}}
+  ;
+
+  {{ $identityList := slice -}}
+  {{ range .Site.Taxonomies.identities -}}
+    {{ $identityList = $identityList | append .Page -}}
+  {{ end -}}
+  {{ $identityLen := (len $identityList) -}}
+
+  index.add(
+    {{ range $index, $element := $identityList -}}
+      {
+        id: "{{ printf "identity-%d" $index }}",
+        href: "{{ $element.RelPermalink }}",
+        title: {{ $element.Title | title | jsonify }},
+        description: {{ printf "Artifacts involving %s people" $element.Title | jsonify }}
+      })
+      {{ if ne (add $index 1) $identityLen -}}
+        .add(
+      {{ end -}}
+    {{ end -}}
+  ;
+
+  {{ $decadeList := slice -}}
+  {{ range .Site.Taxonomies.decades -}}
+    {{ $decadeList = $decadeList | append .Page -}}
+  {{ end -}}
+  {{ $decadeLen := (len $decadeList) -}}
+
+  index.add(
+    {{ range $index, $element := $decadeList -}}
+      {
+        id: "{{ printf "decade-%d" $index }}",
+        href: "{{ $element.RelPermalink }}",
+        title: {{ $element.Title | title | jsonify }},
+        description: {{ printf "Artifacts from the %ss" $element.Title | jsonify }}
+      })
+      {{ if ne (add $index 1) $decadeLen -}}
+        .add(
+      {{ end -}}
+    {{ end -}}
+  ;
+
+  {{ $peopleList := slice -}}
+  {{ range .Site.Taxonomies.people -}}
+    {{ $peopleList = $peopleList | append .Page -}}
+  {{ end -}}
+  {{ $peopleLen := (len $peopleList) -}}
+
+  index.add(
+    {{ range $index, $element := $peopleList -}}
+      {
+        id: "{{ printf "person-%d" $index }}",
+        href: "{{ $element.RelPermalink }}",
+        title: {{ $element.Title | title | jsonify }},
+        description: {{ printf "Artifacts involving %s" $element.Title | jsonify }}
+      })
+      {{ if ne (add $index 1) $peopleLen -}}
         .add(
       {{ end -}}
     {{ end -}}
