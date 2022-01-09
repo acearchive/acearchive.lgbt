@@ -83,7 +83,9 @@ be `aven-forums-coolasexualperson-romance`.
 
 ## Artifact fields
 
-Next, we'll talk about the fields in an artifact file.
+Next, we'll talk about the fields in an artifact file. Also take a look at the
+[best practices]({{< ref "docs/contributing/best-practices.md" >}}) section for
+more information on how to fill out these fields.
 
 `title`
 : This is the title of the artifact. If the artifact represents a work (a book,
@@ -102,8 +104,8 @@ artifact title in the list of artifacts.
 `longDescription`
 : If you want to provide more context that you can fit in `description`, you
 can optionally provide a longer description that will appear in the page for
-the artifact. This field can be ommitted, in which case it will just be the
-same as `description`.
+the artifact. This field can be omitted, in which case it will just be the same
+as `description`.
 
 `date`
 : This is the timestamp in `YYYY-MM-DDTHH:MM:SS` format for when the artifact
@@ -153,22 +155,14 @@ section]({{< ref "docs/contributing/uploading-files.md#what-is-a-cid" >}}).
 : This is a list of (usually 1-3) people closely associated with the artifact,
 such as the author of a book, the subject of a photo, etc. This is helpful for
 linking together different artifacts which are associated with the same people.
-If a person already exists in the archive, you should use the name as it
-currently appears in other artifact files and on the website. Please respect
-the privacy of individuals and use handles or usernames when that person
-typically goes by a pseudonym online. Also, if a person has a preferred name,
-**always** use their preferred name over their legal name or deadname. This
-list can be empty if the people associated with the artifact aren't clear.
+This list can be empty if the people associated with the artifact aren't clear.
 
 `identities`
 : A list of queer identities associated with the artifact. For example, if this
 is a blog post about aromanticism, then "aromantic" should be included in the
-list of identities. Note that Ace Archive is for hosting content of importance
-to aspec communities as a whole, and artifacts do not strictly have to involve
-asexuality. The identity should be in adjective form, meaning it can complete
-the sentence, "Artifacts about _ people". If an identity already exists in the
-archive, prefer using it as it currently appears. This list can be empty if the
-identities associated with the work aren't clear (e.g. it's about queer
+list of identities. The identity should be in adjective form, meaning it can
+complete the sentence, "Artifacts about _ people". This list can be empty if
+the identities associated with the work aren't clear (e.g. it's about queer
 identities as a whole).
 
 `years`

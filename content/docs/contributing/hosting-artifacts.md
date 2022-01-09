@@ -8,7 +8,7 @@ draft: false
 menu:
   docs:
     parent: "contributing"
-weight: 206
+weight: 207
 ---
 
 We mention in ["About Web3"]({{< ref "docs/about/about-web3.md" >}}) that
