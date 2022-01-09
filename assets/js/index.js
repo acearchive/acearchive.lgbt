@@ -72,7 +72,7 @@ Source:
       store: [
         "href", "title", "description"
       ],
-      index: ["title", "description", "content", "identities", "decades", "people"]
+      index: ["title", "description", "content", "years", "identities", "decades", "people"]
     }
   });
 
@@ -106,6 +106,7 @@ Source:
         title: {{ .Title | jsonify }},
         description: {{ .Params.description | jsonify }},
         content: {{ .Content | jsonify }},
+        years: {{ .Params.years | jsonify }},
         identities: {{ .Params.identities | jsonify }},
         decades: {{ .Params.decades | jsonify }},
         people: {{ .Params.people | jsonify }},
