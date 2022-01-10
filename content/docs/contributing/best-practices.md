@@ -18,13 +18,20 @@ Ace Archive.
 
 If the content is in a format that's not accessible (such as a photo or a
 digital scan of a physical document), include a transcription where possible.
-Transcriptions can be included as a separate file in the artifact file as long
-as it's clear which one is the transcription and which one is the original.
+Transcriptions can be included as a separate file in the artifact as long as
+it's clear which one is the transcription and which one is the original.
 
 ## Include translations where available
 
 If the content is written in a language other than English, include both the
 original text and the English translation if both are available.
+
+## Include bibliographies where applicable
+
+If the artifact contains a published work, include a bibliography for it as a
+separate file using a standardized reference file format like BibTeX/BibLaTeX.
+These files can be imported into reference managers like Zotero and help people
+cite the work or find it on the legacy web.
 
 ## Use web archive (WARC) files
 
