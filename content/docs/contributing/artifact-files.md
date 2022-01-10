@@ -62,7 +62,7 @@ First, a note about URL slugs. Every artifact in the repository has a URL like
 `/archive/orlando-the-asexual-manifesto`. When you add a new artifact, you will
 need to choose a URL slug for it.
 
-A URL slug should always be snake-case, and will generally follow the format
+A URL slug should always be kebab-case, and will generally follow the format
 `author-title`. If the author has a first and last name (i.e. isn't a handle or
 username), you can just use the last name. If the title of the work is long,
 you can use a shortened version of it.
@@ -121,8 +121,8 @@ tool like [mimetype.io](https://mimetype.io/) to look it up.
 
 `files.filename` *(string)*
 : This is a file name for the file to be used when downloading it, meaning it
-must always be a valid Windows/macOS/Linux file name. Generally snake-case is
-preferred.
+must always be a valid Windows/macOS/Linux file name. Generally kebab-case is
+preferred, and you should always add an appropriate file extension.
 
 `files.cid` *(string)*
 : This is the IPFS CID of the file, which we'll talk about [in a later
