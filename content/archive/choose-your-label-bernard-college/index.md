@@ -10,7 +10,7 @@ files:
   - name: "Choose Your Label (Transcription)"
     mediaType: "text/markdown"
     filename: "choose-your-label-transcription.md"
-    cid: "bafybeib2eo67wk2jx424i46yinxefranpt3fhunnvospdgb2auqpjmjtqm"
+    cid: "bafkreigz63f5znivfpridjodumlrkdrn2fnsu45u3o5sdulgnz225pttle"
   - name: "Off Our Backs, vol. 3, no. 6"
     mediaType: "application/pdf"
     filename: "off-our-backs-vol-3-no-6.pdf"
