@@ -65,7 +65,8 @@ will need to choose a URL slug for it.
 A URL slug should always be kebab-case, and will generally follow the format
 `author-title`. If the author has a first and last name (i.e. isn't a handle or
 username), you can just use the last name. If the title of the work is long,
-you can use a shortened version of it.
+you can use a shortened version of it. If there is no obvious author associated
+with the work, you can just use the title.
 
 If the combination of the author and the title of the work is ambiguous, (such
 as a forum thread where the title of the thread might just be "asexuality"),
