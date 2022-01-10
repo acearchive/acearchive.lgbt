@@ -36,9 +36,8 @@ repository](https://github.com/acearchive/acearchive.lgbt/tree/main/content/arch
 to see examples of artifact files, but generally an artifact file will look
 something like this:
 
-```
----
 {{< highlight yaml >}}
+---
 title: "<em>The Asexual Manifesto</em>"
 description: "A paper by the Asexual Caucus of the New York Radical Feminists"
 files:
@@ -54,9 +53,8 @@ people: ["Lisa Orlando", "Barbara Getz"]
 identities: ["asexual"]
 fromYear: 1972
 decades: [1970]
-{{< /highlight >}}
 ---
-```
+{{< /highlight >}}
 
 ## URL slugs
 
