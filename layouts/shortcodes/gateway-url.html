@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-body">
+    <form>
+      <div class="form-floating mb-3">
+        <input class="form-control is-search" id="gateway-url-cid-input">
+        <label for="gateway-url-cid-input">CID</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input class="form-control is-search" id="gateway-url-filename-input">
+        <label class="form-label" for="gateway-url-filename-input">File Name</label>
+      </div>
+
+      <clipboard-copy id="gateway-url-copy-button" class="btn btn-primary">Copy URL</clipboard-copy>
+
+      <span hidden="true" id="gateway-url-confirmed-message" class="text-muted fs-6 ms-2">Copied!</span>
+    </form>
+  </div>
+</div>

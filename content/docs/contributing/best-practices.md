@@ -35,8 +35,12 @@ cite the work or find it on the legacy web.
 
 If the work doesn't have a stable home on the legacy web, you may want to
 update the `url` field of the BibTeX file to point to an [IPFS
-gateway](https://docs.ipfs.io/concepts/ipfs-gateway/) URL like
-`https://dweb.link/ipfs/bafybeihsf4562gmmyoya7eh5buxv65lqcdoil3wsi5jf5fceskap7yzooi/?filename=the-asexual-manifesto.pdf`.
+gateway](https://docs.ipfs.io/concepts/ipfs-gateway/) URL. You can use the form
+below to generate a gateway URL from the [CID]({{< ref
+"docs/contributing/uploading-files.md#what-is-a-cid" >}}) of the file and a file
+name.
+
+{{< gateway-url >}}
 
 ## Use web archive (WARC) files
 
@@ -53,7 +57,7 @@ If you want to contribute a video that's hosted on a video sharing platform
 like YouTube, rather than submitting a web archive of the page, download the
 video directly using a tool like
 [youtube-dl](https://ytdl-org.github.io/youtube-dl/). Contrary to the name,
-youtube-dl supports many sites besides youtube, and you can find a full list of
+youtube-dl supports many sites besides YouTube, and you can find a full list of
 supported sites
 [here](https://github.com/ytdl-org/youtube-dl/blob/master/docs/supportedsites.md).
 

@@ -65,6 +65,9 @@
 {{ $clipboardCopyHandler := resources.Get "js/clipboard-copy.js" | js.Build -}}
 {{ $slice := $slice | append $clipboardCopyHandler -}}
 
+{{ $gatewayUrlInput := resources.Get "js/gateway-url.js" | js.Build -}}
+{{ $slice := $slice | append $gatewayUrlInput -}}
+
 {{ $js := $slice | resources.Concat "main.js" -}}
 
 {{ if eq (hugo.Environment) "development" -}}
