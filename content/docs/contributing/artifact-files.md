@@ -59,8 +59,8 @@ decades: [1970]
 ## URL slugs
 
 First, a note about URL slugs. Every artifact in the repository has a URL like
-`/archive/orlando-the-asexual-manifesto`. When you add a new artifact, you will
-need to choose a URL slug for it.
+`/artifact/orlando-the-asexual-manifesto`. When you add a new artifact, you
+will need to choose a URL slug for it.
 
 A URL slug should always be kebab-case, and will generally follow the format
 `author-title`. If the author has a first and last name (i.e. isn't a handle or

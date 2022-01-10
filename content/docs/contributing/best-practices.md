@@ -33,8 +33,9 @@ separate file using a standardized reference file format like BibTeX/BibLaTeX.
 These files can be imported into reference managers like Zotero and help people
 cite the work or find it on the legacy web.
 
-If the work doesn't have a stable home on the legacy web, you could update the
-`url` field of the BibTeX file to point to an IPFS gateway URL like
+If the work doesn't have a stable home on the legacy web, you may want to
+update the `url` field of the BibTeX file to point to an [IPFS
+gateway](https://docs.ipfs.io/concepts/ipfs-gateway/) URL like
 `https://dweb.link/ipfs/bafybeihsf4562gmmyoya7eh5buxv65lqcdoil3wsi5jf5fceskap7yzooi/?filename=the-asexual-manifesto.pdf`.
 
 ## Use web archive (WARC) files
