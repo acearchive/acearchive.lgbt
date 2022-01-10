@@ -7,7 +7,7 @@ files:
   - name: "WACZ Archive"
     filename: "squish.wacz"
     cid: "QmPbjrx9PpkDC4xhhxdQrLnL6B1QXiJgXvRfeaAczXk2oL"
-people: []
+people: ["Raisin"]
 identities: ["aromantic"]
 fromYear: 2007
 decades: [2000]
