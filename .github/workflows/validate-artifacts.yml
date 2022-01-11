@@ -13,7 +13,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v2
       - name: "Validate"
-        uses: acearchive/w3s-upload@main
+        uses: acearchive/artifact-action@main
         with:
           path-glob: "content/archive/*/index.md"
           upload: false
