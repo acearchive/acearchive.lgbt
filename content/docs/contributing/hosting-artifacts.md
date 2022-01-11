@@ -71,7 +71,11 @@ to host it elsewhere, which you can find on the archive next to each file.
 
 ## Bulk hosting
 
-Currently, helping to host content on Ace Archive is a somewhat labor-intensive
-process, requiring copying CIDs one-by-one from the website. We're looking into
-finding ways to make it easier to host large amounts of content from the
-archive. Stay tuned!
+If you're interested in hosting a large amount of content from Ace Archive,
+[check out our CI tooling](https://github.com/acearchive/artifact-action) using
+GitHub Actions. This is the tooling we use to host content on Web3.Storage, but
+anyone can use it to help host some or all of the content on the archive.
+
+Setting up CI using GitHub Actions to host content is currently a very
+technical process, but we're looking into finding ways to make hosting content
+easier.
