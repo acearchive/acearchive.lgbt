@@ -46,9 +46,9 @@ files:
     filename: "the-asexual-manifesto.pdf"
     cid: "bafybeihsf4562gmmyoya7eh5buxv65lqcdoil3wsi5jf5fceskap7yzooi"
   - name: "The Asexual Manifesto (Transcript)"
-    mediaType: "text/markdown"
-    filename: "the-asexual-manifesto-transcript.md"
-    cid: "bafkreiabjlsvc7m6vdnidwziqy5nbf42lwmbyu3zbgjhj7ocekcriejuka"
+    mediaType: "text/html"
+    filename: "the-asexual-manifesto-transcript.html"
+    cid: "bafkreie5hknsonewqxuyf6vzlauhn2qwm2og5yjcqrltv5yumyqdvdm4sm"
 people: ["Lisa Orlando", "Barbara Getz"]
 identities: ["asexual"]
 fromYear: 1972
