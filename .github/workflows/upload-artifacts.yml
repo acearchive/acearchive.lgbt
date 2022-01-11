@@ -26,8 +26,4 @@ jobs:
         uses: acearchive/artifact-action@main
         with:
           w3s-token: ${{ secrets.W3S_API_TOKEN }}
-          path-glob: "content/archive/*/index.md"
           ipfs-api: "/dns/ipfs/tcp/5001/http"
-          upload: true
-
-
