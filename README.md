@@ -24,4 +24,4 @@ automatically validate the syntax of [artifact
 files](https://acearchive.lgbt/docs/contributing/artifact-files/) when a pull
 request is opened and upload the content to Web3.Storage when a pull request is
 merged. The code which does this can be found at
-[acearchive/w3s-upload](https://github.com/acearchive/w3s-upload).
+[acearchive/artifact-action](https://github.com/acearchive/artifact-action).
