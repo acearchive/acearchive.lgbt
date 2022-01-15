@@ -8,6 +8,7 @@ files:
     filename: "bogaert-asexuality-prevalence.pdf"
     cid: "bafybeielzbrslhpkviunin2lboizvqfmxbh3fhbliwivd5tipr3rnypoby"
   - name: "Bibliography (Biblatex)"
+    mediaType: "text/plain"
     filename: "bogaert-asexuality-prevalence.bib"
     cid: "bafkreid6kvmjqet2gfmdiccqmqmh4lnwrfy3p53lfsfneuvnld7ko6jkji"
 people: ["Anthony Bogaert"]

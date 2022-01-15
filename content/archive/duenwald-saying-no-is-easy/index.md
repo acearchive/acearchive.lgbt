@@ -7,6 +7,7 @@ longDescription: >
     AVEN and distinguishes asexuality from celibacy
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "bafybeibkcw6jix5e7yqknervbw4k2qzbl7cxvumxgshleoxaj2ofziz5au"
   - name: "WACZ Archive"
     filename: "just-saying-no-is-easy.wacz"

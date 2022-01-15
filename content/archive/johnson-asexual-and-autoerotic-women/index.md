@@ -10,6 +10,7 @@ files:
     filename: "asexual-and-autoerotic-women.pdf"
     cid: "bafybeiddkkdrgrue73tdh5alepcqhao6h3t3xrsfn3nvxucmeond23cj2u"
   - name: "The Sexually Oppressed Bibliography (Biblatex)"
+    mediaType: "text/plain"
     filename: "the-sexually-oppressed.bib"
     cid: "bafkreibi5rtpoimxvevnyif7f5bxx43wbas37egewb544oirds42jm3b44"
 people: ["Myra T. Johnson"]

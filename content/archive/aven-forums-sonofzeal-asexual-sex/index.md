@@ -3,6 +3,7 @@ title: "\"Asexual sex\""
 description: "The term \"demisexual\" is coined in an AVEN forum thread"
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmRaq1u2sXCz6UiQKxX7NKMtUhh2bZhFPVmPqSDTxfhD1u"
   - name: "WACZ Archive"
     filename: "asexual-sex.wacz"

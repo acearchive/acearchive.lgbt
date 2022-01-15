@@ -5,6 +5,7 @@ description: >
     across a series of AVEN forum threads.
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmaKfnCJhPAQoSyxqNaDtKSfu6iSM4ViWPkQmnvbHA4Ppx"
   - name: "WACZ Archive"
     filename: "introduction-of-the-asexual-pride-flag.wacz"

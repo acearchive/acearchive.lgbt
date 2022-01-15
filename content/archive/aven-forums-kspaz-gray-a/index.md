@@ -3,6 +3,7 @@ title: "\"Gray-A's\""
 description: "The term \"gray-asexual\" is coined in an AVEN forum thread"
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmeuHp8EmCsV8rqtn32ojaywV3WFGYGYp11Pnn7xHXT9g6"
   - name: "WACZ Archive"
     filename: "gray-a.wacz"

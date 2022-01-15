@@ -9,6 +9,7 @@ longDescription: >
     libido
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "bafybeib6ixhchsquxr6gqbszrse36r63oxf2v4wwk3kkwm257sdlxm6hgi"
   - name: "WACZ Archive"
     filename: "radford-no-sex-please.wacz"

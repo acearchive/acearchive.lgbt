@@ -5,6 +5,7 @@ description: >
     invalidating their asexuality
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "bafybeieqwvkpngytg5i4ituhh4r23ynzh6nfrlxbz6fd5j2axqeehn6kw4"
   - name: "WACZ Archive"
     filename: "nonsexuality-rant.wacz"

@@ -3,6 +3,7 @@ title: "Jim Sinclair's Articles About Intersexuality"
 description: "A page on Jim Sinclair's personal blog dedicated to intersexuality"
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmUQK1ZDeudaUWFWBh3jgwSsP1CF2gyZ8rdvkwEg6nqBmL"
   - name: "WACZ Archive"
     filename: "sinclair-intersex-blog.wacz"

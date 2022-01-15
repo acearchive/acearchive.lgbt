@@ -5,6 +5,7 @@ description: >
     invalidation they face
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmU5P9UFrReSPZNSEyFwxzgizpeDznpP4XAeQApW2dWDQH"
   - name: "WACZ Archive"
     filename: "the-fourth-sexuality.wacz"

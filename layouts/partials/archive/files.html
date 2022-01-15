@@ -1,5 +1,6 @@
 <table class="table table-hover">
   <thead>
+    <th scope="col"></th>
     <th scope="col">File</th>
     <th scope="col">CID</th>
   </thead>
@@ -15,6 +16,7 @@
 
   {{- $truncatedCid := printf "%s...%s" (substr $file.cid 0 4) (substr $file.cid (sub (strings.RuneCount $file.cid) 4)) }}
     <tr>
+      <td><file-type-icon media-type="{{ $file.mediaType }}" filename="{{ $file.filename }}" /></td>
       <td><a href="{{ $gatewayUrl }}">{{ $file.name }}</a></td>
       <td>
         <span class="me-1">{{ $truncatedCid }}</span>

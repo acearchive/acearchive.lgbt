@@ -4,6 +4,7 @@ description: >
     A pre-AVEN FAQ page on asexuality
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmPDLARX7PCYD21NP1tG3oZyeKEvgzZbM7aDkVRAuQkGeG"
   - name: "WACZ Archive"
     filename: "tngirltech-asexualism-page.wacz"

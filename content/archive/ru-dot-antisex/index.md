@@ -5,6 +5,7 @@ description: >
     sexuality
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmRuQnuociESsxGzVmyPYwqAJ9ik2KiucqCX7FfmDLcM5K"
   - name: "WACZ Archive"
     filename: "ru-antisex.wacz"

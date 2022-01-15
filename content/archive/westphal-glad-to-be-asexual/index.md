@@ -9,6 +9,7 @@ longDescription: >
     asexuality
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmaYVp5m4VnQphqyCJjTioRKd6XHv5RzErauopLWPRSuFe"
   - name: "WACZ Archive"
     filename: "glad-to-be-asexual.wacz"

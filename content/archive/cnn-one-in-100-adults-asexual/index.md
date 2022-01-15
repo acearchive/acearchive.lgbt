@@ -8,6 +8,7 @@ longDescription: >
     Bogaert's study on the prevalence of asexuality as well as AVEN
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmVQ84FHDP81uJx7JZm2efVLSQpDT3ugVfhc5bhAx6VbEw"
   - name: "WACZ Archive"
     filename: "one-in-100-adults-asexual.wacz"

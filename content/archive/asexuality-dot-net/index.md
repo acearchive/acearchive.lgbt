@@ -4,6 +4,7 @@ description: >
     A website from the early web dedicated to asexuality.
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmPp1CwuBDaistY9rQqfA7vDJYvEgjJ1Ytro5qQWt9Z4Kf"
   - name: "WACZ Archive"
     filename: "asexuality-dot-net.wacz"

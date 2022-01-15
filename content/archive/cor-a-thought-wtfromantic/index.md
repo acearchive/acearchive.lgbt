@@ -3,6 +3,7 @@ title: "\"A thought: \'WTFromantic\'\""
 description: "The term \"quoiromantic\" is coined in a blog post"
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmZEsJZdziDfugApvvjCBD711zQgp2M8WiS9pQ3JNQF3fd"
   - name: "WACZ Archive"
     filename: "a-thought-wtfromantic.wacz"

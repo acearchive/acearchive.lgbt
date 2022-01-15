@@ -3,6 +3,7 @@ title: "William Burroughs interviews David Bowie"
 description: "An interview with David Bowie in which he talks about asexuality"
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmX1ehaoA3tatDmamjah44d1DrSQpAtbr5uC9n5tBN6YgJ"
   - name: "WACZ Archive"
     filename: "burroughs-interviews-bowie.wacz"

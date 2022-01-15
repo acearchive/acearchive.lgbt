@@ -4,6 +4,7 @@ description: >
     A nonsexual person dispels some myths about their nonsexuality
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmQjTL9BixDWviQr3jk7MLmeFP77KawnQ89cbTyuQnjATP"
   - name: "WACZ Archive"
     filename: "i-am-not-a-freak.wacz"

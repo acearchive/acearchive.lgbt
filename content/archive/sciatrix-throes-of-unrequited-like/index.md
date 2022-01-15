@@ -3,6 +3,7 @@ title: "\"Writhing in the Throes of Unrequited Like\""
 description: "The term \"WTFromantic\" is coined in a blog post"
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmNX1T6t2TKuRSGojAnG6raA69Q85PtSFXX2yUhrsGQWWH"
   - name: "WACZ Archive"
     filename: "throes-of-unrequited-like.wacz"

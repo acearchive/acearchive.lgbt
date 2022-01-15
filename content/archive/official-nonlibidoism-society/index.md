@@ -4,6 +4,7 @@ description: >
     A website dedicated to people with no libido
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "Qmbq7WR2uF2dMC6TKKoq3vPmE3ETdRaXJjjXJsgFMhounq"
   - name: "WACZ Archive"
     filename: "official-nonlibidoism-soceity.wacz"

@@ -12,6 +12,7 @@ files:
     filename: "toby-an-asexual-person-transcript.html"
     cid: "bafkreic45dk6mr5ko7nyog5t3tf3zzgp4gwmuqiqwkrf3yy4e77kvbuxfi"
   - name: "Sexuality Now: Embracing Diversity (Bibliography)"
+    mediaType: "text/plain"
     filename: "sexuality-now-embracing-diversity.bib"
     cid: "bafkreihtgeuushj4zbd3ur74amf5oq6sv2esgdin44z7el5ci6rzvosh2i"
 people: ["Jim Sinclair"]

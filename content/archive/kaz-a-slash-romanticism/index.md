@@ -3,6 +3,7 @@ title: "\"A/romanticism\""
 description: "The terms \"queerplatonic\" and \"zucchini\" are coined in the comments of a blog post on aromanticism"
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmdY7RXDDJFTV4v3VFwaV9V2NxTDxE1b4LcGePYcbSsskM"
   - name: "WACZ Archive"
     filename: "coining-of-queerplatonic.wacz"
