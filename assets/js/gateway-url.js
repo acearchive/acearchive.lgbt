@@ -20,6 +20,11 @@ if (cidInput && filenameInput) {
 
 document.addEventListener('clipboard-copy', function(event) {
     const button = event.target;
+
+    if (!copyButton || !copyConfirmedMessage) {
+        return
+    }
+
     if (button.id === copyButton.id) {
         copyConfirmedMessage.removeAttribute("hidden");
         setTimeout(function() {
