@@ -1,4 +1,13 @@
+/*
+In the base Doks theme, suggestions don't render properly when they contain
+inline markup.
+ */
+
+#suggestions > * {
+  display: flex;
+}
+
 #suggestions span {
-  display: inline;
+  display: block;
   font-size: $font-size-base;
 }
