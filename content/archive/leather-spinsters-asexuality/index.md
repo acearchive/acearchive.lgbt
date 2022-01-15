@@ -5,6 +5,7 @@ description: >
     members
 files:
   - name: "Browsable Archive"
+    mediaType: "text/html"
     cid: "QmSEzZDYtkT3BWBUFsWpgW2XZaJhermwruV473uc2BQJQh"
   - name: "WACZ Archive"
     filename: "leather-spinsters-asexuality.wacz"
