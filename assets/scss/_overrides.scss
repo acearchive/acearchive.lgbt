@@ -1,6 +1,5 @@
 /*
-In the base Doks theme, suggestions don't render properly when they contain
-inline markup.
+Fix search suggestions not rendering properly when they contain inline markup.
  */
 
 #suggestions > * {
@@ -10,4 +9,19 @@ inline markup.
 #suggestions span {
   display: block;
   font-size: $font-size-base;
+}
+
+/*
+Fix the footer taking up too much vertical space on large displays when the
+content doesn't push it down.
+*/
+
+body.home {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.home .footer {
+    margin-top: auto;
 }
