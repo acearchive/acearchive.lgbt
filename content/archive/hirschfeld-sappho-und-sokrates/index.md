@@ -8,7 +8,6 @@ files:
     filename: "hirschfeld-sappho-und-sokrates.pdf"
     cid: "bafkreia6pqlkr455ryxm3zl7fnncmwc44jg7yuq5f774nnaaluzfni5g5a"
   - name: Bibliography (Biblatex)
-    mediaType: "text/plain"
     filename: "hirschfeld-sappho-und-sokrates.bib"
     cid: "bafkreiby4jzmo5q5q5ltvx2ie22xv3k4eig5yiaj7tvvtzw7w6ihlokdzi"
   - name: "Partial English Translation (Browsable Archive)"

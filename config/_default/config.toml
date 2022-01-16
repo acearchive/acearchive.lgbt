@@ -104,6 +104,9 @@ rel  = "sitemap"
     source = "node_modules/@github/clipboard-copy-element"
     target = "assets/js/vendor/clipboard-copy-element"
   [[module.mounts]]
+    source = "node_modules/mime"
+    target = "assets/js/vendor/mime"
+  [[module.mounts]]
     source = "assets"
     target = "assets"
   [[module.mounts]]

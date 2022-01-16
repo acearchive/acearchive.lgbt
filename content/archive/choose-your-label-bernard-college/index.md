@@ -16,7 +16,6 @@ files:
     filename: "off-our-backs-vol-3-no-6.pdf"
     cid: "bafybeibfzohg3yto2heodyxs7ug4cuul3qadohizkelzbxjrbfpoeqioo4"
   - name: "Off Our Backs, vol. 3, no. 6 Bibliography (Biblatex)"
-    mediaType: "text/plain"
     filename: "off-our-backs-vol-3-no-6.bib"
     cid: "bafkreifmy3tsel3ooaqdnna5t35q2azdctsb2dp4d4qxuahkp7ddi4kgae"
 people: []

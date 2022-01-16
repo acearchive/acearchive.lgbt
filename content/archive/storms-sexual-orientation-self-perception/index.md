@@ -7,7 +7,6 @@ files:
     filename: "storms-sexual-orientation-self-perception.pdf"
     cid: "QmVZehsVQh7gAM8jFssUtx6q56M2thCs5hajo8NhLE1nnZ"
   - name: "Bibliography (Biblatex)"
-    mediaType: "text/plain"
     filename: "storms-sexual-orientation-self-perception.bib"
     cid: "QmdsEu6YLNWwg9MCWMP6WTCSWmfUQHfPrgbdRCKRrbRPxv"
 people: ["Michael D. Storms"]

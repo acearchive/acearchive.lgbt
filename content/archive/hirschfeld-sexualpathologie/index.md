@@ -12,7 +12,6 @@ files:
     filename: "hirschfeld-sexualpathologie.txt"
     cid: "bafybeiapxqnxxztjttercszj4ma37oglku7p7zr3zoboazshboadhp6jz4"
   - name: "Bibliography (Biblatex)"
-    mediaType: "text/plain"
     filename: "hirschfeld-sexualpathologie.bib"
     cid: "bafkreigzx4cgfxkdrun33s3rhauk2rabvjmntmvqajv2li5zl33yvqtasi"
   - name: "Partial English Translation (Browsable Archive)"

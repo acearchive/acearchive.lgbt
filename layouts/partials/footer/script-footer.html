@@ -71,6 +71,9 @@
 {{ $fileTypeIconElement := resources.Get "js/file-type-icon.js" | js.Build -}}
 {{ $slice := $slice | append $fileTypeIconElement -}}
 
+{{ $mimeLib := resources.Get "js/vendor/mime/index.js" | js.Build -}}
+{{ $slice := $slice | append $mimeLib -}}
+
 {{ $js := $slice | resources.Concat "main.js" -}}
 
 {{ if eq (hugo.Environment) "development" -}}

@@ -12,7 +12,6 @@ files:
     filename: "krafft-ebing-psychopathia-sexualis.txt"
     cid: "QmbbQMZPxJ1h4YSLy9zCGuMjrbDxUbMtDgXb3jYKBpcHSG"
   - name: "Bibliography (Biblatex)"
-    mediaType: "text/plain"
     filename: "krafft-ebing-psychopathia-sexualis.bib"
     cid: "QmdiqACaDyXe5is1KEiAJRhmyipczL7hUVza2EG533rKKi"
 people: ["Richard von Krafft-Ebing"]
