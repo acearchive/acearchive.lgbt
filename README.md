@@ -25,3 +25,14 @@ files](https://acearchive.lgbt/docs/contributing/artifact-files/) when a pull
 request is opened and upload the content to Web3.Storage when a pull request is
 merged. The code which does this can be found at
 [acearchive/artifact-action](https://github.com/acearchive/artifact-action).
+
+## Usage
+
+To build the site, make sure npm is installed and run:
+
+```shell
+npm install
+npm run build
+```
+
+The site will be built at `./public`.
