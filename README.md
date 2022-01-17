@@ -18,6 +18,8 @@ generator to fulfill a couple of key goals:
 - Keep infrastructure costs as low as possible
 - Simplify development and deployment
 
+## Tooling
+
 The content of the archive is hosted on the IPFS network using
 [Web3.Storage](https://web3.storage). We use GitHub Actions workflows to
 automatically validate the syntax of [artifact
@@ -25,6 +27,13 @@ files](https://acearchive.lgbt/docs/contributing/artifact-files/) when a pull
 request is opened and upload the content to Web3.Storage when a pull request is
 merged. The code which does this can be found at
 [acearchive/artifact-action](https://github.com/acearchive/artifact-action).
+
+Ace Archive doesn't provide a REST API, but because this is a static site and
+all the content is hosted publicly on the IPFS network, you don't need a REST
+API to interface with the archive. Our tooling at
+[acearchive/artifact-action](https://github.com/acearchive/artifact-action) can
+be used to get metadata for artifacts in the archive, download the content, or
+re-host the content elsewhere.
 
 ## Usage
 

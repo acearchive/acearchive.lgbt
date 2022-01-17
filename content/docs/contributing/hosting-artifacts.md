@@ -71,11 +71,16 @@ to host it elsewhere, which you can find on the archive next to each file.
 
 ## Bulk hosting
 
-If you're interested in hosting a large amount of content from Ace Archive,
-[check out our CI tooling](https://github.com/acearchive/artifact-action) using
-GitHub Actions. This is the tooling we use to host content on Web3.Storage, but
-anyone can use it to help host some or all of the content on the archive.
+If you're interested in hosting a lot of content from Ace Archive or want to
+automate the process, [check out our
+tooling](https://github.com/acearchive/artifact-action) for doing just that.
+This is the tooling we use to host content on Web3.Storage, but anyone can use
+it to help host some or all of the content on the archive.
 
-Setting up CI using GitHub Actions to host content is currently a very
-technical process, but we're looking into finding ways to make hosting content
-easier.
+Ace Archive doesn't provide a REST API, but this tooling can be used to get
+information about artifacts in the archive and optionally upload them to an
+IPFS pinning service. The tooling is available both as a CLI tool and as a
+[GitHub Action](https://github.com/features/actions).
+
+Using our tooling is currently a somewhat technical process, but we're looking
+into finding ways to make hosting content easier and more accessible.
