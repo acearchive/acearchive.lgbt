@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "<em>Psychopathia Sexualis</em>"
 description: "The first use of the term \"anesthesia sexual\" to refer to asexual people"
 longDescription: "The first use of the term \"anesthesia sexual\" in medical literature to refer to asexual people, a term which would later be used by Magnus Hirschfeld"

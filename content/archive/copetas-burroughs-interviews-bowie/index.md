@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "William Burroughs interviews David Bowie"
 description: "An interview with David Bowie in which he talks about asexuality"
 files:

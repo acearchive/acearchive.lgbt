@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "\"Asexual and Autoerotic Women: Two Invisible Groups\""
 description: "One of the first academic papers on asexuality"
 longDescription: >

@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "\"Study: One in 100 adults asexual\""
 description: >
     An article by <em>CNN</em> about asexuality which mentions Anthony

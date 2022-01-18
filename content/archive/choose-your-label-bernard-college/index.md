@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "\"Choose Your Label\" Bernard College"
 description: "A photo of activists at Bernard College inviting people to choose their own label"
 longDescription: "A photo published in the feminist news journal <em>Off Our Backs</em> depicting activists at Bernard College inviting people to choose their own label"

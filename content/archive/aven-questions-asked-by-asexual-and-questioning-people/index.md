@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "\"Questions Asked by Asexual and Questioning People\""
 description: "An early version of the AVEN FAQ"
 files:

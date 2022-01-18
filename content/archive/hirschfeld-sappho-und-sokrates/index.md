@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "<em>Sappho und Sokrates</em>"
 description: "A formative academic work in legitimizing queer identities which recognizes asexual people"
 longDescription: "A formative academic work in legitimizing queer identities which recognizes asexual people under the label \"anesthesia sexualis\""

@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "\"Sexual Orientation and Self-Perception\""
 description: "A study that reimagines the Kinsey Scale as a two-dimensional spectrum that accounts for asexuality"
 files:

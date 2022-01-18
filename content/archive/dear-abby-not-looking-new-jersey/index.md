@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "Asexuality on <em>Dear Abby</em>"
 description: "The term \"asexual\" is used in a response to a <em>Dear Abby</em> letter"
 longDescription: >

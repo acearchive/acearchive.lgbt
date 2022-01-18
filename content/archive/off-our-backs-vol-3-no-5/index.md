@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "<em>Off Our Backs</em>, vol. 3, no. 5"
 description: "An issue of a feminist news journal that mentions asexuality"
 longDescription: "An issue of a feminist news journal that mentions a workshop an asexuality led by Barbara Getz"

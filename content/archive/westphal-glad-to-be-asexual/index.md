@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "\"Glad to be asexual\""
 description: >
     An in-depth article on asexuality published in <em>New Scientist</em> where

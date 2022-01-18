@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "<em>The Asexual Manifesto</em>"
 description: "A paper by the Asexual Caucus of the New York Radical Feminists"
 files:

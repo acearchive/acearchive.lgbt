@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "\"Black rings and other ways to show asexual pride\""
 description: "The tradition of asexuals wearing a black ring is introduced in an AVEN forum thread"
 files:

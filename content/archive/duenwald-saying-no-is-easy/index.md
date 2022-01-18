@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "\"For Them, Just Saying No Is Easy\""
 description: >
     An article in the <em>New York Times</em> about asexuality

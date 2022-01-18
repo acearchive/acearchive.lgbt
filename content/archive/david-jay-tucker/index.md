@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "David Jay on <em>Tucker</em>"
 description: >
     David Jay, founder of AVEN, is interviewd on MSNBC's <em>Tucker</em>

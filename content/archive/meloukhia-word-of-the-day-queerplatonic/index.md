@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "\"Word of the Day: Queerplatonic\""
 description: "The term \"queerplatonic\" is first introduced on Tumblr by its coiner"
 files:

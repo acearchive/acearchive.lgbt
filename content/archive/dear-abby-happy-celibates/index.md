@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "\"Happy Celibates Want No Change\""
 description: >
     An asexual <em>Dear Abby</em> letter writer responds to a statement Abby

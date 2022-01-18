@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "\"Gray-A's\""
 description: "The term \"gray-asexual\" is coined in an AVEN forum thread"
 files:

@@ -38,6 +38,7 @@ something like this:
 
 {{< highlight yaml >}}
 ---
+version: 1
 title: "<em>The Asexual Manifesto</em>"
 description: "A paper by the Asexual Caucus of the New York Radical Feminists"
 files:
@@ -79,6 +80,12 @@ be `aven-forums-coolasexualperson-romance`.
 Next, we'll talk about the fields in an artifact file. Also take a look at the
 [best practices]({{< ref "docs/contributing/best-practices.md" >}}) section for
 more information on how to fill out these fields.
+
+`version` *(integer)*
+: Sometimes the format of artifact files changes. This is the version number
+for the artifact file format. This will be set to the current version when you
+[open a pull request]({{< ref "docs/contributing/pull-request.md"
+>}}), so you can leave it alone.
 
 `title` *(string)*
 : This is the title of the artifact. If the artifact represents a work (a book,

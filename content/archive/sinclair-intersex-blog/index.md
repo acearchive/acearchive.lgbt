@@ -1,4 +1,5 @@
 ---
+version: 1
 title: "Jim Sinclair's Articles About Intersexuality"
 description: "A page on Jim Sinclair's personal blog dedicated to intersexuality"
 files:
