@@ -1,19 +1,13 @@
-var suggestions = document.getElementById('suggestions');
-var search = document.getElementById('search');
+function inputFocus(e, search, suggestions) {
+    if (e.ctrlKey && e.key === '/') {
+        e.preventDefault();
+        search.focus();
+    }
 
-if (search !== null) {
-  document.addEventListener('keydown', inputFocus);
-}
-
-function inputFocus(e) {
-  if (e.ctrlKey && e.key === '/' ) {
-    e.preventDefault();
-    search.focus();
-  }
-  if (e.key === 'Escape' ) {
-    search.blur();
-    suggestions.classList.add('d-none');
-  }
+    if (e.key === 'Escape') {
+        search.blur();
+        suggestions.classList.add('d-none');
+    }
 }
 
 function rangeYears(fromYear, toYear) {
@@ -24,174 +18,19 @@ function rangeYears(fromYear, toYear) {
     }
 }
 
-document.addEventListener('click', function(event) {
+function accept_suggestion(suggestions) {
+    while (suggestions.lastChild) {
+        suggestions.removeChild(suggestions.lastChild);
+    }
 
-  var isClickInsideElement = suggestions.contains(event.target);
-
-  if (!isClickInsideElement) {
-    suggestions.classList.add('d-none');
-  }
-
-});
-
-/*
-Source:
-  - https://dev.to/shubhamprakash/trap-focus-using-javascript-6a3
-*/
-
-document.addEventListener('keydown',suggestionFocus);
-
-function suggestionFocus(e){
-
-  const focusableSuggestions= suggestions.querySelectorAll('a');
-  const focusable= [...focusableSuggestions];
-  const index = focusable.indexOf(document.activeElement);
-
-  const keyDefault = suggestions.classList.contains('d-none');
-
-  let nextIndex = 0;
-
-  if ((e.keyCode === 38) && (!keyDefault)) {
-    e.preventDefault();
-    nextIndex= index > 0 ? index-1 : 0;
-    focusableSuggestions[nextIndex].focus();
-  }
-  else if ((e.keyCode === 40) && (!keyDefault)) {
-    e.preventDefault();
-    nextIndex= index+1 < focusable.length ? index+1 : index;
-    focusableSuggestions[nextIndex].focus();
-  }
-
+   return false;
 }
 
-/*
-Source:
-  - https://github.com/nextapps-de/flexsearch#index-documents-field-search
-  - https://raw.githack.com/nextapps-de/flexsearch/master/demo/autocomplete.html
-*/
-
-(function(){
-
-  var index = new FlexSearch.Document({
-    tokenize: "forward",
-    cache: 100,
-    document: {
-      id: 'id',
-      store: [
-        "href", "title", "description"
-      ],
-      index: ["title", "description", "content", "years", "identities", "people"]
-    }
-  });
-
-
-  // Not yet supported: https://github.com/nextapps-de/flexsearch#complex-documents
-
-  /*
-  var docs = [
-    {{ range $index, $page := (where .Site.Pages "Section" "docs") -}}
-      {
-        id: {{ $index }},
-        href: "{{ .Permalink }}",
-        title: {{ .Title | jsonify }},
-        description: {{ .Params.description | jsonify }},
-        content: {{ .Content | jsonify }}
-      },
-    {{ end -}}
-  ];
-  */
-
-  // https://discourse.gohugo.io/t/range-length-or-last-element/3803/2
-
-  {{ $artifactList := (where .Site.Pages "Section" "archive") -}}
-  {{ $artifactLen := (len $artifactList) -}}
-
-  index.add(
-    {{ range $index, $element := $artifactList -}}
-      {
-        id: "{{ printf "artifact-%d" $index }}",
-        href: "{{ .RelPermalink }}",
-        title: {{ .Title | jsonify }},
-        description: {{ .Params.description | jsonify }},
-        content: {{ .Content | jsonify }},
-        years: rangeYears({{ .Params.fromYear | jsonify }}, {{ .Params.toYear | jsonify }}),
-        identities: {{ .Params.identities | jsonify }},
-        people: {{ .Params.people | jsonify }},
-      })
-      {{ if ne (add $index 1) $artifactLen -}}
-        .add(
-      {{ end -}}
-    {{ end -}}
-  ;
-
-  {{ $identityList := slice -}}
-  {{ range .Site.Taxonomies.identities -}}
-    {{ $identityList = $identityList | append .Page -}}
-  {{ end -}}
-  {{ $identityLen := (len $identityList) -}}
-
-  index.add(
-    {{ range $index, $element := $identityList -}}
-      {
-        id: "{{ printf "identity-%d" $index }}",
-        href: "{{ $element.RelPermalink }}",
-        title: {{ $element.Title | title | jsonify }},
-        description: {{ printf "Artifacts involving %s people" $element.Title | jsonify }}
-      })
-      {{ if ne (add $index 1) $identityLen -}}
-        .add(
-      {{ end -}}
-    {{ end -}}
-  ;
-
-  {{ $decadeList := slice -}}
-  {{ range .Site.Taxonomies.decades -}}
-    {{ $decadeList = $decadeList | append .Page -}}
-  {{ end -}}
-  {{ $decadeLen := (len $decadeList) -}}
-
-  index.add(
-    {{ range $index, $element := $decadeList -}}
-      {
-        id: "{{ printf "decade-%d" $index }}",
-        href: "{{ $element.RelPermalink }}",
-        title: {{ $element.Title | title | jsonify }},
-        description: {{ printf "Artifacts from the %ss" $element.Title | jsonify }}
-      })
-      {{ if ne (add $index 1) $decadeLen -}}
-        .add(
-      {{ end -}}
-    {{ end -}}
-  ;
-
-  {{ $peopleList := slice -}}
-  {{ range .Site.Taxonomies.people -}}
-    {{ $peopleList = $peopleList | append .Page -}}
-  {{ end -}}
-  {{ $peopleLen := (len $peopleList) -}}
-
-  index.add(
-    {{ range $index, $element := $peopleList -}}
-      {
-        id: "{{ printf "person-%d" $index }}",
-        href: "{{ $element.RelPermalink }}",
-        title: {{ $element.Title | title | jsonify }},
-        description: {{ printf "Artifacts involving %s" $element.Title | jsonify }}
-      })
-      {{ if ne (add $index 1) $peopleLen -}}
-        .add(
-      {{ end -}}
-    {{ end -}}
-  ;
-
-  search.addEventListener('input', show_results, true);
-  suggestions.addEventListener('click', accept_suggestion, true);
-
-  function show_results(){
+function show_results(index, search, suggestions) {
     const maxResult = 5;
 
-    var value = this.value;
-    var results = index.search(value, {limit: maxResult, enrich: true});
+    const value = search.value;
+    const results = index.search(value, {limit: maxResult, enrich: true});
 
     suggestions.classList.remove('d-none');
     suggestions.innerHTML = "";
@@ -205,7 +44,7 @@ Source:
     });
 
     //construct a list of suggestions list
-    for(const href in flatResults) {
+    for (const href in flatResults) {
         const doc = flatResults[href];
 
         const entry = document.createElement('div');
@@ -216,18 +55,188 @@ Source:
         entry.querySelector('span:nth-child(2)').innerHTML = doc.description;
 
         suggestions.appendChild(entry);
-        if(suggestions.childElementCount == maxResult) break;
+        if (suggestions.childElementCount == maxResult) break;
     }
-  }
+}
 
-  function accept_suggestion(){
+function suggestionFocus(e, suggestions) {
+    const focusableSuggestions = suggestions.querySelectorAll('a');
+    const focusable = [...focusableSuggestions];
+    const index = focusable.indexOf(document.activeElement);
 
-      while(suggestions.lastChild){
+    const keyDefault = suggestions.classList.contains('d-none');
 
-          suggestions.removeChild(suggestions.lastChild);
-      }
+    let nextIndex = 0;
 
-      return false;
-  }
+    if ((e.keyCode === 38) && (!keyDefault)) {
+        e.preventDefault();
+        nextIndex= index > 0 ? index-1 : 0;
+        focusableSuggestions[nextIndex].focus();
+    } else if ((e.keyCode === 40) && (!keyDefault)) {
+        e.preventDefault();
+        nextIndex= index+1 < focusable.length ? index+1 : index;
+        focusableSuggestions[nextIndex].focus();
+    }
+}
 
-}());
+function indexArchiveSearch(search, suggestions) {
+    const index = new FlexSearch.Document({
+        tokenize: "forward",
+        cache: 100,
+        document: {
+            id: 'id',
+            store: [
+                "href", "title", "description"
+            ],
+            index: ["title", "description", "content", "years", "identities", "people"]
+        }
+    });
+
+
+    {{ $artifactList := (where .Site.Pages "Section" "archive") -}}
+    {{ $artifactLen := (len $artifactList) -}}
+
+    index.add(
+        {{ range $index, $element := $artifactList -}}
+            {
+                id: "{{ printf "artifact-%d" $index }}",
+                href: "{{ .RelPermalink }}",
+                title: {{ .Title | jsonify }},
+                description: {{ .Params.description | jsonify }},
+                content: {{ .Content | jsonify }},
+                years: rangeYears({{ .Params.fromYear | jsonify }}, {{ .Params.toYear | jsonify }}),
+                identities: {{ .Params.identities | jsonify }},
+                people: {{ .Params.people | jsonify }},
+            })
+            {{ if ne (add $index 1) $artifactLen -}}
+                .add(
+            {{ end -}}
+        {{ end -}}
+    ;
+
+    {{ $identityList := slice -}}
+    {{ range .Site.Taxonomies.identities -}}
+        {{ $identityList = $identityList | append .Page -}}
+    {{ end -}}
+    {{ $identityLen := (len $identityList) -}}
+
+    index.add(
+        {{ range $index, $element := $identityList -}}
+            {
+                id: "{{ printf "identity-%d" $index }}",
+                href: "{{ $element.RelPermalink }}",
+                title: {{ $element.Title | title | jsonify }},
+                description: {{ printf "Artifacts involving %s people" $element.Title | jsonify }}
+            })
+            {{ if ne (add $index 1) $identityLen -}}
+                .add(
+            {{ end -}}
+        {{ end -}}
+    ;
+
+    {{ $decadeList := slice -}}
+    {{ range .Site.Taxonomies.decades -}}
+        {{ $decadeList = $decadeList | append .Page -}}
+    {{ end -}}
+    {{ $decadeLen := (len $decadeList) -}}
+
+    index.add(
+        {{ range $index, $element := $decadeList -}}
+            {
+                id: "{{ printf "decade-%d" $index }}",
+                href: "{{ $element.RelPermalink }}",
+                title: {{ $element.Title | title | jsonify }},
+                description: {{ printf "Artifacts from the %ss" $element.Title | jsonify }}
+            })
+            {{ if ne (add $index 1) $decadeLen -}}
+                .add(
+            {{ end -}}
+        {{ end -}}
+    ;
+
+    {{ $peopleList := slice -}}
+    {{ range .Site.Taxonomies.people -}}
+        {{ $peopleList = $peopleList | append .Page -}}
+    {{ end -}}
+    {{ $peopleLen := (len $peopleList) -}}
+
+    index.add(
+        {{ range $index, $element := $peopleList -}}
+            {
+                id: "{{ printf "person-%d" $index }}",
+                href: "{{ $element.RelPermalink }}",
+                title: {{ $element.Title | title | jsonify }},
+                description: {{ printf "Artifacts involving %s" $element.Title | jsonify }}
+            })
+            {{ if ne (add $index 1) $peopleLen -}}
+                .add(
+            {{ end -}}
+        {{ end -}}
+    ;
+
+    search.addEventListener('input', () => show_results(index, search, suggestions), true);
+    suggestions.addEventListener('click', () => accept_suggestion(suggestions), true);
+};
+
+function indexDocsSearch(search, suggestions) {
+    const index = new FlexSearch.Document({
+        tokenize: "forward",
+        cache: 100,
+        document: {
+            id: 'id',
+            store: [
+                "href", "title", "description"
+            ],
+            index: ["title", "description", "content"]
+        }
+    });
+
+    {{ $docsList := (where .Site.Pages "Section" "docs") -}}
+    {{ $docsLen := (len $docsList) -}}
+
+    index.add(
+        {{ range $index, $element := $docsList -}}
+            {
+                id: "{{ printf "doc-%d" $index }}",
+                href: "{{ .RelPermalink }}",
+                title: {{ .Title | jsonify }},
+                description: {{ .Params.description | jsonify }},
+                content: {{ .Content | jsonify }},
+            })
+            {{ if ne (add $index 1) $docsLen -}}
+                .add(
+            {{ end -}}
+        {{ end -}}
+    ;
+
+    search.addEventListener('input', () => show_results(index, search, suggestions), true);
+    suggestions.addEventListener('click', () => accept_suggestion(suggestions), true);
+};
+
+const archiveSearch = document.querySelector('#archive-search > #search');
+const archiveSuggestions = document.querySelector('#archive-search > #suggestions');
+
+const docsSearch = document.querySelector('#docs-search > #search');
+const docsSuggestions = document.querySelector('#docs-search > #suggestions');
+
+if (docsSearch && docsSuggestions) {
+    document.addEventListener('keydown', (e) => inputFocus(e, docsSearch, docsSuggestions));
+    document.addEventListener('keydown', (e) => suggestionFocus(e, docsSuggestions));
+    document.addEventListener('click', function(event) {
+        if (!docsSuggestions.contains(event.target)) {
+            docsSuggestions.classList.add('d-none');
+        }
+    });
+    indexDocsSearch(docsSearch, docsSuggestions);
+}
+
+if (archiveSearch && archiveSuggestions) {
+    document.addEventListener('keydown', (e) => inputFocus(e, archiveSearch, archiveSuggestions));
+    document.addEventListener('keydown', (e) => suggestionFocus(e, archiveSuggestions));
+    document.addEventListener('click', function(event) {
+        if (!archiveSuggestions.contains(event.target)) {
+            archiveSuggestions.classList.add('d-none');
+        }
+    });
+    indexArchiveSearch(archiveSearch, archiveSuggestions);
+}

@@ -96,7 +96,7 @@
   <div class="container-xxl d-flex align-items-md-center">
 
     {{ if .Site.Params.options.flexSearch -}}
-    <form class="doks-search position-relative flex-grow-1 me-auto">
+    <form id="docs-search" class="doks-search position-relative flex-grow-1 me-auto">
       <input id="search" class="form-control is-search" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
       <div id="suggestions" class="shadow bg-white rounded d-none"></div>
     </form>
@@ -136,7 +136,7 @@
 {{ else if eq .Section "archive" "identities" "decades" "people" -}}
 <nav class="doks-subnavbar py-2 sticky-lg-top" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
-    <form class="doks-search position-relative flex-grow-1 me-auto">
+    <form id="archive-search" class="doks-search position-relative flex-grow-1 me-auto">
       <input id="search" class="form-control is-search" type="search" placeholder="Search archive..." aria-label="Search archive..." autocomplete="off">
       <div id="suggestions" class="shadow bg-white rounded d-none"></div>
     </form>
