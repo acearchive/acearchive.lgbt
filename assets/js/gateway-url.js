@@ -6,7 +6,7 @@ for (const form of gatewayUrlForms) {
     const copyButton = form.querySelector(".gateway-url-copy-button");
     const copyConfirmedMessage = form.querySelector(".gateway-url-confirmed-message");
 
-    function updateUrlCopyValue() {
+    const updateUrlCopyValue = () => {
         if (filenameInput.value) {
             copyButton.setAttribute("value", `https://dweb.link/ipfs/${cidInput.value}/?filename=${encodeURIComponent(filenameInput.value)}`);
         } else {
@@ -14,8 +14,8 @@ for (const form of gatewayUrlForms) {
         }
     }
 
-    cidInput.onchange = updateUrlCopyValue;
-    filenameInput.onchange = updateUrlCopyValue;
+    cidInput.addEventListener("change", updateUrlCopyValue);
+    filenameInput.addEventListener("change", updateUrlCopyValue);
 
     copyButton.addEventListener("clipboard-copy", function() {
         copyConfirmedMessage.removeAttribute("hidden");

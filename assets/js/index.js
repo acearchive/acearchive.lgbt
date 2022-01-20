@@ -1,12 +1,12 @@
 function inputFocus(e, search, suggestions) {
-    if (e.ctrlKey && e.key === '/') {
+    if (e.ctrlKey && e.key === "/") {
         e.preventDefault();
         search.focus();
     }
 
-    if (e.key === 'Escape') {
+    if (e.key === "Escape") {
         search.blur();
-        suggestions.classList.add('d-none');
+        suggestions.classList.add("d-none");
     }
 }
 
@@ -18,7 +18,7 @@ function rangeYears(fromYear, toYear) {
     }
 }
 
-function accept_suggestion(suggestions) {
+function acceptSuggestion(suggestions) {
     while (suggestions.lastChild) {
         suggestions.removeChild(suggestions.lastChild);
     }
@@ -26,13 +26,13 @@ function accept_suggestion(suggestions) {
    return false;
 }
 
-function show_results(index, search, suggestions) {
+function showResults(index, search, suggestions) {
     const maxResult = 5;
 
     const value = search.value;
     const results = index.search(value, {limit: maxResult, enrich: true});
 
-    suggestions.classList.remove('d-none');
+    suggestions.classList.remove("d-none");
     suggestions.innerHTML = "";
 
     //flatSearch now returns results for each index field. create a single list
@@ -47,12 +47,12 @@ function show_results(index, search, suggestions) {
     for (const href in flatResults) {
         const doc = flatResults[href];
 
-        const entry = document.createElement('div');
-        entry.innerHTML = '<a href><span></span><span></span></a>';
+        const entry = document.createElement("div");
+        entry.innerHTML = "<a href><span></span><span></span></a>";
 
-        entry.querySelector('a').href = href;
-        entry.querySelector('span:first-child').innerHTML = doc.title;
-        entry.querySelector('span:nth-child(2)').innerHTML = doc.description;
+        entry.querySelector("a").href = href;
+        entry.querySelector("span:first-child").innerHTML = doc.title;
+        entry.querySelector("span:nth-child(2)").innerHTML = doc.description;
 
         suggestions.appendChild(entry);
         if (suggestions.childElementCount == maxResult) break;
@@ -60,11 +60,11 @@ function show_results(index, search, suggestions) {
 }
 
 function suggestionFocus(e, suggestions) {
-    const focusableSuggestions = suggestions.querySelectorAll('a');
+    const focusableSuggestions = suggestions.querySelectorAll("a");
     const focusable = [...focusableSuggestions];
     const index = focusable.indexOf(document.activeElement);
 
-    const keyDefault = suggestions.classList.contains('d-none');
+    const keyDefault = suggestions.classList.contains("d-none");
 
     let nextIndex = 0;
 
@@ -84,12 +84,10 @@ function indexArchiveSearch(search, suggestions) {
         tokenize: "forward",
         cache: 100,
         document: {
-            id: 'id',
-            store: [
-                "href", "title", "description"
-            ],
-            index: ["title", "description", "content", "years", "identities", "people"]
-        }
+            id: "id",
+            store: ["href", "title", "description"],
+            index: ["title", "description", "content", "years", "identities", "people"],
+        },
     });
 
 
@@ -97,20 +95,19 @@ function indexArchiveSearch(search, suggestions) {
     {{ $artifactLen := (len $artifactList) -}}
 
     index.add(
-        {{ range $index, $element := $artifactList -}}
-            {
-                id: "{{ printf "artifact-%d" $index }}",
-                href: "{{ .RelPermalink }}",
-                title: {{ .Title | jsonify }},
-                description: {{ .Params.description | jsonify }},
-                content: {{ .Content | jsonify }},
-                years: rangeYears({{ .Params.fromYear | jsonify }}, {{ .Params.toYear | jsonify }}),
-                identities: {{ .Params.identities | jsonify }},
-                people: {{ .Params.people | jsonify }},
-            })
-            {{ if ne (add $index 1) $artifactLen -}}
-                .add(
-            {{ end -}}
+    {{- range $index, $element := $artifactList }}{
+        id: "{{ printf "artifact-%d" $index }}",
+        href: "{{ .RelPermalink }}",
+        title: {{ .Title | jsonify }},
+        description: {{ .Params.description | jsonify }},
+        content: {{ .Content | jsonify }},
+        years: rangeYears({{ .Params.fromYear | jsonify }}, {{ .Params.toYear | jsonify }}),
+        identities: {{ .Params.identities | jsonify }},
+        people: {{ .Params.people | jsonify }},
+    })
+        {{- if ne (add $index 1) $artifactLen -}}
+            .add(
+        {{- end -}}
         {{ end -}}
     ;
 
@@ -121,16 +118,15 @@ function indexArchiveSearch(search, suggestions) {
     {{ $identityLen := (len $identityList) -}}
 
     index.add(
-        {{ range $index, $element := $identityList -}}
-            {
-                id: "{{ printf "identity-%d" $index }}",
-                href: "{{ $element.RelPermalink }}",
-                title: {{ $element.Title | title | jsonify }},
-                description: {{ printf "Artifacts involving %s people" $element.Title | jsonify }}
-            })
-            {{ if ne (add $index 1) $identityLen -}}
-                .add(
-            {{ end -}}
+    {{- range $index, $element := $identityList -}}{
+        id: "{{ printf "identity-%d" $index }}",
+        href: "{{ $element.RelPermalink }}",
+        title: {{ $element.Title | title | jsonify }},
+        description: {{ printf "Artifacts involving %s people" $element.Title | jsonify }},
+    })
+        {{- if ne (add $index 1) $identityLen -}}
+            .add(
+        {{- end -}}
         {{ end -}}
     ;
 
@@ -141,16 +137,15 @@ function indexArchiveSearch(search, suggestions) {
     {{ $decadeLen := (len $decadeList) -}}
 
     index.add(
-        {{ range $index, $element := $decadeList -}}
-            {
-                id: "{{ printf "decade-%d" $index }}",
-                href: "{{ $element.RelPermalink }}",
-                title: {{ $element.Title | title | jsonify }},
-                description: {{ printf "Artifacts from the %ss" $element.Title | jsonify }}
-            })
-            {{ if ne (add $index 1) $decadeLen -}}
-                .add(
-            {{ end -}}
+    {{- range $index, $element := $decadeList -}}{
+        id: "{{ printf "decade-%d" $index }}",
+        href: "{{ $element.RelPermalink }}",
+        title: {{ $element.Title | title | jsonify }},
+        description: {{ printf "Artifacts from the %ss" $element.Title | jsonify }},
+    })
+        {{- if ne (add $index 1) $decadeLen -}}
+            .add(
+        {{- end -}}
         {{ end -}}
     ;
 
@@ -161,81 +156,77 @@ function indexArchiveSearch(search, suggestions) {
     {{ $peopleLen := (len $peopleList) -}}
 
     index.add(
-        {{ range $index, $element := $peopleList -}}
-            {
-                id: "{{ printf "person-%d" $index }}",
-                href: "{{ $element.RelPermalink }}",
-                title: {{ $element.Title | title | jsonify }},
-                description: {{ printf "Artifacts involving %s" $element.Title | jsonify }}
-            })
-            {{ if ne (add $index 1) $peopleLen -}}
-                .add(
-            {{ end -}}
+    {{- range $index, $element := $peopleList -}}{
+        id: "{{ printf "person-%d" $index }}",
+        href: "{{ $element.RelPermalink }}",
+        title: {{ $element.Title | title | jsonify }},
+        description: {{ printf "Artifacts involving %s" $element.Title | jsonify }},
+    })
+        {{- if ne (add $index 1) $peopleLen -}}
+            .add(
+        {{- end -}}
         {{ end -}}
     ;
 
-    search.addEventListener('input', () => show_results(index, search, suggestions), true);
-    suggestions.addEventListener('click', () => accept_suggestion(suggestions), true);
-};
+    search.addEventListener("input", () => showResults(index, search, suggestions), true);
+    suggestions.addEventListener("click", () => acceptSuggestion(suggestions), true);
+}
 
 function indexDocsSearch(search, suggestions) {
     const index = new FlexSearch.Document({
         tokenize: "forward",
         cache: 100,
         document: {
-            id: 'id',
-            store: [
-                "href", "title", "description"
-            ],
-            index: ["title", "description", "content"]
-        }
+            id: "id",
+            store: ["href", "title", "description"],
+            index: ["title", "description", "content"],
+        },
     });
 
     {{ $docsList := (where .Site.Pages "Section" "docs") -}}
     {{ $docsLen := (len $docsList) -}}
 
     index.add(
-        {{ range $index, $element := $docsList -}}
-            {
-                id: "{{ printf "doc-%d" $index }}",
-                href: "{{ .RelPermalink }}",
-                title: {{ .Title | jsonify }},
-                description: {{ .Params.description | jsonify }},
-                content: {{ .Content | jsonify }},
-            })
-            {{ if ne (add $index 1) $docsLen -}}
-                .add(
-            {{ end -}}
+    {{- range $index, $element := $docsList -}}{
+        id: "{{ printf "doc-%d" $index }}",
+        href: "{{ .RelPermalink }}",
+        title: {{ .Title | jsonify }},
+        description: {{ .Params.description | jsonify }},
+        content: {{ .Content | jsonify }},
+    })
+        {{- if ne (add $index 1) $docsLen -}}
+            .add(
+        {{- end -}}
         {{ end -}}
     ;
 
-    search.addEventListener('input', () => show_results(index, search, suggestions), true);
-    suggestions.addEventListener('click', () => accept_suggestion(suggestions), true);
-};
+    search.addEventListener("input", () => showResults(index, search, suggestions), true);
+    suggestions.addEventListener("click", () => acceptSuggestion(suggestions), true);
+}
 
-const archiveSearch = document.querySelector('#archive-search > #search');
-const archiveSuggestions = document.querySelector('#archive-search > #suggestions');
+const archiveSearch = document.querySelector("#archive-search > #search");
+const archiveSuggestions = document.querySelector("#archive-search > #suggestions");
 
-const docsSearch = document.querySelector('#docs-search > #search');
-const docsSuggestions = document.querySelector('#docs-search > #suggestions');
+const docsSearch = document.querySelector("#docs-search > #search");
+const docsSuggestions = document.querySelector("#docs-search > #suggestions");
 
 if (docsSearch && docsSuggestions) {
-    document.addEventListener('keydown', (e) => inputFocus(e, docsSearch, docsSuggestions));
-    document.addEventListener('keydown', (e) => suggestionFocus(e, docsSuggestions));
-    document.addEventListener('click', function(event) {
+    document.addEventListener("keydown", (e) => inputFocus(e, docsSearch, docsSuggestions));
+    document.addEventListener("keydown", (e) => suggestionFocus(e, docsSuggestions));
+    document.addEventListener("click", function(event) {
         if (!docsSuggestions.contains(event.target)) {
-            docsSuggestions.classList.add('d-none');
+            docsSuggestions.classList.add("d-none");
         }
     });
     indexDocsSearch(docsSearch, docsSuggestions);
 }
 
 if (archiveSearch && archiveSuggestions) {
-    document.addEventListener('keydown', (e) => inputFocus(e, archiveSearch, archiveSuggestions));
-    document.addEventListener('keydown', (e) => suggestionFocus(e, archiveSuggestions));
-    document.addEventListener('click', function(event) {
+    document.addEventListener("keydown", (e) => inputFocus(e, archiveSearch, archiveSuggestions));
+    document.addEventListener("keydown", (e) => suggestionFocus(e, archiveSuggestions));
+    document.addEventListener("click", function(event) {
         if (!archiveSuggestions.contains(event.target)) {
-            archiveSuggestions.classList.add('d-none');
+            archiveSuggestions.classList.add("d-none");
         }
     });
     indexArchiveSearch(archiveSearch, archiveSuggestions);
