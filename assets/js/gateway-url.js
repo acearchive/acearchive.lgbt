@@ -1,10 +1,10 @@
 const gatewayUrlForms = document.querySelectorAll(".gateway-url-form")
 
 for (const form of gatewayUrlForms) {
-    const cidInput = form.querySelector(".gateway-url-cid-input");
-    const filenameInput = form.querySelector(".gateway-url-filename-input");
-    const copyButton = form.querySelector(".gateway-url-copy-button");
-    const copyConfirmedMessage = form.querySelector(".gateway-url-confirmed-message");
+    const cidInput = form.querySelector(".cid-input");
+    const filenameInput = form.querySelector(".filename-input");
+    const copyButton = form.querySelector(".copy-button");
+    const copyConfirmedMessage = form.querySelector(".copy-confirmed-message");
 
     const updateUrlCopyValue = () => {
         if (filenameInput.value) {
