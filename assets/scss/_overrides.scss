@@ -25,23 +25,3 @@ body.home {
 .home .footer {
     margin-top: auto;
 }
-
-/*
-Styling for the file type icon in the files list.
-*/
-
-file-type-icon .extension-chip {
-    color: $body-bg;
-    background-color: $primary;
-    border-radius: 10px;
-    font-size: $font-size-sm;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-}
-
-[data-dark-mode] file-type-icon .extension-chip {
-    color: $body-bg-dark;
-    background-color: $button-color-dark;
-}

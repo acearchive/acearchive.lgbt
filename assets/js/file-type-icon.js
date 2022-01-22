@@ -113,12 +113,12 @@ class FileTypeIcon extends HTMLElement {
         const iconElement = document.createElement("span");
         iconElement.setAttribute("aria-hidden", true);
         iconElement.innerHTML = icon;
-        iconElement.classList.add("me-1");
+        iconElement.classList.add("type-icon");
 
         const extensionElement = document.createElement("span");
         extensionElement.setAttribute("aria-hidden", true);
         extensionElement.innerHTML = extension;
-        extensionElement.classList.add("d-none", "d-sm-inline-block", "extension-chip");
+        extensionElement.classList.add("extension-chip");
 
         const labelElement = document.createElement("span");
         labelElement.classList.add("visually-hidden");
