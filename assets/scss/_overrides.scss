@@ -25,3 +25,26 @@ body.home {
 .home .footer {
     margin-top: auto;
 }
+
+/*
+Apply formatting similar to the search input to all form controls.
+*/
+
+.form-control {
+    background: $gray-100;
+    border: 1px solid transparent;
+}
+
+.form-control:focus {
+    border: 1px solid $primary;
+}
+
+[data-dark-mode] .form-control {
+    background: $body-overlay-dark;
+    border: 1px solid transparent;
+    color: $gray-300;
+}
+
+[data-dark-mode] .form-control:focus {
+    border: 1px solid $link-color-dark;
+}
