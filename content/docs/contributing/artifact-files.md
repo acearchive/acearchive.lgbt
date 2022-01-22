@@ -113,13 +113,11 @@ artifact. We'll cover adding files to artifacts [in more detail later]({{< ref
 "docs/contributing/uploading-files.md" >}}).
 
 `files.name` *(string)*
-: The name of the file. This will appear in the list of files on the website; it
-doesn't need to be a valid Windows/macOS/Linux file name and it doesn't need to
-be unique. If the artifact consists of multiple works, this should generally be
-the title of the work so people can disambiguate them. If the artifact consists
-of a single work, it can just be something short like "Book", "Paper", etc. You
-should also generally provide some information about the format of the work,
-like specifying whether the file is a PDF or a plain text transcription.
+: The name of the file. This will appear in the list of files on the website
+and it doesn't need to be a valid Windows/macOS/Linux file name. If the
+artifact consists of multiple works, this should generally include the title of
+the work so people can disambiguate them. If the artifact consists of a single
+work, it can be something short like "Paper," "Transcript," "Citation," etc.
 
 `files.mediaType` *(string)*
 : This is an optional IANA media type (also called a MIME type) for the file.

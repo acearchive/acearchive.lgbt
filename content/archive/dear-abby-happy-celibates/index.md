@@ -17,7 +17,7 @@ files:
     mediaType: "text/html"
     filename: "dear-abby-happy-celibates-transcript.html"
     cid: "bafkreiceaopa7xwjbctzcsqpwxffab2a4caqo5pe4dnywgzi7rabvmb5ia"
-  - name: "Bibliography (Biblatex)"
+  - name: "Citation"
     filename: "dear-abby-happy-celibates.bib"
     cid: "bafkreic4i33iclomrkrynptgevzukgztnsj54kaatgnaalihynv3aijx2y"
 people: ["Abigail Van Buren"]

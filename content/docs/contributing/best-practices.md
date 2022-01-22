@@ -14,31 +14,31 @@ weight: 206
 This page outlines some best practices to follow when contributing content to
 Ace Archive.
 
-## Include transcriptions where possible
+## Include transcripts where possible
 
 If the content is in a format that's not accessible (such as a photo or a
-digital scan of a physical document), include a transcription where possible.
-Transcriptions can be included as a separate file in the artifact as long as
-it's clear which one is the transcription and which one is the original.
+digital scan of a physical document), include a transcript where possible. When
+adding a transcript as a separate file, make sure it's clear which files are
+transcripts and what they're transcripts of.
 
 ## Include translations where available
 
 If the content is written in a language other than English, include both the
 original text and the English translation if both are available.
 
-## Include bibliographies where applicable
+## Include citations where applicable
 
-If the artifact contains a published work, include a bibliography for it as a
-separate file using a standardized reference file format like BibTeX/BibLaTeX.
-These files can be imported into reference managers like Zotero and help people
-cite the work or find it on the legacy web.
+If the artifact contains a published work, include a citation for it as a
+separate file using a standardized file format like BibTeX/BibLaTeX. These
+files can be imported into reference managers like Zotero and help people cite
+the work or find it on the legacy web.
 
 If the work doesn't have a stable home on the legacy web, you may want to
 update the `url` field of the BibTeX file to point to an [IPFS
 gateway](https://docs.ipfs.io/concepts/ipfs-gateway/) URL. You can use the form
 below to generate a gateway URL from the [CID]({{< ref
-"docs/contributing/uploading-files.md#what-is-a-cid" >}}) of the file and a file
-name.
+"docs/contributing/uploading-files.md#what-is-a-cid" >}}) of the file and a
+file name.
 
 {{< gateway-url >}}
 

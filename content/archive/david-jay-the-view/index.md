@@ -4,7 +4,7 @@ title: "David Jay on <em>The View</em>"
 description: >
     David Jay, founder of AVEN, is interviewed on ABC's <em>The View</em>
 files:
-  - name: "Interview (Video)"
+  - name: "Interview"
     mediaType: "video/mp4"
     filename: "david-jay-the-view.mp4"
     cid: "bafybeiaun6yq5eblmjgnk2cq6lgbx4hbcfbtprddspr7e3cmphjvpj57xu"

@@ -8,7 +8,7 @@ files:
     mediaType: "application/pdf"
     filename: "trosse-ein-weib.pdf"
     cid: "bafybeia2zyybfvw5otbo6aslptiq44d7mrc35gybbnhwerxrbihpak5evu"
-  - name: "Bibliography (Biblatex)"
+  - name: "Citation"
     filename: "trosse-ein-weib.bib"
     cid: "bafkreibuxmlko3bywhq5pmicnds7juz24vjjg7cegm2ypdavcfftu3x7be"
 people: ["Emma Trosse"]

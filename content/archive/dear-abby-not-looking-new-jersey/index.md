@@ -15,7 +15,7 @@ files:
     mediaType: "text/html"
     filename: "dear-abby-not-looking-transcript.html"
     cid: "bafkreiggsru2jsdqucrlkyogz5oucjrl5f5ndjmcteitkfieyylkf7jx6i"
-  - name: "Bibliography (Biblatex)"
+  - name: "Citation"
     filename: "dear-abby-not-looking.bib"
     cid: "bafkreibxj547wp4uxtmp324oz3q34dkaimz43rddkzsrjzzcaw446mgfgm"
 people: ["Abigail Van Buren"]
