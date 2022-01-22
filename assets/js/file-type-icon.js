@@ -69,6 +69,7 @@ class FileTypeIcon extends HTMLElement {
     connectedCallback() {
         const filename = this.getAttribute("filename") || "";
         const mediaType = this.getAttribute("media-type") || mime.getType(filename) || "application/octet-stream";
+        const extension = mime.getExtension(mediaType) || undefined;
 
         let icon;
         let title;
@@ -112,12 +113,25 @@ class FileTypeIcon extends HTMLElement {
         const iconElement = document.createElement("span");
         iconElement.setAttribute("aria-hidden", true);
         iconElement.innerHTML = icon;
+        iconElement.classList.add("me-1");
+
+        const extensionElement = document.createElement("span");
+        extensionElement.setAttribute("aria-hidden", true);
+        extensionElement.innerHTML = extension;
+        extensionElement.classList.add("d-none", "d-sm-inline-block", "extension-chip");
 
         const labelElement = document.createElement("span");
         labelElement.classList.add("visually-hidden");
-        labelElement.innerHTML = title;
+        if (mediaType === "application/octet-stream") {
+            labelElement.innerHTML = title;
+        } else {
+            labelElement.innerHTML = `${title} (.${extension})`;
+        }
 
         this.appendChild(iconElement);
+        if (mediaType !== "application/octet-stream") {
+            this.appendChild(extensionElement);
+        }
         this.appendChild(labelElement);
     }
 }
