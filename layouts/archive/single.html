@@ -17,11 +17,21 @@
       </p>
       <p class="text-center">{{ partial "archive/year.html" . }}</p>
     </div>
+    {{- if .Params.files }}
     <div class="row justify-content-center">
       <div class="col">
         {{ partial "archive/files.html" .Params.files }}
       </div>
     </div>
+    {{ end -}}
+    {{- if .Params.links }}
+    <div class="row justify-content-center text-center">
+      <div class="col">
+        <h2>Links</h2>
+        {{ partial "archive/links.html" .Params.links }}
+      </div>
+    </div>
+    {{ end -}}
     <div class="row justify-content-center">
       {{- if .Params.identities }}
       <div class="col-md-4">
