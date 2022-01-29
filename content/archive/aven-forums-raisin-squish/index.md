@@ -9,6 +9,9 @@ files:
   - name: "WACZ Archive"
     filename: "squish.wacz"
     cid: "QmPbjrx9PpkDC4xhhxdQrLnL6B1QXiJgXvRfeaAczXk2oL"
+links:
+  - name: "AVEN Forums"
+    url: "https://www.asexuality.org/en/topic/23290-squish/"
 people: ["Raisin"]
 identities: ["aromantic"]
 fromYear: 2007

@@ -11,6 +11,9 @@ files:
   - name: "Citation"
     filename: "bogaert-asexuality-prevalence.bib"
     cid: "bafkreid6kvmjqet2gfmdiccqmqmh4lnwrfy3p53lfsfneuvnld7ko6jkji"
+links:
+  - name: "Journal Page"
+    url: "https://doi.org/10.1080/00224490409552235"
 people: ["Anthony Bogaert"]
 identities: ["asexual"]
 fromYear: 2004

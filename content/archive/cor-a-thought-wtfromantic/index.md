@@ -9,6 +9,9 @@ files:
   - name: "WACZ Archive"
     filename: "a-thought-wtfromantic.wacz"
     cid: "QmdHrWCGz7irZUhoV4zLbR68ytiAK8tiuGhz2DkHvWeUXc"
+links:
+  - name: "glitch witch"
+    url: "https://epochryphal.tumblr.com/post/37572886173/a-thought-wtfromantic-is-a-very-important"
 people: ["Cor"]
 identities: ["wtfromantic", "quoiromantic"]
 fromYear: 2012

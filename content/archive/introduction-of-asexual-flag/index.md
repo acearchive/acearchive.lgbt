@@ -11,6 +11,9 @@ files:
   - name: "WACZ Archive"
     filename: "introduction-of-the-asexual-pride-flag.wacz"
     cid: "Qma3jTcrV7ookzXhLge4mrLsTkUhZNV1L1QQzuMYsL3SJ7"
+links:
+  - name: "Background and Context"
+    url: "https://asexualagenda.wordpress.com/2018/02/21/the-ace-flag-a-history-and-celebration/"
 people: ["bristrek", "standup"]
 identities: ["asexual"]
 fromYear: 2009

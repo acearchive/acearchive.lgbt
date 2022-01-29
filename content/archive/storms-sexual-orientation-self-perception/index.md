@@ -10,6 +10,9 @@ files:
   - name: "Citation"
     filename: "storms-sexual-orientation-self-perception.bib"
     cid: "QmdsEu6YLNWwg9MCWMP6WTCSWmfUQHfPrgbdRCKRrbRPxv"
+links:
+  - name: "Journal Page"
+    url: "https://doi.org/10.1007/978-1-4684-3548-1_7"
 people: ["Michael D. Storms"]
 identities: ["asexual"]
 fromYear: 1979

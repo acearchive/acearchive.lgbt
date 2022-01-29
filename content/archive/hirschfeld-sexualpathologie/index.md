@@ -1,8 +1,13 @@
 ---
 version: 1
 title: "<em>Sexualpathologie</em>"
-description: "An early example of pathologization of asexual people in medical literature and use of the term \"asexual\""
-longDescription: "An early example of pathologization of asexual people in medical literature, in which the author develops a typology of asexual people that includes the term \"asexual\""
+description: >
+    An early example of pathologization of asexual people in medical literature
+    and use of the term "asexual"
+longDescription: >
+    An early example of pathologization of asexual people in medical
+    literature, in which the author develops a typology of asexual people that
+    includes the term "asexual"
 files:
   - name: "Original Paper (Deutsch)"
     mediaType: "application/pdf"
@@ -21,6 +26,11 @@ files:
   - name: "Partial English Translation (WACZ Archive)"
     filename: "sexualpathologie-translation.wacz"
     cid: "bafybeihfvrsyyvv3rv6kp3ilgb6w2i24tct7akgy7e552et52gcgglrpfm"
+links:
+  - name: "Internet Archive"
+    url: "https://archive.org/details/b20442245"
+  - name: "Partial English Translation"
+    url: "https://www.asexuality.org/en/topic/98639-indirect-mentions-of-asexuality-in-magnus-hirschfelds-books/"
 people: ["Magnus Hirschfeld"]
 identities: ["asexual"]
 fromYear: 1921

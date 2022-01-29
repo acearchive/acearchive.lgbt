@@ -15,6 +15,9 @@ files:
   - name: "WACZ Archive"
     filename: "glad-to-be-asexual.wacz"
     cid: "QmZgu2RVqLdGYRr4yyer3YYQ71b7MdyT6Cm1Z8PqncdoVt"
+links:
+  - name: "New Scientist"
+    url: "https://www.newscientist.com/article/dn6533-feature-glad-to-be-asexual/"
 people: ["Sylvia Pagán Westphal", "David Jay"]
 identities: ["asexual"]
 fromYear: 2004

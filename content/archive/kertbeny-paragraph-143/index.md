@@ -11,6 +11,9 @@ files:
   - name: "Citation"
     filename: "kertbeny-paragraph-143.bib"
     cid: "bafkreigc3f6w6ssxgskw6oa5lhvlryo4y7aukbuaq6ucqknbnf4emevke4"
+links:
+  - name: "Leipzig University Library"
+    url: "https://katalog.ub.uni-leipzig.de/Record/0-1657911586"
 people: ["Karl-Maria Kertbeny"]
 identities: []
 fromYear: 1869

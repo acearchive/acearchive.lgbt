@@ -9,6 +9,9 @@ files:
   - name: "WACZ Archive"
     filename: "black-rings-asexual-pride.wacz"
     cid: "QmVi5RiQTijBnFbJh3fZMaVzoBq9HPBrzPBk3N9yXBtQGi"
+links:
+  - name: "AVEN Forums"
+    url: "https://www.asexuality.org/en/topic/76607-black-rings-and-other-ways-to-show-asexual-pride/"
 people: []
 identities: ["asexual"]
 fromYear: 2005

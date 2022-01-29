@@ -10,6 +10,9 @@ files:
   - name: "WACZ Archive"
     filename: "semisexuality.wacz"
     cid: "QmbtDSaaWNEGawnXyu1eyVwuGr5bc7jKhkvc2ysBrJzx7Q"
+links:
+  - name: "AVEN Forums"
+    url: "https://www.asexuality.org/en/topic/1629-semisexuality/"
 people: ["AVENguy"]
 identities: ["asexual"]
 fromYear: 2003

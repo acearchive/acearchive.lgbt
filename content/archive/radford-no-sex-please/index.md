@@ -15,6 +15,9 @@ files:
   - name: "WACZ Archive"
     filename: "radford-no-sex-please.wacz"
     cid: "QmdYfCzkAzJhc3kVzKwWXPoc6wgrjb4RaKetARxdeRSXHj"
+links:
+  - name: "The Guardian"
+    url: "https://www.theguardian.com/science/2004/oct/14/science.research1"
 people: ["Tim Radford"]
 identities: ["asexual"]
 fromYear: 2004

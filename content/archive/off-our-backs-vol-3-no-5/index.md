@@ -11,6 +11,9 @@ files:
   - name: "Citation"
     filename: "off-our-backs-vol-3-no-5.bib"
     cid: "bafkreig36eyqaay6ojfenqusd67nlxy4potkbonmd4d4to4aetupzdcigm"
+links:
+  - name: "JSTOR"
+    url: "https://www.jstor.org/stable/community.28041796"
 people: ["Barbara Getz"]
 identities: ["lesbian", "asexual"]
 fromYear: 1973

@@ -15,6 +15,9 @@ files:
   - name: "Sexuality Now: Embracing Diversity (Citation)"
     filename: "sexuality-now-embracing-diversity.bib"
     cid: "bafkreihtgeuushj4zbd3ur74amf5oq6sv2esgdin44z7el5ci6rzvosh2i"
+links:
+  - name: "Google Books"
+    url: "https://www.google.com/books/edition/Sexuality_Now_Embracing_Diversity/nKwJzgEACAAJ?hl=en"
 people: ["Jim Sinclair"]
 identities: ["intersex", "non-binary", "neuter", "asexual"]
 fromYear: 2006

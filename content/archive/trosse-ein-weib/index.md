@@ -11,6 +11,9 @@ files:
   - name: "Citation"
     filename: "trosse-ein-weib.bib"
     cid: "bafkreibuxmlko3bywhq5pmicnds7juz24vjjg7cegm2ypdavcfftu3x7be"
+links:
+  - name: "Google Books"
+    url: "https://www.google.com/books/edition/Ein_Weib/rKzISmJ3YuYC?hl=en"
 people: ["Emma Trosse"]
 identities: ["asexual"]
 fromYear: 1897

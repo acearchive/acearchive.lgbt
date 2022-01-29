@@ -23,6 +23,9 @@ files:
     mediaType: "video/mp4"
     filename: "toby-on-sally-part-5.mp4"
     cid: "bafybeiafaztnfftd3oiuk65uuiremyxcyee4davleu234gmzvix2i3hywi"
+links:
+  - name: "YouTube Playlist"
+    url: "https://youtube.com/playlist?list=PLb6InlHRpvBMFIHiXGhmEdPS29DE5Q58d"
 people: ["Jim Sinclair"]
 identities: ["asexual", "neuter"]
 fromYear: 1989

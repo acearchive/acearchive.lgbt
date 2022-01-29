@@ -18,6 +18,9 @@ files:
   - name: "Citation"
     filename: "dear-abby-not-looking.bib"
     cid: "bafkreibxj547wp4uxtmp324oz3q34dkaimz43rddkzsrjzzcaw446mgfgm"
+links:
+    - name: "Google News"
+      url: "https://news.google.com/newspapers?id=7q8_AAAAIBAJ&sjid=31YMAAAAIBAJ&pg=6814%2C6344642"
 people: ["Abigail Van Buren"]
 identities: ["asexual"]
 fromYear: 1995

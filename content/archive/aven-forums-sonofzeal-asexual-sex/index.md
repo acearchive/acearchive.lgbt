@@ -9,6 +9,9 @@ files:
   - name: "WACZ Archive"
     filename: "asexual-sex.wacz"
     cid: "QmTrNVYboGeJvzMxsSd8rngw5UHsmczFBKgde79Gcx2tsf"
+links:
+  - name: "AVEN Forums"
+    url: "https://www.asexuality.org/en/topic/14000-asexual-sex/"
 people: ["sonofzeal"]
 identities: ["asexual", "demisexual"]
 fromYear: 2006

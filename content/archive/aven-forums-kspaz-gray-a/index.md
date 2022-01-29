@@ -9,6 +9,9 @@ files:
   - name: "WACZ Archive"
     filename: "gray-a.wacz"
     cid: "QmXKTUsY7u8dD19ZHdcoUUkyQM7bpFpiMrgha3Ltt39tEM"
+links:
+  - name: "AVEN Forums"
+    url: "https://www.asexuality.org/en/topic/15539-gray-as/"
 people: ["KSpaz"]
 identities: ["asexual", "gray-asexual"]
 fromYear: 2006

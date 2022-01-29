@@ -19,6 +19,9 @@ files:
   - name: "Off Our Backs, vol. 3, no. 6 (Citation)"
     filename: "off-our-backs-vol-3-no-6.bib"
     cid: "bafkreifmy3tsel3ooaqdnna5t35q2azdctsb2dp4d4qxuahkp7ddi4kgae"
+links:
+  - name: "JSTOR"
+    url: "https://www.jstor.org/stable/community.28041797"
 people: []
 identities: []
 fromYear: 1973

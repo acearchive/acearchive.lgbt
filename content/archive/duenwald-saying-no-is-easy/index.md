@@ -13,6 +13,9 @@ files:
   - name: "WACZ Archive"
     filename: "just-saying-no-is-easy.wacz"
     cid: "QmegY91nPnuwHxe4Zj1hvQ2c75wrtWF5NKmzvL96bw52Pr"
+links:
+  - name: "The New York Times"
+    url: "https://www.nytimes.com/2005/06/09/fashion/thursdaystyles/for-them-just-saying-no-is-easy.html"
 people: ["Mary Duenwald"]
 identities: ["asexual"]
 fromYear: 2005

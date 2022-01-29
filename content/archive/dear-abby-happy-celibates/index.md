@@ -20,6 +20,9 @@ files:
   - name: "Citation"
     filename: "dear-abby-happy-celibates.bib"
     cid: "bafkreic4i33iclomrkrynptgevzukgztnsj54kaatgnaalihynv3aijx2y"
+links:
+  - name: "Google News"
+    url: "https://news.google.com/newspapers?id=u0dBAAAAIBAJ&sjid=6qgMAAAAIBAJ&pg=6478%2C148486"
 people: ["Abigail Van Buren"]
 identities: ["asexual"]
 fromYear: 1981

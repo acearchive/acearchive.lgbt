@@ -9,6 +9,9 @@ files:
   - name: "WACZ Archive"
     filename: "coining-of-queerplatonic.wacz"
     cid: "QmX4D73PmvuarSHdDnAcnFQWmHioLBG5Qb1ACiyFT1s7zZ"
+links:
+  - name: "Dreamwidth"
+    url: "https://kaz.dreamwidth.org/238564.html"
 people: ["Kaz", "Meloukhia"]
 identities: ["aromantic", "wtfromantic"]
 fromYear: 2010

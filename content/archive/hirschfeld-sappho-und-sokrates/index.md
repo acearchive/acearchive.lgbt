@@ -17,6 +17,11 @@ files:
   - name: "Partial English Translation (WACZ Archive)"
     filename: "sappho-und-sokrates-translation.wacz"
     cid: "bafybeihfvrsyyvv3rv6kp3ilgb6w2i24tct7akgy7e552et52gcgglrpfm"
+links:
+  - name: "University of Chicago Library"
+    url: "https://catalog.lib.uchicago.edu/vufind/Record/7797394"
+  - name: "Partial English Translation"
+    url: "https://www.asexuality.org/en/topic/98639-indirect-mentions-of-asexuality-in-magnus-hirschfelds-books/"
 people: ["Magnus Hirschfeld"]
 identities: ["asexual"]
 fromYear: 1896
