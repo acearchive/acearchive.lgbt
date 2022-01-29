@@ -40,7 +40,8 @@ something like this:
 ---
 version: 1
 title: "<em>The Asexual Manifesto</em>"
-description: "A paper by the Asexual Caucus of the New York Radical Feminists"
+description: >
+    A paper by the Asexual Caucus of the New York Radical Feminists
 files:
   - name: "The Asexual Manifesto"
     mediaType: "application/pdf"
@@ -50,6 +51,9 @@ files:
     mediaType: "text/html"
     filename: "the-asexual-manifesto-transcript.html"
     cid: "bafkreie5hknsonewqxuyf6vzlauhn2qwm2og5yjcqrltv5yumyqdvdm4sm"
+links:
+  - name: "Background and Context"
+    url: "https://asexualagenda.wordpress.com/2019/08/01/lisa-orlando-author-of-the-asexual-manifesto-1972/"
 people: ["Lisa Orlando", "Barbara Getz"]
 identities: ["asexual"]
 fromYear: 1972
@@ -133,6 +137,18 @@ preferred, and you should always add an appropriate file extension.
 `files.cid` *(string)*
 : This is the IPFS CID of the file, which we'll talk about [in a later
 section]({{< ref "docs/contributing/uploading-files.md#what-is-a-cid" >}}).
+
+`links` *(list of dictionaries)*
+: This section contains a list of links to content on the legacy web. Sites
+linked here aren't part of the IPFS network, but it's still useful to be able
+to provide links so people can locate the original source of an artifact or for
+cases where we can't re-host content for copyright reasons.
+
+`links.name` *(string)*
+: The name of the link. This should indicate what the link points to.
+
+`links.url` *(string)*
+: The `https://` URL that the link points to.
 
 `people` *(list of strings)*
 : This is a list of (usually 1-3) people closely associated with the artifact,

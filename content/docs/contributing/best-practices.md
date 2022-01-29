@@ -63,16 +63,45 @@ supported sites
 
 ## Respect the privacy of individuals
 
-When filling out the `people` field in an [artifact file]({{< ref
-"docs/contributing/artifact-files.md" >}}), make sure to respect the privacy of
-individuals. This means using handles or usernames when a person typically goes
-by a pseudonym online. Also, you must **always** use a person's preferred name
-over their legal name or deadname.
+When filling out the `people` field in an [artifact file][artifact-file], make
+sure to respect the privacy of individuals. This means using handles or
+usernames when a person typically goes by a pseudonym online. Also, you must
+**always** use a person's preferred name over their legal name or deadname.
 
 ## Use existing tags when possible
 
-When filling out the `identities` and `people` fields in an artifact file,
-prefer using identities and names as they currently appear in other artifacts
-in the archive. So if "gray-asexual" already exists in the archive, don't add
-"grey-asexual" or "gray-ace" unless there's a good reason (e.g. the author of a
-work makes a case that they're distinct identities).
+When filling out the `identities` and `people` fields in an [artifact
+file][artifact-file], prefer using identities and names as they currently
+appear in other artifacts in the archive. So if "gray-asexual" already exists
+in the archive, don't add "grey-asexual" or "gray-ace" unless there's a good
+reason (e.g. the author of a work makes a case that they're distinct
+identities).
+
+## Host content on the IPFS network when possible
+
+The two ways to link to content from an [artifact file][artifact-file] are the
+`files` field and the `links` field. The difference is that the `files` field
+is for linking to files hosted on the IPFS network, while the `links` field is
+for linking to websites on the legacy web.
+
+When permitted by copyright, always host content on the IPFS network. This
+helps us ensure that the content sticks around, even if the original site goes
+down.
+
+## Link to the original source of content
+
+When hosting a file on the IPFS network using the `files` field in an [artifact
+file][artifact-file], you should also include a link to the original source of
+the content using the `links` field.  This ensures that people can always trace
+where content came from and still have a way to access it if it's not
+accessible on the IPFS network for whatever reason.
+
+## Use links to provide context
+
+Because Ace Archive is intended to be an archive of primary sources rather than
+a wiki or encyclopedia, the descriptions in [artifact files][artifact-file]
+should generally be kept brief.  However, if context is required to understand
+an artifact, you can use the `links` field to include a link to an outside
+website that provides the necessary context for the artifact.
+
+[artifact-file]: {{< ref "docs/contributing/artifact-files.md" >}}
