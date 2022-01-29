@@ -23,6 +23,7 @@
       </div>
     </div>
     <div class="row justify-content-center">
+      {{- if .Params.identities }}
       <div class="col-md-4">
         <h2>Identities</h2>
         <ul>
@@ -31,6 +32,8 @@
         {{ end -}}
         </ul>
       </div>
+      {{ end -}}
+      {{- if .Params.decades }}
       <div class="col-md-4">
         <h2>Decades</h2>
         <ul>
@@ -39,6 +42,8 @@
         {{ end -}}
         </ul>
       </div>
+      {{ end -}}
+      {{- if .Params.people }}
       <div class="col-md-4">
         <h2>People</h2>
         <ul>
@@ -47,6 +52,7 @@
         {{ end -}}
         </ul>
       </div>
+      {{ end -}}
     </div>
     <div class="row">
       {{ partial "main/edit-page.html" . }}
