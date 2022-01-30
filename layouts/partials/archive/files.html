@@ -2,7 +2,15 @@
   <thead>
     <th scope="col"><span class="visually-hidden">File type</span></th>
     <th scope="col">File</th>
-    <th scope="col">CID</th>
+    <th scope="col">
+      <span>CID</span>
+      <a class="d-inline-flex align-center" href="https://docs.ipfs.io/concepts/content-addressing/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+        </svg>
+      </a>
+    </th>
   </thead>
   <tbody>
   {{- range $file := . -}}
@@ -14,12 +22,12 @@
     {{- $gatewayUrl = printf "https://dweb.link/ipfs/%s" $file.cid -}}
   {{- end -}}
 
-  {{- $truncatedCid := printf "%s...%s" (substr $file.cid 0 4) (substr $file.cid (sub (strings.RuneCount $file.cid) 4)) }}
+  {{- $truncatedCid := printf "%s…%s" (substr $file.cid 0 4) (substr $file.cid (sub (strings.RuneCount $file.cid) 4)) }}
     <tr>
       <td><file-type-icon media-type="{{ $file.mediaType }}" filename="{{ $file.filename }}" /></td>
       <td><a href="{{ $gatewayUrl }}">{{ $file.name }}</a></td>
       <td>
-        <span class="me-1">{{ $truncatedCid }}</span>
+        <span class="me-1 cid">{{ $truncatedCid }}</span>
         <clipboard-copy value="{{ .cid }}" class="d-inline cid-copy-button" aria-label="Copy CID to clipboard">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard clipboard-copy" viewBox="0 0 16 16">
             <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
