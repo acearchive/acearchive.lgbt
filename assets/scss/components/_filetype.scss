@@ -6,3 +6,8 @@ file-type-icon .extension-pill {
     @extend .d-none, .d-sm-inline-block;
     @extend .badge, .rounded-pill, .bg-primary;
 }
+
+[data-dark-mode] file-type-icon .extension-pill {
+    color: $body-bg-dark !important;
+    background-color: $button-color-dark !important;
+}

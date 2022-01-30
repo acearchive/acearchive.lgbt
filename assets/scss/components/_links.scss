@@ -3,3 +3,13 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+[data-dark-mode] .artifact-links-table .list-group-item {
+    background: $body-bg-dark;
+    color: $body-color-dark;
+    border-color: $border-dark;
+}
+
+[data-dark-mode] .artifact-links-table .list-group-item:hover {
+    background: $body-overlay-dark;
+}
