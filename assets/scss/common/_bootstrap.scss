@@ -1,0 +1,33 @@
+[data-dark-mode] .list-group .list-group-item {
+    background: $body-bg-dark;
+    color: $body-color-dark;
+    border-color: $border-dark;
+}
+
+[data-dark-mode] .list-group .list-group-item:hover {
+    background: $body-overlay-dark;
+}
+
+[data-dark-mode] .badge.bg-primary {
+    color: $body-bg-dark !important;
+    background-color: $button-color-dark !important;
+}
+
+.form-control {
+    background: $gray-100;
+    border: 1px solid transparent;
+}
+
+.form-control:focus {
+    border: 1px solid $primary;
+}
+
+[data-dark-mode] .form-control {
+    background: $body-overlay-dark;
+    border: 1px solid transparent;
+    color: $gray-300;
+}
+
+[data-dark-mode] .form-control:focus {
+    border: 1px solid $link-color-dark;
+}
