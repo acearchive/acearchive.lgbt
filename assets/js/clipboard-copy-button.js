@@ -1,9 +1,7 @@
-import { Tooltip } from "bootstrap";
-
 const copyButtons = document.querySelectorAll("clipboard-copy.clipboard-copy-button") ?? [];
 
 for (const copyButton of copyButtons) {
-    const tooltip = new Tooltip(copyButton);
+    const tooltip = new bootstrap.Tooltip(copyButton);
 
     copyButton.addEventListener("clipboard-copy", function() {
         const copyIcon = copyButton.querySelector(".clipboard-copy-icon");

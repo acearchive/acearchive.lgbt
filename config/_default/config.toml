@@ -107,6 +107,12 @@ rel  = "sitemap"
     source = "node_modules/mime"
     target = "assets/js/vendor/mime"
   [[module.mounts]]
+    source = "node_modules/bootstrap"
+    target = "assets/js/vendor/bootstrap"
+  [[module.mounts]]
+    source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+    target = "static/js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+  [[module.mounts]]
     source = "assets"
     target = "assets"
   [[module.mounts]]
