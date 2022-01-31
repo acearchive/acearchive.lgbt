@@ -11,6 +11,7 @@ module.exports = {
         './node_modules/@hyas/doks/content/**/*.md',
         './layouts/**/*.html',
         './content/**/*.md',
+        './node_modules/bootstrap/js/src/collapse.js',
       ],
       safelist: [
         'lazyloaded',
