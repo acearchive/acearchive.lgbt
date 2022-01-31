@@ -8,6 +8,9 @@ files:
     mediaType: ""
     filename: ""
     cid: ""
+links:
+  - name: ""
+    url: ""
 people: []
 identities: []
 fromYear: 0
