@@ -8,7 +8,7 @@
 
   <li class="mb-2">
     {{- $active := eq .Section "identities" -}}
-    <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#identities-menu" aria-expanded="{{ if $active }}true{{ else }}false{{ end }}">
+    <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#identities-menu" aria-expanded="{{ if $active }}true{{ else }}false{{ end }}" aria-controls="#identities-menu">
       Identities
     </button>
     <div class="collapse{{ if $active }} show{{ end }}" id="identities-menu">
@@ -23,7 +23,7 @@
 
   <li class="mb-2">
     {{- $active := eq .Section "decades" -}}
-    <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#decades-menu" aria-expanded="{{ if $active }}true{{ else }}false{{ end }}">
+    <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#decades-menu" aria-expanded="{{ if $active }}true{{ else }}false{{ end }}" aria-controls="#decades-menu">
       Decades
     </button>
     <div class="collapse{{ if $active }} show{{ end }}" id="decades-menu">
@@ -38,7 +38,7 @@
 
   <li class="mb-2">
     {{- $active := eq .Section "people" -}}
-    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#people-menu" aria-expanded="{{ if $active }}true{{ else }}false{{ end }}">
+    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#people-menu" aria-expanded="{{ if $active }}true{{ else }}false{{ end }}" aria-controls="#people-menu">
       People
     </button>
     <div class="collapse{{ if $active }} show{{ end }}" id="people-menu">
