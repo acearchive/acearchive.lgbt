@@ -52,6 +52,8 @@ files:
     filename: "the-asexual-manifesto-transcript.html"
     cid: "bafkreie5hknsonewqxuyf6vzlauhn2qwm2og5yjcqrltv5yumyqdvdm4sm"
 links:
+  - name: "Internet Archive"
+    url: "https://archive.org/details/asexualmanifestolisaorlando"
   - name: "Background and Context"
     url: "https://asexualagenda.wordpress.com/2019/08/01/lisa-orlando-author-of-the-asexual-manifesto-1972/"
 people: ["Lisa Orlando", "Barbara Getz"]
