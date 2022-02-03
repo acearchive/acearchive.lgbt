@@ -96,6 +96,15 @@ the content using the `links` field.  This ensures that people can always trace
 where content came from and still have a way to access it if it's not
 accessible on the IPFS network for whatever reason.
 
+When possible, make sure you link to reputable, permanent sites like libraries,
+journal databases, or archives like the Internet Archive.
+
+{{< alert icon="👉" >}}
+Some libraries and journal databases will provide a permalink somewhere on the
+page which is different than the URL in your address bar. Always use a
+permalink when one is provided.
+{{< /alert >}}
+
 ## Use links to provide context
 
 Because Ace Archive is intended to be an archive of primary sources rather than
