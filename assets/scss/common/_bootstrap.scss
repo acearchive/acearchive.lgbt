@@ -96,3 +96,13 @@ $tooltip-color-dark: $body-color;
         border-left-color: $tooltip-bg-dark;
     }
 }
+
+.badge.bg-secondary {
+    color: $black;
+    background-color: $gray-300 !important;
+}
+
+[data-dark-mode] .badge.bg-secondary {
+    color: $white;
+    background-color: $gray-700 !important;
+}

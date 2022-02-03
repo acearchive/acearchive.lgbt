@@ -85,96 +85,117 @@ Next, we'll talk about the fields in an artifact file. Also take a look at the
 [best practices]({{< ref "docs/contributing/best-practices.md" >}}) section for
 more information on how to fill out these fields.
 
-`version` *(integer)*
-: Sometimes the format of artifact files changes. This is the version number
-for the artifact file format. This will be set to the current version when you
+{{% schema %}}
+
+{{% schema-field field="version" type="integer" optional="false" %}}
+Sometimes the format of artifact files changes. This is the version number for
+the artifact file format. This will be set to the current version when you
 [open a pull request]({{< ref "docs/contributing/pull-request.md"
 >}}), so you can leave it alone.
+{{% /schema-field %}}
 
-`title` *(string)*
-: This is the title of the artifact. If the artifact represents a work (a book,
+{{% schema-field field="title" type="string" optional="false" %}}
+This is the title of the artifact. If the artifact represents a work (a book,
 essay, forum thread, etc.), this will be the title of that work. If the
 artifact encompasses multiple works or doesn't have an obvious title, it can be
 a short description instead. You should always quote or italicize the titles of
 works, and you can add italics in an artifact title using HTML `<em>Title of
 Work</em>` syntax.
+{{% /schema-field %}}
 
-`description` *(string)*
-: This is a short one-or-two sentence description of the artifact that should
+{{% schema-field field="description" type="string" optional="false" %}}
+This is a short one-or-two sentence description of the artifact that should
 provide context and explain its significance to the asexual community (i.e. why
 it's in the archive). This is the description that will appear below each
 artifact title in the list of artifacts.
+{{% /schema-field %}}
 
-`longDescription` *(string)*
-: If you want to provide more context that you can fit in `description`, you
-can optionally provide a longer description that will appear in the page for
-the artifact. This field can be omitted, in which case it will just be the same
-as `description`.
+{{% schema-field field="longDescription" type="string" optional="true" %}}
+If you want to provide more context that you can fit in `description`, you can
+optionally provide a longer description that will appear in the page for the
+artifact. This field can be omitted, in which case it will just be the same as
+`description`.
+{{% /schema-field %}}
 
-`files` *(list of dictionaries)*
-: This section contains a list of references to the files associated with the
+{{% schema-field field="files" type="list of dictionaries" optional="true" %}}
+This section contains a list of references to the files associated with the
 artifact. We'll cover adding files to artifacts [in more detail later]({{< ref
 "docs/contributing/uploading-files.md" >}}).
+{{% /schema-field %}}
 
-`files.name` *(string)*
-: The name of the file. This will appear in the list of files on the website
-and it doesn't need to be a valid Windows/macOS/Linux file name. If the
-artifact consists of multiple works, this should generally include the title of
-the work so people can disambiguate them. If the artifact consists of a single
-work, it can be something short like "Paper," "Transcript," "Citation," etc.
+{{% schema-field field="files.name" level="1" type="string" optional="false" %}}
+The name of the file. This will appear in the list of files on the website and
+it doesn't need to be a valid Windows/macOS/Linux file name. If the artifact
+consists of multiple works, this should generally include the title of the work
+so people can disambiguate them. If the artifact consists of a single work, it
+can be something short like "Paper," "Transcript," "Citation," etc.
+{{% /schema-field %}}
 
-`files.mediaType` *(string)*
-: This is an optional IANA media type (also called a MIME type) for the file.
-If the file is a format that doesn't have a well-known media type, you can omit
+{{% schema-field field="files.mediaType" level="1" type="string" optional="true" %}}
+This is an optional IANA media type (also called a MIME type) for the file.  If
+the file is a format that doesn't have a well-known media type, you can omit
 this. If you need help figuring out the media type of a file, you can use a
 tool like [mimetype.io](https://mimetype.io/) to look it up.
+{{% /schema-field %}}
 
-`files.filename` *(string)*
-: This is a file name for the file to be used when downloading it, meaning it
+{{% schema-field field="files.filename" level="1" type="string" optional="true" %}}
+This is a file name for the file to be used when downloading it, meaning it
 must always be a valid Windows/macOS/Linux file name. Generally kebab-case is
 preferred, and you should always add an appropriate file extension.
+{{% /schema-field %}}
 
-`files.cid` *(string)*
-: This is the IPFS CID of the file, which we'll talk about [in a later
+{{% schema-field field="files.cid" level="1" type="string" optional="false" %}}
+This is the IPFS CID of the file, which we'll talk about [in a later
 section]({{< ref "docs/contributing/uploading-files.md#what-is-a-cid" >}}).
+{{% /schema-field %}}
 
-`links` *(list of dictionaries)*
-: This section contains a list of links to content on the legacy web. Sites
+{{% schema-field field="links" type="list of dictionaries" optional="true" %}}
+This section contains a list of links to content on the legacy web. Sites
 linked here aren't part of the IPFS network, but it's still useful to be able
 to provide links so people can locate the original source of an artifact or for
 cases where we can't re-host content for copyright reasons.
+{{% /schema-field %}}
 
-`links.name` *(string)*
-: The name of the link. This should indicate what the link points to.
+{{% schema-field field="links.name" level="1" type="string" optional="false" %}}
+The name of the link. This should indicate what the link points to.
+{{% /schema-field %}}
 
-`links.url` *(string)*
-: The `https://` URL that the link points to.
+{{% schema-field field="links.url" level="1" type="string" optional="false" %}}
+The `https://` URL that the link points to.
+{{% /schema-field %}}
 
-`people` *(list of strings)*
-: This is a list of (usually 1-3) people closely associated with the artifact,
+{{% schema-field field="people" type="list of strings" optional="false" %}}
+This is a list of (usually 1-3) people closely associated with the artifact,
 such as the author of a book, the subject of a photo, etc. This is helpful for
 linking together different artifacts which are associated with the same people.
 This list can be empty if the people associated with the artifact aren't clear.
+{{% /schema-field %}}
 
-`identities` *(list of strings)*
-: A list of queer identities associated with the artifact. For example, if this
+{{% schema-field field="identities" type="list of strings" optional="false" %}}
+A list of queer identities associated with the artifact. For example, if this
 is a blog post about aromanticism, then "aromantic" should be included in the
 list of identities. The identity should be in adjective form, meaning it can
 complete the sentence, "Artifacts about _ people". This list can be empty if
 the identities associated with the work aren't clear (e.g. it's about queer
 identities as a whole).
+{{% /schema-field %}}
 
-`fromYear` *(integer)*
-: The year the work associated with the artifact was published (or written,
+{{% schema-field field="fromYear" type="integer" optional="false" %}}
+The year the work associated with the artifact was published (or written,
 posted, etc.). If the artifact encompasses multiple works that were published
 in different years, you should specify a range of years using this field and
 `toYear`.
+{{% /schema-field %}}
 
-`toYear` *(integer)*
-: This value can be used with `fromYear` to specify a range of years. If the
+{{% schema-field field="toYear" type="integer" optional="true" %}}
+This value can be used with `fromYear` to specify a range of years. If the
 works associated with the artifact were only published in one year, this should
 be omitted.
+{{% /schema-field %}}
 
-`decades` *(list of integers)*
-: The list of decades between `fromYear` and `toYear`. For example, if
-`fromYear` is 1980 and `toYear` is 1999, this should be `[1980, 1990]`.
+{{% schema-field field="decades" type="list of integers" optional="false" %}}
+The list of decades between `fromYear` and `toYear`. For example, if `fromYear`
+is 1980 and `toYear` is 1999, this should be `[1980, 1990]`.
+{{% /schema-field %}}
+
+{{% /schema %}}
