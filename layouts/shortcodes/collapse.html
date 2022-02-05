@@ -1,0 +1,7 @@
+{{ $collapseId := printf "collapse-form-%d" .Ordinal -}}
+<button class="btn btn-toggle rounded" data-bs-toggle="collapse" data-bs-target="#{{ $collapseId }}" aria-expanded="false" aria-controls="{{ $collapseId }}">
+  {{ .Get "label" }}
+</button>
+<div class="collapse" id="{{ $collapseId }}">
+  {{ .Inner }}
+</div>

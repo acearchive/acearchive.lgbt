@@ -40,7 +40,9 @@ below to generate a gateway URL from the [CID]({{< ref
 "docs/contributing/uploading-files.md#what-is-a-cid" >}}) of the file and a
 file name.
 
+{{< collapse label="Gateway URL Generator" >}}
 {{< gateway-url >}}
+{{< /collapse >}}
 
 ## Use web archive (WARC) files
 
