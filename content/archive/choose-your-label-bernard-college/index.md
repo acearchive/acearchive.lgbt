@@ -1,8 +1,13 @@
 ---
 version: 1
-title: "\"Choose Your Label\" Bernard College"
-description: "A photo of activists at Bernard College inviting people to choose their own label"
-longDescription: "A photo published in the feminist news journal <em>Off Our Backs</em> depicting activists at Bernard College inviting people to choose their own label"
+title: "\"Choose Your Label\" Barnard College"
+description: >
+    A photo of activists at Barnard College inviting people to choose their own
+    label
+longDescription: >
+    A photo published in the feminist news journal <em>Off Our Backs</em>
+    depicting activists at Barnard College inviting people to choose their own
+    label
 files:
   - name: "Choose Your Label"
     mediaType: "image/png"
@@ -10,7 +15,7 @@ files:
     cid: "bafkreigwewroyf4yokdjayboaxhr3nxrqp3543jwxdoda2zvjm3phtlup4"
   - name: "Choose Your Label (Transcript)"
     mediaType: "text/html"
-    cid: "bafybeigh2kre6dsnauozopcljn73jglklforr4ja7p3fwaporqyg2rypge"
+    cid: "bafybeieklezm6zhdntuz3so4xbg64f3idmfdlxyxxtqwspfb4c3bqzcmwm"
   - name: "Off Our Backs, vol. 3, no. 6"
     mediaType: "application/pdf"
     filename: "off-our-backs-vol-3-no-6.pdf"
