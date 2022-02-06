@@ -9,9 +9,10 @@ module.exports = {
       content: [
         './node_modules/@hyas/doks/layouts/**/*.html',
         './node_modules/@hyas/doks/content/**/*.md',
+        './node_modules/bootstrap/js/src/collapse.js',
         './layouts/**/*.html',
         './content/**/*.md',
-        './node_modules/bootstrap/js/src/collapse.js',
+        './assets/js/*.js',
       ],
       safelist: [
         'lazyloaded',
