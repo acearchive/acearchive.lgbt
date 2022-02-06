@@ -7,7 +7,7 @@ description: >
 longDescription: >
     A photo published in the feminist news journal <em>Off Our Backs</em>
     depicting activists at Barnard College inviting people to choose their own
-    label
+    label, with "asexual" as one of the options
 files:
   - name: "Photo"
     mediaType: "image/png"
