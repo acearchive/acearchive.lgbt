@@ -4,14 +4,13 @@ title: "<em>The Asexual Manifesto</em>"
 description: >
     A paper by the Asexual Caucus of the New York Radical Feminists
 files:
-  - name: "The Asexual Manifesto"
+  - name: "Digital Scan"
     mediaType: "application/pdf"
     filename: "the-asexual-manifesto.pdf"
     cid: "bafybeihsf4562gmmyoya7eh5buxv65lqcdoil3wsi5jf5fceskap7yzooi"
-  - name: "The Asexual Manifesto (Transcript)"
+  - name: "Transcript"
     mediaType: "text/html"
-    filename: "the-asexual-manifesto-transcript.html"
-    cid: "bafkreie5hknsonewqxuyf6vzlauhn2qwm2og5yjcqrltv5yumyqdvdm4sm"
+    cid: "bafybeibdm74wtntjb33svayx32kamanf4ppqameuikz4okj4ua7tmmrp3a"
 links:
   - name: "Internet Archive"
     url: "https://archive.org/details/asexualmanifestolisaorlando"

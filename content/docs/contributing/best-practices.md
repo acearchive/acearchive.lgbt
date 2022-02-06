@@ -21,6 +21,19 @@ digital scan of a physical document), include a transcript where possible. When
 adding a transcript as a separate file, make sure it's clear which files are
 transcripts and what they're transcripts of.
 
+Plain HTML documents using semantic elements where appropriate are a great
+choice for creating accessible transcripts. To improve readability for users
+who use screens, you can include [this
+CSS](https://dweb.link/ipfs/bafkreieqqohzznbhxjc4goxdrz45dnhpbn7ydm2wvy3bd44qth5u32na4m/?filename=transcript.css),
+which is simple, readable, and provides both a light and dark theme based on
+the user's system preference. To use this style sheet, add a `transcript-body`
+class to the container of your transcript.
+
+{{< alert icon="👉" >}}
+Respecting the user's light/dark theme preference is important for
+accessibility.
+{{< /alert >}}
+
 ## Include translations where available
 
 If the content is written in a language other than English, include both the
