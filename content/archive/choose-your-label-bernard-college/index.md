@@ -9,11 +9,11 @@ longDescription: >
     depicting activists at Barnard College inviting people to choose their own
     label
 files:
-  - name: "Choose Your Label"
+  - name: "Photo"
     mediaType: "image/png"
     filename: "choose-your-label.png"
     cid: "bafkreigwewroyf4yokdjayboaxhr3nxrqp3543jwxdoda2zvjm3phtlup4"
-  - name: "Choose Your Label (Transcript)"
+  - name: "Article Transcript"
     mediaType: "text/html"
     cid: "bafybeieklezm6zhdntuz3so4xbg64f3idmfdlxyxxtqwspfb4c3bqzcmwm"
   - name: "Off Our Backs, vol. 3, no. 6"
