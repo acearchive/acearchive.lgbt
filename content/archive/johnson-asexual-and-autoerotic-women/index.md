@@ -12,7 +12,7 @@ files:
     cid: "bafybeiddkkdrgrue73tdh5alepcqhao6h3t3xrsfn3nvxucmeond23cj2u"
   - name: "Transcript"
     mediaType: "text/html"
-    cid: "bafybeib5k7kzgcbr2o7ttpj5w7kcy57yhgnymuobgqogcc5fs2jysc2b5m"
+    cid: "bafybeibhcitrv2mv3yzfgo7vrbgczksgpmorw5di5j2a26w4wvic2hthim"
   - name: "The Sexually Oppressed (Citation)"
     filename: "the-sexually-oppressed.bib"
     cid: "bafkreibi5rtpoimxvevnyif7f5bxx43wbas37egewb544oirds42jm3b44"

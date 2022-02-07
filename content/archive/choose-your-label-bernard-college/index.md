@@ -15,7 +15,7 @@ files:
     cid: "bafkreigwewroyf4yokdjayboaxhr3nxrqp3543jwxdoda2zvjm3phtlup4"
   - name: "Article Transcript"
     mediaType: "text/html"
-    cid: "bafybeieklezm6zhdntuz3so4xbg64f3idmfdlxyxxtqwspfb4c3bqzcmwm"
+    cid: "bafybeigmqrlflt4tle4od7rizm6n5rzpk4lcppnkmohdpw2x4yjgsbij3u"
   - name: "Off Our Backs, vol. 3, no. 6"
     mediaType: "application/pdf"
     filename: "off-our-backs-vol-3-no-6.pdf"

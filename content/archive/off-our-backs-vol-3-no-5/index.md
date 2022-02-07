@@ -17,7 +17,7 @@ files:
     cid: "bafybeigjat5oubirj6wjlvqak5enfk4pxa2rg77wvtgguayio5oogm6ipq"
   - name: "Your Own Label (Transcript)"
     mediaType: "text/html"
-    cid: "bafybeibhwfuaywx5xljbwlfnrrxtgpsuv6hqexj52w7x25vjhg2rg5z4jm"
+    cid: "bafybeih36mitf6i5aq4yvzbyvqgqh7f72wmrwtipy4yaisr6t7isz3wyhi"
   - name: "Citation"
     filename: "off-our-backs-vol-3-no-5.bib"
     cid: "bafkreig36eyqaay6ojfenqusd67nlxy4potkbonmd4d4to4aetupzdcigm"
