@@ -1,0 +1,19 @@
+{{ $htmlTemplate := resources.Get "transcript.html" -}}
+{{ $cssTemplate := resources.Get "transcript.css" -}}
+<div class="transcript-template-download d-flex justify-content-center">
+  <div class="card flex-grow-1">
+    <div class="card-header">Download transcript template</div>
+    <div class="card-body">
+      <div class="d-flex justify-content-evenly">
+        <div>
+          <label class="d-block mb-1" for="#transcript-html-download-{{ .Ordinal }}">HTML</label>
+          <a id="transcript-html-download-{{ .Ordinal }}" class="btn btn-primary" download="index.html" href="{{ $htmlTemplate.RelPermalink }}">Download</a>
+        </div>
+        <div>
+          <label class="d-block mb-1" for="#transcript-css-download-{{ .Ordinal }}">CSS</label>
+          <a id="transcript-css-download-{{ .Ordinal }}" class="btn btn-primary" download="transcript.css" href="{{ $cssTemplate.RelPermalink }}">Download</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

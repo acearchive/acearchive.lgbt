@@ -1,0 +1,9 @@
+.transcript-template-download > .card {
+    max-width: 25em;
+}
+
+.transcript-template-download label {
+    @extend .text-muted;
+    font-size: $font-size-base * .875;
+    text-align: center;
+}
