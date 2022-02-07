@@ -1,0 +1,5 @@
+{{ $assetFile := resources.Get (.Get "file") -}}
+<div class="download-button">
+  <label class="d-block mb-1" for="#download-button-{{ .Ordinal }}">{{ .Get "label" }}</label>
+  <a id="download-button-{{ .Ordinal }}" class="btn btn-primary" download="{{ .Get "filename" }}" href="{{ $assetFile.RelPermalink }}">Download</a>
+</div>

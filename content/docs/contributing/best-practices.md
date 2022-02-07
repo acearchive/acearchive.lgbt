@@ -26,7 +26,10 @@ choice for creating accessible transcripts. Below are buttons to download CSS
 and a template HTML file you can use for creating transcripts without having to
 worry about styling.
 
-{{< transcript-template >}}
+{{< download-pane title="Download transcript template" >}}
+{{< download-button file="transcript.html" filename="index.html" label="HTML" >}}
+{{< download-button file="transcript.css" filename="transcript.css" label="CSS" >}}
+{{< /download-pane >}}
 
 ## Include translations where available
 
