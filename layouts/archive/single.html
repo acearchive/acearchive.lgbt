@@ -40,10 +40,8 @@
         <ul>
         {{- range .Params.identities }}
           <li>
-            <div class="d-flex flex-nowrap">
-              <a href="{{ "/categories/identities/" | relURL }}{{ . | urlize }}/">{{ . | title }}</a>
-              <span class="badge bg-light text-dark fw-normal ms-2">{{ . | urlize | $taxonomy.Count }}</span>
-            </div>
+            <a href="{{ "/categories/identities/" | relURL }}{{ . | urlize }}/">{{ . | title }}</a>
+            <span class="badge bg-light text-dark fw-normal ms-1">{{ . | urlize | $taxonomy.Count }}</span>
           </li>
         {{ end -}}
         </ul>
@@ -56,10 +54,8 @@
         <ul>
         {{- range .Params.decades }}
           <li>
-            <div class="d-flex flex-nowrap">
-              <a href="{{ "/categories/decades/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
-              <span class="badge bg-light text-dark fw-normal ms-2">{{ . | urlize | $taxonomy.Count }}</span>
-            </div>
+            <a href="{{ "/categories/decades/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+            <span class="badge bg-light text-dark fw-normal ms-1">{{ . | urlize | $taxonomy.Count }}</span>
           </li>
         {{ end -}}
         </ul>
@@ -72,10 +68,8 @@
         <ul>
         {{- range .Params.people }}
           <li>
-            <div class="d-flex flex-nowrap">
-              <a href="{{ "/categories/people/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
-              <span class="badge bg-light text-dark fw-normal ms-2">{{ . | urlize | $taxonomy.Count }}</span>
-            </div>
+            <a href="{{ "/categories/people/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+            <span class="badge bg-light text-dark fw-normal ms-1">{{ . | urlize | $taxonomy.Count }}</span>
           </li>
         {{ end -}}
         </ul>
