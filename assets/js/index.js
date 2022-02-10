@@ -86,7 +86,7 @@ function indexArchiveSearch(search, suggestions) {
         document: {
             id: "id",
             store: ["href", "title", "description"],
-            index: ["title", "description", "content", "years", "identities", "people"],
+            index: ["title", "longDescription", "content", "years", "identities", "people"],
         },
     });
 
@@ -100,6 +100,7 @@ function indexArchiveSearch(search, suggestions) {
         href: "{{ .RelPermalink }}",
         title: {{ .Title | jsonify }},
         description: {{ .Params.description | jsonify }},
+        longDescription: {{ .Params.longDescription | jsonify }},
         content: {{ .Content | jsonify }},
         years: rangeYears({{ .Params.fromYear | jsonify }}, {{ .Params.toYear | jsonify }}),
         identities: {{ .Params.identities | jsonify }},
