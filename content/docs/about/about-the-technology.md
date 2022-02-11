@@ -1,6 +1,6 @@
 ---
-title: "About Web3"
-description: "How Ace Archive uses Web3 technologies"
+title: "About the technology"
+description: "About the technologies behind Ace Archive"
 lead: ""
 date: 2022-01-08T09:02:46-05:00
 lastmod: 2022-01-08T09:02:46-05:00
@@ -11,8 +11,8 @@ menu:
 weight: 102
 ---
 
-In this section, we'll explain how Ace Archive uses Web3 technologies to help
-reach its goals.
+In this section, we'll explain how Ace Archive uses distributed web
+technologies to help reach its goals.
 
 ## The problem
 

@@ -25,10 +25,10 @@ When contributing to the archive, instead of providing a URL to the content,
 you provide a CID. When your pull request is merged, the files will be
 downloaded from the IPFS network and uploaded to Ace Archive storage.
 
-However, since most content is not on IPFS yet, you will most likely have to
-host the content on the IPFS network yourself. You only need to host the files
-until your PR is merged and the files can be uploaded to the Ace Archive
-storage.
+However, since most content is not on the IPFS network, you will most likely
+have to host the content on the IPFS network yourself. You only need to host
+the files until your PR is merged and the files can be uploaded to the Ace
+Archive storage.
 
 ## Hosting files
 

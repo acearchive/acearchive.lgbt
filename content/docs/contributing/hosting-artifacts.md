@@ -1,5 +1,5 @@
 ---
-title: "Hosting artifacts on Web3"
+title: "Hosting artifacts"
 description: "How you can help host the archive"
 lead: ""
 date: 2022-01-08T09:34:52-05:00
@@ -11,9 +11,10 @@ menu:
 weight: 207
 ---
 
-We mention in ["About Web3"]({{< ref "docs/about/about-web3.md" >}}) that
-anyone can help host the content on Ace Archive. But how do you actually do
-that? This page will explain how you can help preserve ace history.
+We mention in ["About the technology"]({{< ref
+"docs/about/about-the-technology.md" >}}) that anyone can help host the content
+on Ace Archive. But how do you actually do that? This page will explain how you
+can help preserve ace history.
 
 There are two main ways to host content on the IPFS network. The first is to
 host it yourself from your own local machine, and the second is to use a

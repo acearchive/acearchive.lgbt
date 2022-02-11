@@ -23,4 +23,4 @@ on GitHub.
 
 Another great way to contribute to Ace Archive is to [help host the
 content]({{< ref "docs/contributing/hosting-artifacts.md" >}}), which anyone
-can do thanks to Web3 technologies.
+can do thanks to IPFS.
