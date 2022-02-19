@@ -60,8 +60,8 @@ If you're contributing a web page to the archive, use a file format designed
 for archiving web pages such as WARC or
 [WACZ](https://github.com/webrecorder/wacz-spec). Also include the web archive
 in a browsable format so users don't need to install specialized software to
-browse the archived web page. The section ["Archiving web pages"]({{< ref
-"docs/contributing/web-archives.md" >}}) has instructions on how to do this.
+browse the archived web page. The section {{< article
+"docs/contributing/web-archives.md" >}} has instructions on how to do this.
 
 ## Download videos from sites like YouTube
 

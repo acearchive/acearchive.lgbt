@@ -11,10 +11,9 @@ menu:
 weight: 207
 ---
 
-We mention in ["About the technology"]({{< ref
-"docs/about/about-the-technology.md" >}}) that anyone can help host the content
-on Ace Archive. But how do you actually do that? This page will explain how you
-can help preserve ace history.
+We mention in {{< article "docs/about/about-the-technology.md" >}} that anyone
+can help host the content on Ace Archive. But how do you actually do that? This
+page will explain how you can help preserve ace history.
 
 There are two main ways to host content on the IPFS network. The first is to
 host it yourself from your own local machine, and the second is to use a

@@ -1,0 +1,3 @@
+{{ with (.Get 0 | .Site.GetPage) -}}
+<a href="{{ .Permalink }}">"{{ .Params.title }}"</a>
+{{- end }}
