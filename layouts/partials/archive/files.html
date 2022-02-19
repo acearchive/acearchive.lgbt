@@ -4,7 +4,7 @@
     <th scope="col">File</th>
     <th scope="col">
       <span>CID</span>
-      <a href="https://docs.ipfs.io/concepts/content-addressing/" aria-label="Help">
+      <a href="{{ ref . "docs/contributing/uploading-files.md#what-is-a-cid" }}" aria-label="Help">
         <div class="d-inline-flex align-center" aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -15,7 +15,7 @@
     </th>
   </thead>
   <tbody>
-  {{- range $file := . -}}
+  {{- range $file := .Params.files -}}
   {{- $gatewayUrl := "" -}}
 
   {{- if $file.filename -}}

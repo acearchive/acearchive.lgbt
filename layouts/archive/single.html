@@ -20,7 +20,7 @@
     {{- if .Params.files }}
     <div class="row justify-content-center">
       <div class="col">
-        {{ partial "archive/files.html" .Params.files }}
+        {{ partial "archive/files.html" . }}
       </div>
     </div>
     {{ end -}}
