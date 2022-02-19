@@ -32,9 +32,9 @@ On the distributed web, content is *decentralized*, meaning you're not reliant
 any one centralized authority to host it. With IPFS, the main technology that
 powers Ace Archive, anyone can [help host the archive]({{< ref
 "docs/contributing/hosting-artifacts.md" >}}), even from their own computer.
-Ace Archive uses special [IPFS
-permalinks](https://docs.ipfs.io/concepts/what-is-ipfs) that allow you to
-locate content whether it's hosted on Ace Archive or somewhere else.
+As you'll learn in the next section, Ace Archive uses special permalinks that
+allow you to locate content whether it's hosted on Ace Archive or somewhere
+else.
 
 Even if Ace Archive goes defunct, anyone can help host the contents on the
 distributed web so people can still find it using those same permalinks. And
