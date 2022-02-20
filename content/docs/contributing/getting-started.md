@@ -11,16 +11,23 @@ menu:
 weight: 201
 ---
 
-Anyone can contribute content to the archive by [opening a pull request on
-GitHub]({{< ref "docs/contributing/pull-request.md" >}}). The process is a
-little more involved than contributing to a wiki, but we're working on finding
-new ways to simplify it and make contributing as simple as possible.
+Anyone can help contribute to Ace Archive, and there are various ways to
+contribute for users of all skill levels.
 
-If you have content you would like to suggest be added to the archive, but
-would prefer not to add it yourself, you can [open an
-issue](https://github.com/acearchive/acearchive.lgbt/issues/new?labels=artifact&template=artifact.yml)
-on GitHub.
+The simplest way to contribute is to [suggest content to be added to the
+archive](https://github.com/acearchive/acearchive.lgbt/issues/new?labels=artifact&template=artifact.yml).
+All you have to do is fill out a form and answer a few questions. This requires
+a GitHub account, which is free.
+
+If you're willing to get your hands a little dirty, you can also [add content
+to the archive yourself]({{< ref "docs/contributing/pull-request.md" >}}). The
+process is somewhat more technical than contributing to a wiki, but we have
+documentation to walk you through it. This also requires a GitHub account.
 
 Another great way to contribute to Ace Archive is to [help host the
-content]({{< ref "docs/contributing/hosting-artifacts.md" >}}), which anyone
-can do thanks to IPFS.
+archive]({{< ref "docs/contributing/hosting-artifacts.md" >}}), which anyone
+can do thanks to the distributed web. The ways you can help host the archive
+range from hosting it from your own computer for free to using a hosting
+provider. If you're a developer, make sure you check out [our
+tooling](https://github.com/acearchive/artifact-action) for working with the
+archive.

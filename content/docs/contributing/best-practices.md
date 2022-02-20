@@ -47,9 +47,9 @@ files can be imported into reference managers like Zotero and help people cite
 the work or find it on the legacy web.
 
 If the work doesn't have a stable home on the legacy web, you may want to
-update the `url` field of the BibTeX file to point to an [IPFS
-gateway](https://docs.ipfs.io/concepts/ipfs-gateway/) URL. You can use the form
-below to generate a gateway URL from the [CID]({{< ref
+update the `url` field of the BibTeX file to point to an [IPFS gateway]({{< ref
+"docs/about/linking-to-content.md" >}}) URL. You can use the form below to
+generate a gateway URL from the [CID]({{< ref
 "docs/contributing/uploading-files.md#what-is-a-cid" >}}) of the file and a
 file name.
 
