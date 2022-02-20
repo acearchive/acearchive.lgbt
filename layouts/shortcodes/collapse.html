@@ -2,6 +2,6 @@
 <button class="btn btn-toggle rounded" data-bs-toggle="collapse" data-bs-target="#{{ $collapseId }}" aria-expanded="false" aria-controls="{{ $collapseId }}">
   {{ .Get "label" }}
 </button>
-<div class="collapse" id="{{ $collapseId }}">
+<div class="collapse mt-2" id="{{ $collapseId }}">
   {{ .Inner }}
 </div>
