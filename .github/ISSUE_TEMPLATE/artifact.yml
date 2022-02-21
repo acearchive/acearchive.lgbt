@@ -15,8 +15,9 @@ body:
     attributes:
       label: "Context and significance"
       description: >
-        What is the context behind this content? Why is it significant to the
-        aspec community? Why should it be included in the archive?
+        What is the content you're suggesting be added to the archive? Why is
+        it significant to the aspec community? Why should it be included in the
+        archive?
     validations:
       required: true
   - type: textarea
@@ -24,10 +25,14 @@ body:
     attributes:
       label: "Sources"
       description: >
-        Where can we find this content? Please provide URLs. If this content is
-        available in multiple formats (e.g. both a PDF scan and plain text),
-        provide links to both. [Wayback Machine](https://web.archive.org/)
-        links are fine!
+        Where can we find this content? Please provide URLs. In the case of
+        published works, we prefer more authoritative sources like journal
+        databases, libraries, and archives like the Internet Archive, but this
+        can also be as simple as a link to a forum thread or a blog post. If
+        the content isn't accessible or is written in a language other than
+        English, consider whether a transcript or a translation are available.
+        If the content isn't available on the web anymore, [Wayback
+        Machine](https://web.archive.org/) links are fine!
     validations:
       required: true
   - type: input
@@ -44,11 +49,17 @@ body:
       label: "Identities"
       description: >
         List any specific queer identities associated with this content. Is
-        this a blog post about non-binary people? A book about asexuality?
+        this a blog post about non-binary people? A book about aromanticism?
   - type: input
     id: years
     attributes:
       label: "Years"
       description: >
-        When was this content published, written, posted, etc? This can be a
-        range of years.
+        When was this content published/written/posted? This can be a range of
+        years.
+  - type: textarea
+    id: extra
+    attributes:
+      label: "Anything else"
+      description: >
+        Is there anything else you want to mention?
