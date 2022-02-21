@@ -52,15 +52,15 @@
     "instant.page": "^5.1",
     "katex": "^0.13",
     "lazysizes": "^5.3",
-    "markdownlint-cli": "^0.29",
+    "markdownlint-cli": "^0.31.1",
     "mermaid": "^8.13",
     "mime": "^3.0.0",
     "postcss": "^8.3",
     "postcss-cli": "^9.1",
     "purgecss-whitelister": "^2.4",
     "shx": "^0.3.3",
-    "stylelint": "^13.13",
-    "stylelint-config-standard": "^22.0"
+    "stylelint": "^14.5.1",
+    "stylelint-config-standard": "^25.0.0"
   },
   "otherDependencies": {
     "hugo": "0.88.1"
