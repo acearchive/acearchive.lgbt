@@ -105,10 +105,11 @@ Work</em>` syntax.
 {{% /schema-field %}}
 
 {{% schema-field field="description" type="string" optional="false" %}}
-This is a short one-or-two sentence description of the artifact that should
-provide context and explain its significance to the asexual community (i.e. why
-it's in the archive). This is the description that will appear below each
-artifact title in the list of artifacts.
+This is a short, one sentence description of the artifact that should provide
+context and explain its significance to the asexual community (i.e. why it's in
+the archive). This is the description that will appear below each artifact
+title in the list of artifacts. This description should complete the sentence
+"This artifact is..."
 {{% /schema-field %}}
 
 {{% schema-field field="longDescription" type="string" optional="true" %}}
@@ -140,9 +141,11 @@ tool like [mimetype.io](https://mimetype.io/) to look it up.
 {{% /schema-field %}}
 
 {{% schema-field field="files.filename" level="1" type="string" optional="true" %}}
-This is a file name for the file to be used when downloading it, meaning it
-must always be a valid Windows/macOS/Linux file name. Generally kebab-case is
-preferred, and you should always add an appropriate file extension.
+This is a file name to be used when downloading the file, meaning it must
+always be a valid Windows/macOS/Linux file name. Generally kebab-case is
+preferred, and you should always add an appropriate file extension. If the
+content isn't a single file (e.g. it's a web page consisting of multiple HTML
+and CSS files), you should omit this.
 {{% /schema-field %}}
 
 {{% schema-field field="files.cid" level="1" type="string" optional="false" %}}
