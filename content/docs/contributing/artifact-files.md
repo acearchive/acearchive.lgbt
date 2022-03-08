@@ -198,8 +198,9 @@ be omitted.
 {{% /schema-field %}}
 
 {{% schema-field field="decades" type="list of integers" optional="false" %}}
-The list of decades between `fromYear` and `toYear`. For example, if `fromYear`
-is 1980 and `toYear` is 1999, this should be `[1980, 1990]`.
+The list of decades between `fromYear` and `toYear` in which a work was
+published. For example, if `fromYear` is 1980 and `toYear` is 2009, this could
+be `[1980, 1990, 2000]`.
 {{% /schema-field %}}
 
 {{% /schema %}}
