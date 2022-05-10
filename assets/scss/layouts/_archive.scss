@@ -4,7 +4,15 @@
 }
 
 .artifact-links-table {
-    max-width: 30em;
+    max-width: 30rem;
     margin-left: auto;
     margin-right: auto;
+}
+
+@include media-breakpoint-up(sm) {
+    .artifact-links-table .archive-icon {
+        pointer-events: none;
+        position: relative;
+        left: 4rem;
+    }
 }
