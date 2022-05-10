@@ -11,17 +11,13 @@ files:
   - name: "Citation"
     filename: "hirschfeld-sappho-und-sokrates.bib"
     cid: "bafkreiby4jzmo5q5q5ltvx2ie22xv3k4eig5yiaj7tvvtzw7w6ihlokdzi"
-  - name: "Partial English Translation (Browsable Archive)"
-    mediaType: "text/html"
-    cid: "bafybeigvpx5qigftfvm5yrcozoacg74ne5dlibfa7m2vktpzk4yzjjsrre"
-  - name: "Partial English Translation (WACZ Archive)"
-    filename: "sappho-und-sokrates-translation.wacz"
-    cid: "bafybeihfvrsyyvv3rv6kp3ilgb6w2i24tct7akgy7e552et52gcgglrpfm"
 links:
   - name: "University of Chicago Library"
     url: "https://catalog.lib.uchicago.edu/vufind/Record/7797394"
   - name: "Partial English Translation"
     url: "https://www.asexuality.org/en/topic/98639-indirect-mentions-of-asexuality-in-magnus-hirschfelds-books/"
+  - name: "Partial English Translation"
+    url: "https://web.archive.org/web/20220120124921/https://www.asexuality.org/en/topic/98639-indirect-mentions-of-asexuality-in-magnus-hirschfelds-books/"
 people: ["Magnus Hirschfeld"]
 identities: ["asexual"]
 fromYear: 1896

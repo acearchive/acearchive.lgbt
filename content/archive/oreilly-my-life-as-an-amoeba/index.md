@@ -2,13 +2,9 @@
 version: 1
 title: "\"My life as an amoeba\""
 description: "A blog post about coming out as asexual"
-files:
-  - name: "Browsable Archive"
-    mediaType: "text/html"
-    cid: "bafybeidwthef4uadmiwgz2qxjhe7biwysbgah4eh7usclrb7zq72tpedte"
-  - name: "WACZ Archive"
-    filename: "my-life-as-an-amoeba.wacz"
-    cid: "QmSgGQM9uKi9EpKddAfkfUxfRpQwp713arH94d7PEeymTU"
+links:
+  - name: "Blog Post"
+    url: "https://web.archive.org/web/19970626042139/http://dispatches.azstarnet.com/zoe/amoeba.htm"
 people: ["Zoe O'Reilly"]
 identities: ["asexual"]
 fromYear: 1997

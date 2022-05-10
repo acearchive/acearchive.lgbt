@@ -53,8 +53,6 @@ files:
 links:
   - name: "Internet Archive"
     url: "https://archive.org/details/asexualmanifestolisaorlando"
-  - name: "Background and Context"
-    url: "https://asexualagenda.wordpress.com/2019/08/01/lisa-orlando-author-of-the-asexual-manifesto-1972/"
 people: ["Lisa Orlando", "Barbara Getz"]
 identities: ["asexual"]
 fromYear: 1972
@@ -143,7 +141,9 @@ tool like [mimetype.io](https://mimetype.io/) to look it up.
 {{% schema-field field="files.filename" level="1" type="string" optional="true" %}}
 This is a file name to be used when downloading the file, meaning it must
 always be a valid Windows/macOS/Linux file name. This should be kebab-case, and
-it should always include an appropriate file extension.
+it should always include an appropriate file extension. If the file is actually
+a directory containing multiple files (like, say, a web page), you can omit
+this field.
 {{% /schema-field %}}
 
 {{% schema-field field="files.cid" level="1" type="string" optional="false" %}}

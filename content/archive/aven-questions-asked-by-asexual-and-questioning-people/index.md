@@ -1,14 +1,11 @@
 ---
 version: 1
 title: "\"Questions Asked by Asexual and Questioning People\""
-description: "An early version of the AVEN FAQ"
-files:
-  - name: "Browsable Archive"
-    mediaType: "text/html"
-    cid: "Qmehdfy4Fox9FxpvEf6SoESALCXMWTSvXEJ2cM5Gh6DpC8"
-  - name: "WACZ Archive"
-    filename: "questions-asked-by-asexual-and-questioning-people.wacz"
-    cid: "QmRjq2AgwLbghybZr3HPbVJ3axwzs1NQPzm5PGtiLn2PBy"
+description: >
+    An early version of the AVEN FAQ
+links:
+  - name: "Website"
+    url: "https://web.archive.org/web/20030225191733/http://www.asexuality.org:80/bigfaq.htm"
 people: []
 identities: ["asexual"]
 fromYear: 2003

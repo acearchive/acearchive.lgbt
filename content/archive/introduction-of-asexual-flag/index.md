@@ -4,16 +4,31 @@ title: "Introduction of the asexual pride flag"
 description: >
     The asexual pride flag is proposed, designed, voted on, and decided on
     across a series of AVEN forum threads.
-files:
-  - name: "Browsable Archive"
-    mediaType: "text/html"
-    cid: "QmaKfnCJhPAQoSyxqNaDtKSfu6iSM4ViWPkQmnvbHA4Ppx"
-  - name: "WACZ Archive"
-    filename: "introduction-of-the-asexual-pride-flag.wacz"
-    cid: "Qma3jTcrV7ookzXhLge4mrLsTkUhZNV1L1QQzuMYsL3SJ7"
 links:
-  - name: "Background and Context"
-    url: "https://asexualagenda.wordpress.com/2018/02/21/the-ace-flag-a-history-and-celebration/"
+  - name: "Asexual Flag Thread"
+    url: "https://www.asexuality.org/en/topic/51646-asexual-flag-thread/"
+  - name: "Asexual Flag Thread"
+    url: "https://web.archive.org/web/20220328213540/https://www.asexuality.org/en/topic/51646-asexual-flag-thread/"
+  - name: "Discussion 2.0: Asexual Flag"
+    url: "https://www.asexuality.org/en/topic/51825-discussion-20-asexual-flag/"
+  - name: "Discussion 2.0: Asexual Flag"
+    url: "https://web.archive.org/web/20220328213548/https://www.asexuality.org/en/topic/51825-discussion-20-asexual-flag/"
+  - name: "Asexual Flag Voting (First Round)"
+    url: "https://www.asexuality.org/en/topic/51751-asexual-flag-voting-first-round/"
+  - name: "Asexual Flag Voting (First Round)"
+    url: "https://web.archive.org/web/20220328213451/https://www.asexuality.org/en/topic/51751-asexual-flag-voting-first-round/"
+  - name: "Asexual Flag Voting (Second Round)"
+    url: "https://www.asexuality.org/en/topic/52813-asexual-flag-voting-second-round/"
+  - name: "Asexual Flag Voting (Second Round)"
+    url: "https://web.archive.org/web/20220510132816/https://www.asexuality.org/en/topic/52813-asexual-flag-voting-second-round/"
+  - name: "Asexual Flag - Round Three"
+    url: "https://www.asexuality.org/en/topic/53110-asexual-flag-round-three/"
+  - name: "Asexual Flag - Round Three"
+    url: "https://web.archive.org/web/20220328213521/https://www.asexuality.org/en/topic/53110-asexual-flag-round-three/"
+  - name: "Asexual Flag: And the winner is....."
+    url: "https://www.asexuality.org/en/topic/53435-asexual-flag-and-the-winner-is/"
+  - name: "Asexual Flag: And the winner is....."
+    url: "https://web.archive.org/web/20220422192628/https://www.asexuality.org/en/topic/53435-asexual-flag-and-the-winner-is/"
 people: ["bristrek", "standup"]
 identities: ["asexual"]
 fromYear: 2009

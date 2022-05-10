@@ -14,6 +14,8 @@ files:
 links:
   - name: "Journal Page"
     url: "https://doi.org/10.1080/00224490409552235"
+  - name: "Journal Page"
+    url: "https://web.archive.org/web/20220430153700/https://www.tandfonline.com/doi/abs/10.1080/00224490409552235"
 people: ["Anthony Bogaert"]
 identities: ["asexual"]
 fromYear: 2004

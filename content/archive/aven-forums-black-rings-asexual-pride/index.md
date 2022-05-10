@@ -2,16 +2,11 @@
 version: 1
 title: "\"Black rings and other ways to show asexual pride\""
 description: "The tradition of asexuals wearing a black ring is introduced in an AVEN forum thread"
-files:
-  - name: "Browsable Archive"
-    mediaType: "text/html"
-    cid: "bafybeifyxhtfqmkmgi4522lmnfws6ygq2lh4sisajktqxcn7bi4bguezi4"
-  - name: "WACZ Archive"
-    filename: "black-rings-asexual-pride.wacz"
-    cid: "QmVi5RiQTijBnFbJh3fZMaVzoBq9HPBrzPBk3N9yXBtQGi"
 links:
-  - name: "AVEN Forums"
+  - name: "Forum Thread"
     url: "https://www.asexuality.org/en/topic/76607-black-rings-and-other-ways-to-show-asexual-pride/"
+  - name: "Forum Thread"
+    url: "https://web.archive.org/web/20220120151311/https://www.asexuality.org/en/topic/76607-black-rings-and-other-ways-to-show-asexual-pride/"
 people: []
 identities: ["asexual"]
 fromYear: 2005
