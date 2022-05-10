@@ -7,7 +7,7 @@ longDescription: >
     A now-defunct Yahoo Group which was the first major online community for
     asexuals
 files:
-  - name: "Raw Data"
+  - name: "Raw Archive Data"
     mediaType: "application/zip"
     filename: "haven-for-the-human-amoeba.zip"
     cid: "bafybeic2zae6jz6ktycduldkfrgwvih4vnnqmcpr62nyeb3nlob2va6pp4"
