@@ -16,12 +16,12 @@ Fix the footer taking up too much vertical space on large displays when the
 content doesn't push it down.
 */
 
-body.home {
+body:is(.home, .single) {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-.home .footer {
+footer.footer {
     margin-top: auto;
 }
