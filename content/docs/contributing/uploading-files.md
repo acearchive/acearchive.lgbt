@@ -21,7 +21,7 @@ CID allows you to find something no matter where on the IPFS network it's
 stored.  You can read more about CIDs in the [IPFS
 documentation](ipns://docs.ipfs.io/concepts/content-addressing/).
 
-When contributing to the archive, instead of providing a URL to the content,
+When adding files to an artifact, instead of providing a URL to the content,
 you provide a CID. When your pull request is merged, the files will be
 downloaded from the IPFS network and uploaded to Ace Archive storage.
 

@@ -43,37 +43,49 @@ original text and the English translation if both are available.
 
 If the artifact contains a published work, include a citation for it as a
 separate file using a standardized file format like BibTeX/BibLaTeX. These
-files can be imported into reference managers like Zotero and help people cite
-the work or find it on the legacy web.
+files can be imported into reference managers like
+[Zotero](https://www.zotero.org/) and help people cite the work or find it on
+the legacy web.
 
-If the work doesn't have a stable home on the legacy web, you may want to
-update the `url` field of the BibTeX file to point to an [IPFS gateway]({{< ref
-"docs/about/linking-to-content.md" >}}) URL. You can use the form below to
-generate a gateway URL from the [CID]({{< ref
-"docs/contributing/uploading-files.md#what-is-a-cid" >}}) of the file and a
-file name.
+## Include both files and links in artifacts when possible
 
-{{< collapse label="Gateway URL Generator" >}}
-{{< gateway-url >}}
-{{< /collapse >}}
+The two ways to include content in an [artifact file][artifact-file] are
+*files* and *links*.
 
-## Use web archive (WARC) files
+If the content is a file like a PDF, image, or video, include it in the
+artifact as a file and also add a link to where it can be found on the web.
+This ensures that people can always trace where content came from.
 
-If you're contributing a web page to the archive, use a file format designed
-for archiving web pages such as WARC or
-[WACZ](https://github.com/webrecorder/wacz-spec). Also include the web archive
-in a browsable format so users don't need to install specialized software to
-browse the archived web page. The section {{< article
-"docs/contributing/web-archives.md" >}} has instructions on how to do this.
+When possible, make sure you link to reputable, permanent sites like libraries,
+journal databases, or archives like the Internet Archive.
+
+{{< alert icon="👉" >}}
+Some libraries and journal databases will provide a permalink somewhere on the
+page which is different than the URL in your address bar. Always use a
+permalink when one is provided.
+{{< /alert >}}
+
+## Include Wayback links when linking to websites
+
+When a primary source is a website like a blog or forum thread, the easiest way
+to include it in an artifact is to add a link. If the website is no longer
+available on the web, include a [Wayback Machine](https://web.archive.org/)
+link. If the website *is* still available on the web, you should include both a
+regular link and a Wayback link. This ensures that even if the content moves,
+changes, or is taken down, users can still find it.
+
+You can give both the regular link and the Wayback link the same name in the
+[artifact file][artifact-file]; the artifact page on Ace Archive will show
+which is which automatically.
 
 ## Download videos from sites like YouTube
 
 If you want to contribute a video that's hosted on a video sharing platform
-like YouTube, rather than submitting a web archive of the page, download the
+like YouTube, in addition to linking to the source, you should download the
 video directly using a tool like
-[youtube-dl](https://ytdl-org.github.io/youtube-dl/). Contrary to the name,
-youtube-dl supports many sites besides YouTube, and you can find a full list of
-supported sites
+[youtube-dl](https://ytdl-org.github.io/youtube-dl/) and add it to the artifact
+as a file. Contrary to the name, youtube-dl supports many sites besides
+YouTube; you can find a full list of supported sites
 [here](https://github.com/ytdl-org/youtube-dl/blob/master/docs/supportedsites.md).
 
 ## Respect the privacy of individuals
@@ -92,40 +104,12 @@ in the archive, don't add "grey-asexual" or "gray-ace" unless there's a good
 reason (e.g. the author of a work makes a case that they're distinct
 identities).
 
-## Host content on the IPFS network when possible
-
-The two ways to link to content from an [artifact file][artifact-file] are the
-`files` field and the `links` field. The difference is that the `files` field
-is for linking to files hosted on the IPFS network, while the `links` field is
-for linking to websites on the legacy web.
-
-When permitted by copyright, always host content on the IPFS network. This
-helps us ensure that the content sticks around, even if the original site goes
-down.
-
-## Link to the original source of content
-
-When hosting a file on the IPFS network using the `files` field in an [artifact
-file][artifact-file], you should also include a link to the original source of
-the content using the `links` field.  This ensures that people can always trace
-where content came from and still have a way to access it if it's not
-accessible on the IPFS network for whatever reason.
-
-When possible, make sure you link to reputable, permanent sites like libraries,
-journal databases, or archives like the Internet Archive.
-
-{{< alert icon="👉" >}}
-Some libraries and journal databases will provide a permalink somewhere on the
-page which is different than the URL in your address bar. Always use a
-permalink when one is provided.
-{{< /alert >}}
-
 ## Use links to provide context
 
 Because Ace Archive is intended to be an archive of primary sources rather than
 a wiki or encyclopedia, the descriptions in [artifact files][artifact-file]
 should generally be kept brief.  However, if context is required to understand
-an artifact, you can use the `links` field to include a link to an outside
-website that provides the necessary context for the artifact.
+an artifact, you can include a link to an outside website that provides the
+necessary context for the artifact.
 
 [artifact-file]: {{< ref "docs/contributing/artifact-files.md" >}}

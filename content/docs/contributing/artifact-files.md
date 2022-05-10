@@ -12,8 +12,8 @@ weight: 203
 ---
 
 Every artifact in the archive has an *artifact file* associated with it in the
-repository. An artifact file holds metadata about the artifact, including links
-to the files associated with it. All you have to do to add content to the
+repository. An artifact file holds metadata about the artifact, including the
+files and links associated with it. All you have to do to add content to the
 repository is write an artifact file! This section will document the format of
 artifact files and conventions for writing them.
 
@@ -120,8 +120,8 @@ artifact. This field can be omitted, in which case it will just be the same as
 {{% /schema-field %}}
 
 {{% schema-field field="files" type="list of dictionaries" optional="true" %}}
-This section contains a list of references to the files associated with the
-artifact. We'll cover adding files to artifacts [in more detail later]({{< ref
+This section contains a list files associated with the artifact. We'll cover
+adding files to artifacts [in more detail later]({{< ref
 "docs/contributing/uploading-files.md" >}}).
 {{% /schema-field %}}
 
@@ -142,10 +142,8 @@ tool like [mimetype.io](https://mimetype.io/) to look it up.
 
 {{% schema-field field="files.filename" level="1" type="string" optional="true" %}}
 This is a file name to be used when downloading the file, meaning it must
-always be a valid Windows/macOS/Linux file name. Generally kebab-case is
-preferred, and you should always add an appropriate file extension. If the
-content isn't a single file (e.g. it's a web page consisting of multiple HTML
-and CSS files), you should omit this.
+always be a valid Windows/macOS/Linux file name. This should be kebab-case, and
+it should always include an appropriate file extension.
 {{% /schema-field %}}
 
 {{% schema-field field="files.cid" level="1" type="string" optional="false" %}}
@@ -154,10 +152,7 @@ section]({{< ref "docs/contributing/uploading-files.md#what-is-a-cid" >}}).
 {{% /schema-field %}}
 
 {{% schema-field field="links" type="list of dictionaries" optional="true" %}}
-This section contains a list of links to content on the legacy web. Sites
-linked here aren't part of the IPFS network, but it's still useful to be able
-to provide links so people can locate the original source of an artifact or for
-cases where we can't re-host content for copyright reasons.
+This section contains a list of links to web sites.
 {{% /schema-field %}}
 
 {{% schema-field field="links.name" level="1" type="string" optional="false" %}}
