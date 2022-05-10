@@ -12,7 +12,7 @@
 @include media-breakpoint-up(sm) {
     .artifact-links-table .archive-icon {
         pointer-events: none;
-        position: relative;
-        left: 4rem;
+        position: absolute;
+        left: 3rem;
     }
 }
