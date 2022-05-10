@@ -22,4 +22,18 @@ dl.schema-definition {
     > dd.schema-field-2 {
         margin-left: 6em;
     }
+
+    .badge.bg-secondary {
+        background-color: transparent !important;
+        color: $body-color;
+        border: 1px solid $border-color;
+    }
+
+}
+
+[data-dark-mode] dl.schema-definition {
+    .badge.bg-secondary {
+        color: $body-color-dark;
+        border: 1px solid $border-dark;
+    }
 }
