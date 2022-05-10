@@ -14,11 +14,11 @@
     </div>
     <div class="flex-grow-1 d-none d-sm-flex justify-content-between align-items-center text-start">
       <span>{{ .name }}</span>
-      <span>({{ $url.Host }})</span>
+      <span class="link-host">({{ $url.Host }})</span>
     </div>
     <div class="flex-grow-1 d-sm-none text-center">
       <div>{{ .name }}</div>
-      <div>({{ $url.Host }})</div>
+      <div class="link-host">({{ $url.Host }})</div>
     </div>
     {{ if $isArchive -}}
     <div class="position-relative d-flex align-items-center">
