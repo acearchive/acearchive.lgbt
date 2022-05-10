@@ -17,6 +17,8 @@ files:
 links:
   - name: "Zotero Library"
     url: "https://www.zotero.org/groups/950137/asexual_research"
+  - name: "Source Code"
+    url: "https://github.com/acearchive/ipfs-bib"
 people: ["Sennkestra"]
 identities: ["asexual"]
 fromYear: 1977
