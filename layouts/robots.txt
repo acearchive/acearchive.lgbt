@@ -1,7 +1,0 @@
-User-agent: *
-{{ if eq (hugo.Environment) "production" -}}
-Allow: /
-{{ else -}}
-Disallow: /
-{{ end }}
-Sitemap: {{ printf "%s/%s" .Site.Params.seoBaseUrl "sitemap.xml" -}}

@@ -23,15 +23,15 @@
 {{ end -}}
 
 {{ if $.Scratch.Get "paginator" }}
-  <link rel="canonical" href="{{ printf "%s%s" .Site.Params.seoBaseUrl .Paginator.URL }}">
+  <link rel="canonical" href="{{ .Paginator.URL | absURL }}">
   {{ if .Paginator.HasPrev -}}
-    <link rel="prev" href="{{ printf "%s%s" .Site.Params.seoBaseUrl .Paginator.Prev.URL }}">
+    <link rel="prev" href="{{ .Paginator.Prev.URL | absURL }}">
   {{ end -}}
   {{ if .Paginator.HasNext -}}
-    <link rel="next" href="{{ printf "%s%s" .Site.Params.seoBaseUrl .Paginator.Next.URL }}">
+    <link rel="next" href="{{ .Paginator.Next.URL | absURL }}">
   {{ end -}}
 {{ else  -}}
-  <link rel="canonical" href="{{ printf "%s%s" .Site.Params.seoBaseUrl .RelPermalink }}">
+  <link rel="canonical" href="{{ .Permalink }}">
 {{ end -}}
 
 {{ partial "head/opengraph.html" . }}
