@@ -198,4 +198,10 @@ published. For example, if `fromYear` is 1980 and `toYear` is 2009, this could
 be `[1980, 1990, 2000]`.
 {{% /schema-field %}}
 
+{{% schema-field field="aliases" type="list of strings" optional="true" %}}
+If the URL slug of an artifact must change for any reason, you must specify all
+of its previous URL slugs here so that the old links can redirect to the new
+one. For new artifacts, you should omit this.
+{{% /schema-field %}}
+
 {{% /schema %}}
