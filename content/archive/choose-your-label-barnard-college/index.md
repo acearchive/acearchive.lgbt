@@ -30,4 +30,5 @@ people: []
 identities: []
 fromYear: 1973
 decades: [1970]
+aliases: ["choose-your-label-bernard-college"]
 ---
