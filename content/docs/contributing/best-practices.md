@@ -22,17 +22,15 @@ adding a transcript as a separate file, make sure it's clear which files are
 transcripts and what they're transcripts of.
 
 Plain HTML documents using semantic elements where appropriate are a great
-choice for creating accessible transcripts. Below are buttons to download CSS
-and a template HTML file you can use for creating transcripts without having to
-worry about styling. This CSS is simple, readable, and will respect the user's
+choice for creating accessible transcripts. We provide CSS you can use for
+styling plain HTML which is simple, readable, and will respect the user's
 light/dark theme preference.
 
-{{< collapse label="Download CSS" >}}
-{{< download-pane title="Transcript CSS" >}}
-{{< download-button file="transcript.html" filename="index.html" label="HTML" >}}
-{{< download-button file="transcript.css" filename="transcript.css" label="CSS" >}}
-{{< /download-pane >}}
-{{< /collapse >}}
+We provide a template HTML file that links to our CSS to get you started.
+
+{{< transcript-link >}}
+Download the transcript template here.
+{{< /transcript-link >}}
 
 ## Include translations where available
 

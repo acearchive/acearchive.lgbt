@@ -1,0 +1,5 @@
+{{ (resources.Get "assets/transcript.css" | toCSS).Publish -}}
+{{ $compressedOptions := (dict "targetPath" "/assets/transcript.min.css" "outputStyle" "compressed") -}}
+{{ $compressedCss := resources.Get "assets/transcript.css" | toCSS $compressedOptions -}}
+{{ $html := resources.Get "assets/transcript.html" | resources.ExecuteAsTemplate "/assets/transcript.html" $compressedCss -}}
+<a download="transcript.html" href="{{ $html.RelPermalink }}">{{ .Inner }}</a>
