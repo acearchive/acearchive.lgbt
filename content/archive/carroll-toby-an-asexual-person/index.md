@@ -10,7 +10,7 @@ files:
     cid: "bafkreidf5i5jflyx6e4lnk7y2ebrv6yz2ky62rh6vkmiptqvnphgsoxzly"
   - name: "Toby: An Asexual Person (Transcript)"
     mediaType: "text/html"
-    cid: "bafybeielwmaefb3sn2ju4aqzm6jkxdv4isvifhhj3bkmts7f4ola7c3ngq"
+    cid: "bafybeibiedyr57dtyyyt6nrzqgayla7sjd4obamuswi27qc3zard7owegy"
   - name: "Sexuality Now: Embracing Diversity (Citation)"
     filename: "sexuality-now-embracing-diversity.bib"
     cid: "bafkreihtgeuushj4zbd3ur74amf5oq6sv2esgdin44z7el5ci6rzvosh2i"

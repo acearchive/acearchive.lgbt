@@ -10,7 +10,7 @@ files:
     cid: "bafybeihsf4562gmmyoya7eh5buxv65lqcdoil3wsi5jf5fceskap7yzooi"
   - name: "Transcript"
     mediaType: "text/html"
-    cid: "bafybeiakup4b3mjmzw7mjq3ptnv3dqusdebskra2jic73u74nhbizgu3wi"
+    cid: "bafybeib2fu4qf44xiyduvhadog5raukc3ajdnd4qpsavyxaa2umzjeif5y"
 links:
   - name: "Internet Archive"
     url: "https://archive.org/details/asexualmanifestolisaorlando"

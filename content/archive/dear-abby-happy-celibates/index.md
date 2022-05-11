@@ -15,7 +15,7 @@ files:
     cid: "bafkreibekbj4ukysmo4nh5htwwkxnodmntxfd5gh4q2pqrulrm4i7hczii"
   - name: "Transcript"
     mediaType: "text/html"
-    cid: "bafybeicgiwkaivcduee636pneeofmvymxl47injzgxwajtjm3hpkrzumai"
+    cid: "bafybeibq4two6evf6snk325mkhmmoau2t6yuiq56dqzlpntgc2hog363au"
   - name: "Citation"
     filename: "dear-abby-happy-celibates.bib"
     cid: "bafkreic4i33iclomrkrynptgevzukgztnsj54kaatgnaalihynv3aijx2y"

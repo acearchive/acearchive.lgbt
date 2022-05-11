@@ -14,7 +14,7 @@ files:
     cid: "bafybeib5dynu7sfh5gq2enx3b4hwz3wy35zrrfr5i3jh47yeg6uedcieiy"
   - name: "Transcript"
     mediaType: "text/html"
-    cid: "bafybeicvudqow2xhpnjtcwjl5e7qdjxppncgsdetjswacpqu2qwx3d5ao4"
+    cid: "bafybeid5y2klzypxv7flvzlbwj7xzoxmwlrjrkhwvha5k2jrkaqbvbhuu4"
   - name: "Citation"
     filename: "dear-abby-not-looking.bib"
     cid: "bafkreibxj547wp4uxtmp324oz3q34dkaimz43rddkzsrjzzcaw446mgfgm"
