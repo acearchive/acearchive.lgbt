@@ -11,7 +11,7 @@ links:
     url: "https://www.asexuality.org/en/topic/1629-semisexuality/"
   - name: "Forum Thread"
     url: "https://web.archive.org/web/20220127050626/https://www.asexuality.org/en/topic/1629-semisexuality/"
-people: ["AVENguy"]
+people: ["David Jay"]
 identities: ["asexual"]
 fromYear: 2003
 decades: [2000]
