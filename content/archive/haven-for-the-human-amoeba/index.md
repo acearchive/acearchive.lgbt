@@ -16,7 +16,7 @@ links:
     url: "https://hha.acearchive.lgbt"
   - name: "Source Code"
     url: "https://github.com/acearchive/yg-render"
-people: ["TNGirlTech", "Jim Sinclair", "David Jay"]
+people: ["TNGirlTech", "Jim Sinclair", "David Jay", "maxnova100"]
 identities: ["asexual", "aromantic", "antisexual", "intersex", "neuter", "nonsexual"]
 fromYear: 2000
 toYear: 2019
