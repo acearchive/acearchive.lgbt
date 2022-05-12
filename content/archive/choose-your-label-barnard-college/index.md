@@ -15,7 +15,7 @@ files:
     cid: "bafkreigwewroyf4yokdjayboaxhr3nxrqp3543jwxdoda2zvjm3phtlup4"
   - name: "Article Transcript"
     mediaType: "text/html"
-    cid: "bafybeifmsylbotd7r633tvunq6dewwq4mz5rgqvpieqqq7s2t32w54aoli"
+    cid: "bafybeibcqnvnslchlhxwnifrmljf6sskijatbgh6rpkqnjsnmmfz7oatui"
   - name: "Off Our Backs, vol. 3, no. 6"
     mediaType: "application/pdf"
     filename: "off-our-backs-vol-3-no-6.pdf"
@@ -27,7 +27,7 @@ links:
   - name: "JSTOR"
     url: "https://www.jstor.org/stable/community.28041797"
 people: []
-identities: []
+identities: ["asexual", "lesbian"]
 fromYear: 1973
 decades: [1970]
 aliases: ["choose-your-label-bernard-college"]
