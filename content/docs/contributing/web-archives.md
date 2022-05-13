@@ -48,6 +48,12 @@ confirmation prompts or log into sites.
 To host the generated web archive on Ace Archive, include it in the artifact
 file as a file.
 
+{{< alert icon="❗" >}}
+Be very cautious about archiving content behind a login page and think
+carefully about whether it contains any personal information. Files uploaded to
+Ace Archive can never be deleted, even if the links are removed from the site.
+{{< /alert >}}
+
 ## Replaying the web archive
 
 Browsing the contents of a WARC file requires special software. Luckily, there
