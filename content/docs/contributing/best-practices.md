@@ -8,7 +8,7 @@ draft: false
 menu:
   docs:
     parent: "contributing"
-weight: 206
+weight: 205
 ---
 
 This page outlines some best practices to follow when contributing content to
@@ -68,13 +68,20 @@ permalink when one is provided.
 When a primary source is a website like a blog or forum thread, the easiest way
 to include it in an artifact is to add a link. If the website is no longer
 available on the web, include a [Wayback Machine](https://web.archive.org/)
-link. If the website *is* still available on the web, you should include both a
-regular link and a Wayback link. This ensures that even if the content moves,
-changes, or is taken down, users can still find it.
+link.
+
+However, even if the website is still available on the web—if the site is not
+itself an archive or online database like the Internet Archive—you should
+include a Wayback link alongside a regular link. This ensures that even if the
+content moves, changes, or is taken down, users can still find it.
 
 You can give both the regular link and the Wayback link the same name in the
 [artifact file][artifact-file]; the artifact page on Ace Archive will show
-which is which automatically.
+which is the archive link.
+
+If you need to archive a page that the Wayback Machine isn't able to crawl,
+such as a page behind a confirmation prompt or login page, check out {{<
+article "docs/contributing/web-archives.md" >}} for an alternative approach.
 
 ## Download videos from sites like YouTube
 

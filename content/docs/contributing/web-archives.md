@@ -5,54 +5,60 @@ lead: ""
 date: 2022-01-07T21:19:13-05:00
 lastmod: 2022-01-07T21:19:13-05:00
 draft: false
+menu:
+  docs:
+    parent: "contributing"
+weight: 206
 ---
 
-A lot of modern queer history is found on the web—in blogs, forums, and social
-media. Archiving web pages is a different process from archiving a document or
-a photo, and this page will explain how to record and archive pages from web
-sites to Ace Archive.
+We mention in {{< article "docs/contributing/best-practices.md"
+"include-wayback-links-when-linking-to-websites" >}} that whenever an artifact
+includes a link to a website, you should also include a Wayback Machine link.
 
-## The problem
+However, there are some cases where the Wayback Machine isn't able to crawl
+pages, such as if the page is gated behind a confirmation prompt ("confirm
+you're 18 years old to enter") or if the page requires you to log in.
 
-The modern way to record a web page for archival purposes is through
-specialized file formats like WARC and
-[WACZ](https://github.com/webrecorder/wacz-spec). With these formats, however,
-you need a program that can read or "replay" them. The [Wayback
-Machine](https://web.archive.org) is one example of such a program, but it's a
-centralized service that's not build on the distributed web. For Ace Archive,
-we need to use other tools to archive web pages.
+For these cases, there's an alternative approach to including archives of web
+pages in an artifact.
 
-## Tools
+## The solution
 
-To archive a web page, you need two programs: one to record the archive, and
-one to replay it. The [Webrecorder](https://webrecorder.net/) project provides
-solutions for both, and it works well with the distributed model of Ace
-Archive.
+Most software that deals with web archiving uses a standardized file format
+called a [WARC](https://en.wikipedia.org/wiki/Web_ARChive) file to store
+archived web pages. To host a web archive on Ace Archive, you'll need to:
 
-To record a web archive, you can use a tool like
-[ArchiveWeb.page](https://archiveweb.page/) or
-[Conifer](https://conifer.rhizome.org/). Both of these tools allow you to
-browse a web page, record your browsing session, and save the output to a
-WARC/WACZ file. Note that these tools are *not* web crawlers, and aren't
-well-suited to automatically archiving entire websites.
+1. Use specialized software to generate a WARC archive for a website.
+2. Host that WARC file on Ace Archive.
+3. In the artifact, include a link to a different site that allows users to
+   browse the site archived by the WARC file.
 
-Uploading a web archive to Ace Archive isn't enough, however, because you also
-need to provide a way to browse the archive. That's where
-[ReplayWeb.page](https://replayweb.page/) comes in. This tool allows you to
-upload the necessary code to replay a web archive *alongside* the archive, so
-users don't have to rely on a third-party service.
+## Generating a web archive
 
-To use ReplayWeb.page to upload a web archive to Ace Archive, [install the
-browser extension](https://archiveweb.page/en/install/) and follow the
-documentation on [sharing archives with
-IPFS](https://archiveweb.page/en/features/sharing/). Then follow our guide on
-[uploading files to Ace Archive]({{< ref "docs/contributing/uploading-files.md"
->}}).
+There are many tools you can use to generate a web archive. Any tool that can
+output a `.warc` file will work! If the goal is to archive web pages that
+require user interaction (a situation that the Wayback Machine isn't
+well-suited for), a good tool for the job is
+[Conifer](https://conifer.rhizome.org/).
 
-## Pulling content from Wayback
+With this tool, you "record" a browsing session, and any pages you visit in the
+tool will be included in the archive. This allows you to do things like bypass
+confirmation prompts or log into sites.
 
-If you need to archive content that's only available on the Wayback Machine,
-make sure you use [Conifer](https://conifer.rhizome.org/). It has builtin
-support for archiving content from the Wayback Machine, and will do things like
-remove the banner Wayback shows the top of the screen and translate URLs from
-Wayback URLs to the original URLs.
+To host the generated web archive on Ace Archive, include it in the artifact
+file as a file.
+
+## Replaying the web archive
+
+Browsing the contents of a WARC file requires special software. Luckily, there
+is a tool called [ReplayWeb.page](https://replayweb.page/) which can pull the
+WARC from Ace Archive and allow users to browse its contents without
+downloading any software. Whenever you add a WARC file to an artifact, you
+should also include a link to this tool.
+
+In the form below, enter the CID of the WARC file, a file name for the file
+(which must end in `.warc`), and the URL of the archived web page you want
+users to land on, and it will generate the URL you should include in the
+artifact file.
+
+{{< replayweb-url >}}
