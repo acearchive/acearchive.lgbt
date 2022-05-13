@@ -64,8 +64,8 @@
 {{ $clipboardCopyButton := resources.Get "js/clipboard-copy-button.js" | js.Build -}}
 {{ $slice := $slice | append $clipboardCopyButton -}}
 
-{{ $gatewayUrlInput := resources.Get "js/gateway-url.js" | js.Build -}}
-{{ $slice := $slice | append $gatewayUrlInput -}}
+{{ $replaywebUrlInput := resources.Get "js/replayweb-url.js" | js.Build -}}
+{{ $slice := $slice | append $replaywebUrlInput -}}
 
 {{ $fileTypeIconElement := resources.Get "js/file-type-icon.js" | js.Build -}}
 {{ $slice := $slice | append $fileTypeIconElement -}}

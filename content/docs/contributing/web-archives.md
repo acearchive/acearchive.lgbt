@@ -56,9 +56,10 @@ WARC from Ace Archive and allow users to browse its contents without
 downloading any software. Whenever you add a WARC file to an artifact, you
 should also include a link to this tool.
 
-In the form below, enter the CID of the WARC file, a file name for the file
-(which must end in `.warc`), and the URL of the archived web page you want
-users to land on, and it will generate the URL you should include in the
-artifact file.
+In the form below, enter the [CID]({{< ref
+"docs/contributing/uploading-files.md#what-is-a-cid" >}}) of the WARC file, a
+file name for the file (which must end in `.warc`), and the URL of the archived
+web page you want users to land on, and it will generate the URL you should
+include in the artifact file.
 
 {{< replayweb-url >}}

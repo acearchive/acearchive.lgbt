@@ -1,6 +1,6 @@
-const gatewayUrlForms = document.querySelectorAll(".replayweb-url-form")
+const forms = document.querySelectorAll(".replayweb-url-form form")
 
-for (const form of gatewayUrlForms) {
+for (const form of forms) {
     const cidInput = form.querySelector(".cid-input");
     const filenameInput = form.querySelector(".filename-input");
     const urlInput = form.querySelector(".url-input");
