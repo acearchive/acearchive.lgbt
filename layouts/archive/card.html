@@ -9,15 +9,17 @@
       {{ if .Params.people }}<span>•</span>{{ end }}
     {{- end }}
     {{ if .Params.people -}}
-      <ul class="d-inline list-inline">
-      {{- $peopleLen := len .Params.people -}}
-      {{ range $index, $type := .Params.people -}}
-        <li class="list-inline-item">
-          <a class="stretched-link position-relative" href="{{ "/categories/people/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
-          {{- if lt (add $index 1) $peopleLen }},{{ end -}}
-        </li>
-      {{- end }}
-      </ul>
+      <span>
+        <ul class="d-inline list-inline">
+        {{- $peopleLen := len .Params.people -}}
+        {{ range $index, $type := .Params.people -}}
+          <li class="list-inline-item">
+            <a class="stretched-link position-relative" href="{{ "/categories/people/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+            {{- if lt (add $index 1) $peopleLen }},{{ end -}}
+          </li>
+        {{- end }}
+        </ul>
+      </span>
     {{- end }}
     </div>
     {{ end -}}
