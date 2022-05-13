@@ -156,7 +156,10 @@ This section contains a list of links to web sites.
 {{% /schema-field %}}
 
 {{% schema-field field="links.name" level="1" type="string" optional="false" %}}
-The name of the link. This should indicate what the link points to.
+The name of the link. If the artifact consists of multiple works, this should
+generally include the title of the work so people can disambiguate them. If the
+artifact consists of a single work, it can be something short like “Paper,”
+“Transcript,” “Citation,” etc.
 {{% /schema-field %}}
 
 {{% schema-field field="links.url" level="1" type="string" optional="false" %}}
