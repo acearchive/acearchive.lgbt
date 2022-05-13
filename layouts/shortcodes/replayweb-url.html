@@ -1,22 +1,28 @@
 <div class="replayweb-url-form card">
   <div class="card-body">
     <form>
-      <div class="form-floating mb-3">
-        <input id="replayweb-url-cid-input-{{ .Ordinal }}" class="form-control cid-input">
-        <label class="form-label" for="replayweb-url-cid-input-{{ .Ordinal }}">CID</label>
+      <div class="row mb-2">
+        <label class="col-sm-3 col-form-label" for="replayweb-url-cid-input-{{ .Ordinal }}">CID</label>
+        <div class="col">
+          <input id="replayweb-url-cid-input-{{ .Ordinal }}" class="form-control cid-input" placeholder="bafkreiabz4zbkhaovm7cuchfka53bmzzgm5ebvohprahen6as3qg6wsb7y">
+        </div>
       </div>
 
-      <div class="form-floating mb-3">
-        <input id="replayweb-url-filename-input-{{ .Ordinal }}" class="form-control filename-input">
-        <label class="form-label" for="replayweb-url-filename-input-{{ .Ordinal }}">File Name</label>
+      <div class="row mb-2">
+        <label class="col-sm-3 col-form-label" for="replayweb-url-filename-input-{{ .Ordinal }}">File Name</label>
+        <div class="col">
+          <input id="replayweb-url-filename-input-{{ .Ordinal }}" class="form-control filename-input" placeholder="coining-of-queerplatonic.warc">
+        </div>
       </div>
 
-      <div class="form-floating mb-3">
-        <input id="replayweb-url-url-input-{{ .Ordinal }}" class="form-control url-input">
-        <label class="form-label" for="replayweb-url-url-input-{{ .Ordinal }}">Archived URL</label>
+      <div class="row mb-2">
+        <label class="col-sm-3 col-form-label" for="replayweb-url-url-input-{{ .Ordinal }}">Archived URL</label>
+        <div class="col">
+          <input id="replayweb-url-url-input-{{ .Ordinal }}" class="form-control url-input" placeholder="https://kaz.dreamwidth.org/238564.html">
+        </div>
       </div>
 
-      <clipboard-copy class="btn btn-primary copy-button">Copy URL</clipboard-copy>
+      <clipboard-copy class="btn btn-primary mt-2 copy-button">Copy URL</clipboard-copy>
 
       <span hidden="true" class="text-muted fs-6 ms-2 copy-confirmed-message">Copied!</span>
     </form>

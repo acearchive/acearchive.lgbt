@@ -97,3 +97,7 @@ $tooltip-color-dark: $body-color;
     }
 }
 
+form label:is(.form-label, .col-form-label) {
+    font-size: $font-size-base;
+    overflow-wrap: normal;
+}
