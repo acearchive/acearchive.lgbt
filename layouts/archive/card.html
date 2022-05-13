@@ -5,7 +5,8 @@
     {{ if or .Params.people .Params.fromYear -}}
     <div class="d-inline-block fs-6 mt-auto">
     {{ if .Params.fromYear -}}
-      <span>{{ partial "archive/year.html" . }}{{- if .Params.people }}•{{ end -}}</span>
+      <span>{{ partial "archive/year.html" . }}</span>
+      {{ if .Params.people }}<span>•</span>{{ end }}
     {{- end }}
     {{ if .Params.people -}}
       <ul class="d-inline list-inline">

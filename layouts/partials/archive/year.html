@@ -1,4 +1,4 @@
-{{ if .Params.toYear -}}
+{{- if .Params.toYear -}}
   {{- if eq .Params.fromYear .Params.toYear -}}
     {{- .Params.fromYear -}}
   {{- else -}}
@@ -6,4 +6,4 @@
   {{- end -}}
 {{- else -}}
   {{- .Params.fromYear -}}
-{{- end }}
+{{- end -}}
