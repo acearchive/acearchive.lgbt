@@ -24,6 +24,9 @@ to the archive yourself]({{< ref "docs/contributing/pull-request.md" >}}). The
 process is somewhat more technical than contributing to a wiki, but we have
 documentation to walk you through it. This also requires a GitHub account.
 
+If you would like to report a bug or make a feature request, you can [open an
+issue](https://github.com/acearchive/acearchive.lgbt/issues/new).
+
 Another great way to contribute to Ace Archive is to [help host the
 archive]({{< ref "docs/contributing/hosting-artifacts.md" >}}), which anyone
 can do thanks to the distributed web. The ways you can help host the archive
