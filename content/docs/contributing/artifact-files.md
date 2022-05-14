@@ -167,18 +167,20 @@ The `https://` URL that the link points to.
 {{% /schema-field %}}
 
 {{% schema-field field="people" type="list of strings" optional="true" %}}
-This is a list of (usually 1-3) people closely associated with the artifact,
-such as the author of a book, the subject of a photo, etc. This is helpful for
+This is a list of (usually 1-4) people closely associated with the artifact,
+such as the author of a book, the subject of a photo, the original poster of a
+forum thread, the person who coined a new term, etc. This is helpful for
 linking together different artifacts which are associated with the same people.
-This list can be empty if the people associated with the artifact aren't clear.
+This can be omitted if the people associated with the artifact aren't clear or
+there were many people involved.
 {{% /schema-field %}}
 
 {{% schema-field field="identities" type="list of strings" optional="true" %}}
 A list of queer identities associated with the artifact. For example, if this
 is a blog post about aromanticism, then "aromantic" should be included in the
 list of identities. The identity should be in adjective form, meaning it can
-complete the sentence, "Artifacts about _ people". This list can be empty if
-the identities associated with the work aren't clear (e.g. it's about queer
+complete the sentence, "Artifacts about _ people". This can be omitted if the
+identities associated with the work aren't clear (e.g. it's about queer
 identities as a whole).
 {{% /schema-field %}}
 
@@ -198,7 +200,8 @@ be omitted.
 {{% schema-field field="decades" type="list of integers" optional="false" %}}
 The list of decades between `fromYear` and `toYear` in which a work was
 published. For example, if `fromYear` is 1980 and `toYear` is 2009, this could
-be `[1980, 1990, 2000]`.
+be `[1980, 1990, 2000]`. However, if nothing was published between 1990 and
+2000, then it would be `[1980, 2000]`.
 {{% /schema-field %}}
 
 {{% schema-field field="aliases" type="list of strings" optional="true" %}}
