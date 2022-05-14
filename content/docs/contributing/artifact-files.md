@@ -166,14 +166,14 @@ artifact consists of a single work, it can be something short like “Paper,”
 The `https://` URL that the link points to.
 {{% /schema-field %}}
 
-{{% schema-field field="people" type="list of strings" optional="false" %}}
+{{% schema-field field="people" type="list of strings" optional="true" %}}
 This is a list of (usually 1-3) people closely associated with the artifact,
 such as the author of a book, the subject of a photo, etc. This is helpful for
 linking together different artifacts which are associated with the same people.
 This list can be empty if the people associated with the artifact aren't clear.
 {{% /schema-field %}}
 
-{{% schema-field field="identities" type="list of strings" optional="false" %}}
+{{% schema-field field="identities" type="list of strings" optional="true" %}}
 A list of queer identities associated with the artifact. For example, if this
 is a blog post about aromanticism, then "aromantic" should be included in the
 list of identities. The identity should be in adjective form, meaning it can
