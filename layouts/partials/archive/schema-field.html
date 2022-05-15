@@ -1,0 +1,18 @@
+{{- $root := . -}}
+<dt class="field-level-{{ default 0 .level }}">
+  <code>{{ .name }}</code>
+  <span class="badge rounded-pill bg-primary ms-1">{{ .typeLabel }}</span>
+  {{- if not .required }}
+  <span class="badge rounded-pill bg-secondary ms-1">optional</span>
+  {{ end -}}
+</dt>
+<dd class="field-level-{{ default 0 .level }}">
+  {{ .description | markdownify }}
+</dd>
+{{ range $key := .fields -}}
+
+{{- $field := index $root.definitions $key -}}
+
+{{ partial "archive/schema-field" $field }}
+
+{{- end }}
