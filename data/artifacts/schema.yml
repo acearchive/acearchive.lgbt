@@ -1,0 +1,186 @@
+fields:
+  - "version"
+  - "title"
+  - "description"
+  - "longDescription"
+  - "files" 
+  - "files.name" 
+  - "files.mediaType" 
+  - "files.filename" 
+  - "files.cid" 
+  - "links" 
+  - "links.name" 
+  - "links.url" 
+  - "people" 
+  - "identities" 
+  - "fromYear" 
+  - "toYear" 
+  - "decades" 
+  - "aliases" 
+definitions:
+  version:
+    name: "Version"
+    type: "integer"
+    required: true
+    description: >
+      Sometimes the format of artifact files changes. This is the version
+      number for the artifact file format. This will be set to the current
+      version when you open a pull request, so you can leave it alone.
+  title:
+    name: "Title"
+    type: "string"
+    required: true
+    description: >
+      This is the title of the artifact. If the artifact represents a
+      creative work (a book, essay, blog post, etc.), this should be the
+      title of that work. If the artifact encompasses multiple works or
+      doesn’t have an obvious title, it can be a short description instead.
+      You should always quote or italicize the titles of works, and you can
+      add italics in an artifact title using HTML `<em>Title of Work</em>`
+      syntax.
+  description:
+    name: "Short Description"
+    type: "string"
+    required: true
+    description: >
+      This is a short, one sentence description of the artifact that should
+      provide context and explain its significance to the queer community (i.e.
+      why it’s in the archive). This description should complete the sentence
+      “This artifact is…”
+  longDescription:
+    name: "Long Description"
+    type: "string"
+    required: false
+    description: >
+      If you want to provide more context than you can fit in the short
+      description, you can optionally provide a longer description that will
+      appear in the page for the artifact. This should also complete the
+      sentence "This artifact is..."
+  files:
+    name: "Files"
+    type: "list of dictionaries"
+    required: false
+    description: >
+      The list files to include in the artifact. For more information about
+      adding files to artifacts, see [the
+      docs](/docs/contributing/uploading-files)
+  files.name:
+    name: "Label"
+    type: "string"
+    required: true
+    level: 1
+    description: >
+      A label for the file. If the artifact consists of multiple creative
+      works, this should generally include the title of the work so people
+      can disambiguate them. If the artifact consists of a single work, it
+      can be something short like "Paper," "Transcript," "Citation," etc.
+  files.mediaType:
+    name: "Media Type"
+    type: "string"
+    required: false
+    level: 1
+    description: >
+      The file type of the file. This should be formatted as a MIME type like
+      `application/pdf` or `image/png`. If you need help figuring out the
+      MIME type of a file, you can use [mimetype.io](https://mimetype.io/) to
+      look it up. If the file is a format that doesn't have a well-known MIME
+      type, you can omit this.
+  files.filename:
+    name: "File Name"
+    type: "string"
+    required: false
+    level: 1
+    description: >
+      A file name to be used when downloading the file. This should use
+      hyphens instead of spaces and should always include an appropriate file
+      extension. If the file is actually a directory containing multiple
+      files, you can omit this.
+  files.cid:
+    name: "CID"
+    type: "string"
+    required: true
+    level: 1
+    description: >
+      This is the CID (content identifier) of the file. To include a file in an
+      artifact, you need to upload it to [Web3.Storage](https://web3.storage),
+      copy the CID it gives you, and paste it here.
+  links:
+    name: "Links"
+    type: "list of dictionaries"
+    required: false
+    description: >
+      A list of links to web sites to include in the artifact.
+  links.name:
+    name: "Label"
+    type: "string"
+    required: true
+    level: 1
+    description: >
+      A label for the link. If the artifact consists of multiple creative
+      works, this should generally include the title of the work so people
+      can disambiguate them. If the artifact consists of a single work, it
+      can be something short like “Paper,” “Transcript,” “Citation,” etc.
+  links.url:
+    name: "URL"
+    type: "string"
+    required: true
+    level: 1
+    description: >
+      The `https://` URL that the link points to.
+  people:
+    name: "People"
+    type: "list of strings"
+    required: false
+    description: >
+      A list of (usually 1-4) people closely associated with the artifact,
+      such as the author of a book, the subject of a photo, the original
+      poster of a forum thread, the person who coined a new term, etc. This
+      is helpful for linking together different artifacts which are
+      associated with the same people. This can be omitted if the people
+      associated with the artifact aren't clear or there were many different
+      people involved.
+  identities:
+    name: "Identities"
+    type: "list of strings"
+    required: false
+    description: >
+      A list of queer identities associated with the artifact. For example,
+      if this is a blog post about aromanticism, then "aromantic" should be
+      included in the list of identities. The identity should be in adjective
+      form, meaning it can complete the sentence, "Artifacts about _ people".
+      This can be omitted if the identities associated with the work aren't
+      clear (e.g. it's about queer identities as a whole).
+  fromYear:
+    name: "Start Year"
+    type: "integer"
+    required: true
+    description: >
+      The year the creative work associated with the artifact was published
+      (or written, posted, etc.). If the artifact encompasses multiple works
+      that were published in different years, this should be the year the
+      first work was published.
+  toYear:
+    name: "End Year"
+    type: "integer"
+    required: false
+    description: >
+      If the artifact encompasses multiple creative works that were published
+      in different years, this should be the year the last work was
+      published. If the works associated with the artifact were only
+      published in one year, this should be omitted.
+  decades:
+    name: "Decades"
+    type: "list of integers"
+    required: true
+    description: >
+      The list of decades in which a creative work associated with the
+      artifact was published. If a work was published in 1980 and another
+      work was published in 2009, this should include 1980 and 2000.
+  aliases:
+    name: "Aliases"
+    type: "list of strings"
+    required: false
+    description: >
+      If the URL slug of an artifact must change for any reason, you must
+      specify all of its previous URL slugs here so that the old links can
+      redirect to the new one. For new artifacts, you should omit this.
