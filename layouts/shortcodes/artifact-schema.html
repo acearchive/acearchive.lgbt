@@ -4,32 +4,7 @@
 
   {{- $field := index $schema.definitions $key -}}
 
-  {{- $levelClass := "schema-field-0" -}}
-  {{- if gt $field.level 0 -}}
-    {{- $levelClass = print "schema-field-" $field.level -}}
-  {{- end -}}
+  {{- partial "archive/schema-field" $field -}}
 
-  {{- with $field.level }}
-  {{- if eq . 0 }}
-  <dt class="schema-field-0">
-  {{- else if eq . 1 }}
-  <dt class="schema-field-1">
-  {{- else if eq . 2 }}
-  <dt class="schema-field-2">
-  {{- else }}
-    {{- errorf "not a support schema field level: %s" . }}
-  {{- end }}
-  {{- else }}
-  <dt class="schema-field-0">
-  {{- end }}
-    <code>{{ $key }}</code>
-    <span class="badge rounded-pill bg-primary ms-1">{{ $field.type }}</span>
-    {{- if not $field.required }}
-    <span class="badge rounded-pill bg-secondary ms-1">optional</span>
-    {{ end -}}
-  </dt>
-  <dd class="{{ $levelClass }}">
-    {{ $field.description | markdownify }}
-  </dd>
   {{- end }}
 </dl>
