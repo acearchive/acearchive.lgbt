@@ -1,7 +1,7 @@
 import showdown from "showdown";
 import { schema } from "@params";
 
-const form = document.querySelector(".artifact-form main form");
+const form = document.querySelector(".new-artifact main form");
 let mdConverter = new showdown.Converter();
 
 const nameToId = (fieldName, fieldItemIndex) => `${fieldName.replace(".", "-")}-${fieldItemIndex}`;
