@@ -2,19 +2,25 @@ import showdown from "showdown";
 import { schema } from "@params";
 
 const form = document.querySelector(".artifact-form main form");
+let mdConverter = new showdown.Converter();
 
 const nameToId = (fieldName) => fieldName.replace(".", "-")
 
-let mdConverter = new showdown.Converter();
-
-const createFieldItem = (field, showHelp) => {
+const createFieldItem = (field, itemsInContainer) => {
   const fieldItem = document.createElement("div");
-  fieldItem.classList.add("field-item", "card", "card-body");
+  fieldItem.classList.add("field-item");
+
+  fieldItem.innerHTML = `
+    <span class="field-item-gutter">#${itemsInContainer + 1}</span>
+    <div class="field-item-body card card-body"></div>
+  `;
+
+  const fieldItemBody = fieldItem.querySelector(".field-item-body");
 
   for (const fieldName of field.fields) {
     const nestedField = field.definitions[fieldName];
     if (!nestedField.form) continue;
-    fieldItem.appendChild(createFormGroup(nestedField, showHelp));
+    fieldItemBody.appendChild(createFormGroup(nestedField, itemsInContainer === 0));
   }
 
   return fieldItem;
@@ -48,9 +54,8 @@ const createFormGroup = (field, showHelp = true) => {
     }
 
     formGroup.querySelector("button.add-field-item").addEventListener("click", () => {
-      const itemContainer = formGroup.querySelector(".field-item-container")
-      const isFirstItemInContainer = itemContainer.childElementCount === 0;
-      itemContainer.appendChild(createFieldItem(field, isFirstItemInContainer));
+      const itemContainer = formGroup.querySelector(".field-item-container");
+      itemContainer.appendChild(createFieldItem(field, itemContainer.childElementCount));
     })
   } else {
     if (showHelp) {
