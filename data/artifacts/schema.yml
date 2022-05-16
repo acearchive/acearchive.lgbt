@@ -18,6 +18,8 @@ definitions:
     typeLabel: "integer"
     inputType: "number"
     required: true
+    form: false
+    placeholder: "1"
     description: >
       Sometimes the format of artifact files changes. This is the version
       number for the artifact file format. This will be set to the current
@@ -28,6 +30,8 @@ definitions:
     typeLabel: "string"
     inputType: "text"
     required: true
+    form: true
+    placeholder: "<em>The Asexual Manifesto</em>"
     description: >
       This is the title of the artifact. If the artifact represents a
       creative work (a book, essay, blog post, etc.), this should be the
@@ -42,6 +46,8 @@ definitions:
     typeLabel: "string"
     inputType: "text"
     required: true
+    form: true
+    placeholder: "A paper by the Asexual Caucus of the New York Radical Feminists"
     description: >
       This is a short, one sentence description of the artifact that should
       provide context and explain its significance to the queer community (i.e.
@@ -53,6 +59,8 @@ definitions:
     typeLabel: "string"
     inputType: "text"
     required: false
+    form: true
+    placeholder: "A paper by the Asexual Caucus of the New York Radical Feminists"
     description: >
       If you want to provide more context than you can fit in the short
       description, you can optionally provide a longer description that will
@@ -64,6 +72,7 @@ definitions:
     singular: "file"
     typeLabel: "list of dictionaries"
     required: false
+    form: true
     description: >
       The list files to include in the artifact. For more information about
       adding files to artifacts, see [the
@@ -76,7 +85,9 @@ definitions:
         typeLabel: "string"
         inputType: "text"
         required: true
+        form: true
         level: 1
+        placeholder: "Digital Scan"
         description: >
           A label for the file. If the artifact consists of multiple creative
           works, this should generally include the title of the work so people
@@ -88,7 +99,9 @@ definitions:
         typeLabel: "string"
         inputType: "text"
         required: false
+        form: true
         level: 1
+        placeholder: "application/pdf"
         description: >
           The file type of the file. This should be formatted as a MIME type like
           `application/pdf` or `image/png`. If you need help figuring out the
@@ -101,7 +114,9 @@ definitions:
         typeLabel: "string"
         inputType: "text"
         required: false
+        form: true
         level: 1
+        placeholder: "the-asexual-manifesto.pdf"
         description: >
           A file name to be used when downloading the file. This should use
           hyphens instead of spaces and should always include an appropriate file
@@ -113,7 +128,9 @@ definitions:
         typeLabel: "string"
         inputType: "text"
         required: true
+        form: true
         level: 1
+        placeholder: "bafybeihsf4562gmmyoya7eh5buxv65lqcdoil3wsi5jf5fceskap7yzooi"
         description: >
           This is the CID (content identifier) of the file. To include a file in an
           artifact, you need to upload it to [Web3.Storage](https://web3.storage),
@@ -124,6 +141,7 @@ definitions:
     singular: "link"
     typeLabel: "list of dictionaries"
     required: false
+    form: true
     fields: ["linksName", "linksUrl"]
     description: >
       A list of links to web sites to include in the artifact.
@@ -135,7 +153,9 @@ definitions:
         typeLabel: "string"
         inputType: "text"
         required: true
+        form: true
         level: 1
+        placeholder: "Internet Archive"
         description: >
           A label for the link. If the artifact consists of multiple creative
           works, this should generally include the title of the work so people
@@ -147,7 +167,9 @@ definitions:
         typeLabel: "string"
         inputType: "text"
         required: true
+        form: true
         level: 1
+        placeholder: "https://archive.org/details/asexualmanifestolisaorlando"
         description: >
           The `https://` URL that the link points to.
   people:
@@ -156,6 +178,8 @@ definitions:
     typeLabel: "list of strings"
     inputType: "chip"
     required: false
+    form: true
+    placeholder: "Lisa Orlando, Barbara Getz"
     description: >
       A list of (usually 1-4) people closely associated with the artifact,
       such as the author of a book, the subject of a photo, the original
@@ -170,6 +194,8 @@ definitions:
     typeLabel: "list of strings"
     inputType: "chip"
     required: false
+    form: true
+    placeholder: "asexual, lesbian"
     description: >
       A list of queer identities associated with the artifact. For example,
       if this is a blog post about aromanticism, then "aromantic" should be
@@ -183,6 +209,8 @@ definitions:
     typeLabel: "integer"
     inputType: "number"
     required: true
+    form: true
+    placeholder: "1972"
     description: >
       The year the creative work associated with the artifact was published
       (or written, posted, etc.). If the artifact encompasses multiple works
@@ -194,6 +222,8 @@ definitions:
     typeLabel: "integer"
     inputType: "number"
     required: false
+    form: true
+    placeholder: "1980"
     description: >
       If the artifact encompasses multiple creative works that were published
       in different years, this should be the year the last work was
@@ -205,6 +235,8 @@ definitions:
     typeLabel: "list of integers"
     inputType: "chip"
     required: true
+    form: true
+    placeholder: "1970, 1980"
     description: >
       The list of decades in which a creative work associated with the
       artifact was published. If a work was published in 1980 and another
@@ -215,6 +247,8 @@ definitions:
     typeLabel: "list of strings"
     inputType: "chip"
     required: false
+    form: false
+    placeholder: "choose-your-label-bernard-college"
     description: >
       If the URL slug of an artifact must change for any reason, you must
       specify all of its previous URL slugs here so that the old links can

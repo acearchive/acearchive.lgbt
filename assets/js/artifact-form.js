@@ -45,11 +45,15 @@ const createFormGroup = (field, showHelp = true) => {
     formGroup.innerHTML = `
       <div id="form-group-${fieldId}" class="mb-3">
         <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
-        <input type="text" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}">
+        <input type="${field.inputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
         <div class="invalid-feedback"></div>
         <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
       </div>
     `
+
+    if (!showHelp) {
+      formGroup.querySelector("input").removeAttribute("placeholder");
+    }
 
     if (field.required) {
       formGroup.querySelector("input").setAttribute("required", "true");
