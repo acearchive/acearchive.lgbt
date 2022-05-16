@@ -6,10 +6,15 @@
   margin-bottom: 0;
 }
 
-.artifact-form form .field-item-container {
-  margin-left: 2rem;
-}
-
 .artifact-form form .field-item-container .field-item {
   margin-bottom: 1rem;
+  display: flex;
+  align-items: start;
+}
+
+.artifact-form form .field-item-container .field-item .field-item-gutter {
+  font-weight: 700;
+  font-size: $font-size-xl;
+  margin-right: 1rem;
+  color: $form-text-color;
 }
