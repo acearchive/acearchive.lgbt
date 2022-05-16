@@ -28,14 +28,24 @@ const createFormGroup = (field, showHelp = true) => {
   formGroup.classList.add("form-group");
 
   if (field.fields && field.fields.length > 0) {
-    formGroup.innerHTML = `
-      <div id="form-group-${fieldId}" class="mb-3">
-        <label for="field-item-container-${fieldId}" class="form-label">${field.label}</label>
-        <div class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
-        <div id="field-item-container-${fieldId}" class="field-item-container"></div>
-        <button class="btn btn-primary btn-sm mt-2 add-field-item" type="button">Add ${field.singular}</button>
-      </div>
-    `
+    if (showHelp) {
+      formGroup.innerHTML = `
+        <div id="form-group-${fieldId}" class="mb-3">
+          <label for="field-item-container-${fieldId}" class="form-label">${field.label}</label>
+          <div class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
+          <div id="field-item-container-${fieldId}" class="field-item-container"></div>
+          <button class="btn btn-primary btn-sm mt-2 add-field-item" type="button">Add ${field.singular}</button>
+        </div>
+      `;
+    } else {
+      formGroup.innerHTML = `
+        <div id="form-group-${fieldId}" class="mb-3">
+          <label for="field-item-container-${fieldId}" class="form-label">${field.label}</label>
+          <div id="field-item-container-${fieldId}" class="field-item-container"></div>
+          <button class="btn btn-primary btn-sm mt-2 add-field-item" type="button">Add ${field.singular}</button>
+        </div>
+      `;
+    }
 
     formGroup.querySelector("button.add-field-item").addEventListener("click", () => {
       const itemContainer = formGroup.querySelector(".field-item-container")
@@ -43,26 +53,32 @@ const createFormGroup = (field, showHelp = true) => {
       itemContainer.appendChild(createFieldItem(field, isFirstItemInContainer));
     })
   } else {
-    formGroup.innerHTML = `
-      <div id="form-group-${fieldId}" class="mb-3">
-        <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
-        <input type="${field.inputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
-        <div class="invalid-feedback"></div>
-        <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
-      </div>
-    `
-
-    if (!showHelp) {
-      formGroup.querySelector("input").removeAttribute("placeholder");
+    if (showHelp) {
+      formGroup.innerHTML = `
+        <div id="form-group-${fieldId}" class="mb-3">
+          <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
+          <input type="${field.inputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
+          <div class="invalid-feedback"></div>
+          <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
+        </div>
+      `
+    } else {
+      formGroup.innerHTML = `
+        <div id="form-group-${fieldId}">
+          <div class="row">
+            <label for="field-input-${fieldId}" class="col-sm-3 col-form-label">${field.label}</label>
+            <div class="col">
+              <input type="${field.inputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
+            </div>
+          </div>
+          <div class="invalid-feedback"></div>
+        </div>
+      `;
     }
 
     if (field.required) {
       formGroup.querySelector("input").setAttribute("required", "true");
     }
-  }
-
-  if (!showHelp) {
-    formGroup.querySelector(".field-help").remove();
   }
 
   return formGroup;
