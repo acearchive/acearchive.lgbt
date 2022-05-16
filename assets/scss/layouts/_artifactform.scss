@@ -29,11 +29,14 @@
 }
 
 .artifact-form form .field-item-container .field-item .field-item-gutter {
-  margin-right: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
   align-items: center;
+  margin-bottom: 0.5rem;
+
+  @include media-breakpoint-up(sm) {
+    margin-right: 1rem;
+    margin-bottom: 0;
+    gap: 0.5rem;
+  }
 }
 
 .artifact-form form .field-item-container .field-item .field-item-gutter .field-item-index {
@@ -44,6 +47,11 @@
 
 .artifact-form form .field-item-container .field-item .field-item-gutter .field-item-action {
   color: $form-text-color;
+
+  @include media-breakpoint-down(sm) {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 .artifact-form form .field-item-container .field-item .field-item-gutter .field-item-action:hover {

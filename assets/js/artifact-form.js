@@ -18,7 +18,7 @@ const createFieldItem = (field, fieldItemIndex) => {
   fieldItem.classList.add("field-item");
 
   fieldItem.innerHTML = `
-    <span class="field-item-gutter">
+    <span class="d-none d-sm-flex field-item-gutter flex-column">
       <span class="field-item-index">#${fieldItemIndex + 1}</span>
       <button type="button" class="field-item-action field-item-delete btn" aria-label="Delete">
         <span aria-hidden="true">
@@ -29,7 +29,20 @@ const createFieldItem = (field, fieldItemIndex) => {
         </span>
       </button>
     </span>
-    <div class="field-item-body card card-body"></div>
+    <div class="card card-body">
+      <span class="d-flex d-sm-none field-item-gutter justify-content-between">
+        <span class="field-item-index">#${fieldItemIndex + 1}</span>
+        <button type="button" class="field-item-action field-item-delete btn" aria-label="Delete">
+          <span aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+            </svg>
+          </span>
+        </button>
+       </span>
+      <div class="field-item-body"></div>
+    </div>
   `;
 
   const fieldItemBody = fieldItem.querySelector(".field-item-body");
@@ -40,17 +53,21 @@ const createFieldItem = (field, fieldItemIndex) => {
     fieldItemBody.appendChild(createFormGroup(nestedField, fieldItemIndex));
   }
 
-  fieldItem.querySelector("button.field-item-delete").addEventListener("click", (e) => {
-    const itemContainer = e.target.closest(".field-item-container");
+  const deleteButtons = fieldItem.querySelectorAll("button.field-item-delete");
 
-    e.target.closest(".field-item").remove();
+  for (const deleteButton of deleteButtons) {
+    deleteButton.addEventListener("click", (e) => {
+      const itemContainer = e.target.closest(".field-item-container");
 
-    for (const [index, fieldItem] of itemContainer.querySelectorAll(".field-item").entries()) {
-      const newFieldItem = createFieldItem(field, index);
-      copyFormGroupInputValues(fieldItem, newFieldItem);
-      itemContainer.replaceChild(newFieldItem, fieldItem);
-    }
-  })
+      e.target.closest(".field-item").remove();
+
+      for (const [index, fieldItem] of itemContainer.querySelectorAll(".field-item").entries()) {
+        const newFieldItem = createFieldItem(field, index);
+        copyFormGroupInputValues(fieldItem, newFieldItem);
+        itemContainer.replaceChild(newFieldItem, fieldItem);
+      }
+    })
+  }
 
   return fieldItem;
 }
