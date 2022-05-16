@@ -5,5 +5,5 @@ date: 2022-05-15T14:37:40-04:00
 lastmod: 2022-05-15T14:37:40-04:00
 draft: false
 images: []
-type: "artifact-form"
+type: "new-artifact"
 ---

@@ -1,63 +1,67 @@
-.artifact-form form .form-group {
-  margin-bottom: 1rem;
-}
+.new-artifact form {
+  .form-group {
+    margin-bottom: 1rem;
+  }
 
-.artifact-form form .form-group .form-button {
-  color: $body-color;
-}
+  .form-group .form-button {
+    color: $body-color;
+  }
 
-.artifact-form form .form-group .form-button:hover {
-  color: $gray-600;
-}
+  .form-group .form-button:hover {
+    color: $gray-600;
+  }
 
-[data-dark-mode] .artifact-form form .form-group .form-button {
-  color: $body-color-dark;
-}
-
-[data-dark-mode] .artifact-form form .form-group .form-button:hover {
-  color: $gray-500;
-}
-
-.artifact-form form .form-group:last-child {
-  margin-bottom: 0;
-}
-
-.artifact-form form .field-item-container .field-item {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: start;
-}
-
-.artifact-form form .field-item-container .field-item .field-item-gutter {
-  align-items: center;
-  margin-bottom: 0.5rem;
-
-  @include media-breakpoint-up(sm) {
-    margin-right: 1rem;
+  .form-group:last-child {
     margin-bottom: 0;
-    gap: 0.5rem;
+  }
+
+  .field-item-container .field-item {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: start;
+  }
+
+  .field-item-container .field-item .field-item-gutter {
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    @include media-breakpoint-up(sm) {
+      margin-right: 1rem;
+      margin-bottom: 0;
+      gap: 0.5rem;
+    }
+  }
+
+  .field-item-container .field-item .field-item-gutter .field-item-index {
+    font-weight: 700;
+    font-size: $font-size-xl;
+    color: $form-text-color;
+  }
+
+  .field-item-container .field-item .field-item-gutter .field-item-action {
+    color: $form-text-color;
+
+    @include media-breakpoint-down(sm) {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  .field-item-container .field-item .field-item-gutter .field-item-action:hover {
+    color: $body-color;
   }
 }
 
-.artifact-form form .field-item-container .field-item .field-item-gutter .field-item-index {
-  font-weight: 700;
-  font-size: $font-size-xl;
-  color: $form-text-color;
-}
-
-.artifact-form form .field-item-container .field-item .field-item-gutter .field-item-action {
-  color: $form-text-color;
-
-  @include media-breakpoint-down(sm) {
-    padding-right: 0;
-    padding-left: 0;
+[data-dark-mode] .new-artifact form {
+  .form-group .form-button {
+    color: $body-color-dark;
   }
-}
 
-.artifact-form form .field-item-container .field-item .field-item-gutter .field-item-action:hover {
-  color: $body-color;
-}
+  .form-group .form-button:hover {
+    color: $gray-500;
+  }
 
-[data-dark-mode] .artifact-form form .field-item-container .field-item .field-item-gutter .field-item-action:hover {
-  color: $body-color-dark;
+  .field-item-container .field-item .field-item-gutter .field-item-action:hover {
+    color: $body-color-dark;
+  }
 }
