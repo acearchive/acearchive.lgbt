@@ -1,21 +1,8 @@
 {{ define "main" }}
-{{- $schema := .Site.Data.artifacts.schema -}}
 <div class="d-flex justify-content-center">
   <main class="col-md-11">
     <h1>{{ .Page.Params.title }}</h1>
     <form class="needs-validation" novalidate>
-      {{ range $key := $schema.fields -}}
-
-      {{- $field := index $schema.definitions $key -}}
-      {{- $id := $field.name | anchorize -}}
-
-      <div id="field-group-{{ $id }}" class="mb-3">
-        <label for="field-input-{{ $id }}" class="form-label">{{ $field.label }}</label>
-        <input type="text" class="form-control" id="field-input-{{ $id }}" aria-describedby="field-help-{{ $id }}"{{ if $field.required }} required{{ end }}>
-        <div class="invalid-feedback"></div>
-        <div id="field-help-{{ $id }}" class="field-help form-text">{{ $field.description | markdownify }}</div>
-      </div>
-      {{- end }}
     </form>
   </main>
 </div>
