@@ -2,6 +2,22 @@
   margin-bottom: 1rem;
 }
 
+.artifact-form form .form-group .form-button {
+  color: $body-color;
+}
+
+.artifact-form form .form-group .form-button:hover {
+  color: $gray-600;
+}
+
+[data-dark-mode] .artifact-form form .form-group .form-button {
+  color: $body-color-dark;
+}
+
+[data-dark-mode] .artifact-form form .form-group .form-button:hover {
+  color: $gray-500;
+}
+
 .artifact-form form .form-group:last-child {
   margin-bottom: 0;
 }
