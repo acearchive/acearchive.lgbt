@@ -61,6 +61,7 @@ definitions:
   files:
     name: "files"
     label: "Files"
+    singular: "file"
     typeLabel: "list of dictionaries"
     required: false
     description: >
@@ -120,6 +121,7 @@ definitions:
   links:
     name: "links"
     label: "Links"
+    singular: "link"
     typeLabel: "list of dictionaries"
     required: false
     fields: ["linksName", "linksUrl"]

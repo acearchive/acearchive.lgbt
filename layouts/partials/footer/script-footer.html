@@ -70,6 +70,12 @@
 {{ $fileTypeIconElement := resources.Get "js/file-type-icon.js" | js.Build -}}
 {{ $slice := $slice | append $fileTypeIconElement -}}
 
+{{ $showdownLib := resources.Get "js/vendor/showdown/dist/showdown.js" | js.Build -}}
+{{ $slice := $slice | append $showdownLib -}}
+
+{{ $artifactForm := resources.Get "js/artifact-form.js" | js.Build (dict "params" (dict "schema" .Site.Data.artifacts.schema)) -}}
+{{ $slice := $slice | append $artifactForm -}}
+
 {{ $mimeLib := resources.Get "js/vendor/mime/index.js" | js.Build -}}
 {{ $slice := $slice | append $mimeLib -}}
 
