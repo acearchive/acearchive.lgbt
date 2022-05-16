@@ -1,36 +1,69 @@
 fields:
+  - "slug"
   - "version"
   - "title"
   - "description"
   - "longDescription"
-  - "files" 
-  - "links" 
-  - "people" 
-  - "identities" 
-  - "fromYear" 
-  - "toYear" 
-  - "decades" 
-  - "aliases" 
+  - "files"
+  - "links"
+  - "people"
+  - "identities"
+  - "fromYear"
+  - "toYear"
+  - "decades"
+  - "aliases"
 definitions:
-  version:
-    name: "version"
-    label: "Version"
-    typeLabel: "integer"
-    inputType: "number"
+  slug:
+    fieldName: "slug"
+    label: "URL slug"
+    typeLabelInDocs: "string"
+    htmlInputType: "text"
     required: true
-    form: false
+    showInFormDocs: true
+    showInFileDocs: false
+    placeholder: "orlando-the-asexual-manifesto"
+    description: |
+      Every artifact in the repository has a URL like:
+
+      <https://acearchive.lgbt/artifact/orlando-the-asexual-manifesto>
+
+      When you add a new artifact, you need to choose a URL slug for it, which is
+      that last part of the path.
+
+      A URL slug should always be lowercase and use hyphens to separate words, and
+      it will generally follow the format `author-title`. If the author has a first
+      and last name (i.e. isn't a handle or username), you can just use the last
+      name. If the title of the work is long, you can use a shortened version of
+      it. If there is no obvious author associated with the work, you can just use
+      the title.
+
+      If the combination of the author and the title of the work is ambiguous,
+      (such as a forum thread where the title of the thread might just be
+      "asexuality"), then you can provide additional context like
+      `context-author-title`. For an AVEN forum thread by "coolasexualperson"
+      called "romance", the URL slug might be
+      `aven-forums-coolasexualperson-romance`.
+  version:
+    fieldName: "version"
+    label: "Version"
+    typeLabelInDocs: "integer"
+    htmlInputType: "number"
+    required: true
+    showInFormDocs: false
+    showInFileDocs: true
     placeholder: "1"
     description: >
       Sometimes the format of artifact files changes. This is the version
       number for the artifact file format. This will be set to the current
       version when you open a pull request, so you can leave it alone.
   title:
-    name: "title"
+    fieldName: "title"
     label: "Title"
-    typeLabel: "string"
-    inputType: "text"
+    typeLabelInDocs: "string"
+    htmlInputType: "text"
     required: true
-    form: true
+    showInFormDocs: true
+    showInFileDocs: true
     placeholder: "<em>The Asexual Manifesto</em>"
     description: >
       This is the title of the artifact. If the artifact represents a
@@ -41,12 +74,13 @@ definitions:
       add italics in an artifact title using HTML `<em>Title of Work</em>`
       syntax.
   description:
-    name: "description"
+    fieldName: "description"
     label: "Short description"
-    typeLabel: "string"
-    inputType: "text"
+    typeLabelInDocs: "string"
+    htmlInputType: "text"
     required: true
-    form: true
+    showInFormDocs: true
+    showInFileDocs: true
     placeholder: "A paper by the Asexual Caucus of the New York Radical Feminists"
     description: >
       This is a short, one sentence description of the artifact that should
@@ -54,12 +88,13 @@ definitions:
       why it’s in the archive). This description should complete the sentence
       “This artifact is…”
   longDescription:
-    name: "longDescription"
+    fieldName: "longDescription"
     label: "Long description"
-    typeLabel: "string"
-    inputType: "text"
+    typeLabelInDocs: "string"
+    htmlInputType: "text"
     required: false
-    form: true
+    showInFormDocs: true
+    showInFileDocs: true
     placeholder: "A paper by the Asexual Caucus of the New York Radical Feminists"
     description: >
       If you want to provide more context than you can fit in the short
@@ -67,12 +102,13 @@ definitions:
       appear in the page for the artifact. This should also complete the
       sentence "This artifact is..."
   files:
-    name: "files"
+    fieldName: "files"
     label: "Files"
-    singular: "file"
-    typeLabel: "list of dictionaries"
+    singularLabel: "file"
+    typeLabelInDocs: "list of dictionaries"
     required: false
-    form: true
+    showInFormDocs: true
+    showInFileDocs: true
     description: >
       The list files to include in the artifact. For more information about
       adding files to artifacts, see [the
@@ -80,13 +116,14 @@ definitions:
     fields: ["name", "mediaType", "filename", "cid"]
     definitions:
       name:
-        name: "files.name"
+        fieldName: "files.name"
         label: "Label"
-        typeLabel: "string"
-        inputType: "text"
+        typeLabelInDocs: "string"
+        htmlInputType: "text"
         required: true
-        form: true
-        level: 1
+        showInFormDocs: true
+        showInFileDocs: true
+        indentLevel: 1
         placeholder: "Digital Scan"
         description: >
           A label for the file. If the artifact consists of multiple creative
@@ -94,13 +131,14 @@ definitions:
           can disambiguate them. If the artifact consists of a single work, it
           can be something short like "Paper," "Transcript," "Citation," etc.
       mediaType:
-        name: "files.mediaType"
+        fieldName: "files.mediaType"
         label: "Media type"
-        typeLabel: "string"
-        inputType: "text"
+        typeLabelInDocs: "string"
+        htmlInputType: "text"
         required: false
-        form: true
-        level: 1
+        showInFormDocs: true
+        showInFileDocs: true
+        indentLevel: 1
         placeholder: "application/pdf"
         description: >
           The file type of the file. This should be formatted as a MIME type like
@@ -109,13 +147,14 @@ definitions:
           look it up. If the file is a format that doesn't have a well-known MIME
           type, you can omit this.
       filename:
-        name: "files.filename"
+        fieldName: "files.filename"
         label: "File name"
-        typeLabel: "string"
-        inputType: "text"
+        typeLabelInDocs: "string"
+        htmlInputType: "text"
         required: false
-        form: true
-        level: 1
+        showInFormDocs: true
+        showInFileDocs: true
+        indentLevel: 1
         placeholder: "the-asexual-manifesto.pdf"
         description: >
           A file name to be used when downloading the file. This should use
@@ -123,38 +162,40 @@ definitions:
           extension. If the file is actually a directory containing multiple
           files, you can omit this.
       cid:
-        name: "files.cid"
+        fieldName: "files.cid"
         label: "CID"
-        typeLabel: "string"
-        inputType: "text"
+        typeLabelInDocs: "string"
+        htmlInputType: "text"
         required: true
-        form: true
-        level: 1
+        showInFormDocs: true
+        showInFileDocs: true
+        indentLevel: 1
         placeholder: "bafybeihsf4562gmmyoya7eh5buxv65lqcdoil3wsi5jf5fceskap7yzooi"
         description: >
           This is the CID (content identifier) of the file. To include a file in an
           artifact, you need to upload it to [Web3.Storage](https://web3.storage),
           copy the CID it gives you, and paste it here.
   links:
-    name: "links"
+    fieldName: "links"
     label: "Links"
-    singular: "link"
-    typeLabel: "list of dictionaries"
+    singularLabel: "link"
+    typeLabelInDocs: "list of dictionaries"
     required: false
-    form: true
-    fields: ["linksName", "linksUrl"]
+    showInFormDocs: true
+    showInFileDocs: true
     description: >
       A list of links to web sites to include in the artifact.
     fields: ["name", "url"]
     definitions:
       name:
-        name: "links.name"
+        fieldName: "links.name"
         label: "Label"
-        typeLabel: "string"
-        inputType: "text"
+        typeLabelInDocs: "string"
+        htmlInputType: "text"
         required: true
-        form: true
-        level: 1
+        showInFormDocs: true
+        showInFileDocs: true
+        indentLevel: 1
         placeholder: "Internet Archive"
         description: >
           A label for the link. If the artifact consists of multiple creative
@@ -162,23 +203,25 @@ definitions:
           can disambiguate them. If the artifact consists of a single work, it
           can be something short like “Paper,” “Transcript,” “Citation,” etc.
       url:
-        name: "links.url"
+        fieldName: "links.url"
         label: "URL"
-        typeLabel: "string"
-        inputType: "text"
+        typeLabelInDocs: "string"
+        htmlInputType: "text"
         required: true
-        form: true
-        level: 1
+        showInFormDocs: true
+        showInFileDocs: true
+        indentLevel: 1
         placeholder: "https://archive.org/details/asexualmanifestolisaorlando"
         description: >
           The `https://` URL that the link points to.
   people:
-    name: "people"
+    fieldName: "people"
     label: "People"
-    typeLabel: "list of strings"
-    inputType: "chip"
+    typeLabelInDocs: "list of strings"
+    htmlInputType: "text"
     required: false
-    form: true
+    showInFormDocs: true
+    showInFileDocs: true
     placeholder: "Lisa Orlando, Barbara Getz"
     description: >
       A list of (usually 1-4) people closely associated with the artifact,
@@ -189,12 +232,13 @@ definitions:
       associated with the artifact aren't clear or there were many different
       people involved.
   identities:
-    name: "identities"
+    fieldName: "identities"
     label: "Identities"
-    typeLabel: "list of strings"
-    inputType: "chip"
+    typeLabelInDocs: "list of strings"
+    htmlInputType: "text"
     required: false
-    form: true
+    showInFormDocs: true
+    showInFileDocs: true
     placeholder: "asexual, lesbian"
     description: >
       A list of queer identities associated with the artifact. For example,
@@ -204,12 +248,13 @@ definitions:
       This can be omitted if the identities associated with the work aren't
       clear (e.g. it's about queer identities as a whole).
   fromYear:
-    name: "fromYear"
+    fieldName: "fromYear"
     label: "Start year"
-    typeLabel: "integer"
-    inputType: "number"
+    typeLabelInDocs: "integer"
+    htmlInputType: "number"
     required: true
-    form: true
+    showInFormDocs: true
+    showInFileDocs: true
     placeholder: "1972"
     description: >
       The year the creative work associated with the artifact was published
@@ -217,12 +262,13 @@ definitions:
       that were published in different years, this should be the year the
       first work was published.
   toYear:
-    name: "toYear"
+    fieldName: "toYear"
     label: "End year"
-    typeLabel: "integer"
-    inputType: "number"
+    typeLabelInDocs: "integer"
+    htmlInputType: "number"
     required: false
-    form: true
+    showInFormDocs: true
+    showInFileDocs: true
     placeholder: "1980"
     description: >
       If the artifact encompasses multiple creative works that were published
@@ -230,24 +276,26 @@ definitions:
       published. If the works associated with the artifact were only
       published in one year, this should be omitted.
   decades:
-    name: "decades"
+    fieldName: "decades"
     label: "Decades"
-    typeLabel: "list of integers"
-    inputType: "chip"
+    typeLabelInDocs: "list of integers"
+    htmlInputType: "text"
     required: true
-    form: true
+    showInFormDocs: true
+    showInFileDocs: true
     placeholder: "1970, 1980"
     description: >
       The list of decades in which a creative work associated with the
       artifact was published. If a work was published in 1980 and another
       work was published in 2009, this should include 1980 and 2000.
   aliases:
-    name: "aliases"
+    fieldName: "aliases"
     label: "Aliases"
-    typeLabel: "list of strings"
-    inputType: "chip"
+    typeLabelInDocs: "list of strings"
+    htmlInputType: "text"
     required: false
-    form: false
+    showInFormDocs: false
+    showInFileDocs: true
     placeholder: "choose-your-label-bernard-college"
     description: >
       If the URL slug of an artifact must change for any reason, you must

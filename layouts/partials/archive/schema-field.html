@@ -1,12 +1,12 @@
 {{- $root := . -}}
-<dt class="field-level-{{ default 0 .level }}">
-  <code>{{ .name }}</code>
-  <span class="badge rounded-pill bg-primary ms-1">{{ .typeLabel }}</span>
+<dt class="field-level-{{ default 0 .indentLevel }}">
+  <code>{{ .fieldName }}</code>
+  <span class="badge rounded-pill bg-primary ms-1">{{ .typeLabelInDocs }}</span>
   {{- if not .required }}
   <span class="badge rounded-pill bg-secondary ms-1">optional</span>
   {{ end -}}
 </dt>
-<dd class="field-level-{{ default 0 .level }}">
+<dd class="field-level-{{ default 0 .indentLevel }}">
   {{ .description | markdownify }}
 </dd>
 {{ range $key := .fields -}}

@@ -62,7 +62,7 @@ decades: [1970]
 
 ## URL slugs
 
-{{% artifact-docs "slugs" %}}
+{{% schema-description "slug" %}}
 
 ## Artifact fields
 

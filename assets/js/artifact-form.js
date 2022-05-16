@@ -49,7 +49,7 @@ const createFieldItem = (field, fieldItemIndex) => {
 
   for (const fieldName of field.fields) {
     const nestedField = field.definitions[fieldName];
-    if (!nestedField.form) continue;
+    if (!nestedField.showInFormDocs) continue;
     fieldItemBody.appendChild(createFormGroup(nestedField, fieldItemIndex));
   }
 
@@ -73,7 +73,7 @@ const createFieldItem = (field, fieldItemIndex) => {
 }
 
 const createFormGroup = (field, fieldItemIndex = 0) => {
-  const fieldId = nameToId(field.name, fieldItemIndex);
+  const fieldId = nameToId(field.fieldName, fieldItemIndex);
   const showHelp = fieldItemIndex === 0;
 
   const formGroup = document.createElement("div");
@@ -92,7 +92,7 @@ const createFormGroup = (field, fieldItemIndex = 0) => {
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
           </svg>
         </span>
-        <span>Add ${field.singular}</span>
+        <span>Add ${field.singularLabel}</span>
       </button>
     `;
 
@@ -108,7 +108,7 @@ const createFormGroup = (field, fieldItemIndex = 0) => {
     if (showHelp) {
       formGroup.innerHTML = `
         <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
-        <input type="${field.inputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
+        <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
         <div class="invalid-feedback"></div>
         <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
       `
@@ -117,7 +117,7 @@ const createFormGroup = (field, fieldItemIndex = 0) => {
         <div class="row">
           <label for="field-input-${fieldId}" class="col-sm-3 col-form-label">${field.label}</label>
           <div class="col">
-            <input type="${field.inputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
+            <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
           </div>
         </div>
         <div class="invalid-feedback"></div>
@@ -135,7 +135,7 @@ const createFormGroup = (field, fieldItemIndex = 0) => {
 if (form) {
   for (const fieldName of schema.fields) {
     const field = schema.definitions[fieldName];
-    if (!field.form) continue;
+    if (!field.showInFormDocs) continue;
     form.appendChild(createFormGroup(field))
   }
 }

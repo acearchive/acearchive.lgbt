@@ -4,7 +4,9 @@
 
   {{- $field := index $schema.definitions $key -}}
 
-  {{- partial "archive/schema-field" $field -}}
+  {{- if $field.showInFileDocs }}
+    {{- partial "archive/schema-field" $field -}}
+  {{- end -}}
 
   {{- end }}
 </dl>
