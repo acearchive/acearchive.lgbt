@@ -4,15 +4,15 @@ import { schema } from "@params";
 const form = document.querySelector(".artifact-form main form");
 let mdConverter = new showdown.Converter();
 
-const nameToId = (fieldName) => fieldName.replace(".", "-")
+const nameToId = (fieldName, fieldItemIndex) => `${fieldName.replace(".", "-")}-${fieldItemIndex}`;
 
-const createFieldItem = (field, itemsInContainer) => {
+const createFieldItem = (field, fieldItemIndex) => {
   const fieldItem = document.createElement("div");
   fieldItem.classList.add("field-item");
 
   fieldItem.innerHTML = `
     <span class="field-item-gutter">
-      <span class="field-item-index">#${itemsInContainer + 1}</span>
+      <span class="field-item-index">#${fieldItemIndex + 1}</span>
       <button type="button" class="field-item-action field-item-delete btn" aria-label="Delete">
         <span aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -30,7 +30,7 @@ const createFieldItem = (field, itemsInContainer) => {
   for (const fieldName of field.fields) {
     const nestedField = field.definitions[fieldName];
     if (!nestedField.form) continue;
-    fieldItemBody.appendChild(createFormGroup(nestedField, itemsInContainer === 0));
+    fieldItemBody.appendChild(createFormGroup(nestedField, fieldItemIndex));
   }
 
   fieldItem.querySelector("button.field-item-delete").addEventListener("click", (e) => {
@@ -46,8 +46,9 @@ const createFieldItem = (field, itemsInContainer) => {
   return fieldItem;
 }
 
-const createFormGroup = (field, showHelp = true) => {
-  const fieldId = nameToId(field.name);
+const createFormGroup = (field, fieldItemIndex = 0) => {
+  const fieldId = nameToId(field.name, fieldItemIndex);
+  const showHelp = fieldItemIndex === 0;
 
   const formGroup = document.createElement("div");
   formGroup.id = `form-group-${fieldId}`;
