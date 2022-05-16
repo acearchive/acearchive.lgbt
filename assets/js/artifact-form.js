@@ -13,6 +13,7 @@ const createFieldItem = (field, showHelp) => {
 
   for (const fieldName of field.fields) {
     const nestedField = field.definitions[fieldName];
+    if (!nestedField.form) continue;
     fieldItem.appendChild(createFormGroup(nestedField, showHelp));
   }
 
@@ -70,6 +71,7 @@ const createFormGroup = (field, showHelp = true) => {
 if (form) {
   for (const fieldName of schema.fields) {
     const field = schema.definitions[fieldName];
+    if (!field.form) continue;
     form.appendChild(createFormGroup(field))
   }
 }
