@@ -18,6 +18,10 @@
     border: 1px solid transparent;
 }
 
+input.form-control::placeholder {
+  color: $gray-500;
+}
+
 .form-control:focus {
     border: 1px solid $primary;
 }
@@ -26,6 +30,10 @@
     background: $body-overlay-dark;
     border: 1px solid transparent;
     color: $gray-300;
+}
+
+[data-dark-mode] input.form-control::placeholder {
+  color: $gray-700;
 }
 
 [data-dark-mode] .form-control:focus {

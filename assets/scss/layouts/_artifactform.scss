@@ -13,8 +13,27 @@
 }
 
 .artifact-form form .field-item-container .field-item .field-item-gutter {
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.artifact-form form .field-item-container .field-item .field-item-gutter .field-item-index {
   font-weight: 700;
   font-size: $font-size-xl;
-  margin-right: 1rem;
   color: $form-text-color;
+}
+
+.artifact-form form .field-item-container .field-item .field-item-gutter .field-item-action {
+  color: $form-text-color;
+}
+
+.artifact-form form .field-item-container .field-item .field-item-gutter .field-item-action:hover {
+  color: $body-color;
+}
+
+[data-dark-mode] .artifact-form form .field-item-container .field-item .field-item-gutter .field-item-action:hover {
+  color: $body-color-dark;
 }
