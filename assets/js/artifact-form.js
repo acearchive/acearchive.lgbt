@@ -6,6 +6,13 @@ let mdConverter = new showdown.Converter();
 
 const nameToId = (fieldName, fieldItemIndex) => `${fieldName.replace(".", "-")}-${fieldItemIndex}`;
 
+const copyFormGroupInputValues = (oldFieldItem, newFieldItem) => {
+  const newFieldInputs = newFieldItem.querySelectorAll(".form-group input");
+  for (const [index, oldFieldInput] of oldFieldItem.querySelectorAll(".form-group input").entries()) {
+    newFieldInputs[index].value = oldFieldInput.value;
+  }
+}
+
 const createFieldItem = (field, fieldItemIndex) => {
   const fieldItem = document.createElement("div");
   fieldItem.classList.add("field-item");
@@ -39,7 +46,9 @@ const createFieldItem = (field, fieldItemIndex) => {
     e.target.closest(".field-item").remove();
 
     for (const [index, fieldItem] of itemContainer.querySelectorAll(".field-item").entries()) {
-      fieldItem.querySelector(".field-item-index").innerHTML = `#${index + 1}`;
+      const newFieldItem = createFieldItem(field, index);
+      copyFormGroupInputValues(fieldItem, newFieldItem);
+      itemContainer.replaceChild(newFieldItem, fieldItem);
     }
   })
 
