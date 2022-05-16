@@ -38,7 +38,7 @@ definitions:
       syntax.
   description:
     name: "description"
-    label: "Short Description"
+    label: "Short description"
     typeLabel: "string"
     inputType: "text"
     required: true
@@ -49,7 +49,7 @@ definitions:
       “This artifact is…”
   longDescription:
     name: "longDescription"
-    label: "Long Description"
+    label: "Long description"
     typeLabel: "string"
     inputType: "text"
     required: false
@@ -73,6 +73,7 @@ definitions:
         name: "files.name"
         label: "Label"
         typeLabel: "string"
+        inputType: "text"
         required: true
         level: 1
         description: >
@@ -82,8 +83,9 @@ definitions:
           can be something short like "Paper," "Transcript," "Citation," etc.
       mediaType:
         name: "files.mediaType"
-        label: "Media Type"
+        label: "Media type"
         typeLabel: "string"
+        inputType: "text"
         required: false
         level: 1
         description: >
@@ -94,8 +96,9 @@ definitions:
           type, you can omit this.
       filename:
         name: "files.filename"
-        label: "File Name"
+        label: "File name"
         typeLabel: "string"
+        inputType: "text"
         required: false
         level: 1
         description: >
@@ -107,6 +110,7 @@ definitions:
         name: "files.cid"
         label: "CID"
         typeLabel: "string"
+        inputType: "text"
         required: true
         level: 1
         description: >
@@ -127,6 +131,7 @@ definitions:
         name: "links.name"
         label: "Label"
         typeLabel: "string"
+        inputType: "text"
         required: true
         level: 1
         description: >
@@ -138,6 +143,7 @@ definitions:
         name: "links.url"
         label: "URL"
         typeLabel: "string"
+        inputType: "text"
         required: true
         level: 1
         description: >
@@ -146,6 +152,7 @@ definitions:
     name: "people"
     label: "People"
     typeLabel: "list of strings"
+    inputType: "chip"
     required: false
     description: >
       A list of (usually 1-4) people closely associated with the artifact,
@@ -159,6 +166,7 @@ definitions:
     name: "identities"
     label: "Identities"
     typeLabel: "list of strings"
+    inputType: "chip"
     required: false
     description: >
       A list of queer identities associated with the artifact. For example,
@@ -169,8 +177,9 @@ definitions:
       clear (e.g. it's about queer identities as a whole).
   fromYear:
     name: "fromYear"
-    label: "Start Year"
+    label: "Start year"
     typeLabel: "integer"
+    inputType: "number"
     required: true
     description: >
       The year the creative work associated with the artifact was published
@@ -179,8 +188,9 @@ definitions:
       first work was published.
   toYear:
     name: "toYear"
-    label: "End Year"
+    label: "End year"
     typeLabel: "integer"
+    inputType: "number"
     required: false
     description: >
       If the artifact encompasses multiple creative works that were published
@@ -191,6 +201,7 @@ definitions:
     name: "decades"
     label: "Decades"
     typeLabel: "list of integers"
+    inputType: "chip"
     required: true
     description: >
       The list of decades in which a creative work associated with the
@@ -200,6 +211,7 @@ definitions:
     name: "aliases"
     label: "Aliases"
     typeLabel: "list of strings"
+    inputType: "chip"
     required: false
     description: >
       If the URL slug of an artifact must change for any reason, you must
