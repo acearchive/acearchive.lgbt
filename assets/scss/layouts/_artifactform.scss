@@ -1,10 +1,12 @@
 .new-artifact form {
+  margin-bottom: 2rem;
+
   .form-group {
     margin-bottom: 1rem;
   }
 
-  .submit-button {
-    margin-bottom: 1rem;
+  .form-group:last-of-type {
+    margin-bottom: 2rem;
   }
 
   .form-group .form-button {
