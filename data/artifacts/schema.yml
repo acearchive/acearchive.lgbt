@@ -112,7 +112,7 @@ definitions:
     description: >
       The list files to include in the artifact. For more information about
       adding files to artifacts, see [the
-      docs](/docs/contributing/uploading-files)
+      docs](/docs/contributing/uploading-files).
     fields: ["name", "mediaType", "filename", "cid"]
     definitions:
       name:

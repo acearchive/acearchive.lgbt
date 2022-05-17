@@ -221,14 +221,15 @@ const exportFormAsYaml = (form) => yaml.dump(getDataForSchema(form), {
 })
 
 const createSubmitButton = (form) => {
-  const submitButton = document.createElement("button");
-  submitButton.classList.add("btn", "btn-primary", "submit-button");
-  submitButton.setAttribute("type", "button")
-  submitButton.innerText = "Submit";
+  const submitButton = document.createElement("span");
+  submitButton.innerHTML = `
+    <button id="artifact-form-submit-button" class="btn btn-primary me-1">Submit</button>
+    <label class="form-text" for="artifact-form-submit-button">Open a pull request on GitHub</label>
+  `;
 
-  submitButton.addEventListener("click", () => {
+  submitButton.querySelector("button").addEventListener("click", () => {
     console.log(exportFormAsYaml(form));
-  })
+  });
 
   return submitButton;
 }
