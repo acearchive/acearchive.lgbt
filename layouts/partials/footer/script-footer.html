@@ -73,6 +73,9 @@
 {{ $showdownLib := resources.Get "js/vendor/showdown/dist/showdown.js" | js.Build -}}
 {{ $slice := $slice | append $showdownLib -}}
 
+{{ $yamlLib := resources.Get "js/vendor/js-yaml/index.js" | js.Build -}}
+{{ $slice := $slice | append $yamlLib -}}
+
 {{ $artifactForm := resources.Get "js/artifact-form.js" | js.Build (dict "params" (dict "schema" .Site.Data.artifacts.schema)) -}}
 {{ $slice := $slice | append $artifactForm -}}
 
