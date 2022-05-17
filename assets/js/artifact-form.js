@@ -1,10 +1,12 @@
 import showdown from "showdown";
 import { schema } from "@params";
 
-const form = document.querySelector(".new-artifact main form");
-let mdConverter = new showdown.Converter();
+const artifactForm = document.querySelector(".new-artifact main form");
+const mdConverter = new showdown.Converter();
 
 const nameToId = (fieldName, fieldItemIndex) => `${fieldName.replace(".", "-")}-${fieldItemIndex}`;
+
+const fieldHasChildren = (field) => field.fields && field.fields.length > 0;
 
 const copyFormGroupInputValues = (oldFieldItem, newFieldItem) => {
   const newFieldInputs = newFieldItem.querySelectorAll(".form-group input");
@@ -16,6 +18,7 @@ const copyFormGroupInputValues = (oldFieldItem, newFieldItem) => {
 const createFieldItem = (field, fieldItemIndex) => {
   const fieldItem = document.createElement("div");
   fieldItem.classList.add("field-item");
+  fieldItem.setAttribute("data-field-name", field.fieldName);
 
   fieldItem.innerHTML = `
     <span class="d-none d-sm-flex field-item-gutter flex-column">
@@ -80,7 +83,7 @@ const createFormGroup = (field, fieldItemIndex = 0) => {
   formGroup.id = `form-group-${fieldId}`;
   formGroup.classList.add("form-group");
 
-  if (field.fields && field.fields.length > 0) {
+  if (fieldHasChildren(field)) {
     formGroup.innerHTML = `
       <label for="field-item-container-${fieldId}" class="form-label">${field.label}</label>
       <div class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
@@ -105,6 +108,8 @@ const createFormGroup = (field, fieldItemIndex = 0) => {
       itemContainer.appendChild(createFieldItem(field, itemContainer.childElementCount));
     })
   } else {
+    formGroup.setAttribute("data-field-name", field.fieldName);
+
     if (showHelp) {
       formGroup.innerHTML = `
         <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
@@ -132,10 +137,67 @@ const createFormGroup = (field, fieldItemIndex = 0) => {
   return formGroup;
 }
 
-if (form) {
+const getInputValueForField = (field, parentElement) => {
+  const mapping = {
+    text: (element) => element.value,
+    number: (element) => parseInt(element.value),
+  };
+
+  const inputElement = parentElement.querySelector(`.form-group[data-field-name="${field.fieldName}"] input`);
+
+  return mapping[field.htmlInputType](inputElement);
+}
+
+const getDataForField = (field, form) => {
+  if (fieldHasChildren(field)) {
+    return Array.from(form.querySelectorAll(`.field-item[data-field-name="${field.fieldName}"]`))
+      .map(
+        fieldItem => Object.entries(field.definitions)
+          .filter(([_, nestedField]) => nestedField.showInFormDocs)
+          .reduce(
+            (fieldItemData, [fieldKey, nestedField]) => ({
+              [fieldKey]: fieldHasChildren(nestedField)
+                ? getDataForField(nestedField, form)
+                : getInputValueForField(nestedField, fieldItem),
+              ...fieldItemData,
+            }),
+            {},
+          )
+      );
+  } else {
+    return getInputValueForField(field, form)
+  }
+}
+
+const getDataForSchema = (form) => Object.entries(schema.definitions)
+  .filter(([_, field]) => field.showInFormDocs)
+  .reduce(
+    (data, [fieldKey, field]) => ({
+      [fieldKey]: getDataForField(field, form),
+      ...data,
+    }),
+    {},
+)
+
+const createSubmitButton = (form) => {
+  const submitButton = document.createElement("button");
+  submitButton.classList.add("btn", "btn-primary", "submit-button");
+  submitButton.setAttribute("type", "button")
+  submitButton.innerText = "Submit";
+
+  submitButton.addEventListener("click", () => {
+    console.log(getDataForSchema(form));
+  })
+
+  return submitButton;
+}
+
+if (artifactForm) {
   for (const fieldName of schema.fields) {
     const field = schema.definitions[fieldName];
     if (!field.showInFormDocs) continue;
-    form.appendChild(createFormGroup(field))
+    artifactForm.appendChild(createFormGroup(field));
   }
+
+  artifactForm.appendChild(createSubmitButton(artifactForm));
 }
