@@ -110,6 +110,9 @@ rel  = "sitemap"
     source = "node_modules/showdown"
     target = "assets/js/vendor/showdown"
   [[module.mounts]]
+    source = "node_modules/js-yaml"
+    target = "assets/js/vendor/js-yaml"
+  [[module.mounts]]
     source = "node_modules/bootstrap"
     target = "assets/js/vendor/bootstrap"
   [[module.mounts]]

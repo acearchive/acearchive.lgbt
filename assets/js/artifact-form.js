@@ -1,4 +1,5 @@
 import showdown from "showdown";
+import yaml from "js-yaml";
 import { schema } from "@params";
 
 const artifactForm = document.querySelector(".new-artifact main form");
@@ -179,6 +180,46 @@ const getDataForSchema = (form) => Object.entries(schema.definitions)
     {},
 )
 
+const groupedFieldKeys = (() => {
+  const keysOfField = (field) => {
+    if (!field.fields || field.fields.length === 0) return [];
+
+    return [
+      field.fields,
+      ...field.fields.map(fieldKey => keysOfField(field.definitions[fieldKey]))
+    ].filter(group => group.length > 0);
+  }
+
+  let fieldKeyGroups;
+
+  return () => {
+    if (fieldKeyGroups) return fieldKeyGroups;
+
+    fieldKeyGroups = keysOfField(schema);
+
+    return fieldKeyGroups;
+  }
+})();
+
+const sortKeysBySchema = (a, b) => {
+  for (const fieldGroup of groupedFieldKeys()) {
+    const indexOfA = fieldGroup.indexOf(a);
+    const indexOfB = fieldGroup.indexOf(b);
+
+    if (indexOfA === -1 || indexOfB === -1) continue;
+
+    return indexOfA > indexOfB ? 1 : indexOfA < indexOfB ? -1 : 0;
+  }
+
+  return 0;
+}
+
+const exportFormAsYaml = (form) => yaml.dump(getDataForSchema(form), {
+  sortKeys: sortKeysBySchema,
+  quotingType: "\"",
+  forceQuotes: true,
+})
+
 const createSubmitButton = (form) => {
   const submitButton = document.createElement("button");
   submitButton.classList.add("btn", "btn-primary", "submit-button");
@@ -186,7 +227,7 @@ const createSubmitButton = (form) => {
   submitButton.innerText = "Submit";
 
   submitButton.addEventListener("click", () => {
-    console.log(getDataForSchema(form));
+    console.log(exportFormAsYaml(form));
   })
 
   return submitButton;
