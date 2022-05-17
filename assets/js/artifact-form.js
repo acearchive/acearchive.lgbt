@@ -144,6 +144,7 @@ const getInputValueForField = (field, parentElement) => {
     number: (element) => parseInt(element.value),
   };
 
+  console.log(parentElement);
   const inputElement = parentElement.querySelector(`.form-group[data-field-name="${field.fieldName}"] input`);
 
   return mapping[field.htmlInputType](inputElement);
@@ -214,21 +215,31 @@ const sortKeysBySchema = (a, b) => {
   return 0;
 }
 
-const exportFormAsYaml = (form) => yaml.dump(getDataForSchema(form), {
+const serializeFormDataToYaml = (data) => yaml.dump(data, {
   sortKeys: sortKeysBySchema,
   quotingType: "\"",
   forceQuotes: true,
 })
 
+const githubPrSubmitUrl = (slug, content) => `https://github.com/acearchive/acearchive.lgbt/new/main/?filename=content/archive/${slug}/index.md&value=${encodeURIComponent(content)}`
+
+const artifactFormSubmitUrl = (form) => {
+  const data = getDataForSchema(form);
+  const urlSlug = data.slug;
+  delete data.slug;
+
+  return githubPrSubmitUrl(urlSlug, serializeFormDataToYaml(data));
+}
+
 const createSubmitButton = (form) => {
   const submitButton = document.createElement("span");
   submitButton.innerHTML = `
-    <button id="artifact-form-submit-button" class="btn btn-primary me-1">Submit</button>
+    <button id="artifact-form-submit-button" class="btn btn-primary me-1" type="button">Submit</button>
     <label class="form-text" for="artifact-form-submit-button">Open a pull request on GitHub</label>
   `;
 
   submitButton.querySelector("button").addEventListener("click", () => {
-    console.log(exportFormAsYaml(form));
+    window.open(artifactFormSubmitUrl(form), "_blank");
   });
 
   return submitButton;
