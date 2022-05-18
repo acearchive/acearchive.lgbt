@@ -9,7 +9,11 @@
     margin-bottom: 2rem;
   }
 
-  .form-group label .required-label {
+  legend.form-label {
+    @extend label.form-label;
+  }
+
+  :is(.form-label, .col-form-label) .required-label {
     color: $red-300;
     margin-left: 0.25rem;
     vertical-align: middle;
