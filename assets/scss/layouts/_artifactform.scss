@@ -9,6 +9,12 @@
     margin-bottom: 2rem;
   }
 
+  .form-group label .required-label {
+    color: $red-300;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+  }
+
   .form-group .form-button {
     color: $body-color;
   }

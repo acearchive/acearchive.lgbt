@@ -131,6 +131,11 @@ const createFormGroup = (field, fieldItemIndex = 0) => {
     }
 
     if (field.required) {
+      const requiredLabel = document.createElement("span");
+      requiredLabel.classList.add("required-label");
+      requiredLabel.innerText = "*";
+
+      formGroup.querySelector("label").appendChild(requiredLabel);
       formGroup.querySelector("input").setAttribute("required", "true");
     }
   }
