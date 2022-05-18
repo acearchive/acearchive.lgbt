@@ -16,10 +16,7 @@ definitions:
   slug:
     fieldName: "slug"
     label: "URL slug"
-    type:
-      labelInDocs: "string"
-      htmlInputType: "text"
-      isArray: false
+    type: "string"
     required: true
     showInFormDocs: true
     showInFileDocs: false
@@ -52,10 +49,7 @@ definitions:
   version:
     fieldName: "version"
     label: "Version"
-    type:
-      labelInDocs: "integer"
-      htmlInputType: "number"
-      isArray: false
+    type: "integer"
     required: true
     showInFormDocs: false
     showInFileDocs: true
@@ -67,10 +61,7 @@ definitions:
   title:
     fieldName: "title"
     label: "Title"
-    type:
-      labelInDocs: "string"
-      htmlInputType: "text"
-      isArray: false
+    type: "string"
     required: true
     showInFormDocs: true
     showInFileDocs: true
@@ -86,10 +77,7 @@ definitions:
   description:
     fieldName: "description"
     label: "Short description"
-    type:
-      labelInDocs: "string"
-      htmlInputType: "text"
-      isArray: false
+    type: "string"
     required: true
     showInFormDocs: true
     showInFileDocs: true
@@ -102,10 +90,7 @@ definitions:
   longDescription:
     fieldName: "longDescription"
     label: "Long description"
-    type:
-      labelInDocs: "string"
-      htmlInputType: "text"
-      isArray: false
+    type: "string"
     required: false
     showInFormDocs: true
     showInFileDocs: true
@@ -119,9 +104,8 @@ definitions:
     fieldName: "files"
     label: "Files"
     singularLabel: "file"
-    type:
-      labelInDocs: "list of dictionaries"
-      isArray: true
+    type: "array"
+    itemType: "object"
     required: false
     showInFormDocs: true
     showInFileDocs: true
@@ -134,10 +118,7 @@ definitions:
       name:
         fieldName: "files.name"
         label: "Label"
-        type:
-          labelInDocs: "string"
-          htmlInputType: "text"
-          isArray: false
+        type: "string"
         required: true
         showInFormDocs: true
         showInFileDocs: true
@@ -151,10 +132,7 @@ definitions:
       mediaType:
         fieldName: "files.mediaType"
         label: "Media type"
-        type:
-          labelInDocs: "string"
-          htmlInputType: "text"
-          isArray: false
+        type: "string"
         required: false
         showInFormDocs: true
         showInFileDocs: true
@@ -173,10 +151,7 @@ definitions:
       filename:
         fieldName: "files.filename"
         label: "File name"
-        type:
-          labelInDocs: "string"
-          htmlInputType: "text"
-          isArray: false
+        type: "string"
         required: false
         showInFormDocs: true
         showInFileDocs: true
@@ -194,10 +169,7 @@ definitions:
       cid:
         fieldName: "files.cid"
         label: "CID"
-        type:
-          labelInDocs: "string"
-          htmlInputType: "text"
-          isArray: false
+        type: "string"
         required: true
         showInFormDocs: true
         showInFileDocs: true
@@ -211,9 +183,8 @@ definitions:
     fieldName: "links"
     label: "Links"
     singularLabel: "link"
-    type:
-      labelInDocs: "list of dictionaries"
-      isArray: true
+    type: "array"
+    itemType: "object"
     required: false
     showInFormDocs: true
     showInFileDocs: true
@@ -224,10 +195,7 @@ definitions:
       name:
         fieldName: "links.name"
         label: "Label"
-        type:
-          labelInDocs: "string"
-          htmlInputType: "text"
-          isArray: false
+        type: "string"
         required: true
         showInFormDocs: true
         showInFileDocs: true
@@ -241,10 +209,7 @@ definitions:
       url:
         fieldName: "links.url"
         label: "URL"
-        type:
-          labelInDocs: "string"
-          htmlInputType: "text"
-          isArray: false
+        type: "string"
         required: true
         showInFormDocs: true
         showInFileDocs: true
@@ -262,10 +227,8 @@ definitions:
   people:
     fieldName: "people"
     label: "People"
-    type:
-      labelInDocs: "list of strings"
-      htmlInputType: "text"
-      isArray: true
+    type: "array"
+    itemType: "string"
     required: false
     showInFormDocs: true
     showInFileDocs: true
@@ -281,10 +244,8 @@ definitions:
   identities:
     fieldName: "identities"
     label: "Identities"
-    type:
-      labelInDocs: "list of strings"
-      htmlInputType: "text"
-      isArray: true
+    type: "array"
+    itemType: "string"
     required: false
     showInFormDocs: true
     showInFileDocs: true
@@ -299,10 +260,7 @@ definitions:
   fromYear:
     fieldName: "fromYear"
     label: "Start year"
-    type:
-      labelInDocs: "integer"
-      htmlInputType: "number"
-      isArray: false
+    type: "integer"
     required: true
     showInFormDocs: true
     showInFileDocs: true
@@ -315,10 +273,7 @@ definitions:
   toYear:
     fieldName: "toYear"
     label: "End year"
-    type:
-      labelInDocs: "integer"
-      htmlInputType: "number"
-      isArray: false
+    type: "integer"
     required: false
     showInFormDocs: true
     showInFileDocs: true
@@ -331,10 +286,8 @@ definitions:
   decades:
     fieldName: "decades"
     label: "Decades"
-    type:
-      labelInDocs: "list of integers"
-      htmlInputType: "text"
-      isArray: true
+    type: "array"
+    itemType: "integer"
     required: true
     showInFormDocs: true
     showInFileDocs: true
@@ -350,10 +303,8 @@ definitions:
   aliases:
     fieldName: "aliases"
     label: "Aliases"
-    type:
-      labelInDocs: "list of strings"
-      htmlInputType: "text"
-      isArray: true
+    type: "array"
+    itemType: "string"
     required: false
     showInFormDocs: false
     showInFileDocs: true

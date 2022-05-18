@@ -1,7 +1,26 @@
 {{- $root := . -}}
+
+{{- $typeLabel := "" -}}
+
+{{- if eq .type "string" -}}
+  {{ $typeLabel = "string" }}
+{{- else if eq .type "integer" -}}
+  {{ $typeLabel = "integer" }}
+{{- else if eq .type "array" -}}
+  {{- if eq .itemType "string" -}}
+    {{ $typeLabel = "list of strings" }}
+  {{- else if eq .itemType "integer" -}}
+    {{ $typeLabel = "list of integers" }}
+  {{- else if eq .itemType "object" -}}
+    {{ $typeLabel = "list of dictionaries" }}
+  {{- end -}}
+{{- else if eq .type "object" -}}
+  {{ $typeLabel = "dictionary" }}
+{{- end -}}
+
 <dt class="field-level-{{ default 0 .indentLevel }}">
   <code>{{ .fieldName }}</code>
-  <span class="badge rounded-pill bg-primary ms-1">{{ .type.labelInDocs }}</span>
+  <span class="badge rounded-pill bg-primary ms-1">{{ $typeLabel }}</span>
   {{- if not .required }}
   <span class="badge rounded-pill bg-secondary ms-1">optional</span>
   {{ end -}}
