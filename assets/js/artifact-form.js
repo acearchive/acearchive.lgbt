@@ -106,8 +106,8 @@ const customErrorMessageForFieldByAttribute = (() => {
 const setValidationMessageBySchema = (field, inputElement) => {
   if (inputElement.validity.valueMissing) {
     inputElement.setCustomValidity("Please fill out this field.");
-  } else if (inputElement.validity.patternMismatch) {
-    inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "pattern"));
+  } else if (inputElement.validity.typeMismatch) {
+    inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "type"));
   } else if (inputElement.validity.rangeUnderflow) {
     inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "min"));
   } else if (inputElement.validity.rangeOverflow) {
@@ -118,6 +118,8 @@ const setValidationMessageBySchema = (field, inputElement) => {
     inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "minlength"));
   } else if (inputElement.validity.tooLong) {
     inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "maxlength"));
+  } else if (inputElement.validity.patternMismatch) {
+    inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "pattern"));
   }
 }
 
