@@ -17,13 +17,14 @@ const copyFormGroupInputValues = (oldFieldItem, newFieldItem) => {
 }
 
 const createFieldItem = (field, fieldItemIndex) => {
-  const fieldItem = document.createElement("div");
+  const fieldItem = document.createElement("fieldset");
   fieldItem.classList.add("field-item");
   fieldItem.setAttribute("data-field-name", field.fieldName);
 
   fieldItem.innerHTML = `
+    <legend class="visually-hidden">#${fieldItemIndex + 1}</legend>
     <span class="d-none d-sm-flex field-item-gutter flex-column">
-      <span class="field-item-index">#${fieldItemIndex + 1}</span>
+      <span class="field-item-index" aria-hidden="true">#${fieldItemIndex + 1}</span>
       <button type="button" class="field-item-action field-item-delete btn" aria-label="Delete">
         <span aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -35,7 +36,7 @@ const createFieldItem = (field, fieldItemIndex) => {
     </span>
     <div class="card card-body">
       <span class="d-flex d-sm-none field-item-gutter justify-content-between">
-        <span class="field-item-index">#${fieldItemIndex + 1}</span>
+        <span class="field-item-index" aria-hidden="true">#${fieldItemIndex + 1}</span>
         <button type="button" class="field-item-action field-item-delete btn" aria-label="Delete">
           <span aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -76,7 +77,14 @@ const createFieldItem = (field, fieldItemIndex) => {
   return fieldItem;
 }
 
-const createFormGroup = (field, fieldItemIndex = 0) => {
+const createRequiredLabel = () => {
+  const requiredLabel = document.createElement("span");
+  requiredLabel.classList.add("required-label");
+  requiredLabel.innerText = "*";
+  return requiredLabel;
+}
+
+const createInputFormGroup = (field, fieldItemIndex = 0) => {
   const fieldId = nameToId(field.fieldName, fieldItemIndex);
   const showHelp = fieldItemIndex === 0;
 
@@ -84,9 +92,45 @@ const createFormGroup = (field, fieldItemIndex = 0) => {
   formGroup.id = `form-group-${fieldId}`;
   formGroup.classList.add("form-group");
 
-  if (fieldHasChildren(field)) {
+  formGroup.setAttribute("data-field-name", field.fieldName);
+
+  if (showHelp) {
     formGroup.innerHTML = `
-      <label for="field-item-container-${fieldId}" class="form-label">${field.label}</label>
+        <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
+        <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
+        <div class="invalid-feedback"></div>
+        <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
+      `
+  } else {
+    formGroup.innerHTML = `
+        <div class="row">
+          <label for="field-input-${fieldId}" class="col-sm-3 col-form-label">${field.label}</label>
+          <div class="col">
+            <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
+          </div>
+        </div>
+        <div class="invalid-feedback"></div>
+      `;
+  }
+
+  if (field.required) {
+    formGroup.querySelector("label").appendChild(createRequiredLabel());
+    formGroup.querySelector("input").setAttribute("required", "true");
+  }
+
+  return formGroup;
+}
+
+const createFieldItemFormGroup = (field, fieldItemIndex = 0) => {
+  const fieldId = nameToId(field.fieldName, fieldItemIndex);
+  const showHelp = fieldItemIndex === 0;
+
+  const fieldItemGroup = document.createElement("fieldset");
+  fieldItemGroup.setAttribute("form", "artifact-form");
+  fieldItemGroup.classList.add("form-group");
+
+  fieldItemGroup.innerHTML = `
+      <legend class="form-label">${field.label}</legend>
       <div class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
       <div id="field-item-container-${fieldId}" class="field-item-container"></div>
       <button class="btn add-field-item form-button" type="button">
@@ -100,47 +144,28 @@ const createFormGroup = (field, fieldItemIndex = 0) => {
       </button>
     `;
 
-    if (!showHelp) {
-      formGroup.querySelector(".field-help").remove();
-    }
-
-    formGroup.querySelector("button.add-field-item").addEventListener("click", () => {
-      const itemContainer = formGroup.querySelector(".field-item-container");
-      itemContainer.appendChild(createFieldItem(field, itemContainer.childElementCount));
-    })
-  } else {
-    formGroup.setAttribute("data-field-name", field.fieldName);
-
-    if (showHelp) {
-      formGroup.innerHTML = `
-        <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
-        <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
-        <div class="invalid-feedback"></div>
-        <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
-      `
-    } else {
-      formGroup.innerHTML = `
-        <div class="row">
-          <label for="field-input-${fieldId}" class="col-sm-3 col-form-label">${field.label}</label>
-          <div class="col">
-            <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
-          </div>
-        </div>
-        <div class="invalid-feedback"></div>
-      `;
-    }
-
-    if (field.required) {
-      const requiredLabel = document.createElement("span");
-      requiredLabel.classList.add("required-label");
-      requiredLabel.innerText = "*";
-
-      formGroup.querySelector("label").appendChild(requiredLabel);
-      formGroup.querySelector("input").setAttribute("required", "true");
-    }
+  if (!showHelp) {
+    fieldItemGroup.querySelector(".field-help").remove();
   }
 
-  return formGroup;
+  if (field.required) {
+    fieldItemGroup.querySelector("legend").appendChild(createRequiredLabel());
+  }
+
+  fieldItemGroup.querySelector("button.add-field-item").addEventListener("click", () => {
+    const itemContainer = fieldItemGroup.querySelector(".field-item-container");
+    itemContainer.appendChild(createFieldItem(field, itemContainer.childElementCount));
+  })
+
+  return fieldItemGroup;
+}
+
+const createFormGroup = (field, fieldItemIndex = 0) => {
+  if (fieldHasChildren(field)) {
+    return createFieldItemFormGroup(field, fieldItemIndex);
+  } else {
+    return createInputFormGroup(field, fieldItemIndex);
+  }
 }
 
 const getInputValueForField = (field, parentElement) => {
