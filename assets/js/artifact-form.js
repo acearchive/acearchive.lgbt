@@ -136,7 +136,7 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
   if (showHelp) {
     formGroup.innerHTML = `
         <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
-        <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
+        <input type="${field.type.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
         <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
         <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
       `
@@ -145,7 +145,7 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
         <div class="row">
           <label for="field-input-${fieldId}" class="col-sm-3 col-form-label">${field.label}</label>
           <div class="col">
-            <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
+            <input type="${field.type.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
             <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
           </div>
         </div>
@@ -233,7 +233,14 @@ const getInputValueForField = (field, parentElement) => {
   console.log(parentElement);
   const inputElement = parentElement.querySelector(`.form-group[data-field-name="${field.fieldName}"] input`);
 
-  return mapping[field.htmlInputType](inputElement);
+  const rawInputValue =  mapping[field.type.htmlInputType](inputElement);
+
+  if (field.type.isArray) {
+    console.log(rawInputValue);
+    return rawInputValue.split(",").map(value => value.trim());
+  } else {
+    return rawInputValue
+  }
 }
 
 const getDataForField = (field, form) => {
