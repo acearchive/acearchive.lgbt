@@ -19,6 +19,7 @@ const copyFormGroupInputValues = (oldFieldItem, newFieldItem) => {
 const createFieldItem = (field, fieldItemIndex) => {
   const fieldItem = document.createElement("fieldset");
   fieldItem.classList.add("field-item");
+  fieldItem.setAttribute("form", "artifact-form");
   fieldItem.setAttribute("data-field-name", field.fieldName);
 
   fieldItem.innerHTML = `
