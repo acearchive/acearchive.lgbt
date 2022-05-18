@@ -7,7 +7,7 @@ const mdConverter = new showdown.Converter();
 
 const nameToId = (fieldName, fieldItemIndex) => `${fieldName.replace(".", "-")}-${fieldItemIndex}`;
 
-const fieldHasChildren = (field) => field.fields && field.fields.length > 0;
+const isArrayOfObjects = (field) => field.type === "array" && field.itemType === "object";
 
 const copyFormGroupInputValues = (oldFieldItem, newFieldItem) => {
   const newFieldInputs = newFieldItem.querySelectorAll(".form-group input");
@@ -123,6 +123,16 @@ const setValidationMessageBySchema = (field, inputElement) => {
   }
 }
 
+const htmlInputTypeForField = (field) => {
+  const inputTypeBySchemaType = {
+    "integer": "number",
+    "string": "text",
+    "array": "text",
+  };
+
+  return inputTypeBySchemaType[field.type];
+}
+
 const createInputFormGroup = (field, fieldItemIndex = 0) => {
   const fieldId = nameToId(field.fieldName, fieldItemIndex);
   const showHelp = fieldItemIndex === 0;
@@ -136,7 +146,7 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
   if (showHelp) {
     formGroup.innerHTML = `
         <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
-        <input type="${field.type.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
+        <input type="${htmlInputTypeForField(field)}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
         <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
         <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
       `
@@ -145,7 +155,7 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
         <div class="row">
           <label for="field-input-${fieldId}" class="col-sm-3 col-form-label">${field.label}</label>
           <div class="col">
-            <input type="${field.type.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
+            <input type="${htmlInputTypeForField(field)}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
             <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
           </div>
         </div>
@@ -217,41 +227,54 @@ const createFieldItemFormGroup = (field, fieldItemIndex = 0) => {
 }
 
 const createFormGroup = (field, fieldItemIndex = 0) => {
-  if (fieldHasChildren(field)) {
+  if (isArrayOfObjects(field)) {
     return createFieldItemFormGroup(field, fieldItemIndex);
   } else {
     return createInputFormGroup(field, fieldItemIndex);
   }
 }
 
+const defaultValueForField = (field) => {
+  if (field.type === "array") {
+    return [];
+  }
+
+  return undefined;
+}
+
 const getInputValueForField = (field, parentElement) => {
-  const mapping = {
-    text: (element) => element.value,
-    number: (element) => parseInt(element.value),
+  const valueTypeConverter = {
+    "integer": (value) => parseInt(value),
+    "string": (value) => value,
+    "array": (value) => value
+      .split(",")
+      .map(item => valueTypeConverter[field.itemType](item.trim())),
   };
 
-  console.log(parentElement);
   const inputElement = parentElement.querySelector(`.form-group[data-field-name="${field.fieldName}"] input`);
 
-  const rawInputValue =  mapping[field.type.htmlInputType](inputElement);
-
-  if (field.type.isArray) {
-    console.log(rawInputValue);
-    return rawInputValue.split(",").map(value => value.trim());
-  } else {
-    return rawInputValue
+  if (inputElement.value.length === 0) {
+    return defaultValueForField(field);
   }
+
+  return valueTypeConverter[field.type](inputElement.value);
 }
 
 const getDataForField = (field, form) => {
-  if (fieldHasChildren(field)) {
-    return Array.from(form.querySelectorAll(`.field-item[data-field-name="${field.fieldName}"]`))
+  if (isArrayOfObjects(field)) {
+    const fieldItems = form.querySelectorAll(`.field-item[data-field-name="${field.fieldName}"]`);
+
+    if (fieldItems.length === 0) {
+      return defaultValueForField(field)
+    }
+
+    return Array.from(fieldItems)
       .map(
         fieldItem => Object.entries(field.definitions)
           .filter(([_, nestedField]) => nestedField.showInFormDocs)
           .reduce(
             (fieldItemData, [fieldKey, nestedField]) => ({
-              [fieldKey]: fieldHasChildren(nestedField)
+              [fieldKey]: isArrayOfObjects(nestedField)
                 ? getDataForField(nestedField, form)
                 : getInputValueForField(nestedField, fieldItem),
               ...fieldItemData,
