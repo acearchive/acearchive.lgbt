@@ -340,6 +340,8 @@ const serializeFormDataToYaml = (data) => yaml.dump(data, {
   forceQuotes: true,
 })
 
+const serializeFormDataToMarkdownFrontMatter = (data) => `---\n${serializeFormDataToYaml(data)}---`;
+
 const githubPrSubmitUrl = (slug, content) => `https://github.com/acearchive/acearchive.lgbt/new/main/?filename=content/archive/${slug}/index.md&value=${encodeURIComponent(content)}`
 
 const artifactFormSubmitUrl = (form) => {
@@ -347,7 +349,7 @@ const artifactFormSubmitUrl = (form) => {
   const urlSlug = data.slug;
   delete data.slug;
 
-  return githubPrSubmitUrl(urlSlug, serializeFormDataToYaml(data));
+  return githubPrSubmitUrl(urlSlug, serializeFormDataToMarkdownFrontMatter(data));
 }
 
 const createSubmitButton = (form) => {
