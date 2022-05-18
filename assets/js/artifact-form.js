@@ -361,12 +361,20 @@ const createSubmitButton = (form) => {
   `;
 
   submitButton.querySelector("button").addEventListener("click", () => {
+    const formIsValid = form.checkValidity();
+
     for (const needsValidationElement of form.querySelectorAll(".needs-validation")) {
-      needsValidationElement.querySelector("input").setCustomValidity("");
-      needsValidationElement.classList.add("was-validated");
+      const inputElement = needsValidationElement.querySelector("input")
+
+      inputElement.setCustomValidity("");
+
+      if (!inputElement.validity.valid || inputElement.value.length > 0) {
+        // Don't show the validity of the input if it is empty and not required.
+        needsValidationElement.classList.add("was-validated");
+      }
     }
 
-    if (form.checkValidity()) {
+    if (formIsValid) {
       window.open(artifactFormSubmitUrl(form), "_blank");
     }
   });
