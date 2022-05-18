@@ -287,15 +287,18 @@ const getDataForField = (field, form) => {
   }
 }
 
-const getDataForSchema = (form) => Object.entries(schema.definitions)
-  .filter(([_, field]) => field.showInFormDocs)
-  .reduce(
-    (data, [fieldKey, field]) => ({
-      [fieldKey]: getDataForField(field, form),
-      ...data,
-    }),
-    {},
-)
+const getDataForSchema = (form) => ({
+  "version": schema.version,
+  ...Object.entries(schema.definitions)
+    .filter(([_, field]) => field.showInFormDocs)
+    .reduce(
+      (data, [fieldKey, field]) => ({
+        [fieldKey]: getDataForField(field, form),
+        ...data,
+      }),
+      {},
+    )
+});
 
 const groupedFieldKeys = (() => {
   const keysOfField = (field) => {
