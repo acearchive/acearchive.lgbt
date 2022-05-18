@@ -12,8 +12,8 @@ is to [open an issue on
 GitHub](https://github.com/acearchive/acearchive.lgbt/issues/new).
 
 If you want to suggest content to be added to the archive, [read our
-contributing
-documentation](https://acearchive.lgbt/docs/contributing/getting-started/).
+contributing documentation]({{< ref "docs/contributing/getting-started.md"
+>}}).
 
 If you want to contact us for any other reason, you can email:
 
