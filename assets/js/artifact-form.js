@@ -146,9 +146,9 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
           <label for="field-input-${fieldId}" class="col-sm-3 col-form-label">${field.label}</label>
           <div class="col">
             <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
+            <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
           </div>
         </div>
-        <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
       `;
   }
 
