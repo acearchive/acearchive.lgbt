@@ -1,7 +1,7 @@
 {{- $root := . -}}
 <dt class="field-level-{{ default 0 .indentLevel }}">
   <code>{{ .fieldName }}</code>
-  <span class="badge rounded-pill bg-primary ms-1">{{ .typeLabelInDocs }}</span>
+  <span class="badge rounded-pill bg-primary ms-1">{{ .type.labelInDocs }}</span>
   {{- if not .required }}
   <span class="badge rounded-pill bg-secondary ms-1">optional</span>
   {{ end -}}
