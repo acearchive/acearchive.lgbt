@@ -136,8 +136,8 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
   if (showHelp) {
     formGroup.innerHTML = `
         <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
-        <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
-        <div class="invalid-feedback"></div>
+        <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
+        <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
         <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
       `
   } else {
@@ -145,10 +145,10 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
         <div class="row">
           <label for="field-input-${fieldId}" class="col-sm-3 col-form-label">${field.label}</label>
           <div class="col">
-            <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId}" placeholder="${field.placeholder}">
+            <input type="${field.htmlInputType}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
           </div>
         </div>
-        <div class="invalid-feedback"></div>
+        <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
       `;
   }
 
