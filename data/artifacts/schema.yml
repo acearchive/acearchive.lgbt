@@ -22,6 +22,10 @@ definitions:
     showInFormDocs: true
     showInFileDocs: false
     placeholder: "orlando-the-asexual-manifesto"
+    htmlFormValidation:
+      - attribute: pattern
+        value: "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+        message: "URL slug should be lowercase and use hyphens between words."
     description: |
       Every artifact in the repository has a URL like:
 

@@ -84,13 +84,49 @@ const createRequiredLabel = () => {
   return requiredLabel;
 }
 
+const customErrorMessageForFieldByAttribute = (() => {
+  const errorMessages = new Map();
+
+  return (field, attributeName) => {
+    if (!errorMessages.has[field.fieldName]) {
+      const errorMessagesByAttribute = new Map();
+
+      for (const validationRule of field.htmlFormValidation) {
+        errorMessagesByAttribute[validationRule.attribute] = validationRule.message;
+      }
+
+      errorMessages[field.fieldName] = errorMessagesByAttribute;
+    }
+
+    return errorMessages[field.fieldName][attributeName] ?? "";
+  };
+})();
+
+const setValidationMessageBySchema = (field, inputElement) => {
+  if (inputElement.validity.valueMissing) {
+    inputElement.setCustomValidity("Please fill out this field.");
+  } else if (inputElement.validity.patternMismatch) {
+    inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "pattern"));
+  } else if (inputElement.validity.rangeUnderflow) {
+    inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "min"));
+  } else if (inputElement.validity.rangeOverflow) {
+    inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "max"));
+  } else if (inputElement.validity.stepMismatch) {
+    inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "step"));
+  } else if (inputElement.validity.tooShort) {
+    inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "minlength"));
+  } else if (inputElement.validity.tooLong) {
+    inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "maxlength"));
+  }
+}
+
 const createInputFormGroup = (field, fieldItemIndex = 0) => {
   const fieldId = nameToId(field.fieldName, fieldItemIndex);
   const showHelp = fieldItemIndex === 0;
 
   const formGroup = document.createElement("div");
   formGroup.id = `form-group-${fieldId}`;
-  formGroup.classList.add("form-group");
+  formGroup.classList.add("form-group", "needs-validation");
 
   formGroup.setAttribute("data-field-name", field.fieldName);
 
@@ -113,10 +149,27 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
       `;
   }
 
+  const inputElement = formGroup.querySelector("input");
+
   if (field.required) {
     formGroup.querySelector("label").appendChild(createRequiredLabel());
-    formGroup.querySelector("input").setAttribute("required", "true");
+    inputElement.setAttribute("required", "true");
   }
+
+  if (field.htmlFormValidation) {
+    for (const validationRule of field.htmlFormValidation) {
+      inputElement.setAttribute(validationRule.attribute, validationRule.value);
+    }
+  }
+
+  inputElement.addEventListener("input", (e) => {
+    formGroup.classList.remove("was-validated");
+  });
+
+  inputElement.addEventListener("invalid", (e) => {
+    setValidationMessageBySchema(field, e.target);
+    formGroup.querySelector(".invalid-feedback").innerText = e.target.validationMessage;
+  });
 
   return formGroup;
 }
@@ -269,7 +322,14 @@ const createSubmitButton = (form) => {
   `;
 
   submitButton.querySelector("button").addEventListener("click", () => {
-    window.open(artifactFormSubmitUrl(form), "_blank");
+    for (const needsValidationElement of form.querySelectorAll(".needs-validation")) {
+      needsValidationElement.querySelector("input").setCustomValidity("");
+      needsValidationElement.classList.add("was-validated");
+    }
+
+    if (form.checkValidity()) {
+      window.open(artifactFormSubmitUrl(form), "_blank");
+    }
   });
 
   return submitButton;
