@@ -318,7 +318,8 @@ const artifactFormSubmitUrl = (form) => {
 }
 
 const createSubmitButton = (form) => {
-  const submitButton = document.createElement("span");
+  const submitButton = document.createElement("div");
+  submitButton.classList.add("submit-control");
   submitButton.innerHTML = `
     <button id="artifact-form-submit-button" class="btn btn-primary me-1" type="button">Submit</button>
     <label class="form-text" for="artifact-form-submit-button">Open a pull request on GitHub</label>
