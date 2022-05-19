@@ -1,10 +1,11 @@
 import { isIPFS, CID } from "ipfs-core";
+import * as IPFS from "ipfs-core";
 
 const ipfsPathPrefix = "/ipfs/";
 const ipnsPathPrefix = "/ipns/";
 const timeoutMs = 3000;
 
-const parseInputToPath = (maybeUrlOrCidOrPath) => {
+const parseInputToIpfsPath = (maybeUrlOrCidOrPath) => {
   if (isIPFS.path(maybeUrlOrCidOrPath)) {
     return maybeUrlOrCidOrPath;
   }
@@ -33,17 +34,24 @@ const parseInputToPath = (maybeUrlOrCidOrPath) => {
   return undefined;
 }
 
-const resolvedInputToCid = async (ipfs, maybeUrlOrCidOrPath) => {
-  const path = parseInputToPath(maybeUrlOrCidOrPath);
-  if (path === undefined) return undefined;
-
-  const resolvedIpfsPath = await ipfs.resolve(path, { recursive: true, timeout: timeoutMs });
+const resolveIpfsPath = async (ipfs, ipfsPath) => {
+  const resolvedIpfsPath = await ipfs.resolve(ipfsPath, { recursive: true, timeout: timeoutMs });
 
   return CID.parse(resolvedIpfsPath.slice(ipfsPathPrefix.length));
 }
 
-const normalizeCid = async (ipfs, maybeUrlOrCidOrPath) => {
-  const resolvedCid = await resolvedInputToCid(ipfs, maybeUrlOrCidOrPath);
+const loadIpfs = (() => {
+  const ipfsPromise = IPFS.create();
+  return () => ipfsPromise;
+})();
+
+const normalizeCid = async (maybeUrlOrCidOrPath) => {
+  const ipfsPath = parseInputToIpfsPath(maybeUrlOrCidOrPath);
+  if (ipfsPath === undefined) return undefined;
+
+  const ipfs = await loadIpfs();
+
+  const resolvedCid = await resolveIpfsPath(ipfs, ipfsPath);
   if (resolvedCid === undefined) return undefined;
 
   // If the CID is a directory containing only a single file, return the CID of
@@ -61,5 +69,9 @@ const normalizeCid = async (ipfs, maybeUrlOrCidOrPath) => {
 
   return resolvedCid;
 }
+
+// Start loading the IPFS node on page load. If it's not done by the time we
+// submit the form, we'll await it.
+// void lazyIpfs();
 
 export default normalizeCid;
