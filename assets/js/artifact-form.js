@@ -1,6 +1,7 @@
 import showdown from "showdown";
 import yaml from "js-yaml";
 import { schema } from "@params";
+import normalizeCid from "./normalize-cid";
 
 const artifactForm = document.querySelector(".new-artifact main form");
 const mdConverter = new showdown.Converter();
