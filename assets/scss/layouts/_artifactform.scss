@@ -7,7 +7,7 @@
     font-weight: 500;
   }
 
-  .field-help {
+  .form-text {
     color: $form-text-color;
   }
 
@@ -17,7 +17,7 @@
   }
 
   legend.form-label {
-    @extend label.form-label;
+    @extend label;
   }
 
   :is(.form-label, .col-form-label) .required-label {
@@ -76,7 +76,7 @@
 }
 
 [data-dark-mode] .new-artifact form {
-  .field-help {
+  .form-text {
     color: $form-text-color-dark;
   }
 
