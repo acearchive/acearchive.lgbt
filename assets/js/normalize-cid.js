@@ -1,4 +1,4 @@
-import { isIPFS, CID, create as createIPFS } from "ipfs-core";
+import { isIPFS, CID } from "ipfs-core";
 
 const ipfsPathPrefix = "/ipfs/";
 const ipnsPathPrefix = "/ipns/";
@@ -42,9 +42,7 @@ const resolvedInputToCid = async (ipfs, maybeUrlOrCidOrPath) => {
   return CID.parse(resolvedIpfsPath.slice(ipfsPathPrefix.length));
 }
 
-const normalizeCid = async (maybeUrlOrCidOrPath) => {
-  const ipfs = await createIPFS();
-
+const normalizeCid = async (ipfs, maybeUrlOrCidOrPath) => {
   const resolvedCid = await resolvedInputToCid(ipfs, maybeUrlOrCidOrPath);
   if (resolvedCid === undefined) return undefined;
 
