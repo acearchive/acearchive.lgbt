@@ -192,6 +192,9 @@ definitions:
         showInFileDocs: true
         indentLevel: 1
         placeholder: "bafybeihsf4562gmmyoya7eh5buxv65lqcdoil3wsi5jf5fceskap7yzooi"
+        customValidator:
+          name: "cid"
+          message: "Must be an IPFS CID, URL, or path."
         description: >
           This is the CID (content identifier) of the file. This also accepts a
           `dweb.link` or `ipfs.io` URL. You need to upload the file to

@@ -2,6 +2,7 @@ import showdown from "showdown";
 import yaml from "js-yaml";
 import { schema } from "@params";
 import normalizeCid from "./normalize-cid";
+import * as IPFS from "ipfs-core";
 
 const artifactForm = document.querySelector(".new-artifact main form");
 const mdConverter = new showdown.Converter();
@@ -353,6 +354,63 @@ const artifactFormSubmitUrl = (form) => {
   return githubPrSubmitUrl(urlSlug, serializeFormDataToMarkdownFrontMatter(data));
 }
 
+const resetValidityMessages = (form) => {
+  for (const validationElement of form.querySelectorAll(".needs-validation")) {
+    validationElement.querySelector("input").setCustomValidity("");
+  }
+}
+
+const showValidityMessages = (form) => {
+  for (const validationElement of form.querySelectorAll(".needs-validation")) {
+    const inputElement = validationElement.querySelector("input");
+
+    if (!inputElement.validity.valid || inputElement.value.length > 0) {
+      // Don't show the validity of the input if it is empty and not required.
+      validationElement.classList.add("was-validated");
+    }
+  }
+}
+
+const validateCid = async (rawInput) => {
+  const ipfs = await ipfsPromise;
+  return normalizeCid(ipfs, rawInput);
+}
+
+const validateFieldWithCustomValidator = async (form, field) => {
+  const validatorsByName = {
+    "cid": validateCid,
+  };
+
+  if (field.customValidator) {
+    const inputElements = Array.from(form.querySelectorAll(`.form-group[data-field-name="${field.fieldName}"] input`));
+
+    await Promise.all(inputElements.map(async inputElement => {
+      const validator = validatorsByName[field.customValidator.name];
+      const result = await validator(inputElement.value);
+
+      if (result === undefined) {
+        inputElement.setCustomValidity(field.customValidator.message);
+      } else {
+        inputElement.value = result;
+      }
+    }));
+  }
+
+  if (field.definitions) {
+    await Promise.all(
+      Object.values(field.definitions).map(nestedField => validateFieldWithCustomValidator(form, nestedField))
+    );
+  }
+}
+
+const checkValidity = async (form) => {
+  await Promise.all(Object.values(schema.definitions).map(field => validateFieldWithCustomValidator(form, field)));
+
+  showValidityMessages(form);
+
+  return form.checkValidity();
+}
+
 const createSubmitButton = (form) => {
   const submitButton = document.createElement("div");
   submitButton.classList.add("submit-control");
@@ -362,28 +420,21 @@ const createSubmitButton = (form) => {
   `;
 
   submitButton.querySelector("button").addEventListener("click", () => {
-    const formIsValid = form.checkValidity();
+    resetValidityMessages(form);
 
-    for (const needsValidationElement of form.querySelectorAll(".needs-validation")) {
-      const inputElement = needsValidationElement.querySelector("input")
-
-      inputElement.setCustomValidity("");
-
-      if (!inputElement.validity.valid || inputElement.value.length > 0) {
-        // Don't show the validity of the input if it is empty and not required.
-        needsValidationElement.classList.add("was-validated");
-      }
-    }
-
-    if (formIsValid) {
-      window.open(artifactFormSubmitUrl(form), "_blank");
-    }
+    checkValidity(form).then(isValid => {
+      if (isValid) window.open(artifactFormSubmitUrl(form), "_blank");
+    })
   });
 
   return submitButton;
 }
 
+let ipfsPromise;
+
 if (artifactForm) {
+  ipfsPromise = IPFS.create();
+
   for (const fieldName of schema.fields) {
     const field = schema.definitions[fieldName];
     if (!field.showInFormDocs) continue;
