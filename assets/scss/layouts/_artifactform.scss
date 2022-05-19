@@ -8,7 +8,7 @@
   }
 
   .field-help {
-    color: $gray-700;
+    color: $form-text-color;
   }
 
   .submit-control {
@@ -21,7 +21,7 @@
   }
 
   :is(.form-label, .col-form-label) .required-label {
-    color: $red-300;
+    color: $danger;
     margin-left: 0.25rem;
     vertical-align: middle;
   }
@@ -77,7 +77,7 @@
 
 [data-dark-mode] .new-artifact form {
   .field-help {
-    color: $gray-500;
+    color: $form-text-color-dark;
   }
 
   .form-group .form-button {
@@ -88,7 +88,17 @@
     color: $gray-500;
   }
 
-  .field-item-container .field-item .field-item-gutter .field-item-action:hover {
-    color: $body-color-dark;
+  .field-item-container .field-item .field-item-gutter {
+    .field-item-action {
+      color: $form-text-color-dark;
+    }
+
+    .field-item-action:hover {
+      color: $body-color-dark;
+    }
+
+    .field-item-index {
+      color: $form-text-color-dark;
+    }
   }
 }
