@@ -129,9 +129,7 @@ definitions:
     showInFormDocs: true
     showInFileDocs: true
     description: >
-      The list files to include in the artifact. For more information about
-      adding files to artifacts, see [the
-      docs](/docs/contributing/uploading-files).
+      The list files to include in the artifact.
     fields: ["name", "mediaType", "filename", "cid"]
     definitions:
       name:
@@ -195,9 +193,10 @@ definitions:
         indentLevel: 1
         placeholder: "bafybeihsf4562gmmyoya7eh5buxv65lqcdoil3wsi5jf5fceskap7yzooi"
         description: >
-          This is the CID (content identifier) of the file. To include a file in an
-          artifact, you need to upload it to [Web3.Storage](https://web3.storage),
-          copy the CID it gives you, and paste it here.
+          This is the CID (content identifier) of the file. This also accepts a
+          `dweb.link` or `ipfs.io` URL. You need to upload the file to
+          [Web3.Storage](https://web3.storage) to get its CID. For more
+          information, see [the docs](/docs/contributing/uploading-files).
   links:
     fieldName: "links"
     label: "Links"

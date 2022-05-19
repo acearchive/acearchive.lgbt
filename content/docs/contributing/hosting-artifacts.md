@@ -8,7 +8,7 @@ draft: false
 menu:
   docs:
     parent: "contributing"
-weight: 207
+weight: 205
 ---
 
 We mention in {{< article "docs/about/about-the-technology.md" >}} that anyone

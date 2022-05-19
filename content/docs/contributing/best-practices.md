@@ -8,7 +8,7 @@ draft: false
 menu:
   docs:
     parent: "contributing"
-weight: 205
+weight: 203
 ---
 
 This page outlines some best practices to follow when contributing content to
@@ -40,15 +40,14 @@ original text and the English translation if both are available.
 ## Include citations where applicable
 
 If the artifact contains a published work, include a citation for it as a
-separate file using a standardized file format like BibTeX/BibLaTeX. These
+separate file using a standardized file format like BibTeX. These
 files can be imported into reference managers like
 [Zotero](https://www.zotero.org/) and help people cite the work or find it on
 the legacy web.
 
 ## Include both files and links in artifacts when possible
 
-The two ways to include content in an [artifact file][artifact-file] are
-*files* and *links*.
+The two ways to include content in an artifact are *files* and *links*.
 
 If the content is a file like a PDF, image, or video, include it in the
 artifact as a file and also add a link to where it can be found on the web.
@@ -70,14 +69,14 @@ to include it in an artifact is to add a link. If the website is no longer
 available on the web, include a [Wayback Machine](https://web.archive.org/)
 link.
 
-However, even if the website is still available on the web—if the site is not
-itself an archive or online database like the Internet Archive—you should
+However, even if the website is still available on the web, you should
 include a Wayback link alongside a regular link. This ensures that even if the
-content moves, changes, or is taken down, users can still find it.
+content moves, changes, or is taken down, users can still find it. If the
+website is also an archive or online database like the Internet Archive, you
+don't need to include a Wayback link.
 
 You can give both the regular link and the Wayback link the same name in the
-[artifact file][artifact-file]; the artifact page on Ace Archive will show
-which is the archive link.
+artifact; the artifact page on Ace Archive will show which is the archive link.
 
 If you need to archive a page that the Wayback Machine isn't able to crawl,
 such as a page behind a confirmation prompt or login page, check out {{<
@@ -95,26 +94,23 @@ YouTube; you can find a full list of supported sites
 
 ## Respect the privacy of individuals
 
-When filling out the `people` field in an [artifact file][artifact-file], make
-sure to respect the privacy of individuals. This means using handles or
-usernames when a person typically goes by a pseudonym online. Also, you must
-**always** use a person's preferred name over their legal name or deadname.
+When listing the people associated with an artifact, make sure to respect the
+privacy of individuals. This means using handles or usernames when a person
+typically goes by a pseudonym online. Also, you must **always** use a person's
+preferred name over their legal name or deadname.
 
 ## Use existing tags when possible
 
-When filling out the `identities` and `people` fields in an [artifact
-file][artifact-file], prefer using identities and names as they currently
-appear in other artifacts in the archive. So if "gray-asexual" already exists
-in the archive, don't add "grey-asexual" or "gray-ace" unless there's a good
-reason (e.g. the author of a work makes a case that they're distinct
-identities).
+When listing the people and identities associated with an artifact, prefer using
+identities and names as they currently appear in other artifacts in the archive.
+So if "gray-asexual" already exists in the archive, don't add "grey-asexual"
+or "gray-ace" unless there's a good reason (e.g. the author of a work makes a
+case that they're distinct identities).
 
 ## Use links to provide context
 
 Because Ace Archive is intended to be an archive of primary sources rather than
-a wiki or encyclopedia, the descriptions in [artifact files][artifact-file]
-should generally be kept brief.  However, if context is required to understand
-an artifact, you can include a link to an outside website that provides the
-necessary context for the artifact.
-
-[artifact-file]: {{< ref "docs/contributing/artifact-files.md" >}}
+a wiki or encyclopedia, the descriptions of artifacts should generally be kept
+brief. However, if context is required to understand an artifact, you can
+include a link to an outside website that provides the necessary context for the
+artifact.
