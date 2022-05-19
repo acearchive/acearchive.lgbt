@@ -25,7 +25,13 @@ definitions:
     htmlFormValidation:
       - attribute: pattern
         value: "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
-        message: "URL slug should be lowercase and use hyphens between words."
+        message: "The URL slug should be lowercase and use hyphens between words."
+      - attribute: minlength
+        value: "16"
+        message: "The URL slug should be at least 16 characters."
+      - attribute: maxlength
+        value: "64"
+        message: "The URL slug should not exceed 64 characters."
     description: |
       Every artifact in the repository has a URL like:
 
@@ -67,6 +73,10 @@ definitions:
     showInFormDocs: true
     showInFileDocs: true
     placeholder: "<em>The Asexual Manifesto</em>"
+    htmlFormValidation:
+      - attribute: maxlength
+        value: "100"
+        message: "The title should not exceed 100 characters."
     description: >
       This is the title of the artifact. If the artifact represents a
       creative work (a book, essay, blog post, etc.), this should be the
@@ -83,6 +93,10 @@ definitions:
     showInFormDocs: true
     showInFileDocs: true
     placeholder: "A paper by the Asexual Caucus of the New York Radical Feminists"
+    htmlFormValidation:
+      - attribute: maxlength
+        value: "150"
+        message: "The short description should not exceed 150 characters."
     description: >
       This is a short, one sentence description of the artifact that should
       provide context and explain its significance to the queer community (i.e.
@@ -96,6 +110,10 @@ definitions:
     showInFormDocs: true
     showInFileDocs: true
     placeholder: "A paper by the Asexual Caucus of the New York Radical Feminists"
+    htmlFormValidation:
+      - attribute: maxlength
+        value: "300"
+        message: "The long description should not exceed 300 characters."
     description: >
       If you want to provide more context than you can fit in the short
       description, you can optionally provide a longer description that will
@@ -250,7 +268,7 @@ definitions:
     required: false
     showInFormDocs: true
     showInFileDocs: true
-    placeholder: "asexual, lesbian"
+    placeholder: "asexual, lesbian, non-binary"
     description: >
       A list of queer identities associated with the artifact. For example,
       if this is a blog post about aromanticism, then "aromantic" should be
@@ -278,7 +296,7 @@ definitions:
     required: false
     showInFormDocs: true
     showInFileDocs: true
-    placeholder: "1980"
+    placeholder: "1989"
     description: >
       If the artifact encompasses multiple creative works that were published
       in different years, this should be the year the last work was
