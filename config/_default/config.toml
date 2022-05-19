@@ -113,6 +113,15 @@ rel  = "sitemap"
     source = "node_modules/js-yaml"
     target = "assets/js/vendor/js-yaml"
   [[module.mounts]]
+    source = "node_modules/is-ipfs"
+    target = "assets/js/vendor/is-ipfs"
+  [[module.mounts]]
+    source = "node_modules/ipfs-core"
+    target = "assets/js/vendor/ipfs-core"
+  [[module.mounts]]
+    source = "node_modules/multiaddr"
+    target = "assets/js/vendor/multiaddr"
+  [[module.mounts]]
     source = "node_modules/bootstrap"
     target = "assets/js/vendor/bootstrap"
   [[module.mounts]]

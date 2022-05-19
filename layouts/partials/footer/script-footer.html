@@ -76,7 +76,9 @@
 {{ $yamlLib := resources.Get "js/vendor/js-yaml/index.js" | js.Build -}}
 {{ $slice := $slice | append $yamlLib -}}
 
-{{ $artifactForm := resources.Get "js/artifact-form.js" | js.Build (dict "params" (dict "schema" .Site.Data.artifacts.schema)) -}}
+{{ $ipfs := resources.Get "js/vendor/ipfs-core/index.min.js" -}}
+
+{{ $artifactForm := resources.Get "js/artifact-form.js" | js.Build (dict "shims" (dict "ipfs-core" "js/shims/ipfs-core.js") "params" (dict "schema" .Site.Data.artifacts.schema)) -}}
 {{ $slice := $slice | append $artifactForm -}}
 
 {{ $mimeLib := resources.Get "js/vendor/mime/index.js" | js.Build -}}
@@ -85,6 +87,7 @@
 {{ $js := $slice | resources.Concat "main.js" -}}
 
 {{ if eq (hugo.Environment) "development" -}}
+  <script src="{{ $ipfs.RelPermalink }}" defer></script>
   {{ if .Site.Params.options.bootStrapJs -}}
     <script src="{{ $bs.RelPermalink }}" defer></script>
   {{ end -}}
@@ -110,6 +113,8 @@
   {{ $katex := $katex | minify | fingerprint "sha512" -}}
   {{ $katexAutoRender := $katexAutoRender | minify | fingerprint "sha512" -}}
   {{ $mermaid := $mermaid | minify | fingerprint "sha512" -}}
+  {{ $ipfs := $ipfs | fingerprint "sha512" }}
+  <script src="{{ $ipfs.RelPermalink }}" integrity="{{ $ipfs.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{ if .Site.Params.options.bootStrapJs -}}
     <script src="{{ $bs.RelPermalink }}" integrity="{{ $bs.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{ end -}}
