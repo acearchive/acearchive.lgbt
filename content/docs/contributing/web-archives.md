@@ -8,7 +8,7 @@ draft: false
 menu:
   docs:
     parent: "contributing"
-weight: 206
+weight: 204
 ---
 
 We mention in {{< article "docs/contributing/best-practices.md"
