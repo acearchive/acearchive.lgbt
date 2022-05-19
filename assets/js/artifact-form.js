@@ -2,7 +2,8 @@ import showdown from "showdown";
 import yaml from "js-yaml";
 import { schema } from "@params";
 import normalizeCid from "./normalize-cid";
-import * as IPFS from "ipfs-core";
+
+const validationMinDelay = 500;
 
 const artifactForm = document.querySelector(".new-artifact main form");
 const mdConverter = new showdown.Converter();
@@ -179,6 +180,7 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
 
   inputElement.addEventListener("input", (e) => {
     formGroup.classList.remove("was-validated");
+    inputElement.setCustomValidity("");
   });
 
   inputElement.addEventListener("invalid", (e) => {
@@ -354,12 +356,6 @@ const artifactFormSubmitUrl = (form) => {
   return githubPrSubmitUrl(urlSlug, serializeFormDataToMarkdownFrontMatter(data));
 }
 
-const resetValidityMessages = (form) => {
-  for (const validationElement of form.querySelectorAll(".needs-validation")) {
-    validationElement.querySelector("input").setCustomValidity("");
-  }
-}
-
 const showValidityMessages = (form) => {
   for (const validationElement of form.querySelectorAll(".needs-validation")) {
     const inputElement = validationElement.querySelector("input");
@@ -371,20 +367,17 @@ const showValidityMessages = (form) => {
   }
 }
 
-const validateCid = async (rawInput) => {
-  const ipfs = await ipfsPromise;
-  return normalizeCid(ipfs, rawInput);
-}
-
-const validateFieldWithCustomValidator = async (form, field) => {
+const validateFieldWithCustomValidator = (form, field) => {
   const validatorsByName = {
-    "cid": validateCid,
+    "cid": normalizeCid,
   };
+
+  const validators = [];
 
   if (field.customValidator) {
     const inputElements = Array.from(form.querySelectorAll(`.form-group[data-field-name="${field.fieldName}"] input`));
 
-    await Promise.all(inputElements.map(async inputElement => {
+    validators.push(...inputElements.map(async inputElement => {
       const validator = validatorsByName[field.customValidator.name];
       const result = await validator(inputElement.value);
 
@@ -397,18 +390,63 @@ const validateFieldWithCustomValidator = async (form, field) => {
   }
 
   if (field.definitions) {
-    await Promise.all(
-      Object.values(field.definitions).map(nestedField => validateFieldWithCustomValidator(form, nestedField))
+    validators.push(...Object
+      .values(field.definitions)
+      .flatMap(nestedField => validateFieldWithCustomValidator(form, nestedField))
     );
   }
+
+  return validators;
+}
+
+const runCustomValidators = (form) => {
+  const validators = Object.values(schema.definitions).flatMap(field => validateFieldWithCustomValidator(form, field));
+
+  // If any custom validators are running that could cause form validation to
+  // take a noticeable amount of time, add a minimum delay to prevent UI flicker.
+  if (validators.length > 0) {
+    validators.push(new Promise(r => setTimeout(r, validationMinDelay)));
+  }
+
+  return Promise.all(validators);
 }
 
 const checkValidity = async (form) => {
-  await Promise.all(Object.values(schema.definitions).map(field => validateFieldWithCustomValidator(form, field)));
+  const submitButtonElement = form.querySelector(".submit-control button");
 
+  setButtonLoading(submitButtonElement, "Validating...");
+  setFormInputsDisabled(form, true);
+
+  await runCustomValidators(form);
+
+  unsetButtonLoading(submitButtonElement, "Submit");
+  setFormInputsDisabled(form, false);
   showValidityMessages(form);
 
   return form.checkValidity();
+}
+
+const setButtonLoading = (buttonElement, text) => {
+  buttonElement.disabled = true;
+  buttonElement.innerHTML = `
+      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      ${text}
+    `;
+}
+
+const unsetButtonLoading = (buttonElement, text) => {
+  buttonElement.disabled = false;
+  buttonElement.innerText = text;
+}
+
+const setFormInputsDisabled = (form, disabled) => {
+  for (const buttonElement of form.querySelectorAll(".form-button, .field-item-action")) {
+    buttonElement.disabled = disabled;
+  }
+
+  for (const inputElement of form.querySelectorAll(".form-group input")) {
+    inputElement.disabled = disabled;
+  }
 }
 
 const createSubmitButton = (form) => {
@@ -420,8 +458,6 @@ const createSubmitButton = (form) => {
   `;
 
   submitButton.querySelector("button").addEventListener("click", () => {
-    resetValidityMessages(form);
-
     checkValidity(form).then(isValid => {
       if (isValid) window.open(artifactFormSubmitUrl(form), "_blank");
     })
@@ -430,11 +466,7 @@ const createSubmitButton = (form) => {
   return submitButton;
 }
 
-let ipfsPromise;
-
 if (artifactForm) {
-  ipfsPromise = IPFS.create();
-
   for (const fieldName of schema.fields) {
     const field = schema.definitions[fieldName];
     if (!field.showInFormDocs) continue;
