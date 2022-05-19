@@ -3,6 +3,14 @@
     margin-bottom: 1rem;
   }
 
+  .form-group label {
+    font-weight: 500;
+  }
+
+  .field-help {
+    color: $gray-700;
+  }
+
   .submit-control {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -68,6 +76,10 @@
 }
 
 [data-dark-mode] .new-artifact form {
+  .field-help {
+    color: $gray-500;
+  }
+
   .form-group .form-button {
     color: $body-color-dark;
   }
