@@ -17,11 +17,11 @@ content doesn't push it down.
 */
 
 body:is(.home, .single) {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 footer.footer {
-    margin-top: auto;
+  margin-top: auto;
 }

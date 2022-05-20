@@ -21,24 +21,27 @@ const parseInputToIpfsPath = (maybeUrlOrCidOrPath) => {
 
   if (isIPFS.ipfsSubdomain(maybeUrlOrCidOrPath)) {
     const url = new URL(maybeUrlOrCidOrPath);
-    const cid = url.hostname.split(".", 2)[0]
+    const cid = url.hostname.split(".", 2)[0];
     return ipfsPathPrefix + cid;
   }
 
   if (isIPFS.ipnsSubdomain(maybeUrlOrCidOrPath)) {
     const url = new URL(maybeUrlOrCidOrPath);
-    const cid = url.hostname.split(".", 2)[0]
+    const cid = url.hostname.split(".", 2)[0];
     return ipnsPathPrefix + cid;
   }
 
   return undefined;
-}
+};
 
 const resolveIpfsPath = async (ipfs, ipfsPath) => {
-  const resolvedIpfsPath = await ipfs.resolve(ipfsPath, { recursive: true, timeout: timeoutMs });
+  const resolvedIpfsPath = await ipfs.resolve(ipfsPath, {
+    recursive: true,
+    timeout: timeoutMs,
+  });
 
   return CID.parse(resolvedIpfsPath.slice(ipfsPathPrefix.length));
-}
+};
 
 const loadIpfs = (() => {
   const ipfsPromise = IPFS.create();
@@ -68,7 +71,7 @@ const normalizeCid = async (maybeUrlOrCidOrPath) => {
   }
 
   return resolvedCid;
-}
+};
 
 // Start loading the IPFS node on page load. If it's not done by the time we
 // submit the form, we'll await it.

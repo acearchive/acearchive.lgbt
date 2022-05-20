@@ -14,10 +14,12 @@ const isArrayOfObjects = (field) => field.type === "array" && field.itemType ===
 
 const copyFormGroupInputValues = (oldFieldItem, newFieldItem) => {
   const newFieldInputs = newFieldItem.querySelectorAll(".form-group input");
-  for (const [index, oldFieldInput] of oldFieldItem.querySelectorAll(".form-group input").entries()) {
+  for (const [index, oldFieldInput] of oldFieldItem
+    .querySelectorAll(".form-group input")
+    .entries()) {
     newFieldInputs[index].value = oldFieldInput.value;
   }
-}
+};
 
 const createFieldItem = (field, fieldItemIndex) => {
   const fieldItem = document.createElement("fieldset");
@@ -75,18 +77,18 @@ const createFieldItem = (field, fieldItemIndex) => {
         copyFormGroupInputValues(fieldItem, newFieldItem);
         itemContainer.replaceChild(newFieldItem, fieldItem);
       }
-    })
+    });
   }
 
   return fieldItem;
-}
+};
 
 const createRequiredLabel = () => {
   const requiredLabel = document.createElement("span");
   requiredLabel.classList.add("required-label");
   requiredLabel.innerText = "*";
   return requiredLabel;
-}
+};
 
 const customErrorMessageForFieldByAttribute = (() => {
   const errorMessages = new Map();
@@ -124,17 +126,17 @@ const setValidationMessageBySchema = (field, inputElement) => {
   } else if (inputElement.validity.patternMismatch) {
     inputElement.setCustomValidity(customErrorMessageForFieldByAttribute(field, "pattern"));
   }
-}
+};
 
 const htmlInputTypeForField = (field) => {
   const inputTypeBySchemaType = {
-    "integer": "number",
-    "string": "text",
-    "array": "text",
+    integer: "number",
+    string: "text",
+    array: "text",
   };
 
   return inputTypeBySchemaType[field.type];
-}
+};
 
 const createInputFormGroup = (field, fieldItemIndex = 0) => {
   const fieldId = nameToId(field.fieldName, fieldItemIndex);
@@ -149,16 +151,26 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
   if (showHelp) {
     formGroup.innerHTML = `
         <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
-        <input type="${htmlInputTypeForField(field)}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
+        <input type="${htmlInputTypeForField(
+          field
+        )}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${
+      field.placeholder
+    }">
         <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
-        <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
-      `
+        <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(
+      field.description
+    )}</div>
+      `;
   } else {
     formGroup.innerHTML = `
         <div class="row">
           <label for="field-input-${fieldId}" class="col-sm-3 col-form-label">${field.label}</label>
           <div class="col">
-            <input type="${htmlInputTypeForField(field)}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${field.placeholder}">
+            <input type="${htmlInputTypeForField(
+              field
+            )}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${
+      field.placeholder
+    }">
             <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
           </div>
         </div>
@@ -189,7 +201,7 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
   });
 
   return formGroup;
-}
+};
 
 const createFieldItemFormGroup = (field, fieldItemIndex = 0) => {
   const fieldId = nameToId(field.fieldName, fieldItemIndex);
@@ -225,10 +237,10 @@ const createFieldItemFormGroup = (field, fieldItemIndex = 0) => {
   fieldItemGroup.querySelector("button.add-field-item").addEventListener("click", () => {
     const itemContainer = fieldItemGroup.querySelector(".field-item-container");
     itemContainer.appendChild(createFieldItem(field, itemContainer.childElementCount));
-  })
+  });
 
   return fieldItemGroup;
-}
+};
 
 const createFormGroup = (field, fieldItemIndex = 0) => {
   if (isArrayOfObjects(field)) {
@@ -236,7 +248,7 @@ const createFormGroup = (field, fieldItemIndex = 0) => {
   } else {
     return createInputFormGroup(field, fieldItemIndex);
   }
-}
+};
 
 const defaultValueForField = (field) => {
   if (field.type === "array") {
@@ -244,55 +256,55 @@ const defaultValueForField = (field) => {
   }
 
   return undefined;
-}
+};
 
 const getInputValueForField = (field, parentElement) => {
   const valueTypeConverter = {
-    "integer": (value) => parseInt(value),
-    "string": (value) => value,
-    "array": (value) => value
-      .split(",")
-      .map(item => valueTypeConverter[field.itemType](item.trim())),
+    integer: (value) => parseInt(value),
+    string: (value) => value,
+    array: (value) =>
+      value.split(",").map((item) => valueTypeConverter[field.itemType](item.trim())),
   };
 
-  const inputElement = parentElement.querySelector(`.form-group[data-field-name="${field.fieldName}"] input`);
+  const inputElement = parentElement.querySelector(
+    `.form-group[data-field-name="${field.fieldName}"] input`
+  );
 
   if (inputElement.value.length === 0) {
     return defaultValueForField(field);
   }
 
   return valueTypeConverter[field.type](inputElement.value);
-}
+};
 
 const getDataForField = (field, form) => {
   if (isArrayOfObjects(field)) {
     const fieldItems = form.querySelectorAll(`.field-item[data-field-name="${field.fieldName}"]`);
 
     if (fieldItems.length === 0) {
-      return defaultValueForField(field)
+      return defaultValueForField(field);
     }
 
-    return Array.from(fieldItems)
-      .map(
-        fieldItem => Object.entries(field.definitions)
-          .filter(([_, nestedField]) => nestedField.showInFormDocs)
-          .reduce(
-            (fieldItemData, [fieldKey, nestedField]) => ({
-              [fieldKey]: isArrayOfObjects(nestedField)
-                ? getDataForField(nestedField, form)
-                : getInputValueForField(nestedField, fieldItem),
-              ...fieldItemData,
-            }),
-            {},
-          )
-      );
+    return Array.from(fieldItems).map((fieldItem) =>
+      Object.entries(field.definitions)
+        .filter(([_, nestedField]) => nestedField.showInFormDocs)
+        .reduce(
+          (fieldItemData, [fieldKey, nestedField]) => ({
+            [fieldKey]: isArrayOfObjects(nestedField)
+              ? getDataForField(nestedField, form)
+              : getInputValueForField(nestedField, fieldItem),
+            ...fieldItemData,
+          }),
+          {}
+        )
+    );
   } else {
-    return getInputValueForField(field, form)
+    return getInputValueForField(field, form);
   }
-}
+};
 
 const getDataForSchema = (form) => ({
-  "version": schema.version,
+  version: schema.version,
   ...Object.entries(schema.definitions)
     .filter(([_, field]) => field.showInFormDocs)
     .reduce(
@@ -300,8 +312,8 @@ const getDataForSchema = (form) => ({
         [fieldKey]: getDataForField(field, form),
         ...data,
       }),
-      {},
-    )
+      {}
+    ),
 });
 
 const groupedFieldKeys = (() => {
@@ -310,9 +322,9 @@ const groupedFieldKeys = (() => {
 
     return [
       field.fields,
-      ...field.fields.map(fieldKey => keysOfField(field.definitions[fieldKey]))
-    ].filter(group => group.length > 0);
-  }
+      ...field.fields.map((fieldKey) => keysOfField(field.definitions[fieldKey])),
+    ].filter((group) => group.length > 0);
+  };
 
   let fieldKeyGroups;
 
@@ -322,7 +334,7 @@ const groupedFieldKeys = (() => {
     fieldKeyGroups = keysOfField(schema);
 
     return fieldKeyGroups;
-  }
+  };
 })();
 
 const sortKeysBySchema = (a, b) => {
@@ -336,17 +348,21 @@ const sortKeysBySchema = (a, b) => {
   }
 
   return 0;
-}
+};
 
-const serializeFormDataToYaml = (data) => yaml.dump(data, {
-  sortKeys: sortKeysBySchema,
-  quotingType: "\"",
-  forceQuotes: true,
-})
+const serializeFormDataToYaml = (data) =>
+  yaml.dump(data, {
+    sortKeys: sortKeysBySchema,
+    quotingType: '"',
+    forceQuotes: true,
+  });
 
 const serializeFormDataToMarkdownFrontMatter = (data) => `---\n${serializeFormDataToYaml(data)}---`;
 
-const githubPrSubmitUrl = (slug, content) => `https://github.com/acearchive/acearchive.lgbt/new/main/?filename=content/archive/${slug}/index.md&value=${encodeURIComponent(content)}`
+const githubPrSubmitUrl = (slug, content) =>
+  `https://github.com/acearchive/acearchive.lgbt/new/main/?filename=content/archive/${slug}/index.md&value=${encodeURIComponent(
+    content
+  )}`;
 
 const artifactFormSubmitUrl = (form) => {
   const data = getDataForSchema(form);
@@ -354,7 +370,7 @@ const artifactFormSubmitUrl = (form) => {
   delete data.slug;
 
   return githubPrSubmitUrl(urlSlug, serializeFormDataToMarkdownFrontMatter(data));
-}
+};
 
 const showValidityMessages = (form) => {
   for (const validationElement of form.querySelectorAll(".needs-validation")) {
@@ -365,51 +381,58 @@ const showValidityMessages = (form) => {
       validationElement.classList.add("was-validated");
     }
   }
-}
+};
 
 const validateFieldWithCustomValidator = (form, field) => {
   const validatorsByName = {
-    "cid": normalizeCid,
+    cid: normalizeCid,
   };
 
   const validators = [];
 
   if (field.customValidator) {
-    const inputElements = Array.from(form.querySelectorAll(`.form-group[data-field-name="${field.fieldName}"] input`));
+    const inputElements = Array.from(
+      form.querySelectorAll(`.form-group[data-field-name="${field.fieldName}"] input`)
+    );
 
-    validators.push(...inputElements.map(async inputElement => {
-      const validator = validatorsByName[field.customValidator.name];
-      const result = await validator(inputElement.value);
+    validators.push(
+      ...inputElements.map(async (inputElement) => {
+        const validator = validatorsByName[field.customValidator.name];
+        const result = await validator(inputElement.value);
 
-      if (result === undefined) {
-        inputElement.setCustomValidity(field.customValidator.message);
-      } else {
-        inputElement.value = result;
-      }
-    }));
+        if (result === undefined) {
+          inputElement.setCustomValidity(field.customValidator.message);
+        } else {
+          inputElement.value = result;
+        }
+      })
+    );
   }
 
   if (field.definitions) {
-    validators.push(...Object
-      .values(field.definitions)
-      .flatMap(nestedField => validateFieldWithCustomValidator(form, nestedField))
+    validators.push(
+      ...Object.values(field.definitions).flatMap((nestedField) =>
+        validateFieldWithCustomValidator(form, nestedField)
+      )
     );
   }
 
   return validators;
-}
+};
 
 const runCustomValidators = (form) => {
-  const validators = Object.values(schema.definitions).flatMap(field => validateFieldWithCustomValidator(form, field));
+  const validators = Object.values(schema.definitions).flatMap((field) =>
+    validateFieldWithCustomValidator(form, field)
+  );
 
   // If any custom validators are running that could cause form validation to
   // take a noticeable amount of time, add a minimum delay to prevent UI flicker.
   if (validators.length > 0) {
-    validators.push(new Promise(r => setTimeout(r, validationMinDelay)));
+    validators.push(new Promise((r) => setTimeout(r, validationMinDelay)));
   }
 
   return Promise.all(validators);
-}
+};
 
 const checkValidity = async (form) => {
   const submitButtonElement = form.querySelector(".submit-control button");
@@ -424,7 +447,7 @@ const checkValidity = async (form) => {
   showValidityMessages(form);
 
   return form.checkValidity();
-}
+};
 
 const setButtonLoading = (buttonElement, text) => {
   buttonElement.disabled = true;
@@ -432,12 +455,12 @@ const setButtonLoading = (buttonElement, text) => {
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       ${text}
     `;
-}
+};
 
 const unsetButtonLoading = (buttonElement, text) => {
   buttonElement.disabled = false;
   buttonElement.innerText = text;
-}
+};
 
 const setFormInputsDisabled = (form, disabled) => {
   for (const buttonElement of form.querySelectorAll(".form-button, .field-item-action")) {
@@ -447,7 +470,7 @@ const setFormInputsDisabled = (form, disabled) => {
   for (const inputElement of form.querySelectorAll(".form-group input")) {
     inputElement.disabled = disabled;
   }
-}
+};
 
 const createSubmitButton = (form) => {
   const submitButton = document.createElement("div");
@@ -458,13 +481,13 @@ const createSubmitButton = (form) => {
   `;
 
   submitButton.querySelector("button").addEventListener("click", () => {
-    checkValidity(form).then(isValid => {
+    checkValidity(form).then((isValid) => {
       if (isValid) window.open(artifactFormSubmitUrl(form), "_blank");
-    })
+    });
   });
 
   return submitButton;
-}
+};
 
 if (artifactForm) {
   for (const fieldName of schema.fields) {

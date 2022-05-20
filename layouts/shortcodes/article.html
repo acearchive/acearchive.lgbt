@@ -1,6 +1,6 @@
 {{- $page := .Get 0 | .Site.GetPage -}}
 {{- if .Get 1 -}}
-<a href="{{ $page.Permalink }}#{{ .Get 1 }}">"{{ $page.Params.title }}"</a>
+  <a href="{{ $page.Permalink }}#{{ .Get 1 }}">"{{ $page.Params.title }}"</a>
 {{- else -}}
-<a href="{{ $page.Permalink }}">"{{ $page.Params.title }}"</a>
+  <a href="{{ $page.Permalink }}">"{{ $page.Params.title }}"</a>
 {{- end -}}

@@ -1,9 +1,9 @@
 .download-pane > .card {
-    max-width: 25em;
+  max-width: 25em;
 }
 
 .download-button > label {
-    @extend .text-muted;
-    font-size: $font-size-base * .875;
-    text-align: center;
+  @extend .text-muted;
+  font-size: $font-size-base * 0.875;
+  text-align: center;
 }

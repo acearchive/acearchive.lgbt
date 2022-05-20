@@ -1,21 +1,43 @@
 {{ $currentPage := . -}}
 
+
 <ul class="list-unstyled collapsible-sidebar">
   <li class="mb-b">
     {{ $active := and (eq .CurrentSection .FirstSection) (eq .Title "Archive") -}}
-    <h3><a class="docs-link{{ if $active }} active{{ end }}" href="/archive/">All artifacts</a></h3>
+    <h3>
+      <a class="docs-link{{ if $active }}active{{ end }}" href="/archive/">All artifacts</a>
+    </h3>
   </li>
 
   <li class="mb-2">
     {{- $active := eq .Section "identities" -}}
-    <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#identities-menu" aria-expanded="{{ if $active }}true{{ else }}false{{ end }}" aria-controls="identities-menu">
+    <button
+      class="btn btn-toggle align-items-center rounded"
+      data-bs-toggle="collapse"
+      data-bs-target="#identities-menu"
+      aria-expanded="{{ if $active }}
+        true
+      {{ else }}
+        false
+      {{ end }}"
+      aria-controls="identities-menu"
+    >
       Identities
     </button>
-    <div class="collapse{{ if $active }} show{{ end }}" id="identities-menu">
-      <ul class="btn-toggle-nav list-unstyled ">
+    <div class="collapse{{ if $active }}show{{ end }}" id="identities-menu">
+      <ul class="btn-toggle-nav list-unstyled">
         {{ range .Site.Taxonomies.identities }}
-          {{ $active := eq .Page.Title $currentPage.Title -}}
-          <li><a class="docs-link d-flex{{ if $active }} active{{ end }}" href="{{ .Page.Permalink }}"><span>{{ .Page.Title | title }}</span><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4">{{ .Count }}</span></a></li>
+          {{ $active := eq .Page.Title
+            $currentPage.Title
+          -}}
+          <li>
+            <a class="docs-link d-flex{{ if $active }}active{{ end }}" href="{{ .Page.Permalink }}"
+              ><span>{{ .Page.Title | title }}</span
+              ><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4"
+                >{{ .Count }}</span
+              ></a
+            >
+          </li>
         {{ end }}
       </ul>
     </div>
@@ -23,14 +45,33 @@
 
   <li class="mb-2">
     {{- $active := eq .Section "decades" -}}
-    <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#decades-menu" aria-expanded="{{ if $active }}true{{ else }}false{{ end }}" aria-controls="decades-menu">
+    <button
+      class="btn btn-toggle align-items-center rounded"
+      data-bs-toggle="collapse"
+      data-bs-target="#decades-menu"
+      aria-expanded="{{ if $active }}
+        true
+      {{ else }}
+        false
+      {{ end }}"
+      aria-controls="decades-menu"
+    >
       Decades
     </button>
-    <div class="collapse{{ if $active }} show{{ end }}" id="decades-menu">
+    <div class="collapse{{ if $active }}show{{ end }}" id="decades-menu">
       <ul class="btn-toggle-nav list-unstyled">
         {{ range .Site.Taxonomies.decades }}
-          {{ $active := eq .Page.Title $currentPage.Title -}}
-          <li><a class="docs-link d-flex{{ if $active }} active{{ end }}" href="{{ .Page.Permalink }}"><span>{{ .Page.Title | title }}</span><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4">{{ .Count }}</span></a></li>
+          {{ $active := eq .Page.Title
+            $currentPage.Title
+          -}}
+          <li>
+            <a class="docs-link d-flex{{ if $active }}active{{ end }}" href="{{ .Page.Permalink }}"
+              ><span>{{ .Page.Title | title }}</span
+              ><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4"
+                >{{ .Count }}</span
+              ></a
+            >
+          </li>
         {{ end }}
       </ul>
     </div>
@@ -38,14 +79,33 @@
 
   <li class="mb-2">
     {{- $active := eq .Section "people" -}}
-    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#people-menu" aria-expanded="{{ if $active }}true{{ else }}false{{ end }}" aria-controls="people-menu">
+    <button
+      class="btn btn-toggle align-items-center rounded collapsed"
+      data-bs-toggle="collapse"
+      data-bs-target="#people-menu"
+      aria-expanded="{{ if $active }}
+        true
+      {{ else }}
+        false
+      {{ end }}"
+      aria-controls="people-menu"
+    >
       People
     </button>
-    <div class="collapse{{ if $active }} show{{ end }}" id="people-menu">
+    <div class="collapse{{ if $active }}show{{ end }}" id="people-menu">
       <ul class="btn-toggle-nav list-unstyled">
         {{ range .Site.Taxonomies.people }}
-          {{ $active := eq .Page.Title $currentPage.Title -}}
-          <li><a class="docs-link d-flex{{ if $active }} active{{ end }}" href="{{ .Page.Permalink }}"><span>{{ .Page.Title | title }}</span><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4">{{ .Count }}</span></a></li>
+          {{ $active := eq .Page.Title
+            $currentPage.Title
+          -}}
+          <li>
+            <a class="docs-link d-flex{{ if $active }}active{{ end }}" href="{{ .Page.Permalink }}"
+              ><span>{{ .Page.Title | title }}</span
+              ><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4"
+                >{{ .Count }}</span
+              ></a
+            >
+          </li>
         {{ end }}
       </ul>
     </div>
