@@ -57,7 +57,7 @@ function showResults(index, search, suggestions) {
         entry.querySelector("span:nth-child(2)").innerHTML = doc.description;
 
         suggestions.appendChild(entry);
-        if (suggestions.childElementCount == maxResult) break;
+        if (suggestions.childElementCount === maxResult) break;
     }
 }
 

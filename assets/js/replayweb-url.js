@@ -23,7 +23,7 @@ for (const form of forms) {
   copyButton.addEventListener("clipboard-copy", function () {
     copyConfirmedMessage.removeAttribute("hidden");
     setTimeout(function () {
-      copyConfirmedMessage.setAttribute("hidden", true);
+      copyConfirmedMessage.setAttribute("hidden", "true");
     }, 1000);
   });
 }
