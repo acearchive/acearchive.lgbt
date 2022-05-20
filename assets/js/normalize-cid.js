@@ -1,5 +1,5 @@
-import { isIPFS, CID } from "ipfs-core";
 import * as IPFS from "ipfs-core";
+import { CID, isIPFS } from "ipfs-core";
 
 const ipfsPathPrefix = "/ipfs/";
 const ipnsPathPrefix = "/ipns/";
@@ -14,11 +14,6 @@ const parseInputToIpfsPath = (maybeUrlOrCidOrPath) => {
     return ipfsPathPrefix + maybeUrlOrCidOrPath;
   }
 
-  if (isIPFS.ipfsUrl(maybeUrlOrCidOrPath) || isIPFS.ipnsUrl(maybeUrlOrCidOrPath)) {
-    const url = new URL(maybeUrlOrCidOrPath);
-    return url.pathname;
-  }
-
   if (isIPFS.ipfsSubdomain(maybeUrlOrCidOrPath)) {
     const url = new URL(maybeUrlOrCidOrPath);
     const cid = url.hostname.split(".", 2)[0];
@@ -29,6 +24,11 @@ const parseInputToIpfsPath = (maybeUrlOrCidOrPath) => {
     const url = new URL(maybeUrlOrCidOrPath);
     const cid = url.hostname.split(".", 2)[0];
     return ipnsPathPrefix + cid;
+  }
+
+  if (isIPFS.ipfsUrl(maybeUrlOrCidOrPath) || isIPFS.ipnsUrl(maybeUrlOrCidOrPath)) {
+    const url = new URL(maybeUrlOrCidOrPath);
+    return url.pathname;
   }
 
   return undefined;
@@ -72,9 +72,5 @@ const normalizeCid = async (maybeUrlOrCidOrPath) => {
 
   return resolvedCid;
 };
-
-// Start loading the IPFS node on page load. If it's not done by the time we
-// submit the form, we'll await it.
-// void lazyIpfs();
 
 export default normalizeCid;
