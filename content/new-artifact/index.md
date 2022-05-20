@@ -8,7 +8,6 @@ images: []
 type: "new-artifact"
 aliases:
   - "/docs/contributing/pull-request"
-loadIpfs: true
 ---
 
 If you would like to contribute content to Ace Archive, you can use this form to

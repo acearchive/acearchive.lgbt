@@ -9,7 +9,6 @@ menu:
   docs:
     parent: "contributing"
 weight: 204
-loadipfs: true
 ---
 
 We mention in {{< article "docs/contributing/best-practices.md"
