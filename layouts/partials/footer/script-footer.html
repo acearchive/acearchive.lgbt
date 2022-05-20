@@ -93,6 +93,7 @@
   {{ $mermaid := $mermaid | minify | fingerprint "sha512" -}}
   {{ $ipfs := $ipfs | fingerprint "sha512" -}}
   {{ $artifactForm := $artifactForm | minify | fingerprint "sha512" -}}
+  {{ $replayWeb := $replayWeb | minify | fingerprint "sha512" -}}
 
   {{ if .Site.Params.options.bootStrapJs -}}
     <script
