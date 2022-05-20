@@ -1,6 +1,6 @@
 <div class="replayweb-url-form card">
   <div class="card-body">
-    <form>
+    <form novalidate>
       <div class="row mb-2 needs-validated cid-input">
         <label class="col-sm-3 col-form-label" for="replayweb-url-cid-input-{{ .Ordinal }}"
           >CID</label
@@ -26,7 +26,7 @@
             aria-describedby="invalid-feedback-filename-{{ .Ordinal }}"
             class="form-control"
             id="replayweb-url-filename-input-{{ .Ordinal }}"
-            pattern="^[\w\d][\w\d-]*[\w\d](\.[\w\d]+)+$"
+            pattern="^[\w\d][\w\d-]*[\w\d]\.warc$"
             placeholder="coining-of-queerplatonic.warc"
             required
           />
@@ -53,8 +53,11 @@
       </div>
 
       <div class="d-flex align-items-center">
-        <clipboard-copy class="btn btn-primary mt-2 copy-button">Copy URL</clipboard-copy>
-        <span class="form-text align-middle ms-3 copy-confirmed-message" hidden>Copied!</span>
+        <button class="btn btn-primary mt-2 copy-button" type="button">Submit</button>
+        <span class="form-text text-truncate d-none ms-3 text-nowrap url-output">
+          <a class="me-2 text-truncate" href=""></a>
+          {{ partial "archive/clipboard-copy-button" "" }}
+        </span>
       </div>
     </form>
   </div>
