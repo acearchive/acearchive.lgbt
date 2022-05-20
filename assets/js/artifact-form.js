@@ -190,7 +190,7 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
     }
   }
 
-  inputElement.addEventListener("input", (e) => {
+  inputElement.addEventListener("input", () => {
     formGroup.classList.remove("was-validated");
     inputElement.setCustomValidity("");
   });
@@ -245,9 +245,8 @@ const createFieldItemFormGroup = (field, fieldItemIndex = 0) => {
 const createFormGroup = (field, fieldItemIndex = 0) => {
   if (isArrayOfObjects(field)) {
     return createFieldItemFormGroup(field, fieldItemIndex);
-  } else {
-    return createInputFormGroup(field, fieldItemIndex);
   }
+  return createInputFormGroup(field, fieldItemIndex);
 };
 
 const defaultValueForField = (field) => {
@@ -287,7 +286,7 @@ const getDataForField = (field, form) => {
 
     return Array.from(fieldItems).map((fieldItem) =>
       Object.entries(field.definitions)
-        .filter(([_, nestedField]) => nestedField.showInFormDocs)
+        .filter(([, nestedField]) => nestedField.showInFormDocs)
         .reduce(
           (fieldItemData, [fieldKey, nestedField]) => ({
             [fieldKey]: isArrayOfObjects(nestedField)
@@ -298,15 +297,14 @@ const getDataForField = (field, form) => {
           {}
         )
     );
-  } else {
-    return getInputValueForField(field, form);
   }
+  return getInputValueForField(field, form);
 };
 
 const getDataForSchema = (form) => ({
   version: schema.version,
   ...Object.entries(schema.definitions)
-    .filter(([_, field]) => field.showInFormDocs)
+    .filter(([, field]) => field.showInFormDocs)
     .reduce(
       (data, [fieldKey, field]) => ({
         [fieldKey]: getDataForField(field, form),
@@ -397,11 +395,11 @@ const validateFieldWithCustomValidator = (form, field) => {
 
     validators.push(
       ...inputElements.map(async (inputElement) => {
-        const validator = validatorsByName[field.customValidator.name];
-        const result = await validator(inputElement.value);
+        const validator = validatorsByName[field.customValidator];
+        const { result, message } = await validator(inputElement.value);
 
         if (result === undefined) {
-          inputElement.setCustomValidity(field.customValidator.message);
+          inputElement.setCustomValidity(message);
         } else {
           inputElement.value = result;
         }
