@@ -1,53 +1,79 @@
-{{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate "search.js" . | js.Build -}}
-
-{{ $bs := resources.Get "js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" -}}
-
-{{ $highlight := resources.Get "js/highlight.js" | js.Build -}}
-
-{{ $katex := resources.Get "js/vendor/katex/dist/katex.js" -}}
-{{ $katexAutoRender := resources.Get "js/vendor/katex/dist/contrib/auto-render.js" -}}
-
-{{ $mermaid := resources.Get "js/mermaid.js" | js.Build -}}
-
+{{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate
+  "search.js" . | js.Build
+-}}
+{{ $bs := resources.Get
+  "js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"
+-}}
+{{ $highlight :=
+  resources.Get "js/highlight.js" | js.Build
+-}}
+{{ $katex := resources.Get
+  "js/vendor/katex/dist/katex.js"
+-}}
+{{ $katexAutoRender := resources.Get
+  "js/vendor/katex/dist/contrib/auto-render.js"
+-}}
+{{ $mermaid := resources.Get
+  "js/mermaid.js" | js.Build
+-}}
 {{ $app := resources.Get "js/app.js" -}}
-
 {{ $slice := slice $app -}}
-
 {{ if .Site.Params.options.lazySizes -}}
-  {{ $slice = $slice | append (resources.Get "js/lazysizes.js" | js.Build) -}}
+  {{ $slice =
+    $slice | append (resources.Get "js/lazysizes.js" | js.Build)
+  -}}
 {{ end -}}
-
 {{ if .Site.Params.options.clipBoard -}}
-  {{ $slice = $slice | append (resources.Get "js/clipboard.js" | js.Build) -}}
+  {{ $slice = $slice | append (resources.Get
+    "js/clipboard.js" | js.Build)
+  -}}
 {{ end -}}
-
-{{ if .Site.Params.options.instantPage -}}
-  {{ $slice = $slice | append (resources.Get "js/instant.page.js" | js.Build) -}}
+{{ if
+  .Site.Params.options.instantPage
+-}}
+  {{ $slice = $slice | append (resources.Get
+    "js/instant.page.js" | js.Build)
+  -}}
 {{ end -}}
-
-{{ if .Site.Params.options.darkMode -}}
-  {{ $slice = $slice | append (resources.Get "js/darkmode.js" | js.Build) -}}
+{{ if
+  .Site.Params.options.darkMode
+-}}
+  {{ $slice = $slice | append (resources.Get
+    "js/darkmode.js" | js.Build)
+  -}}
 {{ end -}}
-
 {{ if .Site.Params.alertDismissable -}}
   {{ $slice = $slice | append (resources.Get "js/alert.js" | js.Build) -}}
 {{ end -}}
-
 {{ if .Site.Params.options.kaTex -}}
-  {{ $slice = $slice | append (resources.Get "js/katex.js" | js.Build) -}}
+  {{ $slice = $slice | append
+    (resources.Get "js/katex.js" | js.Build)
+  -}}
 {{ end -}}
-
-{{ $slice := $slice | append (resources.Get "js/vendor/clipboard-copy-element/dist/index.esm.js" | js.Build) -}}
-{{ $slice := $slice | append (resources.Get "js/clipboard-copy-button.js" | js.Build) -}}
-{{ $slice := $slice | append (resources.Get "js/replayweb-url.js" | js.Build) -}}
-{{ $slice := $slice | append (resources.Get "js/file-type-icon.js" | js.Build) -}}
-
-{{ $ipfs := resources.Get "js/vendor/ipfs-core/index.min.js" -}}
-{{ $artifactForm := resources.Get "js/artifact-form.js" | js.Build (dict "shims" (dict "ipfs-core" "js/shims/ipfs-core.js") "params" (dict "schema" .Site.Data.artifacts.schema)) -}}
-
+{{ $slice := $slice |
+  append (resources.Get "js/vendor/clipboard-copy-element/dist/index.esm.js" |
+  js.Build)
+-}}
+{{ $slice := $slice | append (resources.Get
+  "js/clipboard-copy-button.js" | js.Build)
+-}}
+{{ $slice := $slice | append
+  (resources.Get "js/replayweb-url.js" | js.Build)
+-}}
+{{ $slice := $slice |
+  append (resources.Get "js/file-type-icon.js" | js.Build)
+-}}
+{{ $ipfs :=
+  resources.Get "js/vendor/ipfs-core/index.min.js"
+-}}
+{{ $artifactForm :=
+  resources.Get "js/artifact-form.js" | js.Build (dict "shims" (dict "ipfs-core"
+  "js/shims/ipfs-core.js") "params" (dict "schema" .Site.Data.artifacts.schema))
+-}}
 {{ $js := $slice | resources.Concat "main.js" -}}
-
-{{ if eq (hugo.Environment) "development" -}}
+{{ if eq
+  (hugo.Environment) "development"
+-}}
   {{ if eq .Type "new-artifact" -}}
     <script src="{{ $ipfs.RelPermalink }}" defer></script>
     <script src="{{ $artifactForm.RelPermalink }}" defer></script>
@@ -60,7 +86,11 @@
   {{ end -}}
   {{ if .Site.Params.options.kaTex -}}
     <script src="{{ $katex.RelPermalink }}" defer></script>
-    <script src="{{ $katexAutoRender.RelPermalink }}" onload="renderMathInElement(document.body);" defer></script>
+    <script
+      src="{{ $katexAutoRender.RelPermalink }}"
+      onload="renderMathInElement(document.body);"
+      defer
+    ></script>
   {{ end -}}
   <script src="{{ $js.RelPermalink }}" defer></script>
   {{ with .Params.mermaid -}}
@@ -72,33 +102,85 @@
 {{ else -}}
   {{ $js := $js | minify | fingerprint "sha512" -}}
   {{ $search := $search | minify | fingerprint "sha512" -}}
-  {{ $bs := $bs | fingerprint "sha512" -}}
-  {{ $highlight := $highlight | minify | fingerprint "sha512" -}}
+  {{ $bs := $bs |
+    fingerprint "sha512"
+  -}}
+  {{ $highlight := $highlight | minify | fingerprint
+    "sha512"
+  -}}
   {{ $katex := $katex | minify | fingerprint "sha512" -}}
   {{ $katexAutoRender := $katexAutoRender | minify | fingerprint "sha512" -}}
   {{ $mermaid := $mermaid | minify | fingerprint "sha512" -}}
-  {{ $ipfs := $ipfs | fingerprint "sha512" -}}
-  {{ $artifactForm := $artifactForm | minify | fingerprint "sha512" }}
-
+  {{ $ipfs := $ipfs |
+    fingerprint "sha512"
+  -}}
+  {{ $artifactForm := $artifactForm | minify |
+    fingerprint "sha512"
+  }}
   {{ if eq .Type "new-artifact" -}}
-    <script src="{{ $ipfs.RelPermalink }}" integrity="{{ $ipfs.Data.Integrity }}" crossorigin="anonymous" defer></script>
-    <script src="{{ $artifactForm.RelPermalink }}" integrity="{{ $artifactForm.Data.Integrity }}" crossorigin="anonymous" defer></script>
+    <script
+      src="{{ $ipfs.RelPermalink }}"
+      integrity="{{ $ipfs.Data.Integrity }}"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script
+      src="{{ $artifactForm.RelPermalink }}"
+      integrity="{{ $artifactForm.Data.Integrity }}"
+      crossorigin="anonymous"
+      defer
+    ></script>
   {{ end -}}
   {{ if .Site.Params.options.bootStrapJs -}}
-    <script src="{{ $bs.RelPermalink }}" integrity="{{ $bs.Data.Integrity }}" crossorigin="anonymous" defer></script>
+    <script
+      src="{{ $bs.RelPermalink }}"
+      integrity="{{ $bs.Data.Integrity }}"
+      crossorigin="anonymous"
+      defer
+    ></script>
   {{ end -}}
   {{ if .Site.Params.options.highLight -}}
-    <script src="{{ $highlight.RelPermalink }}" integrity="{{ $highlight.Data.Integrity }}" crossorigin="anonymous" defer></script>
+    <script
+      src="{{ $highlight.RelPermalink }}"
+      integrity="{{ $highlight.Data.Integrity }}"
+      crossorigin="anonymous"
+      defer
+    ></script>
   {{ end -}}
   {{ if .Site.Params.options.kaTex -}}
-    <script src="{{ $katex.RelPermalink }}" integrity="{{ $katex.Data.Integrity }}" crossorigin="anonymous" defer></script>
-    <script src="{{ $katexAutoRender.RelPermalink }}" integrity="{{ $katexAutoRender.Data.Integrity }}" crossorigin="anonymous" defer></script>
+    <script
+      src="{{ $katex.RelPermalink }}"
+      integrity="{{ $katex.Data.Integrity }}"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script
+      src="{{ $katexAutoRender.RelPermalink }}"
+      integrity="{{ $katexAutoRender.Data.Integrity }}"
+      crossorigin="anonymous"
+      defer
+    ></script>
   {{ end -}}
-  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
+  <script
+    src="{{ $js.RelPermalink }}"
+    integrity="{{ $js.Data.Integrity }}"
+    crossorigin="anonymous"
+    defer
+  ></script>
   {{ with .Params.mermaid -}}
-    <script src="{{ $mermaid.RelPermalink }}" integrity="{{ $mermaid.Data.Integrity }}" crossorigin="anonymous" defer></script>
+    <script
+      src="{{ $mermaid.RelPermalink }}"
+      integrity="{{ $mermaid.Data.Integrity }}"
+      crossorigin="anonymous"
+      defer
+    ></script>
   {{ end -}}
   {{ if eq .Section "docs" "archive" "identities" "decades" "people" -}}
-    <script src="{{ $search.Permalink }}" integrity="{{ $search.Data.Integrity }}" crossorigin="anonymous" defer></script>
+    <script
+      src="{{ $search.Permalink }}"
+      integrity="{{ $search.Data.Integrity }}"
+      crossorigin="anonymous"
+      defer
+    ></script>
   {{ end -}}
 {{ end -}}

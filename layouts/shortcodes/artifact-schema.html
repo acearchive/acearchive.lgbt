@@ -1,12 +1,13 @@
 {{- $schema := .Site.Data.artifacts.schema -}}
 <dl class="schema-definition">
   {{ range $key := $schema.fields -}}
-
-  {{- $field := index $schema.definitions $key -}}
-
-  {{- if $field.showInFileDocs }}
-    {{- partial "archive/schema-field" $field -}}
-  {{- end -}}
-
+    {{- $field := index $schema.definitions
+      $key
+    -}}
+    {{- if $field.showInFileDocs }}
+      {{- partial "archive/schema-field"
+        $field
+      -}}
+    {{- end -}}
   {{- end }}
 </dl>

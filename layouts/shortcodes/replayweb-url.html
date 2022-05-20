@@ -2,29 +2,48 @@
   <div class="card-body">
     <form>
       <div class="row mb-2">
-        <label class="col-sm-3 col-form-label" for="replayweb-url-cid-input-{{ .Ordinal }}">CID</label>
+        <label class="col-sm-3 col-form-label" for="replayweb-url-cid-input-{{ .Ordinal }}"
+          >CID</label
+        >
         <div class="col">
-          <input id="replayweb-url-cid-input-{{ .Ordinal }}" class="form-control cid-input" placeholder="bafkreiabz4zbkhaovm7cuchfka53bmzzgm5ebvohprahen6as3qg6wsb7y">
+          <input
+            class="form-control cid-input"
+            id="replayweb-url-cid-input-{{ .Ordinal }}"
+            placeholder="bafkreiabz4zbkhaovm7cuchfka53bmzzgm5ebvohprahen6as3qg6wsb7y"
+          />
         </div>
       </div>
 
       <div class="row mb-2">
-        <label class="col-sm-3 col-form-label" for="replayweb-url-filename-input-{{ .Ordinal }}">File Name</label>
+        <label class="col-sm-3 col-form-label" for="replayweb-url-filename-input-{{ .Ordinal }}"
+          >File Name</label
+        >
         <div class="col">
-          <input id="replayweb-url-filename-input-{{ .Ordinal }}" class="form-control filename-input" placeholder="coining-of-queerplatonic.warc">
+          <input
+            class="form-control filename-input"
+            id="replayweb-url-filename-input-{{ .Ordinal }}"
+            placeholder="coining-of-queerplatonic.warc"
+          />
         </div>
       </div>
 
       <div class="row mb-2">
-        <label class="col-sm-3 col-form-label" for="replayweb-url-url-input-{{ .Ordinal }}">Archived URL</label>
+        <label class="col-sm-3 col-form-label" for="replayweb-url-url-input-{{ .Ordinal }}"
+          >Archived URL</label
+        >
         <div class="col">
-          <input id="replayweb-url-url-input-{{ .Ordinal }}" class="form-control url-input" placeholder="https://kaz.dreamwidth.org/238564.html">
+          <input
+            class="form-control url-input"
+            id="replayweb-url-url-input-{{ .Ordinal }}"
+            placeholder="https://kaz.dreamwidth.org/238564.html"
+          />
         </div>
       </div>
 
-      <clipboard-copy class="btn btn-primary mt-2 copy-button">Copy URL</clipboard-copy>
-
-      <span hidden="true" class="text-muted fs-6 ms-2 copy-confirmed-message">Copied!</span>
+      <div class="d-flex align-items-center">
+        <clipboard-copy class="btn btn-primary mt-2 copy-button">Copy URL</clipboard-copy>
+        <span class="form-text align-middle ms-3 copy-confirmed-message" hidden>Copied!</span>
+      </div>
     </form>
   </div>
 </div>

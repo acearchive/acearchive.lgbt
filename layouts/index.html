@@ -1,44 +1,64 @@
 {{ define "main" }}
-<section class="section container-fluid mt-n3 pb-3">
-  <div class="row justify-content-center">
-    <div class="col-lg-12 text-center">
-      <h1 class="mt-0">{{ .Title }}</h1>
+  <section class="section container-fluid mt-n3 pb-3">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-0">{{ .Title }}</h1>
+      </div>
+      <div class="col-lg-9 col-xl-8 text-center">
+        <p class="lead">{{ .Params.lead | safeHTML }}</p>
+        <a class="btn btn-primary btn-lg px-4 mb-2" href="/archive/" role="button"
+          >Browse the Archive</a
+        >
+      </div>
     </div>
-    <div class="col-lg-9 col-xl-8 text-center">
-      <p class="lead">{{ .Params.lead | safeHTML }}</p>
-      <a class="btn btn-primary btn-lg px-4 mb-2" href="/archive/" role="button">Browse the Archive</a>
-    </div>
-  </div>
-</section>
+  </section>
 {{ end }}
 
 {{ define "sidebar-prefooter" }}
-<section class="section section-sm">
-  <div class="container">
-    <div class="row justify-content-center text-center">
-      <div class="col-lg-5">
-        <h2 class="h4">Distributed</h2>
-        <p>The archive is hosted on the distributed web, which means that anyone can <a href="{{ ref . "docs/contributing/hosting-artifacts.md" }}">help host the archive</a>, so you don't have to rely on someone else to keep the lights on.</p>
-      </div>
-      <div class="col-lg-5">
-        <h2 class="h4">Open</h2>
-        <p>Anyone can help contribute to the archive. The code is completely open-source and permissively licensed, and you can <a href="{{ ref . "docs/contributing/getting-started.md" }}">make a suggestion or contribute</a> on <a href="https://github.com/acearchive/acearchive.lgbt">GitHub</a>.</p>
-      </div>
-      <div class="col-lg-5">
-        <h2 class="h4">Permanent</h2>
-        <p>Links die and sites go down, but <a href="https://ipfs.io">IPFS</a> allows content to have a permanent home on the web. Special <a href="{{ ref . "docs/about/linking-to-content.md" }}">IPFS permalinks</a> ensure you can find content whether it's hosted on this site or elsewhere.</p>
+  <section class="section section-sm">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-5">
+          <h2 class="h4">Distributed</h2>
+          <p>
+            The archive is hosted on the distributed web, which means that anyone can
+            <a href="{{ ref . "docs/contributing/hosting-artifacts.md" }}">help host the archive</a
+            >, so you don't have to rely on someone else to keep the lights on.
+          </p>
+        </div>
+        <div class="col-lg-5">
+          <h2 class="h4">Open</h2>
+          <p>
+            Anyone can help contribute to the archive. The code is completely open-source and
+            permissively licensed, and you can
+            <a href="{{ ref . "docs/contributing/getting-started.md" }}"
+              >make a suggestion or contribute</a
+            >
+            on
+            <a href="https://github.com/acearchive/acearchive.lgbt">GitHub</a>.
+          </p>
+        </div>
+        <div class="col-lg-5">
+          <h2 class="h4">Permanent</h2>
+          <p>
+            Links die and sites go down, but
+            <a href="https://ipfs.io">IPFS</a> allows content to have a permanent home on the web.
+            Special
+            <a href="{{ ref . "docs/about/linking-to-content.md" }}">IPFS permalinks</a>
+            ensure you can find content whether it's hosted on this site or elsewhere.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 {{ end }}
 
 {{ define "sidebar-footer" }}
-<section class="section section-sm container-fluid">
-  <div class="row justify-content-center text-center">
-    <div class="col-lg-9">
-      {{- .Content -}}
+  <section class="section section-sm container-fluid">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-9">
+        {{- .Content -}}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 {{ end }}

@@ -7,10 +7,6 @@
     font-weight: 500;
   }
 
-  .form-text {
-    color: $form-text-color;
-  }
-
   .submit-control {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -76,10 +72,6 @@
 }
 
 [data-dark-mode] .new-artifact form {
-  .form-text {
-    color: $form-text-color-dark;
-  }
-
   .form-group .form-button {
     color: $body-color-dark;
   }

@@ -1,28 +1,28 @@
 .cid {
-    font-size: $font-size-base;
-    font-family: $font-family-monospace;
+  font-size: $font-size-base;
+  font-family: $font-family-monospace;
 }
 
 .artifact-links-table {
-    max-width: 45rem;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 45rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .artifact-links-table .link-host {
-    font-style: italic;
-    font-size: $font-size-sm;
+  font-style: italic;
+  font-size: $font-size-sm;
 }
 
 @include media-breakpoint-up(sm) {
-    .artifact-links-table {
-        padding-left: 3.5rem;
-        padding-right: 3.5rem;
+  .artifact-links-table {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
 
-        .archive-icon {
-            pointer-events: none;
-            position: absolute;
-            left: 3rem;
-        }
+    .archive-icon {
+      pointer-events: none;
+      position: absolute;
+      left: 3rem;
     }
+  }
 }

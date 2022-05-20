@@ -1,42 +1,42 @@
-const autoprefixer = require('autoprefixer');
-const purgecss = require('@fullhuman/postcss-purgecss');
-const whitelister = require('purgecss-whitelister');
+const autoprefixer = require("autoprefixer");
+const purgecss = require("@fullhuman/postcss-purgecss");
+const whitelister = require("purgecss-whitelister");
 
 module.exports = {
   plugins: [
     autoprefixer(),
     purgecss({
       content: [
-        './node_modules/@hyas/doks/layouts/**/*.html',
-        './node_modules/@hyas/doks/content/**/*.md',
-        './node_modules/bootstrap/js/src/collapse.js',
-        './layouts/**/*.html',
-        './content/**/*.md',
-        './assets/js/*.js',
+        "./node_modules/@hyas/doks/layouts/**/*.html",
+        "./node_modules/@hyas/doks/content/**/*.md",
+        "./node_modules/bootstrap/js/src/collapse.js",
+        "./layouts/**/*.html",
+        "./content/**/*.md",
+        "./assets/js/*.js",
       ],
       safelist: [
-        'lazyloaded',
-        'table',
-        'thead',
-        'tbody',
-        'tr',
-        'th',
-        'td',
-        'h5',
-        'alert-link',
+        "lazyloaded",
+        "table",
+        "thead",
+        "tbody",
+        "tr",
+        "th",
+        "td",
+        "h5",
+        "alert-link",
         ...whitelister([
-          './node_modules/@hyas/doks/assets/scss/common/_variables.scss',
-          './node_modules/@hyas/doks/assets/scss/components/_buttons.scss',
-          './node_modules/@hyas/doks/assets/scss/components/_code.scss',
-          './node_modules/@hyas/doks/assets/scss/components/_syntax.scss',
-          './node_modules/@hyas/doks/assets/scss/components/_search.scss',
-          './node_modules/@hyas/doks/assets/scss/common/_dark.scss',
-          './node_modules/bootstrap/scss/_tooltip.scss',
-          './node_modules/katex/dist/katex.css',
-          './assets/scss/components/_filetype.scss',
-          './assets/scss/layouts/_artifactform.scss',
+          "./node_modules/@hyas/doks/assets/scss/common/_variables.scss",
+          "./node_modules/@hyas/doks/assets/scss/components/_buttons.scss",
+          "./node_modules/@hyas/doks/assets/scss/components/_code.scss",
+          "./node_modules/@hyas/doks/assets/scss/components/_syntax.scss",
+          "./node_modules/@hyas/doks/assets/scss/components/_search.scss",
+          "./node_modules/@hyas/doks/assets/scss/common/_dark.scss",
+          "./node_modules/bootstrap/scss/_tooltip.scss",
+          "./node_modules/katex/dist/katex.css",
+          "./assets/scss/components/_filetype.scss",
+          "./assets/scss/layouts/_artifactform.scss",
         ]),
       ],
     }),
   ],
-}
+};

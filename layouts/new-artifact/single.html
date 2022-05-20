@@ -1,10 +1,10 @@
 {{ define "main" }}
-<div class="d-flex justify-content-center">
-  <main class="col-md-11">
-    <h1>{{ .Page.Params.title }}</h1>
-    {{ .Content }}
-    <hr>
-    <form id="artifact-form" novalidate></form>
-  </main>
-</div>
+  <div class="d-flex justify-content-center">
+    <main class="col-md-11">
+      <h1>{{ .Page.Params.title }}</h1>
+      {{ .Content }}
+      <hr />
+      <form id="artifact-form" novalidate></form>
+    </main>
+  </div>
 {{ end }}

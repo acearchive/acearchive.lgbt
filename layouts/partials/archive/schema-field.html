@@ -1,11 +1,11 @@
 {{- $root := . -}}
-
 {{- $typeLabel := "" -}}
-
 {{- if eq .type "string" -}}
   {{ $typeLabel = "string" }}
 {{- else if eq .type "integer" -}}
-  {{ $typeLabel = "integer" }}
+  {{ $typeLabel =
+    "integer"
+  }}
 {{- else if eq .type "array" -}}
   {{- if eq .itemType "string" -}}
     {{ $typeLabel = "list of strings" }}
@@ -18,20 +18,18 @@
   {{ $typeLabel = "dictionary" }}
 {{- end -}}
 
+
 <dt class="field-level-{{ default 0 .indentLevel }}">
   <code>{{ .fieldName }}</code>
   <span class="badge rounded-pill bg-primary ms-1">{{ $typeLabel }}</span>
   {{- if not .required }}
-  <span class="badge rounded-pill bg-secondary ms-1">optional</span>
+    <span class="badge rounded-pill bg-secondary ms-1">optional</span>
   {{ end -}}
 </dt>
 <dd class="field-level-{{ default 0 .indentLevel }}">
   {{ .description | markdownify }}
 </dd>
 {{ range $key := .fields -}}
-
-{{- $field := index $root.definitions $key -}}
-
-{{ partial "archive/schema-field" $field }}
-
+  {{- $field := index $root.definitions $key -}}
+  {{ partial "archive/schema-field" $field }}
 {{- end }}

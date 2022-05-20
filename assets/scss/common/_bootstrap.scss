@@ -1,21 +1,21 @@
 [data-dark-mode] .list-group .list-group-item {
-    background: $body-bg-dark;
-    color: $body-color-dark;
-    border-color: $border-dark;
+  background: $body-bg-dark;
+  color: $body-color-dark;
+  border-color: $border-dark;
 }
 
 [data-dark-mode] .list-group .list-group-item:hover {
-    background: $body-overlay-dark;
+  background: $body-overlay-dark;
 }
 
 [data-dark-mode] .badge.bg-primary {
-    color: $body-bg-dark !important;
-    background-color: $button-color-dark !important;
+  color: $body-bg-dark !important;
+  background-color: $button-color-dark !important;
 }
 
 .form-control {
-    background: $gray-100;
-    border: 1px solid transparent;
+  background: $gray-100;
+  border: 1px solid transparent;
 }
 
 input.form-control::placeholder {
@@ -23,13 +23,13 @@ input.form-control::placeholder {
 }
 
 .form-control:focus {
-    border: 1px solid $primary;
+  border: 1px solid $primary;
 }
 
 [data-dark-mode] .form-control {
-    background: $body-overlay-dark;
-    border: 1px solid transparent;
-    color: $gray-300;
+  background: $body-overlay-dark;
+  border: 1px solid transparent;
+  color: $gray-300;
 }
 
 [data-dark-mode] input.form-control::placeholder {
@@ -37,75 +37,82 @@ input.form-control::placeholder {
 }
 
 [data-dark-mode] .form-control:focus {
-    border: 1px solid $link-color-dark;
+  border: 1px solid $link-color-dark;
 }
 
 $tooltip-bg: $body-bg-dark;
 $tooltip-color: $body-color-dark;
 
 .tooltip .tooltip-inner {
-    background-color: $tooltip-bg;
-    color: $tooltip-color;
+  background-color: $tooltip-bg;
+  color: $tooltip-color;
 }
 
 .tooltip.bs-tooltip-top .tooltip-arrow {
-    &::before {
-        border-top-color: $tooltip-bg;
-    }
+  &::before {
+    border-top-color: $tooltip-bg;
+  }
 }
 
 .tooltip.bs-tooltip-end .tooltip-arrow {
-    &::before {
-        border-right-color: $tooltip-bg;
-    }
+  &::before {
+    border-right-color: $tooltip-bg;
+  }
 }
 
 .tooltip.bs-tooltip-bottom .tooltip-arrow {
-    &::before {
-        border-bottom-color: $tooltip-bg;
-    }
+  &::before {
+    border-bottom-color: $tooltip-bg;
+  }
 }
 
 .tooltip.bs-tooltip-start .tooltip-arrow {
-    &::before {
-        border-left-color: $tooltip-bg;
-    }
+  &::before {
+    border-left-color: $tooltip-bg;
+  }
 }
 
 $tooltip-bg-dark: $body-bg;
 $tooltip-color-dark: $body-color;
 
-
 [data-dark-mode] .tooltip .tooltip-inner {
-    background-color: $tooltip-bg-dark;
-    color: $tooltip-color-dark;
+  background-color: $tooltip-bg-dark;
+  color: $tooltip-color-dark;
 }
 
 [data-dark-mode] .tooltip.bs-tooltip-top .tooltip-arrow {
-    &::before {
-        border-top-color: $tooltip-bg-dark;
-    }
+  &::before {
+    border-top-color: $tooltip-bg-dark;
+  }
 }
 
 [data-dark-mode] .tooltip.bs-tooltip-end .tooltip-arrow {
-    &::before {
-        border-right-color: $tooltip-bg-dark;
-    }
+  &::before {
+    border-right-color: $tooltip-bg-dark;
+  }
 }
 
 [data-dark-mode] .tooltip.bs-tooltip-bottom .tooltip-arrow {
-    &::before {
-        border-bottom-color: $tooltip-bg-dark;
-    }
+  &::before {
+    border-bottom-color: $tooltip-bg-dark;
+  }
 }
 
 [data-dark-mode] .tooltip.bs-tooltip-start .tooltip-arrow {
-    &::before {
-        border-left-color: $tooltip-bg-dark;
-    }
+  &::before {
+    border-left-color: $tooltip-bg-dark;
+  }
 }
 
 form label:is(.form-label, .col-form-label) {
-    font-size: $font-size-base;
-    overflow-wrap: normal;
+  font-size: $font-size-base;
+  overflow-wrap: normal;
+}
+
+form .form-text {
+  color: $form-text-color;
+}
+
+[data-dark-mode] form .form-text {
+  color: $form-text-color-dark;
 }
