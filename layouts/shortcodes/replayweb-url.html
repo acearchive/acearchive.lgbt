@@ -1,42 +1,54 @@
 <div class="replayweb-url-form card">
   <div class="card-body">
     <form>
-      <div class="row mb-2">
+      <div class="row mb-2 needs-validated cid-input">
         <label class="col-sm-3 col-form-label" for="replayweb-url-cid-input-{{ .Ordinal }}"
           >CID</label
         >
         <div class="col">
           <input
-            class="form-control cid-input"
+            aria-describedby="invalid-feedback-cid-{{ .Ordinal }}"
+            class="form-control"
             id="replayweb-url-cid-input-{{ .Ordinal }}"
             placeholder="bafkreiabz4zbkhaovm7cuchfka53bmzzgm5ebvohprahen6as3qg6wsb7y"
+            required
           />
+          <div class="invalid-feedback" id="invalid-feedback-cid-{{ .Ordinal }}"></div>
         </div>
       </div>
 
-      <div class="row mb-2">
+      <div class="row mb-2 needs-validated filename-input">
         <label class="col-sm-3 col-form-label" for="replayweb-url-filename-input-{{ .Ordinal }}"
           >File Name</label
         >
         <div class="col">
           <input
-            class="form-control filename-input"
+            aria-describedby="invalid-feedback-filename-{{ .Ordinal }}"
+            class="form-control"
             id="replayweb-url-filename-input-{{ .Ordinal }}"
+            pattern="^[\w\d][\w\d-]*[\w\d](\.[\w\d]+)+$"
             placeholder="coining-of-queerplatonic.warc"
+            required
           />
+          <div class="invalid-feedback" id="invalid-feedback-filename-{{ .Ordinal }}"></div>
         </div>
       </div>
 
-      <div class="row mb-2">
+      <div class="row mb-2 needs-validated url-input">
         <label class="col-sm-3 col-form-label" for="replayweb-url-url-input-{{ .Ordinal }}"
           >Archived URL</label
         >
         <div class="col">
           <input
-            class="form-control url-input"
+            aria-describedby="invalid-feedback-url-{{ .Ordinal }}"
+            class="form-control"
             id="replayweb-url-url-input-{{ .Ordinal }}"
+            pattern="^https?://.*$"
             placeholder="https://kaz.dreamwidth.org/238564.html"
+            required
+            type="url"
           />
+          <div class="invalid-feedback" id="invalid-feedback-url-{{ .Ordinal }}"></div>
         </div>
       </div>
 
