@@ -92,35 +92,14 @@ rel  = "sitemap"
     source = "node_modules/@hyas/doks/static"
     target = "static"
   [[module.mounts]]
-    source = "node_modules/flexsearch"
-    target = "assets/js/vendor/flexsearch"
-  [[module.mounts]]
     source = "node_modules/katex"
     target = "assets/js/vendor/katex"
-  [[module.mounts]]
-    source = "node_modules/mermaid"
-    target = "assets/js/vendor/mermaid"
   [[module.mounts]]
     source = "node_modules/@github/clipboard-copy-element"
     target = "assets/js/vendor/clipboard-copy-element"
   [[module.mounts]]
-    source = "node_modules/mime"
-    target = "assets/js/vendor/mime"
-  [[module.mounts]]
-    source = "node_modules/showdown"
-    target = "assets/js/vendor/showdown"
-  [[module.mounts]]
-    source = "node_modules/js-yaml"
-    target = "assets/js/vendor/js-yaml"
-  [[module.mounts]]
-    source = "node_modules/is-ipfs"
-    target = "assets/js/vendor/is-ipfs"
-  [[module.mounts]]
     source = "node_modules/ipfs-core"
     target = "assets/js/vendor/ipfs-core"
-  [[module.mounts]]
-    source = "node_modules/multiaddr"
-    target = "assets/js/vendor/multiaddr"
   [[module.mounts]]
     source = "node_modules/bootstrap"
     target = "assets/js/vendor/bootstrap"
