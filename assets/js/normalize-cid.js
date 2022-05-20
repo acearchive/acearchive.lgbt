@@ -71,7 +71,7 @@ const normalizeCid = async (maybeUrlOrCidOrPath) => {
     const fileStats = await ipfs.files.stat(resolvedCid, { timeout: timeoutMillis });
     if (fileStats.type === "directory" && fileStats.blocks === 1) {
       const links = await ipfs.object.links(resolvedCid, { timeout: timeoutMillis });
-      return links[0].Hash;
+      return { result: links[0].Hash };
     }
 
     return { result: resolvedCid };

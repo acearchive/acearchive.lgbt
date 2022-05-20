@@ -9,6 +9,7 @@ menu:
   docs:
     parent: "contributing"
 weight: 204
+loadipfs: true
 ---
 
 We mention in {{< article "docs/contributing/best-practices.md"
@@ -63,9 +64,9 @@ downloading any software. Whenever you add a WARC file to an artifact, you
 should also include a link to this tool.
 
 In the form below, enter the [CID]({{< ref
-"docs/contributing/uploading-files.md#what-is-a-cid" >}}) of the WARC file, the
-file name you used in the artifact file (which must end in `.warc` for the tool
-to work), and the URL of the archived web page you want users to land on, and
-it will generate the URL you should include in the artifact file.
+"docs/contributing/uploading-files.md" >}}) of the WARC file, the file name you
+used in the artifact file (which must end in `.warc` for the tool to work), and
+the URL of the archived web page you want users to land on, and it will generate
+the URL you should include in the artifact file.
 
 {{< replayweb-url >}}

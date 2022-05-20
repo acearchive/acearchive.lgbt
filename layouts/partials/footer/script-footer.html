@@ -1,3 +1,4 @@
+{{ $ipfsBuildParams := dict "shims" (dict "ipfs-core" "js/shims/ipfs-core.js") "params" (dict "schema" .Site.Data.artifacts.schema) -}}
 {{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate
   "search.js" . | js.Build
 -}}
@@ -58,7 +59,7 @@
   "js/clipboard-copy-button.js" | js.Build)
 -}}
 {{ $slice := $slice | append
-  (resources.Get "js/replayweb-url.js" | js.Build)
+  (resources.Get "js/replayweb-url.js" | js.Build $ipfsBuildParams)
 -}}
 {{ $slice := $slice |
   append (resources.Get "js/file-type-icon.js" | js.Build)
@@ -67,37 +68,38 @@
   resources.Get "js/vendor/ipfs-core/index.min.js"
 -}}
 {{ $artifactForm :=
-  resources.Get "js/artifact-form.js" | js.Build (dict "shims" (dict "ipfs-core"
-  "js/shims/ipfs-core.js") "params" (dict "schema" .Site.Data.artifacts.schema))
+  resources.Get "js/artifact-form.js" | js.Build $ipfsBuildParams
 -}}
 {{ $js := $slice | resources.Concat "main.js" -}}
 {{ if eq
   (hugo.Environment) "development"
 -}}
+  {{ if .Params.loadipfs -}}
+    <script defer src="{{ $ipfs.RelPermalink }}"></script>
+  {{ end -}}
   {{ if eq .Type "new-artifact" -}}
-    <script src="{{ $ipfs.RelPermalink }}" defer></script>
-    <script src="{{ $artifactForm.RelPermalink }}" defer></script>
+    <script defer src="{{ $artifactForm.RelPermalink }}"></script>
   {{ end -}}
   {{ if .Site.Params.options.bootStrapJs -}}
-    <script src="{{ $bs.RelPermalink }}" defer></script>
+    <script defer src="{{ $bs.RelPermalink }}"></script>
   {{ end -}}
   {{ if .Site.Params.options.highLight -}}
-    <script src="{{ $highlight.RelPermalink }}" defer></script>
+    <script defer src="{{ $highlight.RelPermalink }}"></script>
   {{ end -}}
   {{ if .Site.Params.options.kaTex -}}
-    <script src="{{ $katex.RelPermalink }}" defer></script>
+    <script defer src="{{ $katex.RelPermalink }}"></script>
     <script
-      src="{{ $katexAutoRender.RelPermalink }}"
-      onload="renderMathInElement(document.body);"
       defer
+      onload="renderMathInElement(document.body);"
+      src="{{ $katexAutoRender.RelPermalink }}"
     ></script>
   {{ end -}}
-  <script src="{{ $js.RelPermalink }}" defer></script>
+  <script defer src="{{ $js.RelPermalink }}"></script>
   {{ with .Params.mermaid -}}
-    <script src="{{ $mermaid.RelPermalink }}" defer></script>
+    <script defer src="{{ $mermaid.RelPermalink }}"></script>
   {{ end -}}
   {{ if eq .Section "docs" "archive" "identities" "decades" "people" -}}
-    <script src="{{ $search.RelPermalink }}" defer></script>
+    <script defer src="{{ $search.RelPermalink }}"></script>
   {{ end -}}
 {{ else -}}
   {{ $js := $js | minify | fingerprint "sha512" -}}
@@ -117,70 +119,72 @@
   {{ $artifactForm := $artifactForm | minify |
     fingerprint "sha512"
   }}
+  {{ if .Params.loadipfs -}}
+    <script
+      crossorigin="anonymous"
+      defer
+      integrity="{{ $ipfs.Data.Integrity }}"
+      src="{{ $ipfs.RelPermalink }}"
+    ></script>
+  {{ end -}}
   {{ if eq .Type "new-artifact" -}}
     <script
-      src="{{ $ipfs.RelPermalink }}"
-      integrity="{{ $ipfs.Data.Integrity }}"
       crossorigin="anonymous"
       defer
-    ></script>
-    <script
-      src="{{ $artifactForm.RelPermalink }}"
       integrity="{{ $artifactForm.Data.Integrity }}"
-      crossorigin="anonymous"
-      defer
+      src="{{ $artifactForm.RelPermalink }}"
     ></script>
   {{ end -}}
   {{ if .Site.Params.options.bootStrapJs -}}
     <script
-      src="{{ $bs.RelPermalink }}"
-      integrity="{{ $bs.Data.Integrity }}"
       crossorigin="anonymous"
       defer
+      integrity="{{ $bs.Data.Integrity }}"
+      src="{{ $bs.RelPermalink }}"
     ></script>
   {{ end -}}
   {{ if .Site.Params.options.highLight -}}
     <script
-      src="{{ $highlight.RelPermalink }}"
-      integrity="{{ $highlight.Data.Integrity }}"
       crossorigin="anonymous"
       defer
+      integrity="{{ $highlight.Data.Integrity }}"
+      src="{{ $highlight.RelPermalink }}"
     ></script>
   {{ end -}}
   {{ if .Site.Params.options.kaTex -}}
     <script
-      src="{{ $katex.RelPermalink }}"
-      integrity="{{ $katex.Data.Integrity }}"
       crossorigin="anonymous"
       defer
+      integrity="{{ $katex.Data.Integrity }}"
+      src="{{ $katex.RelPermalink }}"
     ></script>
     <script
-      src="{{ $katexAutoRender.RelPermalink }}"
-      integrity="{{ $katexAutoRender.Data.Integrity }}"
       crossorigin="anonymous"
       defer
+      integrity="{{ $katexAutoRender.Data.Integrity }}"
+      src="{{ $katexAutoRender.RelPermalink }}"
     ></script>
   {{ end -}}
   <script
-    src="{{ $js.RelPermalink }}"
-    integrity="{{ $js.Data.Integrity }}"
     crossorigin="anonymous"
     defer
+    integrity="{{ $js.Data.Integrity }}"
+    src="{{ $js.RelPermalink }}"
   ></script>
   {{ with .Params.mermaid -}}
     <script
-      src="{{ $mermaid.RelPermalink }}"
-      integrity="{{ $mermaid.Data.Integrity }}"
       crossorigin="anonymous"
       defer
+      integrity="{{ $mermaid.Data.Integrity }}"
+      src="{{ $mermaid.RelPermalink }}"
     ></script>
   {{ end -}}
   {{ if eq .Section "docs" "archive" "identities" "decades" "people" -}}
     <script
-      src="{{ $search.Permalink }}"
-      integrity="{{ $search.Data.Integrity }}"
       crossorigin="anonymous"
       defer
+      integrity="{{ $search.Data.Integrity }}"
+      src="{{ $search.Permalink }}"
     ></script>
   {{ end -}}
 {{ end -}}
