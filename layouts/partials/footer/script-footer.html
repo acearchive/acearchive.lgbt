@@ -1,91 +1,65 @@
 {{ $ipfsBuildParams := dict "shims" (dict "ipfs-core" "js/shims/ipfs-core.js") "params" (dict "schema" .Site.Data.artifacts.schema) -}}
-{{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate
-  "search.js" . | js.Build
--}}
-{{ $bs := resources.Get
-  "js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"
--}}
-{{ $highlight :=
-  resources.Get "js/highlight.js" | js.Build
--}}
-{{ $katex := resources.Get
-  "js/vendor/katex/dist/katex.js"
--}}
-{{ $katexAutoRender := resources.Get
-  "js/vendor/katex/dist/contrib/auto-render.js"
--}}
-{{ $mermaid := resources.Get
-  "js/mermaid.js" | js.Build
--}}
+
+{{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate "search.js" . | js.Build -}}
+{{ $bs := resources.Get "js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" -}}
+{{ $highlight := resources.Get "js/highlight.js" | js.Build -}}
+{{ $katex := resources.Get "js/vendor/katex/dist/katex.js" -}}
+{{ $katexAutoRender := resources.Get "js/vendor/katex/dist/contrib/auto-render.js" -}}
+{{ $mermaid := resources.Get "js/mermaid.js" | js.Build -}}
+{{ $ipfs := resources.Get "js/vendor/ipfs-core/index.min.js" -}}
+{{ $replayWeb := resources.Get "js/replayweb-url.js" | js.Build $ipfsBuildParams -}}
+{{ $artifactForm := resources.Get "js/artifact-form.js" | js.Build $ipfsBuildParams -}}
+
 {{ $app := resources.Get "js/app.js" -}}
 {{ $slice := slice $app -}}
+
 {{ if .Site.Params.options.lazySizes -}}
-  {{ $slice =
-    $slice | append (resources.Get "js/lazysizes.js" | js.Build)
-  -}}
+  {{ $slice = $slice | append (resources.Get "js/lazysizes.js" | js.Build) -}}
 {{ end -}}
 {{ if .Site.Params.options.clipBoard -}}
-  {{ $slice = $slice | append (resources.Get
-    "js/clipboard.js" | js.Build)
-  -}}
+  {{ $slice = $slice | append (resources.Get "js/clipboard.js" | js.Build) -}}
 {{ end -}}
-{{ if
-  .Site.Params.options.instantPage
--}}
-  {{ $slice = $slice | append (resources.Get
-    "js/instant.page.js" | js.Build)
-  -}}
+{{ if .Site.Params.options.instantPage -}}
+  {{ $slice = $slice | append (resources.Get "js/instant.page.js" | js.Build) -}}
 {{ end -}}
-{{ if
-  .Site.Params.options.darkMode
--}}
-  {{ $slice = $slice | append (resources.Get
-    "js/darkmode.js" | js.Build)
-  -}}
+{{ if .Site.Params.options.darkMode -}}
+  {{ $slice = $slice | append (resources.Get "js/darkmode.js" | js.Build) -}}
 {{ end -}}
 {{ if .Site.Params.alertDismissable -}}
   {{ $slice = $slice | append (resources.Get "js/alert.js" | js.Build) -}}
 {{ end -}}
 {{ if .Site.Params.options.kaTex -}}
-  {{ $slice = $slice | append
-    (resources.Get "js/katex.js" | js.Build)
-  -}}
+  {{ $slice = $slice | append (resources.Get "js/katex.js" | js.Build) -}}
 {{ end -}}
-{{ $slice := $slice |
-  append (resources.Get "js/vendor/clipboard-copy-element/dist/index.esm.js" |
-  js.Build)
--}}
-{{ $slice := $slice | append (resources.Get
-  "js/clipboard-copy-button.js" | js.Build)
--}}
-{{ $slice := $slice | append
-  (resources.Get "js/replayweb-url.js" | js.Build $ipfsBuildParams)
--}}
-{{ $slice := $slice |
-  append (resources.Get "js/file-type-icon.js" | js.Build)
--}}
-{{ $ipfs :=
-  resources.Get "js/vendor/ipfs-core/index.min.js"
--}}
-{{ $artifactForm :=
-  resources.Get "js/artifact-form.js" | js.Build $ipfsBuildParams
--}}
+
+{{ $slice := $slice | append (resources.Get "js/vendor/clipboard-copy-element/dist/index.esm.js" | js.Build) -}}
+{{ $slice := $slice | append (resources.Get "js/clipboard-copy-button.js" | js.Build) -}}
+{{ $slice := $slice | append (resources.Get "js/file-type-icon.js" | js.Build) -}}
+
 {{ $js := $slice | resources.Concat "main.js" -}}
-{{ if eq
-  (hugo.Environment) "development"
--}}
-  {{ if .Params.loadipfs -}}
-    <script defer src="{{ $ipfs.RelPermalink }}"></script>
-  {{ end -}}
-  {{ if eq .Type "new-artifact" -}}
-    <script defer src="{{ $artifactForm.RelPermalink }}"></script>
-  {{ end -}}
+
+{{ $loadReplayWeb := .Page.Scratch.Get "replayweb" }}
+{{ $loadArtifactForm := eq .Type "new-artifact" }}
+{{ $loadIpfs := or $loadReplayWeb $loadArtifactForm }}
+{{ $loadSearch := eq .Section "docs" "archive" "identities" "decades" "people" }}
+
+{{ if eq (hugo.Environment) "development" -}}
   {{ if .Site.Params.options.bootStrapJs -}}
     <script defer src="{{ $bs.RelPermalink }}"></script>
   {{ end -}}
+
+  {{ if $loadIpfs -}}
+    <script defer src="{{ $ipfs.RelPermalink }}"></script>
+  {{ end -}}
+
+  {{ if $loadArtifactForm -}}
+    <script defer src="{{ $artifactForm.RelPermalink }}"></script>
+  {{ end -}}
+
   {{ if .Site.Params.options.highLight -}}
     <script defer src="{{ $highlight.RelPermalink }}"></script>
   {{ end -}}
+
   {{ if .Site.Params.options.kaTex -}}
     <script defer src="{{ $katex.RelPermalink }}"></script>
     <script
@@ -94,47 +68,32 @@
       src="{{ $katexAutoRender.RelPermalink }}"
     ></script>
   {{ end -}}
+
+
   <script defer src="{{ $js.RelPermalink }}"></script>
+
   {{ with .Params.mermaid -}}
     <script defer src="{{ $mermaid.RelPermalink }}"></script>
   {{ end -}}
-  {{ if eq .Section "docs" "archive" "identities" "decades" "people" -}}
+
+  {{ if $loadSearch -}}
     <script defer src="{{ $search.RelPermalink }}"></script>
+  {{ end -}}
+
+  {{ if $loadReplayWeb -}}
+    <script defer src="{{ $replayWeb.RelPermalink }}"></script>
   {{ end -}}
 {{ else -}}
   {{ $js := $js | minify | fingerprint "sha512" -}}
   {{ $search := $search | minify | fingerprint "sha512" -}}
-  {{ $bs := $bs |
-    fingerprint "sha512"
-  -}}
-  {{ $highlight := $highlight | minify | fingerprint
-    "sha512"
-  -}}
+  {{ $bs := $bs | fingerprint "sha512" -}}
+  {{ $highlight := $highlight | minify | fingerprint "sha512" -}}
   {{ $katex := $katex | minify | fingerprint "sha512" -}}
   {{ $katexAutoRender := $katexAutoRender | minify | fingerprint "sha512" -}}
   {{ $mermaid := $mermaid | minify | fingerprint "sha512" -}}
-  {{ $ipfs := $ipfs |
-    fingerprint "sha512"
-  -}}
-  {{ $artifactForm := $artifactForm | minify |
-    fingerprint "sha512"
-  }}
-  {{ if .Params.loadipfs -}}
-    <script
-      crossorigin="anonymous"
-      defer
-      integrity="{{ $ipfs.Data.Integrity }}"
-      src="{{ $ipfs.RelPermalink }}"
-    ></script>
-  {{ end -}}
-  {{ if eq .Type "new-artifact" -}}
-    <script
-      crossorigin="anonymous"
-      defer
-      integrity="{{ $artifactForm.Data.Integrity }}"
-      src="{{ $artifactForm.RelPermalink }}"
-    ></script>
-  {{ end -}}
+  {{ $ipfs := $ipfs | fingerprint "sha512" -}}
+  {{ $artifactForm := $artifactForm | minify | fingerprint "sha512" -}}
+
   {{ if .Site.Params.options.bootStrapJs -}}
     <script
       crossorigin="anonymous"
@@ -143,6 +102,25 @@
       src="{{ $bs.RelPermalink }}"
     ></script>
   {{ end -}}
+
+  {{ if $loadIpfs -}}
+    <script
+      crossorigin="anonymous"
+      defer
+      integrity="{{ $ipfs.Data.Integrity }}"
+      src="{{ $ipfs.RelPermalink }}"
+    ></script>
+  {{ end -}}
+
+  {{ if $loadArtifactForm -}}
+    <script
+      crossorigin="anonymous"
+      defer
+      integrity="{{ $artifactForm.Data.Integrity }}"
+      src="{{ $artifactForm.RelPermalink }}"
+    ></script>
+  {{ end -}}
+
   {{ if .Site.Params.options.highLight -}}
     <script
       crossorigin="anonymous"
@@ -151,6 +129,7 @@
       src="{{ $highlight.RelPermalink }}"
     ></script>
   {{ end -}}
+
   {{ if .Site.Params.options.kaTex -}}
     <script
       crossorigin="anonymous"
@@ -165,12 +144,15 @@
       src="{{ $katexAutoRender.RelPermalink }}"
     ></script>
   {{ end -}}
+
+
   <script
     crossorigin="anonymous"
     defer
     integrity="{{ $js.Data.Integrity }}"
     src="{{ $js.RelPermalink }}"
   ></script>
+
   {{ with .Params.mermaid -}}
     <script
       crossorigin="anonymous"
@@ -179,12 +161,22 @@
       src="{{ $mermaid.RelPermalink }}"
     ></script>
   {{ end -}}
-  {{ if eq .Section "docs" "archive" "identities" "decades" "people" -}}
+
+  {{ if $loadSearch -}}
     <script
       crossorigin="anonymous"
       defer
       integrity="{{ $search.Data.Integrity }}"
       src="{{ $search.Permalink }}"
+    ></script>
+  {{ end -}}
+
+  {{ if $loadReplayWeb -}}
+    <script
+      crossorigin="anonymous"
+      defer
+      integrity="{{ $replayWeb.Data.Integrity }}"
+      src="{{ $replayWeb.Permalink }}"
     ></script>
   {{ end -}}
 {{ end -}}
