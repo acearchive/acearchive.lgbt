@@ -197,7 +197,7 @@ definitions:
           message: "Must be an IPFS CID, URL, or path."
         description: >
           This is the CID (content identifier) of the file. This also accepts a
-          `dweb.link` or `ipfs.io` URL. You need to upload the file to
+          `dweb.link` URL. You need to upload the file to
           [Web3.Storage](https://web3.storage) to get its CID. For more
           information, see [the docs](/docs/contributing/uploading-files).
   links:
