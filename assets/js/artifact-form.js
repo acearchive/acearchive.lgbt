@@ -1,6 +1,6 @@
 import showdown from "showdown";
 import yaml from "js-yaml";
-import { schema } from "@params";
+import { artifacts, schema } from "@params";
 import normalizeCid from "./normalize-cid";
 
 const validationMinDelay = 500;
@@ -487,6 +487,15 @@ const createSubmitButton = (form) => {
   return submitButton;
 };
 
+const getQueryParams = () => {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  return Object.fromEntries(urlSearchParams.entries());
+};
+
+const fillInputsFromExistingArtifact = (slug) => {
+  console.log(artifacts[slug]);
+};
+
 if (artifactForm) {
   for (const fieldName of schema.fields) {
     const field = schema.definitions[fieldName];
@@ -495,4 +504,9 @@ if (artifactForm) {
   }
 
   artifactForm.appendChild(createSubmitButton(artifactForm));
+
+  const baseArtifactSlug = getQueryParams().modify;
+  if (baseArtifactSlug) {
+    fillInputsFromExistingArtifact(baseArtifactSlug);
+  }
 }

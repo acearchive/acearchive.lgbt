@@ -1,14 +1,25 @@
-{{ $ipfsBuildParams := dict "shims" (dict "ipfs-core" "js/shims/ipfs-core.js") "params" (dict "schema" .Site.Data.artifacts.schema) -}}
+{{- $artifacts := dict }}
+{{- range $artifact := (.Site.GetPage "/content/archive/_index.md").Pages -}}
+  {{- $slug := path.Base $artifact.RelPermalink -}}
+  {{- $artifacts = $artifacts | merge (dict $slug $artifact.Params) -}}
+{{- end -}}
 
-{{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate "search.js" . | js.Build -}}
+{{ $ipfsShims := dict "ipfs-core" "js/shims/ipfs-core.js" -}}
+{{ $replayWebBuildParams := dict "shims" $ipfsShims -}}
+{{ $artifactFormBuildParams := dict
+  "shims" $ipfsShims
+  "params" (dict "schema" .Site.Data.artifacts.schema "artifacts" $artifacts)
+-}}
+
+{{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | js.Build -}}
 {{ $bs := resources.Get "js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" -}}
 {{ $highlight := resources.Get "js/highlight.js" | js.Build -}}
 {{ $katex := resources.Get "js/vendor/katex/dist/katex.js" -}}
 {{ $katexAutoRender := resources.Get "js/vendor/katex/dist/contrib/auto-render.js" -}}
 {{ $mermaid := resources.Get "js/mermaid.js" | js.Build -}}
 {{ $ipfs := resources.Get "js/vendor/ipfs-core/index.min.js" -}}
-{{ $replayWeb := resources.Get "js/replayweb-url.js" | js.Build $ipfsBuildParams -}}
-{{ $artifactForm := resources.Get "js/artifact-form.js" | js.Build $ipfsBuildParams -}}
+{{ $replayWeb := resources.Get "js/replayweb-url.js" | js.Build $replayWebBuildParams -}}
+{{ $artifactForm := resources.Get "js/artifact-form.js" | js.Build $artifactFormBuildParams -}}
 
 {{ $app := resources.Get "js/app.js" -}}
 {{ $slice := slice $app -}}
@@ -36,7 +47,7 @@
 {{ $slice := $slice | append (resources.Get "js/clipboard-copy-button.js" | js.Build) -}}
 {{ $slice := $slice | append (resources.Get "js/file-type-icon.js" | js.Build) -}}
 
-{{ $js := $slice | resources.Concat "main.js" -}}
+{{ $js := $slice | resources.Concat "js/main.js" -}}
 
 {{ $loadReplayWeb := .Page.Scratch.Get "replayweb" }}
 {{ $loadArtifactForm := eq .Type "new-artifact" }}
