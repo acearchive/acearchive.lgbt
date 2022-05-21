@@ -324,7 +324,7 @@ const groupedFieldKeys = (() => {
 
     return [
       field.fields,
-      ...field.fields.map((fieldKey) => keysOfField(field.definitions[fieldKey])),
+      ...field.fields.flatMap((fieldKey) => keysOfField(field.definitions[fieldKey])),
     ].filter((group) => group.length > 0);
   };
 
