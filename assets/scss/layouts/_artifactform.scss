@@ -1,9 +1,10 @@
 .new-artifact form {
-  .form-group {
+  .form-field,
+  .field-list {
     margin-bottom: 1rem;
   }
 
-  .form-group label {
+  .form-field label {
     font-weight: 500;
   }
 
@@ -12,7 +13,7 @@
     margin-bottom: 2rem;
   }
 
-  legend.form-label {
+  fieldset.field-list legend.form-label {
     @extend label;
   }
 
@@ -22,74 +23,74 @@
     vertical-align: middle;
   }
 
-  .form-group .form-button {
+  .field-list .form-button {
     color: $body-color;
   }
 
-  .form-group .form-button:hover {
+  .field-list .form-button:hover {
     color: $gray-600;
   }
 
-  .form-group:last-child {
+  .form-field:last-child {
     margin-bottom: 0;
   }
 
-  .field-item-container .field-item {
+  .field-list-body .field-list-item {
     margin-bottom: 1rem;
     display: flex;
     align-items: start;
-  }
 
-  .field-item-container .field-item .field-item-gutter {
-    align-items: center;
-    margin-bottom: 0.5rem;
+    .list-item-gutter {
+      align-items: center;
+      margin-bottom: 0.5rem;
 
-    @include media-breakpoint-up(sm) {
-      margin-right: 1rem;
-      margin-bottom: 0;
-      gap: 0.5rem;
+      @include media-breakpoint-up(sm) {
+        margin-right: 1rem;
+        margin-bottom: 0;
+        gap: 0.5rem;
+      }
+
+      .list-item-index {
+        font-weight: 700;
+        font-size: $font-size-xl;
+        color: $form-text-color;
+      }
+
+      .form-button {
+        color: $form-text-color;
+
+        @include media-breakpoint-down(sm) {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+
+      .form-button:hover {
+        color: $body-color;
+      }
     }
-  }
-
-  .field-item-container .field-item .field-item-gutter .field-item-index {
-    font-weight: 700;
-    font-size: $font-size-xl;
-    color: $form-text-color;
-  }
-
-  .field-item-container .field-item .field-item-gutter .field-item-action {
-    color: $form-text-color;
-
-    @include media-breakpoint-down(sm) {
-      padding-right: 0;
-      padding-left: 0;
-    }
-  }
-
-  .field-item-container .field-item .field-item-gutter .field-item-action:hover {
-    color: $body-color;
   }
 }
 
 [data-dark-mode] .new-artifact form {
-  .form-group .form-button {
+  .field-list .form-button {
     color: $body-color-dark;
   }
 
-  .form-group .form-button:hover {
+  .field-list .form-button:hover {
     color: $gray-500;
   }
 
-  .field-item-container .field-item .field-item-gutter {
-    .field-item-action {
+  .field-list-body .field-list-item .list-item-gutter {
+    .form-button {
       color: $form-text-color-dark;
     }
 
-    .field-item-action:hover {
+    .form-button:hover {
       color: $body-color-dark;
     }
 
-    .field-item-index {
+    .list-item-index {
       color: $form-text-color-dark;
     }
   }

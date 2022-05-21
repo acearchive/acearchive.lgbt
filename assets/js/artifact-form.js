@@ -8,30 +8,29 @@ const validationMinDelay = 500;
 const artifactForm = document.querySelector(".new-artifact main form");
 const mdConverter = new showdown.Converter();
 
-const nameToId = (fieldName, fieldItemIndex) => `${fieldName.replace(".", "-")}-${fieldItemIndex}`;
+const nameToId = (fieldName, listItemIndex) => `${fieldName.replace(".", "-")}-${listItemIndex}`;
 
 const isArrayOfObjects = (field) => field.type === "array" && field.itemType === "object";
 
-const copyFormGroupInputValues = (oldFieldItem, newFieldItem) => {
-  const newFieldInputs = newFieldItem.querySelectorAll(".form-group input");
-  for (const [index, oldFieldInput] of oldFieldItem
-    .querySelectorAll(".form-group input")
-    .entries()) {
-    newFieldInputs[index].value = oldFieldInput.value;
+const copyListItemInputValues = (oldFieldListItem, newFieldListItem) => {
+  const newInputElements = newFieldListItem.querySelectorAll(".form-field input");
+  const oldInputElements = oldFieldListItem.querySelectorAll(".form-field input");
+  for (const [index, oldInputElement] of oldInputElements.entries()) {
+    newInputElements[index].value = oldInputElement.value;
   }
 };
 
-const createFieldItem = (field, fieldItemIndex) => {
-  const fieldItem = document.createElement("fieldset");
-  fieldItem.classList.add("field-item");
-  fieldItem.setAttribute("form", "artifact-form");
-  fieldItem.setAttribute("data-field-name", field.fieldName);
+const createFieldListItem = (field, listItemIndex) => {
+  const listItem = document.createElement("fieldset");
+  listItem.classList.add("field-list-item");
+  listItem.setAttribute("form", "artifact-form");
+  listItem.setAttribute("data-field-name", field.fieldName);
 
-  fieldItem.innerHTML = `
-    <legend class="visually-hidden">#${fieldItemIndex + 1}</legend>
-    <span class="d-none d-sm-flex field-item-gutter flex-column">
-      <span class="field-item-index" aria-hidden="true">#${fieldItemIndex + 1}</span>
-      <button type="button" class="field-item-action field-item-delete btn" aria-label="Delete">
+  listItem.innerHTML = `
+    <legend class="visually-hidden">#${listItemIndex + 1}</legend>
+    <span class="d-none d-sm-flex list-item-gutter flex-column">
+      <span class="list-item-index" aria-hidden="true">#${listItemIndex + 1}</span>
+      <button type="button" class="form-button delete-button btn" aria-label="Delete">
         <span aria-hidden="true">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -41,9 +40,9 @@ const createFieldItem = (field, fieldItemIndex) => {
       </button>
     </span>
     <div class="card card-body">
-      <span class="d-flex d-sm-none field-item-gutter justify-content-between">
-        <span class="field-item-index" aria-hidden="true">#${fieldItemIndex + 1}</span>
-        <button type="button" class="field-item-action field-item-delete btn" aria-label="Delete">
+      <span class="d-flex d-sm-none list-item-gutter justify-content-between">
+        <span class="list-item-index" aria-hidden="true">#${listItemIndex + 1}</span>
+        <button type="button" class="form-button delete-button btn" aria-label="Delete">
           <span aria-hidden="true">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -52,35 +51,37 @@ const createFieldItem = (field, fieldItemIndex) => {
           </span>
         </button>
        </span>
-      <div class="field-item-body"></div>
+      <div class="list-item-body"></div>
     </div>
   `;
 
-  const fieldItemBody = fieldItem.querySelector(".field-item-body");
+  const listItemBody = listItem.querySelector(".list-item-body");
 
   for (const fieldName of field.fields) {
     const nestedField = field.definitions[fieldName];
     if (!nestedField.showInFormDocs) continue;
-    fieldItemBody.appendChild(createFormGroup(nestedField, fieldItemIndex));
+    listItemBody.appendChild(createFormFieldOrFieldList(nestedField, listItemIndex));
   }
 
-  const deleteButtons = fieldItem.querySelectorAll("button.field-item-delete");
+  const deleteButtons = listItem.querySelectorAll(".list-item-gutter > button.delete-button");
 
   for (const deleteButton of deleteButtons) {
     deleteButton.addEventListener("click", (e) => {
-      const itemContainer = e.target.closest(".field-item-container");
+      const parentListItemBody = e.target.closest(".field-list-body");
 
-      e.target.closest(".field-item").remove();
+      e.target.closest(".field-list-item").remove();
 
-      for (const [index, fieldItem] of itemContainer.querySelectorAll(".field-item").entries()) {
-        const newFieldItem = createFieldItem(field, index);
-        copyFormGroupInputValues(fieldItem, newFieldItem);
-        itemContainer.replaceChild(newFieldItem, fieldItem);
+      const childListItems = parentListItemBody.querySelectorAll(".field-list-item");
+
+      for (const [index, oldListItem] of childListItems.entries()) {
+        const newListItem = createFieldListItem(field, index);
+        copyListItemInputValues(oldListItem, newListItem);
+        parentListItemBody.replaceChild(newListItem, oldListItem);
       }
     });
   }
 
-  return fieldItem;
+  return listItem;
 };
 
 const createRequiredLabel = () => {
@@ -138,49 +139,49 @@ const htmlInputTypeForField = (field) => {
   return inputTypeBySchemaType[field.type];
 };
 
-const createInputFormGroup = (field, fieldItemIndex = 0) => {
-  const fieldId = nameToId(field.fieldName, fieldItemIndex);
-  const showHelp = fieldItemIndex === 0;
+const createFormField = (field, listItemIndex = 0) => {
+  const fieldId = nameToId(field.fieldName, listItemIndex);
+  const showHelp = listItemIndex === 0;
 
-  const formGroup = document.createElement("div");
-  formGroup.id = `form-group-${fieldId}`;
-  formGroup.classList.add("form-group", "needs-validation");
+  const formField = document.createElement("div");
+  formField.id = `form-field-${fieldId}`;
+  formField.classList.add("form-field", "needs-validation");
 
-  formGroup.setAttribute("data-field-name", field.fieldName);
+  formField.setAttribute("data-field-name", field.fieldName);
 
   if (showHelp) {
-    formGroup.innerHTML = `
-        <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
-        <input type="${htmlInputTypeForField(
-          field
-        )}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${
+    formField.innerHTML = `
+      <label for="field-input-${fieldId}" class="form-label">${field.label}</label>
+      <input type="${htmlInputTypeForField(
+        field
+      )}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${
       field.placeholder
     }">
-        <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
-        <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(
+      <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
+      <div id="field-help-${fieldId}" class="field-help form-text">${mdConverter.makeHtml(
       field.description
     )}</div>
-      `;
+    `;
   } else {
-    formGroup.innerHTML = `
-        <div class="row">
-          <label for="field-input-${fieldId}" class="col-sm-3 col-form-label">${field.label}</label>
-          <div class="col">
-            <input type="${htmlInputTypeForField(
-              field
-            )}" class="form-control" id="field-input-${fieldId}" aria-describedby="field-help-${fieldId} invalid-feedback-${fieldId}" placeholder="${
+    formField.innerHTML = `
+      <div class="row">
+        <label for="field-input-${fieldId}" class="col-sm-3 col-form-label">${field.label}</label>
+        <div class="col">
+          <input type="${htmlInputTypeForField(
+            field
+          )}" class="form-control" id="field-input-${fieldId}" aria-describedby="invalid-feedback-${fieldId}" placeholder="${
       field.placeholder
     }">
-            <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
-          </div>
+          <div id="invalid-feedback-${fieldId}" class="invalid-feedback"></div>
         </div>
-      `;
+      </div>
+    `;
   }
 
-  const inputElement = formGroup.querySelector("input");
+  const inputElement = formField.querySelector("input");
 
   if (field.required) {
-    formGroup.querySelector("label").appendChild(createRequiredLabel());
+    formField.querySelector("label").appendChild(createRequiredLabel());
     inputElement.setAttribute("required", "true");
   }
 
@@ -191,62 +192,62 @@ const createInputFormGroup = (field, fieldItemIndex = 0) => {
   }
 
   inputElement.addEventListener("input", () => {
-    formGroup.classList.remove("was-validated");
+    formField.classList.remove("was-validated");
     inputElement.setCustomValidity("");
   });
 
   inputElement.addEventListener("invalid", (e) => {
     setValidationMessageBySchema(field, e.target);
-    formGroup.querySelector(".invalid-feedback").innerText = e.target.validationMessage;
+    formField.querySelector(".invalid-feedback").innerText = e.target.validationMessage;
   });
 
-  return formGroup;
+  return formField;
 };
 
-const createFieldItemFormGroup = (field, fieldItemIndex = 0) => {
-  const fieldId = nameToId(field.fieldName, fieldItemIndex);
-  const showHelp = fieldItemIndex === 0;
+const createFieldList = (field, listItemIndex = 0) => {
+  const fieldId = nameToId(field.fieldName, listItemIndex);
+  const showHelp = listItemIndex === 0;
 
-  const fieldItemGroup = document.createElement("fieldset");
-  fieldItemGroup.setAttribute("form", "artifact-form");
-  fieldItemGroup.classList.add("form-group");
+  const fieldList = document.createElement("fieldset");
+  fieldList.setAttribute("form", "artifact-form");
+  fieldList.classList.add("field-list");
 
-  fieldItemGroup.innerHTML = `
-      <legend class="form-label">${field.label}</legend>
-      <div class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
-      <div id="field-item-container-${fieldId}" class="field-item-container"></div>
-      <button class="btn add-field-item form-button" type="button">
-        <span class="me-1" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-          </svg>
-        </span>
-        Add ${field.singularLabel}
-      </button>
-    `;
+  fieldList.innerHTML = `
+    <legend class="form-label">${field.label}</legend>
+    <div class="field-help form-text">${mdConverter.makeHtml(field.description)}</div>
+    <div id="field-list-body-${fieldId}" class="field-list-body"></div>
+    <button class="btn add-button form-button" type="button">
+      <span class="me-1" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>
+      </span>
+      Add ${field.singularLabel}
+    </button>
+  `;
 
   if (!showHelp) {
-    fieldItemGroup.querySelector(".field-help").remove();
+    fieldList.querySelector(".field-help").remove();
   }
 
   if (field.required) {
-    fieldItemGroup.querySelector("legend").appendChild(createRequiredLabel());
+    fieldList.querySelector("legend").appendChild(createRequiredLabel());
   }
 
-  fieldItemGroup.querySelector("button.add-field-item").addEventListener("click", () => {
-    const itemContainer = fieldItemGroup.querySelector(".field-item-container");
-    itemContainer.appendChild(createFieldItem(field, itemContainer.childElementCount));
+  fieldList.querySelector(":scope > .add-button").addEventListener("click", () => {
+    const fieldListBody = fieldList.querySelector(".field-list-body");
+    fieldListBody.appendChild(createFieldListItem(field, fieldListBody.childElementCount));
   });
 
-  return fieldItemGroup;
+  return fieldList;
 };
 
-const createFormGroup = (field, fieldItemIndex = 0) => {
+const createFormFieldOrFieldList = (field, listItemIndex = 0) => {
   if (isArrayOfObjects(field)) {
-    return createFieldItemFormGroup(field, fieldItemIndex);
+    return createFieldList(field, listItemIndex);
   }
-  return createInputFormGroup(field, fieldItemIndex);
+  return createFormField(field, listItemIndex);
 };
 
 const defaultValueForField = (field) => {
@@ -266,7 +267,7 @@ const getInputValueForField = (field, parentElement) => {
   };
 
   const inputElement = parentElement.querySelector(
-    `.form-group[data-field-name="${field.fieldName}"] input`
+    `.form-field[data-field-name="${field.fieldName}"] input`
   );
 
   if (inputElement.value.length === 0) {
@@ -278,21 +279,23 @@ const getInputValueForField = (field, parentElement) => {
 
 const getDataForField = (field, form) => {
   if (isArrayOfObjects(field)) {
-    const fieldItems = form.querySelectorAll(`.field-item[data-field-name="${field.fieldName}"]`);
+    const fieldListItems = form.querySelectorAll(
+      `.field-list-item[data-field-name="${field.fieldName}"]`
+    );
 
-    if (fieldItems.length === 0) {
+    if (fieldListItems.length === 0) {
       return defaultValueForField(field);
     }
 
-    return Array.from(fieldItems).map((fieldItem) =>
+    return Array.from(fieldListItems).map((listItem) =>
       Object.entries(field.definitions)
         .filter(([, nestedField]) => nestedField.showInFormDocs)
         .reduce(
-          (fieldItemData, [fieldKey, nestedField]) => ({
+          (listItemData, [fieldKey, nestedField]) => ({
             [fieldKey]: isArrayOfObjects(nestedField)
               ? getDataForField(nestedField, form)
-              : getInputValueForField(nestedField, fieldItem),
-            ...fieldItemData,
+              : getInputValueForField(nestedField, listItem),
+            ...listItemData,
           }),
           {}
         )
@@ -336,9 +339,9 @@ const groupedFieldKeys = (() => {
 })();
 
 const sortKeysBySchema = (a, b) => {
-  for (const fieldGroup of groupedFieldKeys()) {
-    const indexOfA = fieldGroup.indexOf(a);
-    const indexOfB = fieldGroup.indexOf(b);
+  for (const fieldKeys of groupedFieldKeys()) {
+    const indexOfA = fieldKeys.indexOf(a);
+    const indexOfB = fieldKeys.indexOf(b);
 
     if (indexOfA === -1 || indexOfB === -1) continue;
 
@@ -390,7 +393,7 @@ const validateFieldWithCustomValidator = (form, field) => {
 
   if (field.customValidator) {
     const inputElements = Array.from(
-      form.querySelectorAll(`.form-group[data-field-name="${field.fieldName}"] input`)
+      form.querySelectorAll(`.form-field[data-field-name="${field.fieldName}"] input`)
     );
 
     validators.push(
@@ -450,9 +453,9 @@ const checkValidity = async (form) => {
 const setButtonLoading = (buttonElement, text) => {
   buttonElement.disabled = true;
   buttonElement.innerHTML = `
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      ${text}
-    `;
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    ${text}
+  `;
 };
 
 const unsetButtonLoading = (buttonElement, text) => {
@@ -461,11 +464,11 @@ const unsetButtonLoading = (buttonElement, text) => {
 };
 
 const setFormInputsDisabled = (form, disabled) => {
-  for (const buttonElement of form.querySelectorAll(".form-button, .field-item-action")) {
+  for (const buttonElement of form.querySelectorAll(".form-button")) {
     buttonElement.disabled = disabled;
   }
 
-  for (const inputElement of form.querySelectorAll(".form-group input")) {
+  for (const inputElement of form.querySelectorAll(".form-field input")) {
     inputElement.disabled = disabled;
   }
 };
@@ -500,7 +503,7 @@ if (artifactForm) {
   for (const fieldName of schema.fields) {
     const field = schema.definitions[fieldName];
     if (!field.showInFormDocs) continue;
-    artifactForm.appendChild(createFormGroup(field));
+    artifactForm.appendChild(createFormFieldOrFieldList(field));
   }
 
   artifactForm.appendChild(createSubmitButton(artifactForm));
