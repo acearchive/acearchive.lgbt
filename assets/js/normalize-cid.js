@@ -3,7 +3,7 @@ import { CID, isIPFS } from "ipfs-core";
 
 const ipfsPathPrefix = "/ipfs/";
 const ipnsPathPrefix = "/ipns/";
-const timeoutMillis = 5000;
+const timeoutMillis = 10000;
 
 const parseInputToIpfsPath = (maybeUrlOrCidOrPath) => {
   if (isIPFS.path(maybeUrlOrCidOrPath)) {
