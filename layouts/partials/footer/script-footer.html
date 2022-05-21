@@ -19,7 +19,7 @@
 {{ $mermaid := resources.Get "js/mermaid.js" | js.Build -}}
 {{ $ipfs := resources.Get "js/vendor/ipfs-core/index.min.js" -}}
 {{ $replayWeb := resources.Get "js/replayweb-url.js" | js.Build $replayWebBuildParams -}}
-{{ $artifactForm := resources.Get "js/artifact-form.js" | js.Build $artifactFormBuildParams -}}
+{{ $artifactForm := resources.Get "js/artifact-form/index.js" | js.Build $artifactFormBuildParams -}}
 
 {{ $app := resources.Get "js/app.js" -}}
 {{ $slice := slice $app -}}
