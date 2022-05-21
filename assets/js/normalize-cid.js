@@ -76,7 +76,10 @@ const normalizeCid = async (maybeUrlOrCidOrPath) => {
 
     return { result: resolvedCid };
   } catch {
-    return { message: "Timed out trying to find the file. Does this file exist?" };
+    return {
+      message:
+        "Timed out trying to find the file. Check that you entered the correct CID or URL and try again.",
+    };
   }
 };
 
