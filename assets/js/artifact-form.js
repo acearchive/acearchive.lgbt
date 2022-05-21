@@ -210,6 +210,7 @@ const createFieldList = (field, listItemIndex = 0) => {
 
   const fieldList = document.createElement("fieldset");
   fieldList.setAttribute("form", "artifact-form");
+  fieldList.setAttribute("data-field-name", field.fieldName);
   fieldList.classList.add("field-list");
 
   fieldList.innerHTML = `
@@ -463,12 +464,23 @@ const unsetButtonLoading = (buttonElement, text) => {
   buttonElement.innerText = text;
 };
 
+const fieldNameForInputElement = (inputElement) => {
+  return inputElement.closest(".form-field").getAttribute("data-field-name");
+};
+
 const setFormInputsDisabled = (form, disabled) => {
   for (const buttonElement of form.querySelectorAll(".form-button")) {
     buttonElement.disabled = disabled;
   }
 
   for (const inputElement of form.querySelectorAll(".form-field input")) {
+    if (
+      fieldNameForInputElement(inputElement) === schema.definitions.slug.fieldName &&
+      getQueryParams().modify !== undefined
+    ) {
+      continue;
+    }
+
     inputElement.disabled = disabled;
   }
 };
@@ -495,8 +507,64 @@ const getQueryParams = () => {
   return Object.fromEntries(urlSearchParams.entries());
 };
 
-const fillInputsFromExistingArtifact = (slug) => {
-  console.log(artifacts[slug]);
+const fillInputsFromArtifact = (form, slug) => {
+  const artifactValues = artifacts[slug];
+  if (artifactValues === undefined) return {};
+
+  const getArtifactValue = (artifactObj, key) =>
+    artifactObj[
+      Object.keys(artifactObj).find((objKey) => objKey.toLowerCase() === key.toLowerCase())
+    ];
+
+  const getInputValueFromArtifactValue = (field, value) => {
+    if (field.type === "array") return value.join(", ");
+    return value;
+  };
+
+  const setInputValueFromArtifact = (field, fieldKey, value) => {
+    if (!field.showInFormDocs) return;
+
+    if (isArrayOfObjects(field)) {
+      for (const [index, listItem] of value.entries()) {
+        const fieldListBody = form.querySelector(
+          `.field-list[data-field-name="${field.fieldName}"] .field-list-body`
+        );
+
+        const fieldListItem = createFieldListItem(field, index);
+        fieldListBody.appendChild(fieldListItem);
+
+        for (const [nestedFieldKey, nestedField] of Object.entries(field.definitions)) {
+          if (!nestedField.showInFormDocs) continue;
+
+          const nestedFieldValue = getArtifactValue(listItem, nestedFieldKey);
+          if (nestedFieldValue === undefined) continue;
+
+          const inputElement = fieldListItem.querySelector(
+            `.form-field[data-field-name="${nestedField.fieldName}"] input`
+          );
+          inputElement.value = getInputValueFromArtifactValue(nestedField, nestedFieldValue);
+        }
+      }
+    } else {
+      const inputElement = form.querySelector(
+        `.form-field[data-field-name="${field.fieldName}"] input`
+      );
+      inputElement.value = getInputValueFromArtifactValue(field, value);
+    }
+  };
+
+  const slugInputElement = form.querySelector(
+    `.form-field[data-field-name="${schema.definitions.slug.fieldName}"] input`
+  );
+  slugInputElement.value = slug;
+  slugInputElement.disabled = true;
+
+  for (const [fieldKey, field] of Object.entries(schema.definitions)) {
+    const artifactValue = getArtifactValue(artifactValues, fieldKey);
+    if (artifactValue === undefined) continue;
+
+    setInputValueFromArtifact(field, fieldKey, artifactValue);
+  }
 };
 
 if (artifactForm) {
@@ -510,6 +578,6 @@ if (artifactForm) {
 
   const baseArtifactSlug = getQueryParams().modify;
   if (baseArtifactSlug) {
-    fillInputsFromExistingArtifact(baseArtifactSlug);
+    fillInputsFromArtifact(artifactForm, baseArtifactSlug);
   }
 }
