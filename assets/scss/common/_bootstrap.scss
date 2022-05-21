@@ -116,3 +116,7 @@ form .form-text {
 [data-dark-mode] form .form-text {
   color: $form-text-color-dark;
 }
+
+[data-dark-mode] form .form-control:disabled {
+  background-color: lighten($body-bg-dark, 1%);
+}
