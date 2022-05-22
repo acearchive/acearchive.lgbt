@@ -74,7 +74,7 @@
             {{- $active = or $active (eq .Name $current.Title) -}}
             <li class="nav-item">
               <a
-                class="nav-link ps-0 py-1{{ if $active }}active{{ end }}"
+                class="nav-link ps-0 py-1 {{ if $active }}active{{ end }}"
                 href="{{ .URL | relLangURL }}"
                 >{{ .Name }}</a
               >
@@ -228,7 +228,7 @@
 
 {{ if eq .Section "docs" -}}
   <nav
-    class="doks-subnavbar py-2 sticky-lg-top{{ if eq .Site.Params.options.flexSearch false }}
+    class="doks-subnavbar py-2 sticky-lg-top {{ if eq .Site.Params.options.flexSearch false }}
       d-lg-none
     {{ end }}"
     aria-label="Secondary navigation"
@@ -283,7 +283,7 @@
 
 
       <button
-        class="btn doks-sidebar-toggle d-lg-none ms-3 order-3 collapsed{{ if eq .Site.Params.options.flexSearch false }}
+        class="btn doks-sidebar-toggle d-lg-none ms-3 order-3 collapsed {{ if eq .Site.Params.options.flexSearch false }}
           ms-auto
         {{ end }}"
         type="button"
