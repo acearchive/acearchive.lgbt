@@ -110,6 +110,9 @@ rel  = "sitemap"
     source = "assets"
     target = "assets"
   [[module.mounts]]
+    source = "assets/scss"
+    target = "assets/scss"
+  [[module.mounts]]
     source = "static"
     target = "static"
   [[module.mounts]]
