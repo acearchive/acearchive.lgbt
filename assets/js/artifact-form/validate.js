@@ -45,11 +45,9 @@ export const runValidator = (form) => {
     validateFieldWithCustomValidator(form, field)
   );
 
-  // If any custom validators are running that could cause form validation to
-  // take a noticeable amount of time, add a minimum delay to prevent UI flicker.
-  if (validators.length > 0) {
-    validators.push(new Promise((r) => setTimeout(r, validationMinDelay)));
-  }
+  // Add a minimum delay to prevent UI flicker and to make it more obvious that
+  // the button state changes from "validate" to "submit."
+  validators.push(new Promise((r) => setTimeout(r, validationMinDelay)));
 
   return Promise.all(validators);
 };
