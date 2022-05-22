@@ -90,6 +90,9 @@ for (const form of forms) {
   };
 
   copyButton.addEventListener("click", () => {
+    urlOutput.classList.remove("d-flex");
+    urlOutput.classList.add("d-none");
+
     checkValidity().then((isValid) => {
       for (const validationElement of form.querySelectorAll(".needs-validated")) {
         validationElement.classList.add("was-validated");
@@ -103,9 +106,6 @@ for (const form of forms) {
         urlOutput.querySelector("a").innerText = generatedUrl;
         urlOutput.querySelector("a").setAttribute("href", generatedUrl);
         urlOutput.querySelector("clipboard-copy").value = generatedUrl;
-      } else {
-        urlOutput.classList.remove("d-flex");
-        urlOutput.classList.add("d-none");
       }
     });
   });
