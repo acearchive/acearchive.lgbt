@@ -193,7 +193,6 @@ export const createSubmitButton = (form) => {
       <button id="artifact-form-submit-button" class="btn btn-primary me-1" type="button" aria-describedby="artifact-form-submit-help">${buttonValidateText}</button>
       <label class="form-text" for="artifact-form-submit-button">${labelValidateText}</label>
     </div>
-    <div id="artifact-form-submit-help" class="valid-feedback">Everything looks good!</div>
     <div id="artifact-form-submit-help" class="invalid-feedback">Looks like there were some problems.</div>
   `;
 
