@@ -25,7 +25,5 @@ footer.footer {
 // Change the color gradient of the header bar.
 
 .header-bar {
-  border-top: 4px solid;
   border-image-source: linear-gradient(90deg, $primary, $primary-dark);
-  border-image-slice: 1;
 }
