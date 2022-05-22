@@ -1,6 +1,4 @@
-/*
-Fix search suggestions not rendering properly when they contain inline markup.
- */
+// Fix search suggestions not rendering properly when they contain inline markup.
 
 #suggestions > * {
   display: flex;
@@ -11,10 +9,8 @@ Fix search suggestions not rendering properly when they contain inline markup.
   font-size: $font-size-base;
 }
 
-/*
-Fix the footer taking up too much vertical space on large displays when the
-content doesn't push it down.
-*/
+// Fix the footer taking up too much vertical space on large displays when the
+// content doesn't push it down.
 
 body:is(.home, .single) {
   display: flex;
@@ -24,4 +20,12 @@ body:is(.home, .single) {
 
 footer.footer {
   margin-top: auto;
+}
+
+// Change the color gradient of the header bar.
+
+.header-bar {
+  border-top: 4px solid;
+  border-image-source: linear-gradient(90deg, $primary, $primary-dark);
+  border-image-slice: 1;
 }
