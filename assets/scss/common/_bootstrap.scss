@@ -120,3 +120,24 @@ form .form-text {
 [data-dark-mode] form .form-control:disabled {
   background-color: lighten($body-bg-dark, 1%);
 }
+
+@include form-validation-state("valid", transparent, $form-feedback-icon-valid);
+
+@mixin form-validation-state-selector($state) {
+  $parent-selector: if(&, set-nth(nth(&, 1), 1, ""), "");
+
+  @if ($state == "valid" or $state == "invalid") {
+    @at-root [data-dark-mode] .was-validated #{$parent-selector}:#{$state},
+      #{$parent-selector}.is-#{$state} {
+      @content;
+    }
+  } @else {
+    @at-root [data-dark-mode] #{$parent-selector}.is-#{$state} {
+      @content;
+    }
+  }
+}
+
+[data-dark-mode] {
+  @include form-validation-state("valid", transparent, $form-feedback-icon-valid-dark);
+}
