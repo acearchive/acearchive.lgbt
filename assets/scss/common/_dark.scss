@@ -1,27 +1,4 @@
-/** Theme variables */
-
-// Source: https://material.io/design/color/dark-theme.html
-
-$body-bg-dark: $gray-900;
-$body-overlay-dark: darken($body-bg-dark, 2.5%);
-
-/*
-$border-dark: darken($body-bg-dark, 2.5%);
-*/
-$border-dark: $gray-800;
-$body-color-dark: $gray-300;
-$dots-dark: darken($body-color-dark, 50%);
-
-$link-color-dark: $primary-dark;
-$button-color-dark: $primary-dark;
-$focus-color-dark: lighten($primary-dark, 2.5%);
-
-$navbar-dark-color: $body-color-dark;
-$navbar-dark-hover-color: $primary-dark;
-$navbar-dark-active-color: $primary-dark;
-
 /** Theme styles */
-
 [data-dark-mode] body {
   background: $body-bg-dark;
   color: $body-color-dark;
