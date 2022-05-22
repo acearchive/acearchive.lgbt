@@ -122,6 +122,11 @@ form .form-text {
 }
 
 @include form-validation-state("valid", transparent, $form-feedback-icon-valid);
+@include form-validation-state(
+  "invalid",
+  $form-feedback-invalid-color,
+  $form-feedback-icon-invalid
+);
 
 @mixin form-validation-state-selector($state) {
   $parent-selector: if(&, set-nth(nth(&, 1), 1, ""), "");
@@ -140,4 +145,9 @@ form .form-text {
 
 [data-dark-mode] {
   @include form-validation-state("valid", transparent, $form-feedback-icon-valid-dark);
+  @include form-validation-state(
+    "invalid",
+    $form-feedback-invalid-color-dark,
+    $form-feedback-icon-invalid-dark
+  );
 }
