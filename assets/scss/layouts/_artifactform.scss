@@ -81,6 +81,10 @@
     color: $gray-500;
   }
 
+  :is(.form-label, .col-form-label) .required-label {
+    color: $danger-dark;
+  }
+
   .field-list-body .field-list-item .list-item-gutter {
     .form-button {
       color: $form-text-color-dark;
