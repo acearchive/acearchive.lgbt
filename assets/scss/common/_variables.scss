@@ -10,9 +10,9 @@ $gray-600: #6c757d;
 $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
-$red-400: #e35d6a;
 $red-300: #ea868f;
-$teal-400: #4dd4ac;
+$red-400: #e35d6a;
+$red-500: #dc3545;
 $black: #1d2d35;
 $beige: #fbf7f0;
 
@@ -32,7 +32,8 @@ $pride-purple: #732982;
 
 $primary: scale-color($ace-purple, $saturation: -60%);
 $primary-dark: scale-color($aro-light-green, $saturation: -30%);
-$danger: $red-300;
+$danger: $red-500;
+$danger-dark: $red-300;
 
 // Options
 //
@@ -191,10 +192,16 @@ $alert-color-scale: 0;
 
 $form-text-color: $gray-700;
 $form-text-color-dark: $gray-500;
-$form-feedback-icon-valid-color: $form-text-color;
-$form-feedback-icon-valid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>");
-$form-feedback-icon-valid-color-dark: $form-text-color-dark;
-$form-feedback-icon-valid-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-icon-valid-color-dark}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>");
+
+$form-feedback-valid-color: $form-text-color;
+$form-feedback-valid-color-dark: $form-text-color-dark;
+$form-feedback-icon-valid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>");
+$form-feedback-icon-valid-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-feedback-valid-color-dark}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>");
+
+$form-feedback-invalid-color: $danger;
+$form-feedback-invalid-color-dark: $danger-dark;
+$form-feedback-icon-invalid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-invalid-color}' stroke='none'/></svg>") !default;
+$form-feedback-icon-invalid-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-invalid-color-dark}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-invalid-color-dark}' stroke='none'/></svg>") !default;
 
 // docsearch
 $dropdown-config: (
