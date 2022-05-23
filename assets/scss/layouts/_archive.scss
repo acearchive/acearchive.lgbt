@@ -3,6 +3,24 @@
   font-family: $font-family-monospace;
 }
 
+.icon-button {
+  color: $body-color;
+}
+
+.icon-button:hover {
+  color: $gray-600;
+}
+
+[data-dark-mode] {
+  .icon-button {
+    color: $body-color-dark;
+  }
+
+  .icon-button:hover {
+    color: $gray-500;
+  }
+}
+
 .artifact-links-table {
   max-width: 45rem;
   margin-left: auto;

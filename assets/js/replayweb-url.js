@@ -12,7 +12,8 @@ for (const form of forms) {
   const urlInputGroup = form.querySelector(".url-input");
   const urlInputElement = urlInputGroup.querySelector("input");
 
-  const copyButton = form.querySelector(".copy-button");
+  const submitButton = form.querySelector(".submit-button");
+  const cancelButton = form.querySelector(".cancel-button");
   const urlOutput = form.querySelector(".url-output");
 
   const getUrl = () =>
@@ -53,28 +54,40 @@ for (const form of forms) {
     }
   });
 
-  const setFormInputsDisabled = (disabled) => {
+  const setFormStateLoading = (loading) => {
     for (const inputElement of form.querySelectorAll("input")) {
-      inputElement.disabled = disabled;
+      inputElement.disabled = loading;
     }
 
-    copyButton.disabled = disabled;
+    submitButton.disabled = loading;
+    cancelButton.hidden = !loading;
 
-    if (disabled) {
-      copyButton.innerHTML = `
+    if (loading) {
+      submitButton.innerHTML = `
       <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       Validating...
     `;
     } else {
-      copyButton.innerText = "Submit";
+      submitButton.innerText = "Submit";
     }
   };
 
   const checkValidity = async () => {
     if (cidInputElement.value.length > 0) {
-      setFormInputsDisabled(true);
-      const { result, message } = await normalizeCid(cidInputElement.value);
-      setFormInputsDisabled(false);
+      const abortController = new AbortController();
+
+      cancelButton.onclick = () => {
+        abortController.abort();
+        setFormStateLoading(false);
+      };
+
+      setFormStateLoading(true);
+
+      const { result, message } = await normalizeCid(cidInputElement.value, {
+        signal: abortController.signal,
+      });
+
+      setFormStateLoading(false);
 
       if (result === undefined) {
         cidInputElement.setCustomValidity(message);
@@ -89,7 +102,7 @@ for (const form of forms) {
     return form.checkValidity();
   };
 
-  copyButton.addEventListener("click", () => {
+  submitButton.addEventListener("click", () => {
     urlOutput.classList.remove("d-flex");
     urlOutput.classList.add("d-none");
 
