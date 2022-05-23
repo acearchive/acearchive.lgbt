@@ -12,7 +12,7 @@ module.exports = {
         "./node_modules/bootstrap/js/src/collapse.js",
         "./layouts/**/*.html",
         "./content/**/*.md",
-        "./assets/js/*.js",
+        "./assets/js/**/*.js",
       ],
       safelist: [
         "lazyloaded",
