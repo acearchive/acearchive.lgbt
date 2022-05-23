@@ -64,12 +64,12 @@ const buttonValidateText = "Validate";
 const buttonLoadingText = "Validating...";
 const buttonSubmitText = "Submit";
 const labelValidateText = "Check that everything looks correct.";
-const labelLoadingText = "Checking that everything looks correct.";
 const labelSubmitText = "Open a pull request on GitHub.";
 
 const setButtonLoading = (submitButton) => {
-  const buttonElement = submitButton.querySelector("button");
+  const buttonElement = submitButton.querySelector(".submit-button");
   const labelElement = submitButton.querySelector("label");
+  const cancelElement = submitButton.querySelector(".cancel-button");
   const submitButtonChild = submitButton.querySelector(":scope > *");
 
   buttonElement.disabled = true;
@@ -77,41 +77,48 @@ const setButtonLoading = (submitButton) => {
     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
     ${buttonLoadingText}
   `;
-  labelElement.innerText = labelLoadingText;
+  labelElement.innerText = "";
+  cancelElement.hidden = false;
   submitButtonChild.classList.remove("is-invalid", "is-valid");
 };
 
 const setButtonSubmit = (submitButton) => {
-  const buttonElement = submitButton.querySelector("button");
+  const buttonElement = submitButton.querySelector(".submit-button");
   const labelElement = submitButton.querySelector("label");
+  const cancelElement = submitButton.querySelector(".cancel-button");
   const submitButtonChild = submitButton.querySelector(":scope > *");
 
   buttonElement.disabled = false;
   buttonElement.innerText = buttonSubmitText;
   labelElement.innerText = labelSubmitText;
+  cancelElement.hidden = true;
   submitButtonChild.classList.remove("is-invalid");
   submitButtonChild.classList.add("is-valid");
 };
 
 const setButtonNeedsValidation = (submitButton) => {
-  const buttonElement = submitButton.querySelector("button");
+  const buttonElement = submitButton.querySelector(".submit-button");
   const labelElement = submitButton.querySelector("label");
+  const cancelElement = submitButton.querySelector(".cancel-button");
   const submitButtonChild = submitButton.querySelector(":scope > *");
 
   buttonElement.disabled = false;
   buttonElement.innerText = buttonValidateText;
   labelElement.innerText = labelValidateText;
+  cancelElement.hidden = true;
   submitButtonChild.classList.remove("is-valid", "is-invalid");
 };
 
 const setButtonInvalid = (submitButton) => {
-  const buttonElement = submitButton.querySelector("button");
+  const buttonElement = submitButton.querySelector(".submit-button");
   const labelElement = submitButton.querySelector("label");
+  const cancelElement = submitButton.querySelector(".cancel-button");
   const submitButtonChild = submitButton.querySelector(":scope > *");
 
   buttonElement.disabled = false;
   buttonElement.innerText = buttonValidateText;
   labelElement.innerText = labelValidateText;
+  cancelElement.hidden = true;
   submitButtonChild.classList.remove("is-valid");
   submitButtonChild.classList.add("is-invalid");
 };
@@ -152,10 +159,18 @@ const registerSubmitHandler = (form, submitButton) => {
   };
 
   const validateEventHandler = () => {
+    const abortController = new AbortController();
+
+    submitButton.querySelector(".cancel-button").onclick = () => {
+      abortController.abort();
+      setButtonInvalid(submitButton);
+      setFormInputsDisabled(form, false);
+    };
+
     setButtonLoading(submitButton);
     setFormInputsDisabled(form, true);
 
-    runValidator(form).then(() => {
+    runValidator(form, { signal: abortController.signal }).then(() => {
       setFormInputsDisabled(form, false);
       showValidityMessages(form);
       formIsValidated = true;
@@ -182,7 +197,7 @@ const registerSubmitHandler = (form, submitButton) => {
     });
   }
 
-  submitButton.querySelector("button").addEventListener("click", () => buttonHandler());
+  submitButton.querySelector(".submit-button").addEventListener("click", () => buttonHandler());
 };
 
 export const createSubmitButton = (form) => {
@@ -190,8 +205,17 @@ export const createSubmitButton = (form) => {
   submitButton.classList.add("submit-control");
   submitButton.innerHTML = `
     <div>
-      <button id="artifact-form-submit-button" class="btn btn-primary me-1 d-block d-sm-inline" type="button" aria-describedby="artifact-form-submit-help">${buttonValidateText}</button>
-      <label class="form-text d-block d-sm-inline mt-2 mt-sm-0" for="artifact-form-submit-button">${labelValidateText}</label>
+      <span class="d-block d-sm-inline">
+        <button id="artifact-form-submit-button" class="btn btn-primary submit-button" type="button" aria-describedby="artifact-form-submit-help">${buttonValidateText}</button>
+        <button class="btn icon-button cancel-button px-0" type="button" aria-label="Cancel" hidden>
+          <span aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+          </span>
+        </button>
+      </span>
+      <label class="form-text d-block d-sm-inline mt-2 mt-sm-0 ms-sm-2" for="artifact-form-submit-button">${labelValidateText}</label>
     </div>
     <div id="artifact-form-submit-help" class="invalid-feedback mt-1">Looks like there were some problems.</div>
   `;

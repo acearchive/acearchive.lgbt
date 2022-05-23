@@ -35,10 +35,11 @@ const parseInputToIpfsPath = (maybeUrlOrCidOrPath) => {
   return undefined;
 };
 
-const resolveIpfsPath = async (ipfs, ipfsPath) => {
+const resolveIpfsPath = async (ipfs, ipfsPath, { signal }) => {
   const resolvedIpfsPath = await ipfs.resolve(ipfsPath, {
     recursive: true,
     timeout: timeoutMillis,
+    signal: signal,
   });
 
   return CID.parse(resolvedIpfsPath.slice(ipfsPathPrefix.length));
@@ -49,22 +50,21 @@ const loadIpfs = (() => {
   return () => ipfsPromise;
 })();
 
-const retryOnTimeout = async (func) => {
+const retryOnTimeout = async (ipfs, func) => {
   let timesAttempted = 0;
 
   for (;;) {
     try {
       timesAttempted++;
-      return await func();
+      return await func(ipfs);
     } catch (e) {
-      console.log(e);
       if (e.code === "ERR_TIMEOUT" && timesAttempted < maxTimeoutTries) continue;
       throw e;
     }
   }
 };
 
-const normalizeCid = async (maybeUrlOrCidOrPath) => {
+const normalizeCid = async (maybeUrlOrCidOrPath, { signal }) => {
   const ipfsPath = parseInputToIpfsPath(maybeUrlOrCidOrPath);
   if (ipfsPath === undefined) {
     return {
@@ -75,7 +75,9 @@ const normalizeCid = async (maybeUrlOrCidOrPath) => {
   const ipfs = await loadIpfs();
 
   try {
-    const resolvedCid = await retryOnTimeout(() => resolveIpfsPath(ipfs, ipfsPath));
+    const resolvedCid = await retryOnTimeout(ipfs, (ipfs) =>
+      resolveIpfsPath(ipfs, ipfsPath, { signal: signal })
+    );
 
     // If the CID is a directory containing only a single file, return the CID of
     // that file. By default, Web3.Storage wraps uploaded files in a directory,
@@ -84,12 +86,12 @@ const normalizeCid = async (maybeUrlOrCidOrPath) => {
     // without explaining the syntax of gateway URLs to users, so instead, we opt
     // to allow users to enter the directory CID that Web3.Storage gives them and
     // fix it ourselves.
-    const fileStats = await retryOnTimeout(() =>
-      ipfs.files.stat(resolvedCid, { timeout: timeoutMillis })
+    const fileStats = await retryOnTimeout(ipfs, (ipfs) =>
+      ipfs.files.stat(resolvedCid, { timeout: timeoutMillis, signal: signal })
     );
     if (fileStats.type === "directory" && fileStats.blocks === 1) {
-      const links = await retryOnTimeout(() =>
-        ipfs.object.links(resolvedCid, { timeout: timeoutMillis })
+      const links = await retryOnTimeout(ipfs, (ipfs) =>
+        ipfs.object.links(resolvedCid, { timeout: timeoutMillis, signal: signal })
       );
       return { result: links[0].Hash };
     }
