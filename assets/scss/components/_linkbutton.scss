@@ -1,0 +1,11 @@
+.link-button {
+  max-width: 18rem;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+@include media-breakpoint-up(sm) {
+  .link-button {
+    margin-left: 2rem;
+  }
+}

@@ -1,0 +1,23 @@
+{{- $url := .Get "url" -}}
+{{- $path := ref . (.Get "path") -}}
+<a
+  class="btn btn-outline-primary d-flex justify-content-between align-items-center link-button"
+  href="{{ $url | default $path }}"
+>
+  {{ .Inner }}
+  <span aria-hidden="true" class="d-flex align-items-center">
+    <svg
+      class="bi bi-chevron-compact-right"
+      fill="currentColor"
+      height="20"
+      viewBox="0 0 16 16"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"
+        fill-rule="evenodd"
+      />
+    </svg>
+  </span>
+</a>
