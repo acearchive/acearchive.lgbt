@@ -23,6 +23,7 @@ input.form-control::placeholder {
 }
 
 .form-control:focus {
+  background: $gray-100;
   border: 1px solid $primary;
 }
 
@@ -37,6 +38,7 @@ input.form-control::placeholder {
 }
 
 [data-dark-mode] .form-control:focus {
+  background: $body-overlay-dark;
   border: 1px solid $link-color-dark;
 }
 
