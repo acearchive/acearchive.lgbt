@@ -190,10 +190,10 @@ export const createSubmitButton = (form) => {
   submitButton.classList.add("submit-control");
   submitButton.innerHTML = `
     <div>
-      <button id="artifact-form-submit-button" class="btn btn-primary me-1" type="button" aria-describedby="artifact-form-submit-help">${buttonValidateText}</button>
-      <label class="form-text" for="artifact-form-submit-button">${labelValidateText}</label>
+      <button id="artifact-form-submit-button" class="btn btn-primary me-1 d-block d-sm-inline" type="button" aria-describedby="artifact-form-submit-help">${buttonValidateText}</button>
+      <label class="form-text d-block d-sm-inline mt-2 mt-sm-0" for="artifact-form-submit-button">${labelValidateText}</label>
     </div>
-    <div id="artifact-form-submit-help" class="invalid-feedback">Looks like there were some problems.</div>
+    <div id="artifact-form-submit-help" class="invalid-feedback mt-1">Looks like there were some problems.</div>
   `;
 
   registerSubmitHandler(form, submitButton);
