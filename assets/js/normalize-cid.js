@@ -64,7 +64,7 @@ const retryOnTimeout = async (ipfs, func) => {
   }
 };
 
-const normalizeCid = async (maybeUrlOrCidOrPath, { signal }) => {
+const normalizeCid = async (maybeUrlOrCidOrPath, { signal } = {}) => {
   const ipfsPath = parseInputToIpfsPath(maybeUrlOrCidOrPath);
   if (ipfsPath === undefined) {
     return {
