@@ -3,7 +3,8 @@ import { CID, isIPFS } from "ipfs-core";
 
 const ipfsPathPrefix = "/ipfs/";
 const ipnsPathPrefix = "/ipns/";
-const timeoutMillis = 10000;
+const timeoutMillis = 60_000;
+const maxTimeoutTries = 3;
 
 const parseInputToIpfsPath = (maybeUrlOrCidOrPath) => {
   if (isIPFS.path(maybeUrlOrCidOrPath)) {
@@ -48,6 +49,21 @@ const loadIpfs = (() => {
   return () => ipfsPromise;
 })();
 
+const retryOnTimeout = async (func) => {
+  let timesAttempted = 0;
+
+  for (;;) {
+    try {
+      timesAttempted++;
+      return await func();
+    } catch (e) {
+      console.log(e);
+      if (e.code === "ERR_TIMEOUT" && timesAttempted < maxTimeoutTries) continue;
+      throw e;
+    }
+  }
+};
+
 const normalizeCid = async (maybeUrlOrCidOrPath) => {
   const ipfsPath = parseInputToIpfsPath(maybeUrlOrCidOrPath);
   if (ipfsPath === undefined) {
@@ -59,7 +75,7 @@ const normalizeCid = async (maybeUrlOrCidOrPath) => {
   const ipfs = await loadIpfs();
 
   try {
-    const resolvedCid = await resolveIpfsPath(ipfs, ipfsPath);
+    const resolvedCid = await retryOnTimeout(() => resolveIpfsPath(ipfs, ipfsPath));
 
     // If the CID is a directory containing only a single file, return the CID of
     // that file. By default, Web3.Storage wraps uploaded files in a directory,
@@ -68,14 +84,18 @@ const normalizeCid = async (maybeUrlOrCidOrPath) => {
     // without explaining the syntax of gateway URLs to users, so instead, we opt
     // to allow users to enter the directory CID that Web3.Storage gives them and
     // fix it ourselves.
-    const fileStats = await ipfs.files.stat(resolvedCid, { timeout: timeoutMillis });
+    const fileStats = await retryOnTimeout(() =>
+      ipfs.files.stat(resolvedCid, { timeout: timeoutMillis })
+    );
     if (fileStats.type === "directory" && fileStats.blocks === 1) {
-      const links = await ipfs.object.links(resolvedCid, { timeout: timeoutMillis });
+      const links = await retryOnTimeout(() =>
+        ipfs.object.links(resolvedCid, { timeout: timeoutMillis })
+      );
       return { result: links[0].Hash };
     }
 
     return { result: resolvedCid };
-  } catch {
+  } catch (e) {
     return {
       message:
         "Timed out trying to find the file. Check that you entered the correct CID or URL and try again.",
