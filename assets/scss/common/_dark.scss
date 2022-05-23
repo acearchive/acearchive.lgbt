@@ -505,3 +505,7 @@
     border-color: $border-dark;
   }
 }
+
+[data-dark-mode] ::selection {
+  background: scale-color($primary-dark, $alpha: -90%);
+}
