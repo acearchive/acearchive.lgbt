@@ -3,9 +3,9 @@ import normalizeCid from "../normalize-cid";
 
 const validationMinDelay = 500;
 
-const validateFieldWithCustomValidator = (form, field) => {
+const validateFieldWithCustomValidator = (form, field, { signal }) => {
   const validatorsByName = {
-    cid: normalizeCid,
+    cid: (rawInput) => normalizeCid(rawInput, { signal: signal }),
   };
 
   const validators = [];
@@ -23,6 +23,7 @@ const validateFieldWithCustomValidator = (form, field) => {
         if (result === undefined) {
           inputElement.setCustomValidity(message);
         } else {
+          inputElement.setCustomValidity("");
           inputElement.value = result;
         }
       })
@@ -32,7 +33,7 @@ const validateFieldWithCustomValidator = (form, field) => {
   if (field.definitions) {
     validators.push(
       ...Object.values(field.definitions).flatMap((nestedField) =>
-        validateFieldWithCustomValidator(form, nestedField)
+        validateFieldWithCustomValidator(form, nestedField, { signal })
       )
     );
   }
@@ -40,9 +41,9 @@ const validateFieldWithCustomValidator = (form, field) => {
   return validators;
 };
 
-export const runValidator = (form) => {
+export const runValidator = (form, { signal }) => {
   const validators = Object.values(schema.definitions).flatMap((field) =>
-    validateFieldWithCustomValidator(form, field)
+    validateFieldWithCustomValidator(form, field, { signal })
   );
 
   // Add a minimum delay to prevent UI flicker and to make it more obvious that

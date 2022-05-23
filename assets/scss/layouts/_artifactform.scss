@@ -13,6 +13,10 @@
     margin-bottom: 2rem;
   }
 
+  .submit-control .cancel-button {
+    color: $body-color;
+  }
+
   fieldset.field-list legend.form-label {
     @extend label;
   }
@@ -23,11 +27,11 @@
     vertical-align: middle;
   }
 
-  .field-list .form-button {
+  .icon-button {
     color: $body-color;
   }
 
-  .field-list .form-button:hover {
+  .icon-button:hover {
     color: $gray-600;
   }
 
@@ -73,11 +77,11 @@
 }
 
 [data-dark-mode] .new-artifact form {
-  .field-list .form-button {
+  .icon-button {
     color: $body-color-dark;
   }
 
-  .field-list .form-button:hover {
+  .icon-button:hover {
     color: $gray-500;
   }
 
