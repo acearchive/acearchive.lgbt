@@ -13,11 +13,11 @@
     {{- $active := eq .Section "identities" -}}
     <button
       aria-controls="identities-menu"
-      aria-expanded="{{ if $active }}
+      aria-expanded="{{ if $active -}}
         true
-      {{ else }}
+      {{- else -}}
         false
-      {{ end }}"
+      {{- end }}"
       class="btn btn-toggle align-items-center rounded"
       data-bs-target="#identities-menu"
       data-bs-toggle="collapse"
@@ -47,11 +47,11 @@
     {{- $active := eq .Section "decades" -}}
     <button
       aria-controls="decades-menu"
-      aria-expanded="{{ if $active }}
+      aria-expanded="{{ if $active -}}
         true
-      {{ else }}
+      {{- else -}}
         false
-      {{ end }}"
+      {{- end }}"
       class="btn btn-toggle align-items-center rounded"
       data-bs-target="#decades-menu"
       data-bs-toggle="collapse"
@@ -81,11 +81,11 @@
     {{- $active := eq .Section "people" -}}
     <button
       aria-controls="people-menu"
-      aria-expanded="{{ if $active }}
+      aria-expanded="{{ if $active -}}
         true
-      {{ else }}
+      {{- else -}}
         false
-      {{ end }}"
+      {{- end }}"
       class="btn btn-toggle align-items-center rounded collapsed"
       data-bs-target="#people-menu"
       data-bs-toggle="collapse"
