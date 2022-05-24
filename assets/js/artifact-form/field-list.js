@@ -1,5 +1,6 @@
 import { createRequiredLabel, fieldNameToId, isArrayOfObjects, mdConverter } from "./util";
 import { createFormField } from "./form-field";
+import { dispatchFormNeedsValidationEvent } from "./submit";
 
 const copyListItemInputValues = (oldFieldListItem, newFieldListItem) => {
   const newInputElements = newFieldListItem.querySelectorAll(".form-field input");
@@ -41,9 +42,10 @@ const createFieldList = (field, listItemIndex = 0) => {
     fieldList.querySelector("legend").appendChild(createRequiredLabel());
   }
 
-  fieldList.querySelector(":scope > .add-button").addEventListener("click", () => {
+  fieldList.querySelector(":scope > .add-button").addEventListener("click", (event) => {
     const fieldListBody = fieldList.querySelector(".field-list-body");
     fieldListBody.appendChild(createFieldListItem(field, fieldListBody.childElementCount));
+    dispatchFormNeedsValidationEvent(event.target.closest("form"));
   });
 
   return fieldList;
@@ -95,10 +97,12 @@ export const createFieldListItem = (field, listItemIndex) => {
   const deleteButtons = listItem.querySelectorAll(".list-item-gutter > button.delete-button");
 
   for (const deleteButton of deleteButtons) {
-    deleteButton.addEventListener("click", (e) => {
-      const parentListItemBody = e.target.closest(".field-list-body");
+    deleteButton.addEventListener("click", (event) => {
+      dispatchFormNeedsValidationEvent(event.target.closest("form"));
 
-      e.target.closest(".field-list-item").remove();
+      const parentListItemBody = event.target.closest(".field-list-body");
+
+      event.target.closest(".field-list-item").remove();
 
       const childListItems = parentListItemBody.querySelectorAll(".field-list-item");
 

@@ -1,4 +1,5 @@
 import { createRequiredLabel, fieldNameToId, mdConverter } from "./util";
+import { dispatchFormNeedsValidationEvent } from "./submit";
 
 const htmlInputTypeForField = (field) => {
   const inputTypeBySchemaType = {
@@ -100,9 +101,10 @@ export const createFormField = (field, listItemIndex = 0) => {
     }
   }
 
-  inputElement.addEventListener("input", () => {
+  inputElement.addEventListener("input", (event) => {
     formField.classList.remove("was-validated");
     inputElement.setCustomValidity("");
+    dispatchFormNeedsValidationEvent(event.target.closest("form"));
   });
 
   inputElement.addEventListener("invalid", (e) => {

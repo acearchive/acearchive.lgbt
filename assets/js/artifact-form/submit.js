@@ -187,17 +187,19 @@ const registerSubmitHandler = (form, submitButton) => {
 
   let buttonHandler = validateEventHandler;
 
-  for (const inputElement of form.querySelectorAll(".form-field input")) {
-    inputElement.addEventListener("input", () => {
-      if (formIsValidated) {
-        setButtonNeedsValidation(submitButton);
-        buttonHandler = validateEventHandler;
-        formIsValidated = false;
-      }
-    });
-  }
+  form.addEventListener("needs-validation", () => {
+    if (formIsValidated) {
+      setButtonNeedsValidation(submitButton);
+      buttonHandler = validateEventHandler;
+      formIsValidated = false;
+    }
+  });
 
   submitButton.querySelector(".submit-button").addEventListener("click", () => buttonHandler());
+};
+
+export const dispatchFormNeedsValidationEvent = (form) => {
+  form.dispatchEvent(new Event("needs-validation"));
 };
 
 export const createSubmitButton = (form) => {
