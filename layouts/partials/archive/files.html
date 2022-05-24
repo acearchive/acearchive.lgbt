@@ -1,18 +1,18 @@
-<table id="artifact-files-table" class="table table-hover">
+<table class="table table-hover" id="artifact-files-table">
   <thead>
     <th scope="col">Type</th>
     <th scope="col">File</th>
     <th scope="col">
       <span>CID</span>
-      <a href="{{ ref . "docs/contributing/uploading-files.md" }}" aria-label="Help">
-        <div class="d-inline-flex align-center" aria-hidden="true">
+      <a aria-label="Help" href="https://docs.ipfs.io/concepts/what-is-ipfs/">
+        <div aria-hidden="true" class="d-inline-flex align-center">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="12"
-            height="12"
-            fill="currentColor"
             class="bi bi-question-circle"
+            fill="currentColor"
+            height="12"
             viewBox="0 0 16 16"
+            width="12"
+            xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
             <path
@@ -36,7 +36,7 @@
       {{- $truncatedCid := printf "%s…%s" (substr $file.cid 0 4) (substr $file.cid (sub (strings.RuneCount $file.cid) 4)) }}
       <tr>
         <td>
-          <file-type-icon media-type="{{ $file.mediaType }}" filename="{{ $file.filename }}" />
+          <file-type-icon filename="{{ $file.filename }}" media-type="{{ $file.mediaType }}" />
         </td>
         <td><a href="{{ $gatewayUrl }}">{{ $file.name }}</a></td>
         <td>
