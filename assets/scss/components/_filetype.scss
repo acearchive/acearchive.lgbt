@@ -1,8 +1,8 @@
 file-type-icon .type-icon {
-  @extend .me-1;
+  @extend .me-2;
+  @extend .d-none, .d-sm-inline-block;
 }
 
 file-type-icon .extension-pill {
-  @extend .d-none, .d-sm-inline-block;
   @extend .badge, .rounded-pill, .bg-primary;
 }
