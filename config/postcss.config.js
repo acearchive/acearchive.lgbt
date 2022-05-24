@@ -34,6 +34,7 @@ module.exports = {
           "./node_modules/bootstrap/scss/_tooltip.scss",
           "./node_modules/katex/dist/katex.css",
           "./assets/scss/components/_filetype.scss",
+          "./assets/scss/components/_schema.scss",
           "./assets/scss/layouts/_artifactform.scss",
         ]),
       ],
