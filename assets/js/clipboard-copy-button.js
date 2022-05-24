@@ -1,5 +1,3 @@
-import * as bootstrap from "bootstrap";
-
 const copyButtons = document.querySelectorAll("clipboard-copy.clipboard-copy-button") ?? [];
 
 for (const copyButton of copyButtons) {
