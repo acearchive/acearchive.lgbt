@@ -88,6 +88,10 @@ $color-btn-border: darken($primary, 5%);
 $color-btn-text: $white;
 $button-color-dark: $primary-dark;
 $focus-color-dark: lighten($primary-dark, 2.5%);
+$btn-transition-duration: 0.15s;
+$btn-transition: color $btn-transition-duration ease-in-out,
+  background-color $btn-transition-duration ease-in-out,
+  border-color $btn-transition-duration ease-in-out, box-shadow $btn-transition-duration ease-in-out;
 
 // Grid containers
 //

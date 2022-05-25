@@ -4,6 +4,14 @@
   margin-bottom: 2em;
 }
 
+.link-button .link-button-arrow {
+  transition: transform #{$btn-transition-duration * 2} ease-in-out;
+}
+
+.link-button:hover .link-button-arrow {
+  transform: translateX(4px);
+}
+
 @include media-breakpoint-up(sm) {
   .link-button {
     margin-left: 2rem;
