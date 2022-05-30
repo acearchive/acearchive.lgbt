@@ -29,6 +29,11 @@ API to interface with the archive. Our tooling at
 be used to get metadata for artifacts in the archive, download the content, or
 re-host the content elsewhere.
 
+## Infrastructure
+
+The infrastructure config for the site can be found at
+[acearchive/infra](https://github.com/acearchive/infra).
+
 ## Usage
 
 To build the site, make sure npm is installed and run:
