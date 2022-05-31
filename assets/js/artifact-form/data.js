@@ -1,5 +1,5 @@
-import { isArrayOfObjects } from "./util";
-import { schema } from "@params";
+import { getQueryParams, isArrayOfObjects } from "./util";
+import { artifacts, schema } from "@params";
 
 const defaultValueForField = (field) => {
   if (field.type === "array") {
@@ -55,15 +55,20 @@ const getDataForField = (field, form) => {
   return getInputValueForField(field, form);
 };
 
-export const readFormData = (form) => ({
-  version: schema.version,
-  ...Object.entries(schema.definitions)
-    .filter(([, field]) => field.showInFormDocs)
-    .reduce(
+export const readFormData = (form) => {
+  const baseArtifactSlug = getQueryParams().modify;
+  const baseArtifactValues = artifacts[baseArtifactSlug];
+
+  return {
+    version: schema.version,
+    ...Object.entries(schema.definitions).reduce(
       (data, [fieldKey, field]) => ({
-        [fieldKey]: getDataForField(field, form),
+        [fieldKey]: field.showInFormDocs
+          ? getDataForField(field, form)
+          : baseArtifactValues[fieldKey],
         ...data,
       }),
       {}
     ),
-});
+  };
+};
