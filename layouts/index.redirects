@@ -1,5 +1,10 @@
 {{- range $page := .Site.Pages -}}
 {{- range $alias := $page.Aliases -}}
-{{ if eq $page.Type "archive" }}{{ path.Join "artifact" $alias | relURL }}{{ else }}{{ $alias }}{{ end }} {{ $page.RelPermalink }}
+  {{- if eq $page.Type "archive" -}}
+    {{- path.Join "artifact" $alias | path.Clean | relURL | printf "%s/" -}}
+  {{- else -}}
+    {{- $alias | path.Clean | printf "%s/" -}}
+  {{- end }} {{ $page.RelPermalink }} 301
 {{ end -}}
 {{- end -}}
+
