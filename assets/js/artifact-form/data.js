@@ -59,16 +59,17 @@ export const readFormData = (form) => {
   const baseArtifactSlug = getQueryParams().modify;
   const baseArtifactValues = artifacts[baseArtifactSlug];
 
-  return {
+  const data = {
     version: schema.version,
-    ...Object.entries(schema.definitions).reduce(
-      (data, [fieldKey, field]) => ({
-        [fieldKey]: field.showInFormDocs
-          ? getDataForField(field, form)
-          : baseArtifactValues[fieldKey],
-        ...data,
-      }),
-      {}
-    ),
-  };
+  }
+
+  for (const [fieldKey, field] of Object.entries(schema.definitions)) {
+    if (field.showInFormDocs) {
+      data[fieldKey] = getDataForField(field, form);
+    } else if (baseArtifactValues && baseArtifactValues.hasOwnProperty(fieldKey)) {
+      data[fieldKey] = baseArtifactValues[fieldKey]
+    }
+  }
+
+  return data;
 };
