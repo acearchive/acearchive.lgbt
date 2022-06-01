@@ -13,7 +13,7 @@ description = "Ace Archive is a curated online archive for preserving asexual hi
 # docsVersion = "0.3"
 
 ## Open Graph
-images = ["ace-archive.png"]
+images = ["images/logo-card.webp"]
 ogLocale = "en_US"
 domainTLD = "acearchive.lgbt"
 titleHome = "Ace Archive"
@@ -25,10 +25,10 @@ schemaName = "Ace Archive"
 schemaAuthor = "Frawley"
 schemaAuthorGitHub = "https://github.com/frawleyskid"
 schemaLocale = "en-US"
-schemaLogo = "ace-archive-logo.png"
+schemaLogo = "images/logo-transparent.webp"
 schemaLogoWidth = 912
 schemaLogoHeight = 912
-schemaImage = "ace-archive.png"
+schemaImage = "images/logo-card.webp"
 schemaImageWidth = 2560
 schemaImageHeight = 1280
 schemaGitHub = "https://github.com/acearchive"
