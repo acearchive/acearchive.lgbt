@@ -9,9 +9,9 @@ files:
     filename: "worldpride-asexual-conference-titman-part-1.mp4"
     cid: "bafybeibs32ms6srvkzn2cabgz36n7b34tb2yf4tkwt2m7jzitucnvpoahu"
   - name: "Full Talk"
-    mediaType: "video/x-matroska"
-    filename: "worldpride-asexual-conference-titman-full.mkv"
-    cid: "bafybeidicuea4n6v6x5akxbdyg7x5xnbsczh2pnr5letbs7dky43ktl7ee"
+    mediaType: "video/mp4"
+    filename: "worldpride-asexual-conference-titman-full.mp4"
+    cid: "bafybeibzt2sy2mn7wga6h625c4chrua6bqque7rkeckad242xn3yenkhci"
 links:
   - name: "Part 1 Only"
     url: "https://youtu.be/Kwv-CLgSFNw"
