@@ -1,6 +1,14 @@
-file-type-icon .type-icon {
-  @extend .me-2;
-  @extend .d-none, .d-sm-inline-block;
+file-type-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+@include media-breakpoint-up(sm) {
+  file-type-icon {
+    flex-direction: row;
+  }
 }
 
 file-type-icon .extension-pill {

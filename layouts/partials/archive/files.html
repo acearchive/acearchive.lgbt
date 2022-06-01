@@ -36,7 +36,9 @@
       {{- $truncatedCid := printf "%s…%s" (substr $file.cid 0 4) (substr $file.cid (sub (strings.RuneCount $file.cid) 4)) }}
       <tr>
         <td>
-          <file-type-icon filename="{{ $file.filename }}" media-type="{{ $file.mediaType }}" />
+          <div class="d-flex flex-align-start">
+            <file-type-icon filename="{{ $file.filename }}" media-type="{{ $file.mediaType }}" />
+          </div>
         </td>
         <td><a href="{{ $gatewayUrl }}">{{ $file.name }}</a></td>
         <td class="d-none d-sm-table-cell">
