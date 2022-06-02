@@ -2,13 +2,13 @@ baseurl = "https://acearchive.lgbt/"
 relativeUrls = true
 canonifyURLs = false
 disableAliases = true
-disableHugoGeneratorInject = true
+disableHugoGeneratorInject = false
 enableEmoji = true
 enableGitInfo = false
 enableRobotsTXT = true
 languageCode = "en-US"
+disableKinds = ["RSS"]
 paginate = 7
-rssLimit = 10
 
 # Multilingual
 defaultContentLanguage = "en"
@@ -16,8 +16,8 @@ defaultContentLanguageInSubdir = true
 
 # add redirects/headers
 [outputs]
-home = ["HTML", "RSS", "REDIRECTS", "HEADERS"]
-section = ["HTML", "RSS", "SITEMAP"]
+home = ["HTML", "REDIRECTS", "HEADERS"]
+section = ["HTML", "SITEMAP"]
 
 # remove .{ext} from text/netlify
 [mediaTypes."text/netlify"]
