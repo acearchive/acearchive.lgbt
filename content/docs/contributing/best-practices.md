@@ -1,10 +1,7 @@
 ---
 title: "Best practices for contributing"
 description: "Best practices for contributing to the archive"
-lead: ""
 date: 2022-01-09T12:51:25-05:00
-lastmod: 2022-01-09T12:51:25-05:00
-draft: false
 menu:
   docs:
     parent: "contributing"

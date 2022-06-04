@@ -1,10 +1,7 @@
 ---
 title: "Uploading files"
 description: "How to upload content to the archive"
-lead: ""
 date: 2022-01-07T12:40:14-05:00
-lastmod: 2022-01-07T12:40:14-05:00
-draft: false
 menu:
   docs:
     parent: "contributing"

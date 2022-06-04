@@ -1,10 +1,7 @@
 ---
 title: "Getting started"
 description: "Start here"
-lead: ""
 date: 2022-01-07T09:23:23-05:00
-lastmod: 2022-01-07T09:23:23-05:00
-draft: false
 menu:
   docs:
     parent: "contributing"

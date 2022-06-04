@@ -1,10 +1,7 @@
 ---
 title: "Hosting artifacts"
 description: "How you can help host the archive"
-lead: ""
 date: 2022-01-08T09:34:52-05:00
-lastmod: 2022-01-08T09:34:52-05:00
-draft: false
 menu:
   docs:
     parent: "contributing"

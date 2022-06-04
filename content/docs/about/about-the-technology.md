@@ -1,10 +1,7 @@
 ---
 title: "About the technology"
 description: "About the technologies behind Ace Archive"
-lead: ""
 date: 2022-01-08T09:02:46-05:00
-lastmod: 2022-01-08T09:02:46-05:00
-draft: false
 menu:
   docs:
     parent: "about"

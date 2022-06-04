@@ -1,10 +1,7 @@
 ---
 title: "Artifact files"
 description: "The schema of artifact files"
-lead: ""
 date: 2022-01-07T09:43:25-05:00
-lastmod: 2022-01-07T09:43:25-05:00
-draft: false
 menu:
   docs:
     parent: "contributing"

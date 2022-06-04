@@ -1,10 +1,7 @@
 ---
 title: "Linking to content"
 description: "How to link to content on Ace Archive"
-lead: ""
 date: 2022-02-19T10:43:48-05:00
-lastmod: 2022-02-19T10:43:48-05:00
-draft: false
 menu:
   docs:
     parent: "about"

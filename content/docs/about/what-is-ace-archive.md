@@ -1,10 +1,7 @@
 ---
 title: "What is Ace Archive"
 description: "About the project"
-lead: ""
 date: 2022-01-08T08:41:19-05:00
-lastmod: 2022-01-08T08:41:19-05:00
-draft: false
 menu:
   docs:
     parent: "about"
