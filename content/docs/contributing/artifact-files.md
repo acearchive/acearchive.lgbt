@@ -27,10 +27,9 @@ An artifact file is a markdown document containing a YAML front matter block,
 however no content goes in the body of the markdown file, so you can just think
 of it as a YAML file with a leading and trailing `---` line.
 
-Artifact files sit in
-the [`/content/archive`](https://github.com/acearchive/acearchive.lgbt/tree/main/content/archive)
-directory in the repo. Each artifact has a directory whose name is the URL slug
-of the artifact, and it contains the `index.md` artifact file.
+Artifact files are stored in
+the [`acearchive/artifacts`](https://github.com/acearchive/artifacts)
+repo. The file name of the artifact file is the URL slug of the artifact.
 
 Generally an artifact file will look something like this:
 
@@ -64,7 +63,7 @@ decades: [1970]
 
 ## Schema
 
-Next, we'll talk about the schema of artifact files. Also take a look at the
+Next, we'll look at the schema of artifact files. Also take a look at the
 [best practices]({{< ref "docs/contributing/best-practices.md" >}}) section for
 more information on how to fill out these fields.
 

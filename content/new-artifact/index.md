@@ -22,5 +22,5 @@ you'll have the chance to make changes if we ask for them. Remember that
 whatever you submit to GitHub will be viewable by anyone.
 
 If you want a simpler option for contributing content to the archive, you can
-also [fill out this form](https://github.com/acearchive/acearchive.lgbt/issues/new?labels=artifact&template=artifact.yml)
+also [fill out this form](https://github.com/acearchive/artifacts/issues/new?labels=artifact&template=artifact.yml)
 to make a suggestion to the team.

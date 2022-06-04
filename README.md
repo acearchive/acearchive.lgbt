@@ -10,31 +10,23 @@ generator for a few reasons:
 
 - With a static site, rather than using a complex CMS or wiki software, we can
   just use GitHub as our platform for discussion and collaboration. Every
-  artifact in the archive is just a YAML file in the repo.
+  artifact in the archive is just a YAML file in [this
+  repo](https://github.com/acearchive/artifacts).
+- Using git to store artifact metadata gives us a lot of functionality for
+  free, like version control, history, modification timestamps, etc.
 - With no backend infrastructure, the site is performant, easy to deploy, and
   incredibly cheap to host.
 
-## API
+## Artifacts
 
-Ace Archive doesn't provide a traditional REST API because artifact metadata is
-just checked into the repository and artifact content is hosted publicly on the
-IPFS network. However, we do provide both a CLI tool and a GitHub Action at
-[acearchive/artifact-action](https://github.com/acearchive/artifact-action)
-that can export this data as JSON.
-
-## Hosting
-
-The content of the archive is hosted on the IPFS network using
-[Web3.Storage](https://web3.storage). We use GitHub Actions workflows to
-automatically validate the syntax of [artifact
-files](https://acearchive.lgbt/docs/contributing/artifact-files/) when a pull
-request is opened and upload the content to Web3.Storage when a pull request is
-merged. The code which does this can be found at
-[acearchive/artifact-action](https://github.com/acearchive/artifact-action).
+The artifacts in the archive can be found at
+[acearchive/artifacts](https://github.com/acearchive/artifacts). See that repo
+for information about our API and how we host the contents of the archive on
+the IPFS network.
 
 ## Infrastructure
 
-The infrastructure config for the site can be found at
+The infrastructure config for this site can be found at
 [acearchive/infra](https://github.com/acearchive/infra).
 
 ## Usage

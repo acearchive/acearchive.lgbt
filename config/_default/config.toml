@@ -76,6 +76,11 @@ rel  = "sitemap"
     extended = true
     min = "0.80.0"
     max = ""
+  [[module.imports]]
+    path = "github.com/acearchive/artifacts"
+    [[module.imports.mounts]]
+      source = "artifacts"
+      target = "content/archive"
   [[module.mounts]]
     source = "node_modules/@hyas/doks/archetypes"
     target = "archetypes"
