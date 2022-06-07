@@ -1,0 +1,25 @@
+{
+  "name": "{{ .Site.Params.title }}",
+  "short_name": "{{ .Site.Params.title }}",
+  "description": "{{ .Site.Params.description }}",
+  "theme_color": "{{ .Site.Params.themeColorLight }}",
+  "background_color": "{{ .Site.Params.themeColorLight }}",
+  "display": "browser",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/images/logo-manifest-maskable-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/logo-manifest-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -1,3 +1,6 @@
+{{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "site.webmanifest" . -}}
+
+
 <meta
   name="theme-color"
   media="(prefers-color-scheme: light)"
@@ -12,4 +15,4 @@
 <link rel="icon" type="image/png" sizes="64x64" href="{{ "/images/favicon-64x64.png" | absURL }}" />
 <link rel="icon" type="image/png" sizes="32x32" href="{{ "/images/favicon-32x32.png" | absURL }}" />
 <link rel="icon" type="image/png" sizes="16x16" href="{{ "/images/favicon-16x16.png" | absURL }}" />
-<link rel="manifest" crossorigin="use-credentials" href="{{ "site.webmanifest" | absURL }}" />
+<link rel="manifest" crossorigin="use-credentials" href="{{ $manifest.Permalink }}" />
