@@ -1,18 +1,26 @@
 {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "site.webmanifest" . -}}
 
+{{- $logoTransparent := resources.Get "images/logo-transparent.png" -}}
+{{- $logoPadded := resources.Get "images/logo-transparent-padded.png" -}}
+
+{{- $favicon16 := $logoTransparent.Resize "16x png" | resources.Copy "images/favicon-16x16.png" -}}
+{{- $favicon32 := $logoTransparent.Resize "32x png" | resources.Copy "images/favicon-32x32.png" -}}
+{{- $favicon64 := $logoTransparent.Resize "64x png" | resources.Copy "images/favicon-64x64.png" -}}
+{{- $appleTouch := printf "180x png %s" .Site.Params.logoBackgroundFill | $logoPadded.Resize | resources.Copy "images/apple-touch-icon.png" -}}
+
 
 <meta
-  name="theme-color"
-  media="(prefers-color-scheme: light)"
   content="{{ $.Site.Params.themeColorLight }}"
+  media="(prefers-color-scheme: light)"
+  name="theme-color"
 />
 <meta
-  name="theme-color"
-  media="(prefers-color-scheme: dark)"
   content="{{ $.Site.Params.themeColorDark }}"
+  media="(prefers-color-scheme: dark)"
+  name="theme-color"
 />
-<link rel="apple-touch-icon" sizes="180x180" href="{{ "/images/apple-touch-icon.png" | absURL }}" />
-<link rel="icon" type="image/png" sizes="64x64" href="{{ "/images/favicon-64x64.png" | absURL }}" />
-<link rel="icon" type="image/png" sizes="32x32" href="{{ "/images/favicon-32x32.png" | absURL }}" />
-<link rel="icon" type="image/png" sizes="16x16" href="{{ "/images/favicon-16x16.png" | absURL }}" />
-<link rel="manifest" crossorigin="use-credentials" href="{{ $manifest.Permalink }}" />
+<link href="{{ $appleTouch.Permalink }}" rel="apple-touch-icon" sizes="180x180" type="image/png" />
+<link href="{{ $favicon64.Permalink }}" rel="icon" sizes="64x64" type="image/png" />
+<link href="{{ $favicon32.Permalink }}" rel="icon" sizes="32x32" type="image/png" />
+<link href="{{ $favicon16.Permalink }}" rel="icon" sizes="16x16" type="image/png" />
+<link crossorigin="use-credentials" href="{{ $manifest.Permalink }}" rel="manifest" />

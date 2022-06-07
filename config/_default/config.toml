@@ -19,6 +19,9 @@ defaultContentLanguageInSubdir = true
 home = ["HTML", "REDIRECTS", "HEADERS"]
 section = ["HTML", "SITEMAP"]
 
+[imaging]
+quality = 100
+
 # remove .{ext} from text/netlify
 [mediaTypes."text/netlify"]
 suffixes = [""]

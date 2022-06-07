@@ -1,3 +1,15 @@
+{{- $logoTransparent := resources.Get "images/logo-transparent.png" -}}
+{{- $logoMaskable := resources.Get "images/logo-manifest-maskable.png" -}}
+
+{{- $manifest192Webp := $logoTransparent.Resize "192x webp icon" | resources.Copy "images/logo-manifest-192x192.webp" -}}
+{{- $manifest192Png := $logoTransparent.Resize "192x png" | resources.Copy "images/logo-manifest-192x192.png" -}}
+{{- $manifest512Webp := $logoTransparent.Resize "512x webp icon" | resources.Copy "images/logo-manifest-512x512.webp" -}}
+{{- $manifest512Png := $logoTransparent.Resize "512x png" | resources.Copy "images/logo-manifest-512x512.png" -}}
+{{- $maskable192Webp := $logoMaskable.Resize "192x webp icon" | resources.Copy "images/logo-manifest-maskable-192x192.webp" -}}
+{{- $maskable192Png := $logoMaskable.Resize "192x png" | resources.Copy "images/logo-manifest-maskable-192x192.png" -}}
+{{- $maskable512Webp := $logoMaskable.Resize "512x webp icon" | resources.Copy "images/logo-manifest-maskable-512x512.webp" -}}
+{{- $maskable512Png := $logoMaskable.Resize "512x png" | resources.Copy "images/logo-manifest-maskable-512x512.png" -}}
+
 {
   "name": "{{ .Site.Params.title }}",
   "short_name": "{{ .Site.Params.title }}",
@@ -10,28 +22,52 @@
   "start_url": "/",
   "icons": [
     {
-      "src": "/images/logo-manifest-maskable-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/images/logo-manifest-maskable-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/images/logo-manifest-192x192.webp",
+      "src": "{{ $manifest192Webp.Permalink }}",
       "sizes": "192x192",
       "type": "image/webp",
       "purpose": "any"
     },
     {
-      "src": "/images/logo-manifest-512x512.webp",
+      "src": "{{ $manifest192Png.Permalink }}",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "{{ $manifest512Webp.Permalink }}",
       "sizes": "512x512",
       "type": "image/webp",
       "purpose": "any"
+    },
+    {
+      "src": "{{ $manifest512Png.Permalink }}",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "{{ $maskable192Webp.Permalink }}",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "maskable"
+    },
+    {
+      "src": "{{ $maskable192Png.Permalink }}",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "{{ $maskable512Webp.Permalink }}",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "maskable"
+    },
+    {
+      "src": "{{ $maskable512Png.Permalink }}",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
