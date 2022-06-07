@@ -37,7 +37,8 @@ schemaGitHub = "https://github.com/acearchive"
 siteLinksSearchBox = false
 
 ## Chrome Browser
-themeColor = "#fff"
+themeColorLight = "#fff" # $body-bg
+themeColorDark = "#212529" # $body-bg-dark
 
 # Images
 quality = 85

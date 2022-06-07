@@ -1,4 +1,14 @@
-<meta name="theme-color" content="{{ $.Site.Params.themeColor }}" />
+<meta
+  name="theme-color"
+  media="(prefers-color-scheme: light)"
+  content="{{ $.Site.Params.themeColorLight }}"
+/>
+<meta
+  name="theme-color"
+  media="(prefers-color-scheme: dark)"
+  content="{{ $.Site.Params.themeColorDark }}"
+/>
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "/images/apple-touch-icon.png" | absURL }}" />
 <link rel="icon" type="image/png" sizes="64x64" href="{{ "/images/favicon-64x64.png" | absURL }}" />
 <link rel="icon" type="image/png" sizes="32x32" href="{{ "/images/favicon-32x32.png" | absURL }}" />
 <link rel="icon" type="image/png" sizes="16x16" href="{{ "/images/favicon-16x16.png" | absURL }}" />
