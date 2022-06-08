@@ -17,9 +17,11 @@ for (const form of forms) {
   const urlOutput = form.querySelector(".url-output");
 
   const getUrl = () =>
-    `https://replayweb.page/?source=ipfs://${cidInputElement.value}?filename=${encodeURIComponent(
-      filenameInputElement.value
-    )}#view=resources&urlSearchType=prefix&url=${encodeURIComponent(urlInputElement.value)}`;
+    new URL(
+      `https://replayweb.page/?source=ipfs://${cidInputElement.value}?filename=${encodeURIComponent(
+        filenameInputElement.value
+      )}#view=resources&urlSearchType=prefix&url=${encodeURIComponent(urlInputElement.value)}`
+    );
 
   for (const inputGroup of form.querySelectorAll(".needs-validated")) {
     const inputElement = inputGroup.querySelector("input");
@@ -116,9 +118,9 @@ for (const form of forms) {
         urlOutput.classList.add("d-flex");
 
         const generatedUrl = getUrl();
-        urlOutput.querySelector("a").innerText = generatedUrl;
-        urlOutput.querySelector("a").setAttribute("href", generatedUrl);
-        urlOutput.querySelector("clipboard-copy").value = generatedUrl;
+        urlOutput.querySelector("a").innerText = generatedUrl.toString();
+        urlOutput.querySelector("a").setAttribute("href", generatedUrl.toString());
+        urlOutput.querySelector("clipboard-copy").value = generatedUrl.toString();
       }
     });
   });
