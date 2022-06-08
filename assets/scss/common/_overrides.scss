@@ -27,3 +27,17 @@ footer.footer {
 .header-bar {
   border-image-source: linear-gradient(90deg, $primary, $primary-dark);
 }
+
+// Change the color of code blocks in light mode.
+
+code {
+  background: $code-bg;
+}
+
+.alert-warning {
+  background: $code-bg;
+}
+
+.alert code {
+  background: darken($code-bg, 5%);
+}

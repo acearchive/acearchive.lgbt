@@ -207,6 +207,10 @@ $form-feedback-invalid-color-dark: $danger-dark;
 $form-feedback-icon-invalid: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-invalid-color}' stroke='none'/></svg>") !default;
 $form-feedback-icon-invalid-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$form-feedback-invalid-color-dark}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-invalid-color-dark}' stroke='none'/></svg>") !default;
 
+// Code blocks
+
+$code-bg: $gray-100;
+
 // docsearch
 $dropdown-config: (
   main-color: $primary,
