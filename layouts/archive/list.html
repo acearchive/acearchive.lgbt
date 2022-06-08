@@ -1,13 +1,13 @@
 {{ define "main" }}
   <div class="row flex-xl-nowrap">
     <div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block">
-      <nav class="docs-links" aria-label="Main navigation">
+      <nav aria-label="Main navigation" class="docs-links">
         {{ partial "archive/sidebar.html" . }}
       </nav>
     </div>
     <main class="docs-content col-lg-11 mx-xl-auto">
       <h1 class="text-center">{{ .Title }}</h1>
-      <p class="lead text-center">{{ .Params.description | safeHTML }}</p>
+      <p class="lead text-center">{{ .Params.description | markdownify }}</p>
       <div class="row row-cols-1 row-cols-md-2 g-5">
         {{ range (.Pages.ByParam "fromYear").Reverse }}
           <div class="col">{{ .Render "card" -}}</div>

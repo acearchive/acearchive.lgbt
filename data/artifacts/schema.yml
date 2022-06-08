@@ -1,4 +1,4 @@
-version: 1
+version: 2
 fields:
   - "slug"
   - "version"
@@ -78,13 +78,12 @@ definitions:
         value: "100"
         message: "The title should not exceed 100 characters."
     description: >
-      This is the title of the artifact. If the artifact represents a
-      creative work (a book, essay, blog post, etc.), this should be the
-      title of that work. If the artifact encompasses multiple works or
-      doesn’t have an obvious title, it can be a short description instead.
-      You should always quote or italicize the titles of works, and you can
-      add italics in an artifact title using HTML `<em>Title of Work</em>`
-      syntax.
+      This is the title of the artifact. If the artifact represents a creative
+      work (a book, essay, blog post, etc.), this should be the title of that
+      work. If the artifact encompasses multiple works or doesn’t have an
+      obvious title, it can be a short description instead. You should always
+      quote or italicize the titles of works; you can add italics in an
+      artifact title using markdown `*Title of Work*` syntax.
   description:
     fieldName: "description"
     label: "Short description"
@@ -101,7 +100,9 @@ definitions:
       This is a short, one sentence description of the artifact that should
       provide context and explain its significance to the queer community (i.e.
       why it’s in the archive). This description should complete the sentence
-      “This artifact is…”
+      “This artifact is…” You should always quote or italicize the titles of
+      works; you can add italics in an artifact description using markdown
+      `*Title of Work*` syntax.
   longDescription:
     fieldName: "longDescription"
     label: "Long description"

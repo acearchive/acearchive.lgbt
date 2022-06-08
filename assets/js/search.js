@@ -100,9 +100,9 @@ function indexArchiveSearch(search, suggestions) {
     {{- range $index, $element := $artifactList }}{
         id: "{{ printf "artifact-%d" $index }}",
         href: "{{ .RelPermalink }}",
-        title: {{ .Title | jsonify }},
-        description: {{ .Params.description | jsonify }},
-        longDescription: {{ .Params.longDescription | jsonify }},
+        title: {{ .Title | markdownify | jsonify }},
+        description: {{ .Params.description | markdownify | jsonify }},
+        longDescription: {{ .Params.longDescription | markdownify | jsonify }},
         content: {{ .Content | jsonify }},
         years: rangeYears({{ .Params.fromYear | jsonify }}, {{ .Params.toYear | jsonify }}),
         identities: {{ .Params.identities | jsonify }},
