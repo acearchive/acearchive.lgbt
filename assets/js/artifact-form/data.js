@@ -40,7 +40,7 @@ const getDataForField = (field, form) => {
 
     return Array.from(fieldListItems).map((listItem) =>
       Object.entries(field.definitions)
-        .filter(([, nestedField]) => nestedField.showInFormDocs)
+        .filter(([, nestedField]) => nestedField.includeInForm)
         .reduce(
           (listItemData, [fieldKey, nestedField]) => ({
             [fieldKey]: isArrayOfObjects(nestedField)
@@ -61,13 +61,13 @@ export const readFormData = (form) => {
 
   const data = {
     version: schema.version,
-  }
+  };
 
   for (const [fieldKey, field] of Object.entries(schema.definitions)) {
-    if (field.showInFormDocs) {
+    if (field.includeInForm) {
       data[fieldKey] = getDataForField(field, form);
     } else if (baseArtifactValues && baseArtifactValues.hasOwnProperty(fieldKey)) {
-      data[fieldKey] = baseArtifactValues[fieldKey]
+      data[fieldKey] = baseArtifactValues[fieldKey];
     }
   }
 

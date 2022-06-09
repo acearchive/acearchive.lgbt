@@ -1,6 +1,6 @@
-import { createRequiredLabel, fieldNameToId, isArrayOfObjects, mdConverter } from "./util";
-import { createFormField } from "./form-field";
+import { fieldNameToId, isArrayOfObjects, mdConverter } from "./util";
 import { dispatchFormNeedsValidationEvent } from "./submit";
+import "./form-field";
 
 const copyListItemInputValues = (oldFieldListItem, newFieldListItem) => {
   const newInputElements = newFieldListItem.querySelectorAll(".form-field input");
@@ -39,7 +39,7 @@ const createFieldList = (field, listItemIndex = 0) => {
   }
 
   if (field.required) {
-    fieldList.querySelector("legend").appendChild(createRequiredLabel());
+    fieldList.querySelector("legend").appendChild(document.createElement("required-label"));
   }
 
   fieldList.querySelector(":scope > .add-button").addEventListener("click", (event) => {
@@ -90,7 +90,7 @@ export const createFieldListItem = (field, listItemIndex) => {
 
   for (const fieldName of field.fields) {
     const nestedField = field.definitions[fieldName];
-    if (!nestedField.showInFormDocs) continue;
+    if (!nestedField.includeInForm) continue;
     listItemBody.appendChild(createFormFieldOrFieldList(nestedField, listItemIndex));
   }
 
@@ -121,5 +121,8 @@ export const createFormFieldOrFieldList = (field, listItemIndex = 0) => {
   if (isArrayOfObjects(field)) {
     return createFieldList(field, listItemIndex);
   }
-  return createFormField(field, listItemIndex);
+  const formField = document.createElement("form-field");
+  formField.setAttribute("field-name", field.fieldName);
+  formField.setAttribute("list-item-index", listItemIndex);
+  return formField;
 };

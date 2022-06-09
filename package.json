@@ -57,6 +57,7 @@
     "js-yaml": "^4.1.0",
     "katex": "^0.13",
     "lazysizes": "^5.3",
+    "lit": "^2.2.5",
     "markdownlint-cli": "^0.31.1",
     "mermaid": "^9.1.0",
     "mime": "^3.0.0",
