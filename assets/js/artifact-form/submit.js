@@ -48,7 +48,9 @@ const serializeFormDataToYaml = (data) =>
 const serializeFormDataToMarkdownFrontMatter = (data) => `---\n${serializeFormDataToYaml(data)}---`;
 
 const githubPrSubmitUrl = (slug, content) =>
-  `https://github.com/acearchive/artifacts/new/main/?filename=artifacts/${slug}.md&value=${encodeURIComponent(content)}`;
+  `https://github.com/acearchive/artifacts/new/main/?filename=artifacts/${slug}.md&value=${encodeURIComponent(
+    content
+  )}`;
 
 const artifactFormSubmitUrl = (form) => {
   const data = readFormData(form);
@@ -139,13 +141,8 @@ const setFormInputsDisabled = (form, disabled) => {
 };
 
 const showValidityMessages = (form) => {
-  for (const validationElement of form.querySelectorAll(".needs-validation")) {
-    const inputElement = validationElement.querySelector("input");
-
-    if (!inputElement.validity.valid || inputElement.value.length > 0) {
-      // Don't show the validity of the input if it is empty and not required.
-      validationElement.classList.add("was-validated");
-    }
+  for (const formField of form.querySelectorAll("form-field")) {
+    formField.wasValidated = true;
   }
 };
 

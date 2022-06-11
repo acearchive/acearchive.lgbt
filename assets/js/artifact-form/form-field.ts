@@ -1,9 +1,8 @@
 import { attrMap, fieldNameToId, mdConverter } from "./util";
 import { definitionFromPath, FieldDefinition, FieldName, HtmlValidationAttribute } from "./schema";
 import { html, LitElement } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property, query, state } from "lit/decorators.js";
 import { classMap } from "lit/directives/class-map.js";
-import { createRef, Ref, ref } from "lit/directives/ref.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
 const htmlInputTypeForField = (field: FieldDefinition): HTMLInputElement["type"] => {
@@ -80,10 +79,13 @@ export class FormField extends LitElement {
   @state()
   private validationMessage: string = "";
 
+  @query("input")
+  private inputElement: HTMLInputElement;
+
   private field: FieldDefinition;
   private fieldId: string;
   private showHelp: boolean;
-  private inputRef: Ref<HTMLInputElement> = createRef();
+  private showValidityMessage: boolean;
 
   createRenderRoot() {
     return this;
@@ -93,18 +95,19 @@ export class FormField extends LitElement {
     this.field = definitionFromPath(this.fieldName);
     this.fieldId = fieldNameToId(this.fieldName, this.listItemIndex);
     this.showHelp = this.listItemIndex === 0;
-    this.inputRef?.value?.setCustomValidity(this.validationMessage);
+    this.inputElement?.setCustomValidity(this.validationMessage);
+    // Don't show the validity of the input if it is empty and not required.
+    this.showValidityMessage =
+      this.wasValidated &&
+      (!this.inputElement.validity.valid || this.inputElement.value.length > 0);
   }
 
   render() {
+    console.log(this.inputElement);
     return html`
       <div
         id="field-input-${this.fieldId}"
-        class=${classMap({
-          "form-field": true,
-          "needs-validation": true,
-          "was-validated": this.wasValidated,
-        })}
+        class=${classMap({ "was-validated": this.showValidityMessage })}
       >
         <label for="field-input-${this.fieldId}" class="form-label">
           ${this.field.label} ${this.requiredLabelElement()}
@@ -121,7 +124,6 @@ export class FormField extends LitElement {
           ${attrMap(this.field?.htmlFormValidation?.map((rule) => [rule.attribute, rule.value]))}
           @input=${this.onInput}
           @invalid=${this.onInvalid}
-          ${ref(this.inputRef)}
         />
         <div id="invalid-feedback-${this.fieldId}" class="invalid-feedback">
           ${this.validationMessage}
@@ -147,10 +149,10 @@ export class FormField extends LitElement {
     this.wasValidated = false;
     this.validationMessage = "";
     this.dispatchEvent(new Event("needs-validation"));
-    this.value = this.inputRef.value.value;
+    this.value = this.inputElement.value;
   }
 
   private onInvalid() {
-    this.validationMessage = validationMessageBySchema(this.field, this.inputRef.value);
+    this.validationMessage = validationMessageBySchema(this.field, this.inputElement);
   }
 }

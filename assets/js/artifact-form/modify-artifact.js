@@ -41,7 +41,7 @@ const setInputValueFromArtifact = (form, field, fieldKey, value) => {
     }
   } else {
     const formField = form.querySelector(`form-field[field-name="${field.fieldName}"]`);
-    formField.value = getInputValueFromArtifactValue(field, value);
+    formField.setAttribute("value", getInputValueFromArtifactValue(field, value));
   }
 };
 

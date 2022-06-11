@@ -1,10 +1,10 @@
 .new-artifact form {
-  .form-field,
+  form-field,
   .field-list {
     margin-bottom: 1rem;
   }
 
-  .form-field label {
+  form-field label {
     font-weight: 500;
   }
 
@@ -23,7 +23,7 @@
     vertical-align: middle;
   }
 
-  .form-field:last-child {
+  form-field > *:last-child {
     margin-bottom: 0;
   }
 
