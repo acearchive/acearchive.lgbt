@@ -170,7 +170,7 @@ definitions:
         fieldName: "files.filename"
         label: "File name"
         type: "string"
-        required: false
+        required: true
         showInFormDocs: true
         showInFileDocs: true
         indentLevel: 1
@@ -181,9 +181,11 @@ definitions:
             message: "File names must use hyphens between words and have a file extension."
         description: >
           A file name to be used when downloading the file. This should use
-          hyphens instead of spaces and should always include an appropriate file
-          extension. If the file is actually a directory containing multiple
-          files, you can omit this.
+          hyphens instead of spaces, and it should always include an
+          appropriate file extension unless it's a directory.
+
+          If you're updating an existing file, you should keep the existing
+          file name the same.
       cid:
         fieldName: "files.cid"
         label: "CID"
