@@ -19,8 +19,8 @@ definitions:
     label: "URL slug"
     type: "string"
     required: true
-    showInFormDocs: true
-    showInFileDocs: false
+    includeInForm: true
+    includeInDocs: false
     placeholder: "orlando-the-asexual-manifesto"
     htmlFormValidation:
       - attribute: pattern
@@ -58,8 +58,8 @@ definitions:
     label: "Version"
     type: "integer"
     required: true
-    showInFormDocs: false
-    showInFileDocs: true
+    includeInForm: false
+    includeInDocs: true
     placeholder: "1"
     description: >
       Sometimes the format of artifact files changes. This is the version
@@ -70,8 +70,8 @@ definitions:
     label: "Title"
     type: "string"
     required: true
-    showInFormDocs: true
-    showInFileDocs: true
+    includeInForm: true
+    includeInDocs: true
     placeholder: "<em>The Asexual Manifesto</em>"
     htmlFormValidation:
       - attribute: maxlength
@@ -89,8 +89,8 @@ definitions:
     label: "Short description"
     type: "string"
     required: true
-    showInFormDocs: true
-    showInFileDocs: true
+    includeInForm: true
+    includeInDocs: true
     placeholder: "A paper by the Asexual Caucus of the New York Radical Feminists"
     htmlFormValidation:
       - attribute: maxlength
@@ -108,8 +108,8 @@ definitions:
     label: "Long description"
     type: "string"
     required: false
-    showInFormDocs: true
-    showInFileDocs: true
+    includeInForm: true
+    includeInDocs: true
     placeholder: "A paper by the Asexual Caucus of the New York Radical Feminists"
     htmlFormValidation:
       - attribute: maxlength
@@ -127,8 +127,8 @@ definitions:
     type: "array"
     itemType: "object"
     required: false
-    showInFormDocs: true
-    showInFileDocs: true
+    includeInForm: true
+    includeInDocs: true
     description: >
       The list files to include in the artifact.
     fields: ["name", "mediaType", "filename", "cid"]
@@ -138,9 +138,8 @@ definitions:
         label: "Label"
         type: "string"
         required: true
-        showInFormDocs: true
-        showInFileDocs: true
-        indentLevel: 1
+        includeInForm: true
+        includeInDocs: true
         placeholder: "Digital Scan"
         description: >
           A label for the file. If the artifact consists of multiple creative
@@ -152,9 +151,8 @@ definitions:
         label: "Media type"
         type: "string"
         required: false
-        showInFormDocs: true
-        showInFileDocs: true
-        indentLevel: 1
+        includeInForm: true
+        includeInDocs: true
         placeholder: "application/pdf"
         htmlFormValidation:
           - attribute: pattern
@@ -171,18 +169,17 @@ definitions:
         label: "File name"
         type: "string"
         required: true
-        showInFormDocs: true
-        showInFileDocs: true
-        indentLevel: 1
+        includeInForm: true
+        includeInDocs: true
         placeholder: "the-asexual-manifesto.pdf"
         htmlFormValidation:
           - attribute: pattern
-            value: "^[\\w\\d][\\w\\d-]*[\\w\\d](\\.[\\w\\d]+)+$"
-            message: "File names must use hyphens between words and have a file extension."
+            value: "^[\\w\\d][\\w\\d-]*[\\w\\d](\\.[\\w\\d]+)*$"
+            message: "File names can only use hyphens between words."
         description: >
-          A file name to be used when downloading the file. This should use
-          hyphens instead of spaces, and it should always include an
-          appropriate file extension unless it's a directory.
+          A file name to be used when downloading the file. This should be all
+          lowercase and use hyphens instead of spaces, and it should always
+          include an appropriate file extension if it's not a directory.
 
           If you're updating an existing file, you should keep the existing
           file name the same.
@@ -191,9 +188,8 @@ definitions:
         label: "CID"
         type: "string"
         required: true
-        showInFormDocs: true
-        showInFileDocs: true
-        indentLevel: 1
+        includeInForm: true
+        includeInDocs: true
         placeholder: "bafybeihsf4562gmmyoya7eh5buxv65lqcdoil3wsi5jf5fceskap7yzooi"
         customValidator: "cid"
         description: >
@@ -208,8 +204,8 @@ definitions:
     type: "array"
     itemType: "object"
     required: false
-    showInFormDocs: true
-    showInFileDocs: true
+    includeInForm: true
+    includeInDocs: true
     description: >
       A list of links to web sites to include in the artifact.
     fields: ["name", "url"]
@@ -219,9 +215,8 @@ definitions:
         label: "Label"
         type: "string"
         required: true
-        showInFormDocs: true
-        showInFileDocs: true
-        indentLevel: 1
+        includeInForm: true
+        includeInDocs: true
         placeholder: "Internet Archive"
         description: >
           A label for the link. If the artifact consists of multiple creative
@@ -233,9 +228,8 @@ definitions:
         label: "URL"
         type: "string"
         required: true
-        showInFormDocs: true
-        showInFileDocs: true
-        indentLevel: 1
+        includeInForm: true
+        includeInDocs: true
         placeholder: "https://archive.org/details/asexualmanifestolisaorlando"
         htmlFormValidation:
           - attribute: type
@@ -252,8 +246,8 @@ definitions:
     type: "array"
     itemType: "string"
     required: false
-    showInFormDocs: true
-    showInFileDocs: true
+    includeInForm: true
+    includeInDocs: true
     placeholder: "Lisa Orlando, Barbara Getz"
     description: >
       A list of (usually 1-4) people closely associated with the artifact,
@@ -269,8 +263,8 @@ definitions:
     type: "array"
     itemType: "string"
     required: false
-    showInFormDocs: true
-    showInFileDocs: true
+    includeInForm: true
+    includeInDocs: true
     placeholder: "asexual, lesbian, non-binary"
     description: >
       A list of queer identities associated with the artifact. For example,
@@ -284,8 +278,8 @@ definitions:
     label: "Start year"
     type: "integer"
     required: true
-    showInFormDocs: true
-    showInFileDocs: true
+    includeInForm: true
+    includeInDocs: true
     placeholder: "1972"
     description: >
       The year the creative work associated with the artifact was published
@@ -297,8 +291,8 @@ definitions:
     label: "End year"
     type: "integer"
     required: false
-    showInFormDocs: true
-    showInFileDocs: true
+    includeInForm: true
+    includeInDocs: true
     placeholder: "1989"
     description: >
       If the artifact encompasses multiple creative works that were published
@@ -311,8 +305,8 @@ definitions:
     type: "array"
     itemType: "integer"
     required: true
-    showInFormDocs: true
-    showInFileDocs: true
+    includeInForm: true
+    includeInDocs: true
     placeholder: "1970, 1980"
     htmlFormValidation:
       - attribute: pattern
@@ -328,8 +322,8 @@ definitions:
     type: "array"
     itemType: "string"
     required: false
-    showInFormDocs: false
-    showInFileDocs: true
+    includeInForm: false
+    includeInDocs: true
     placeholder: "choose-your-label-bernard-college"
     description: >
       If the URL slug of an artifact must change for any reason, you must

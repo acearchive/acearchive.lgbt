@@ -9,7 +9,7 @@ const artifactForm = document.querySelector(".new-artifact main form");
 if (artifactForm) {
   for (const fieldName of schema.fields) {
     const field = schema.definitions[fieldName];
-    if (!field.showInFormDocs) continue;
+    if (!field.includeInForm) continue;
     artifactForm.appendChild(createFormFieldOrFieldList(field));
   }
 

@@ -13,7 +13,7 @@ const getArtifactValue = (artifactObj, key) =>
   ];
 
 const setInputValueFromArtifact = (form, field, fieldKey, value) => {
-  if (!field.showInFormDocs) return;
+  if (!field.includeInForm) return;
 
   if (isArrayOfObjects(field)) {
     for (const [index, listItem] of value.entries()) {
@@ -25,7 +25,7 @@ const setInputValueFromArtifact = (form, field, fieldKey, value) => {
       fieldListBody.appendChild(fieldListItem);
 
       for (const [nestedFieldKey, nestedField] of Object.entries(field.definitions)) {
-        if (!nestedField.showInFormDocs) continue;
+        if (!nestedField.includeInForm) continue;
 
         const nestedFieldValue = getArtifactValue(listItem, nestedFieldKey);
         if (nestedFieldValue === undefined) continue;

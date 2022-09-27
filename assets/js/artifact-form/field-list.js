@@ -90,7 +90,7 @@ export const createFieldListItem = (field, listItemIndex) => {
 
   for (const fieldName of field.fields) {
     const nestedField = field.definitions[fieldName];
-    if (!nestedField.showInFormDocs) continue;
+    if (!nestedField.includeInForm) continue;
     listItemBody.appendChild(createFormFieldOrFieldList(nestedField, listItemIndex));
   }
 

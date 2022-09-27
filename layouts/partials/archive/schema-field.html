@@ -31,5 +31,6 @@
 </dd>
 {{ range $key := .fields -}}
   {{- $field := index $root.definitions $key -}}
-  {{ partial "archive/schema-field" $field }}
+  {{- $currentIndentLevel := default 0 $root.indentLevel -}}
+  {{ partial "archive/schema-field" (merge $field (dict "indentLevel" (add $currentIndentLevel 1))) }}
 {{- end }}
