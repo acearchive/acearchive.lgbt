@@ -3,3 +3,6 @@
 /resources
 /assets/js/search.js
 *.md
+
+# Golang html/template templates are not safe to format.
+*.html
