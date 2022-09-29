@@ -65,10 +65,6 @@ docsRepo = "https://github.com/acearchive/acearchive.lgbt"
 docsRepoBranch = "main"
 editPage = true
 
-# The base domain name for linking to files in artifacts via IPNS and DNSLink.
-# The format of these URLs is `https://$dnsLinkDomain/$artifactSlug/$fileName`.
-dnsLinkDomain = "files.acearchive.lgbt"
-
 [options]
 lazySizes = true
 clipBoard = true

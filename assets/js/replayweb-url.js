@@ -1,10 +1,8 @@
-import normalizeCid from "./normalize-cid";
-
 const forms = document.querySelectorAll(".replayweb-url-form form");
 
 for (const form of forms) {
-  const cidInputGroup = form.querySelector(".cid-input");
-  const cidInputElement = cidInputGroup.querySelector("input");
+  const slugInputGroup = form.querySelector(".slug-input");
+  const slugInputElement = slugInputGroup.querySelector("input");
 
   const filenameInputGroup = form.querySelector(".filename-input");
   const filenameInputElement = filenameInputGroup.querySelector("input");
@@ -13,14 +11,13 @@ for (const form of forms) {
   const urlInputElement = urlInputGroup.querySelector("input");
 
   const submitButton = form.querySelector(".submit-button");
-  const cancelButton = form.querySelector(".cancel-button");
   const urlOutput = form.querySelector(".url-output");
 
   const getUrl = () =>
     new URL(
-      `https://replayweb.page/?source=ipfs://${cidInputElement.value}?filename=${encodeURIComponent(
+      `https://replayweb.page/?source=https://files.acearchive.lgbt/${slugInputElement.value}/${
         filenameInputElement.value
-      )}#view=resources&urlSearchType=prefix&url=${encodeURIComponent(urlInputElement.value)}`
+      }#view=resources&urlSearchType=prefix&url=${encodeURIComponent(urlInputElement.value)}`
     );
 
   for (const inputGroup of form.querySelectorAll(".needs-validated")) {
@@ -30,9 +27,14 @@ for (const form of forms) {
     });
   }
 
-  cidInputElement.addEventListener("invalid", () => {
-    const feedbackElement = cidInputGroup.querySelector(".invalid-feedback");
-    feedbackElement.innerText = cidInputElement.validationMessage;
+  slugInputElement.addEventListener("invalid", () => {
+    const feedbackElement = slugInputGroup.querySelector(".invalid-feedback");
+    if (slugInputElement.validity.patternMismatch) {
+      feedbackElement.innerText =
+        "URL slugs can only contain lowercase letters, numbers, and hyphens.";
+    } else {
+      feedbackElement.innerText = slugInputElement.validationMessage;
+    }
   });
 
   filenameInputElement.addEventListener("invalid", () => {
@@ -56,72 +58,24 @@ for (const form of forms) {
     }
   });
 
-  const setFormStateLoading = (loading) => {
-    for (const inputElement of form.querySelectorAll("input")) {
-      inputElement.disabled = loading;
-    }
-
-    submitButton.disabled = loading;
-    cancelButton.hidden = !loading;
-
-    if (loading) {
-      submitButton.innerHTML = `
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      Validating...
-    `;
-    } else {
-      submitButton.innerText = "Submit";
-    }
-  };
-
-  const checkValidity = async () => {
-    if (cidInputElement.value.length > 0) {
-      const abortController = new AbortController();
-
-      cancelButton.onclick = () => {
-        abortController.abort();
-        setFormStateLoading(false);
-      };
-
-      setFormStateLoading(true);
-
-      const { result, message } = await normalizeCid(cidInputElement.value, {
-        signal: abortController.signal,
-      });
-
-      setFormStateLoading(false);
-
-      if (result === undefined) {
-        cidInputElement.setCustomValidity(message);
-      } else {
-        cidInputElement.setCustomValidity("");
-        cidInputElement.value = result;
-      }
-    } else {
-      cidInputElement.setCustomValidity("");
-    }
-
-    return form.checkValidity();
-  };
-
   submitButton.addEventListener("click", () => {
     urlOutput.classList.remove("d-flex");
     urlOutput.classList.add("d-none");
 
-    checkValidity().then((isValid) => {
-      for (const validationElement of form.querySelectorAll(".needs-validated")) {
-        validationElement.classList.add("was-validated");
-      }
+    const isValid = form.checkValidity();
 
-      if (isValid) {
-        urlOutput.classList.remove("d-none");
-        urlOutput.classList.add("d-flex");
+    for (const validationElement of form.querySelectorAll(".needs-validated")) {
+      validationElement.classList.add("was-validated");
+    }
 
-        const generatedUrl = getUrl();
-        urlOutput.querySelector("a").innerText = generatedUrl.toString();
-        urlOutput.querySelector("a").setAttribute("href", generatedUrl.toString());
-        urlOutput.querySelector("clipboard-copy").value = generatedUrl.toString();
-      }
-    });
+    if (isValid) {
+      urlOutput.classList.remove("d-none");
+      urlOutput.classList.add("d-flex");
+
+      const generatedUrl = getUrl();
+      urlOutput.querySelector("a").innerText = generatedUrl.toString();
+      urlOutput.querySelector("a").setAttribute("href", generatedUrl.toString());
+      urlOutput.querySelector("clipboard-copy").value = generatedUrl.toString();
+    }
   });
 }

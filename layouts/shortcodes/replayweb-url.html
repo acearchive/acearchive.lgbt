@@ -2,19 +2,20 @@
 <div class="replayweb-url-form card">
   <div class="card-body">
     <form novalidate>
-      <div class="row mb-2 needs-validated cid-input">
-        <label class="col-sm-3 col-form-label" for="replayweb-url-cid-input-{{ .Ordinal }}"
-          >CID</label
+      <div class="row mb-2 needs-validated slug-input">
+        <label class="col-sm-3 col-form-label" for="replayweb-url-slug-input-{{ .Ordinal }}"
+          >Artifact Slug</label
         >
         <div class="col">
           <input
-            aria-describedby="invalid-feedback-cid-{{ .Ordinal }}"
+            aria-describedby="invalid-feedback-slug-{{ .Ordinal }}"
             class="form-control"
-            id="replayweb-url-cid-input-{{ .Ordinal }}"
-            placeholder="bafkreiabz4zbkhaovm7cuchfka53bmzzgm5ebvohprahen6as3qg6wsb7y"
+            id="replayweb-url-slug-input-{{ .Ordinal }}"
+            pattern="^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+            placeholder="kaz-a-slash-romanticism"
             required
           />
-          <div class="invalid-feedback" id="invalid-feedback-cid-{{ .Ordinal }}"></div>
+          <div class="invalid-feedback" id="invalid-feedback-slug-{{ .Ordinal }}"></div>
         </div>
       </div>
 

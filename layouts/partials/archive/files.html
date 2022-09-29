@@ -26,7 +26,7 @@
   <tbody>
     {{- range $file := .Params.files -}}
       {{- $artifactSlug := path.Base $.RelPermalink -}}
-      {{- $gatewayUrl := printf "https://%s/%s/%s" $.Site.Params.dnsLinkDomain $artifactSlug $file.filename -}}
+      {{- $gatewayUrl := printf "https://files.acearchive.lgbt/%s/%s" $artifactSlug $file.filename -}}
       {{- $truncatedCid := printf "%s…%s" (substr $file.cid 0 4) (substr $file.cid (sub (strings.RuneCount $file.cid) 4)) }}
       <tr>
         <td>
