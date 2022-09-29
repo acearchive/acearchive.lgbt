@@ -25,14 +25,8 @@
   </thead>
   <tbody>
     {{- range $file := .Params.files -}}
-      {{- $gatewayUrl := "" -}}
-
-      {{- if $file.filename -}}
-        {{- $gatewayUrl = printf "https://dweb.link/ipfs/%s/?filename=%s" $file.cid $file.filename -}}
-      {{- else -}}
-        {{- $gatewayUrl = printf "https://dweb.link/ipfs/%s" $file.cid -}}
-      {{- end -}}
-
+      {{- $artifactSlug := path.Base $.RelPermalink -}}
+      {{- $gatewayUrl := printf "https://%s/%s/%s" $.Site.Params.dnsLinkDomain $artifactSlug $file.filename -}}
       {{- $truncatedCid := printf "%s…%s" (substr $file.cid 0 4) (substr $file.cid (sub (strings.RuneCount $file.cid) 4)) }}
       <tr>
         <td>
