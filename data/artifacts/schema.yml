@@ -1,4 +1,4 @@
-version: 2
+version: 3
 fields:
   - "slug"
   - "version"
@@ -194,7 +194,7 @@ definitions:
         customValidator: "cid"
         description: >
           This is the CID (content identifier) of the file. This also accepts a
-          `dweb.link` URL. You need to upload the file to
+          `w3s.link` URL. You need to upload the file to
           [Web3.Storage](https://web3.storage) to get its CID. For more
           information, see [the docs](/docs/contributing/uploading-files).
   links:

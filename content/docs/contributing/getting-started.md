@@ -44,19 +44,6 @@ Open an issue
 
 <hr>
 
-Another great way to contribute to Ace Archive is to help host the archive. The
-ways you can help host the archive range from hosting it from your own computer
-for free to using a hosting provider. This is currently a somewhat technical
-process. If you're a developer, make sure you check out [our
-tooling](https://github.com/acearchive/artifact-action) for working with the
-archive.
-
-{{< link-button path="docs/contributing/hosting-artifacts.md" >}}
-Help with hosting
-{{< /link-button >}}
-
-<hr>
-
 If you're a developer or someone technically inclined, we have more technical
 documentation on GitHub about how this site works and how to use [our
 API](https://github.com/acearchive/artifact-action). We also maintain a few

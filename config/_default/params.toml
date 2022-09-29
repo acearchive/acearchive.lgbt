@@ -50,7 +50,7 @@ smallLimit = "300"
 logoBackgroundFill = "#fff"
 
 # Footer
-footer = "Powered by <a href=\"https://ipfs.io/\">IPFS</a>, <a href=\"https://web3.storage/\">Web3.Storage</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
+footer = "Powered by <a href=\"https://ipfs.tech/\">IPFS</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
 
 # Feed
 copyRight = "Copyright © 2022 Frawley"

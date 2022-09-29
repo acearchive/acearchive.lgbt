@@ -51,18 +51,17 @@ carefully about whether it contains any personal information. Files uploaded to
 Ace Archive can never be deleted, even if the links are removed from the site.
 {{< /alert >}}
 
-## Replaying the web archive
+## Browsing the web archive
 
-Browsing the contents of a WARC file requires special software. Luckily, there
-is a tool called [ReplayWeb.page](https://replayweb.page/) which can pull the
-WARC from Ace Archive and allow users to browse its contents without
+Browsing the contents of a WARC archive requires special software. Luckily,
+there is a tool called [ReplayWeb.page](https://replayweb.page/) which can pull
+the WARC file from Ace Archive and allow users to browse its contents without
 downloading any software. Whenever you add a WARC file to an artifact, you
 should also include a link to this tool.
 
-In the form below, enter the [CID]({{< ref
-"docs/contributing/uploading-files.md" >}}) of the WARC file, the file name you
-used in the artifact file (which must end in `.warc` for the tool to work), and
-the URL of the archived web page you want users to land on, and it will generate
-the URL you should include in the artifact file.
+In the form below, enter the URL slug of the artifact, the file name you used in
+the artifact file (which must end in `.warc` for the tool to work), and the URL
+of the archived web page you want users to land on, and it will generate the URL
+you should include in the artifact file.
 
 {{< replayweb-url >}}
