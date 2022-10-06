@@ -5,38 +5,32 @@ You can find more information about the project
 [here](https://acearchive.lgbt/about).
 
 This website is a [Hugo](https://gohugo.io/) static site based on the [Doks
-theme](https://getdoks.org/). The website was designed using a static site
-generator for a few reasons:
+theme](https://getdoks.org/).
 
-- With a static site, rather than using complex CMS or wiki software, we can
-  just use GitHub as our platform for discussion and collaboration. Every
-  artifact in the archive is just a YAML file in [this
-  repo](https://github.com/acearchive/artifacts).
-- Using git to store artifact metadata gives us a lot of functionality for
-  free, like version control, history, modification timestamps, etc.
-- Storing the archive as plain text in git makes the archive more open,
-  extensible, and hackable (the good kind of hackable).
-- With no backend infrastructure, the site is performant, easy to deploy, and
-  incredibly cheap to host. This last point is important for the longevity of
-  the project because it means we don't need to worry much about funding.
+This repo contains the static site itself. Must of the infrastructure, backend
+services, CI jobs, and associated projects can be found in the following
+repositories:
 
-## Artifacts
+- [artifact-submissions](https://github.com/acearchive/artifact-submissions):
+  This is where new artifacts are submitted for approval. The [artifact
+  submission form](https://acearchive.lgbt/new-artifact/) on the site generates
+  a JSON file and prompts the user to open a PR to add it to this repo.
+- [artifact-submit-action](https://github.com/acearchive/artifact-submit-action):
+  This is a GitHub Action which uploads submitted artifacts to the site once PRs
+  are approved.
+- [files-worker](https://github.com/acearchive/files-worker): This is a
+  serverless function which serves artifact files.
+- [hugo-artifact-action](https://github.com/acearchive/hugo-artifact-action):
+  This is a GitHub Action which converts dynamic content into static pages for
+  the static site generator.
+- [yahoo-groups-reader](https://github.com/acearchive/yahoo-groups-reader): This
+  is a CLI tool for building a static site from a Yahoo Groups archive. This was
+  purpose-build for [Haven for the Human
+  Amoeba](https://acearchive.lgbt/artifact/haven-for-the-human-amoeba/).
+- [infra](https://github.com/acearchive/infra): This repo contains the Terraform
+  config for the site's infrastructure.
 
-Each artifact in the archive is just a YAML file in
-[acearchive/artifacts](https://github.com/acearchive/artifacts). That repo is
-mounted as a [Hugo module](https://gohugo.io/hugo-modules/) when this site is
-built, and the metadata from those files is used to build the site.
-
-For more information about the architecture of the site, how to use our API for
-querying artifacts, and how content in the archive is hosted, check out that
-repo.
-
-## Infrastructure
-
-The infrastructure config for this site can be found at
-[acearchive/infra](https://github.com/acearchive/infra).
-
-## Usage
+## Building
 
 To build the site, make sure npm is installed and run:
 
