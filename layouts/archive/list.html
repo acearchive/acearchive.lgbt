@@ -7,7 +7,7 @@
     </div>
     <main class="docs-content col-lg-11 mx-xl-auto">
       <h1 class="text-center">{{ .Title }}</h1>
-      <p class="lead text-center">{{ .Params.description | markdownify }}</p>
+      <p class="lead text-center">{{ .Params.summary | markdownify }}</p>
       <div class="row row-cols-1 row-cols-md-2 g-5">
         {{ range (.Pages.ByParam "fromYear").Reverse }}
           <div class="col">{{ .Render "card" -}}</div>

@@ -4,3 +4,5 @@ github.com/acearchive/artifacts v0.0.0-20220604152823-67df2ba273ed h1:W3ijDZZaKF
 github.com/acearchive/artifacts v0.0.0-20220604152823-67df2ba273ed/go.mod h1:ww5scu6RIVBU6PMRxY6MgyhG2DOlLJ7uYPdafjty204=
 github.com/acearchive/artifacts v0.0.0-20220608174118-5cc8a5fbea1b h1:YlltshqMLs96Pyn/A0RM7lwn7sK91/beSOeFJbKLsvQ=
 github.com/acearchive/artifacts v0.0.0-20220608174118-5cc8a5fbea1b/go.mod h1:ww5scu6RIVBU6PMRxY6MgyhG2DOlLJ7uYPdafjty204=
+github.com/acearchive/hugo-artifacts v0.0.0-20221006155948-0a6d470118de h1:pSIbsTQEeqPWmumaBO+JKTy39zlRe/ZMXD+aYJGIX50=
+github.com/acearchive/hugo-artifacts v0.0.0-20221006155948-0a6d470118de/go.mod h1:3FFCyjgQ/vd1RULLwSy8QRn5M8JnWacSS+q9HSktXwQ=

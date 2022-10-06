@@ -3,7 +3,7 @@ hugoVersion:
   min: "0.100.0"
 
 imports:
-  path: "github.com/acearchive/artifacts"
+  path: "github.com/acearchive/hugo-artifacts"
   mounts:
     source: "artifacts"
     target: "content/archive"

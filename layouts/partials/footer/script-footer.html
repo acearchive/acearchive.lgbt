@@ -1,7 +1,6 @@
 {{- $artifacts := dict }}
 {{- range $artifact := (.Site.GetPage "/content/archive/_index.md").Pages -}}
-  {{- $slug := path.Base $artifact.RelPermalink -}}
-  {{- $artifacts = $artifacts | merge (dict $slug $artifact.Params) -}}
+  {{- $artifacts = $artifacts | merge (dict $artifact.Params.slug $artifact.Params) -}}
 {{- end -}}
 
 {{ $ipfsShims := dict "ipfs-core" "js/shims/ipfs-core.js" -}}

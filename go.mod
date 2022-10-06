@@ -1,5 +1,7 @@
 module github.com/acearchive/acearchive.lgbt
 
-go 1.17
+go 1.19
 
-require github.com/acearchive/artifacts v0.0.0-20220608174118-5cc8a5fbea1b // indirect
+require (
+	github.com/acearchive/hugo-artifacts v0.0.0-20221006155948-0a6d470118de // indirect
+)

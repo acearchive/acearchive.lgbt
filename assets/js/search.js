@@ -54,7 +54,7 @@ function showResults(index, search, suggestions) {
 
         entry.querySelector("a").href = href;
         entry.querySelector("span:first-child").innerHTML = doc.title;
-        entry.querySelector("span:nth-child(2)").innerHTML = doc.description;
+        entry.querySelector("span:nth-child(2)").innerHTML = doc.summary;
 
         suggestions.appendChild(entry);
         if (suggestions.childElementCount === maxResult) break;
@@ -87,8 +87,8 @@ function indexArchiveSearch(search, suggestions) {
         cache: 100,
         document: {
             id: "id",
-            store: ["href", "title", "description"],
-            index: ["title", "longDescription", "content", "years", "identities", "people"],
+            store: ["href", "title", "summary"],
+            index: ["title", "summary", "description", "content", "years", "identities", "people"],
         },
     });
 
@@ -101,8 +101,8 @@ function indexArchiveSearch(search, suggestions) {
         id: "{{ printf "artifact-%d" $index }}",
         href: "{{ .RelPermalink }}",
         title: {{ .Title | markdownify | jsonify }},
+        summary: {{ .Params.summary | markdownify | jsonify }},
         description: {{ .Params.description | markdownify | jsonify }},
-        longDescription: {{ .Params.longDescription | markdownify | jsonify }},
         content: {{ .Content | jsonify }},
         years: rangeYears({{ .Params.fromYear | jsonify }}, {{ .Params.toYear | jsonify }}),
         identities: {{ .Params.identities | jsonify }},
@@ -125,7 +125,7 @@ function indexArchiveSearch(search, suggestions) {
         id: "{{ printf "identity-%d" $index }}",
         href: "{{ $element.RelPermalink }}",
         title: {{ $element.Title | title | jsonify }},
-        description: {{ printf "Artifacts involving %s people" $element.Title | jsonify }},
+        summary: {{ printf "Artifacts involving %s people" $element.Title | jsonify }},
     })
         {{- if ne (add $index 1) $identityLen -}}
             .add(
@@ -144,7 +144,7 @@ function indexArchiveSearch(search, suggestions) {
         id: "{{ printf "decade-%d" $index }}",
         href: "{{ $element.RelPermalink }}",
         title: {{ $element.Title | title | jsonify }},
-        description: {{ printf "Artifacts from the %ss" $element.Title | jsonify }},
+        summary: {{ printf "Artifacts from the %ss" $element.Title | jsonify }},
     })
         {{- if ne (add $index 1) $decadeLen -}}
             .add(
@@ -163,7 +163,7 @@ function indexArchiveSearch(search, suggestions) {
         id: "{{ printf "person-%d" $index }}",
         href: "{{ $element.RelPermalink }}",
         title: {{ $element.Title | title | jsonify }},
-        description: {{ printf "Artifacts involving %s" $element.Title | jsonify }},
+        summary: {{ printf "Artifacts involving %s" $element.Title | jsonify }},
     })
         {{- if ne (add $index 1) $peopleLen -}}
             .add(

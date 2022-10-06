@@ -5,7 +5,7 @@
         >{{ .Params.title | markdownify }}</a
       >
     </h5>
-    <p class="card-text mb-2">{{ .Params.description | markdownify }}</p>
+    <p class="card-text mb-2">{{ .Params.summary | markdownify }}</p>
     {{ if or .Params.people .Params.fromYear -}}
       <div class="d-inline-block fs-6 mt-auto">
         {{ if .Params.fromYear -}}

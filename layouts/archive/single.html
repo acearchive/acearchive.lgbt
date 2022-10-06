@@ -1,5 +1,4 @@
 {{ define "main" }}
-  {{- $slug := path.Base .RelPermalink -}}
   <div class="row flex-xl-nowrap">
     <div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block">
       <nav class="docs-links" aria-label="Main navigation">
@@ -10,10 +9,10 @@
       <h1 class="text-center">{{ .Title | markdownify }}</h1>
       <div class="row justify-content-center text-center">
         <p class="lead text-center">
-          {{- if .Params.longDescription }}
-            {{ .Params.longDescription | markdownify }}
-          {{- else }}
+          {{- if .Params.description }}
             {{ .Params.description | markdownify }}
+          {{- else }}
+            {{ .Params.summary | markdownify }}
           {{- end -}}
         </p>
         <p class="text-center">{{ partial "archive/year.html" . }}</p>
@@ -87,7 +86,7 @@
       </div>
       <div class="row">
         <p class="edit-page">
-          <a href="{{ ref . "/new-artifact" }}?modify={{ $slug }}">
+          <a href="{{ ref . "/new-artifact" }}?modify={{ .Params.slug }}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
