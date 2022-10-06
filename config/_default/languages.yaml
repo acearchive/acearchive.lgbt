@@ -1,0 +1,6 @@
+en:
+  languageName: "English"
+  contentDir: "content"
+  weight: 10
+  params:
+    languageISO: "EN"

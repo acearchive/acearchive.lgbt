@@ -1,0 +1,82 @@
+# General
+baseurl: "https://acearchive.lgbt/"
+relativeUrls: true
+canonifyURLs: false
+disableAliases: true
+disableHugoGeneratorInject: false
+enableEmoji: true
+enableGitInfo: true
+enableRobotsTXT: true
+languageCode: "en-US"
+disableKinds: ["RSS"]
+paginate: 7
+
+# Multilingual
+defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: true
+
+# Use Netlify-style `_headers` and `_redirects` files.
+outputs:
+  home: ["HTML", "REDIRECTS", "HEADERS"]
+  section: ["HTML", "SITEMAP"]
+
+# Generate higher quality WebP images than the default.
+imaging:
+  quality: 100
+
+# Don't generate the `_headers` and `_redirects` files with a file extension.
+mediaTypes:
+  text/netlify:
+    suffixes: [""]
+    delimiter: ""
+
+outputFormats:
+  # Add an output format for the `_redirects` file.
+  REDIRECTS:
+    mediaType: "text/netlify"
+    baseName: "_redirects"
+    isPlainText: true
+    notAlternative: true
+
+  # Add an output format for the `_headers` file.
+  HEADERS:
+    mediaType: "text/netlify"
+    baseName: "_headers"
+    isPlainText: true
+    notAlternative: true
+
+  # Add output format for the section `sitemap.xml`.
+  SITEMAP:
+    mediaType: "application/xml"
+    baseName: "sitemap"
+    isHTML: false
+    isPlainText: true
+    noUgly: true
+    rel: "sitemap"
+
+caches:
+  getjson:
+    dir: ":cacheDir/:project"
+    maxAge: "10s"
+
+sitemap:
+  changefreq: "weekly"
+  filename: "sitemap.xml"
+  priority: 0.5
+
+taxonomies:
+  person: "people"
+  identity: "identities"
+  decade: "decades"
+
+permalinks:
+  people: "/categories/people/:title/"
+  identities: "/categories/identities/:title/"
+  decades: "/categories/decades/:title/"
+  archive: "/artifact/:filename/"
+
+minify:
+  # Settings for the HTML minifier.
+  tdewolff:
+    html:
+      keepWhitespace: false

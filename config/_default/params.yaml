@@ -1,0 +1,79 @@
+# Archive config
+maxPeoplePerCard: 4
+
+#
+# Metadata for SEO
+#
+
+# Homepage
+title: "Ace Archive"
+titleSeparator: "-"
+titleAddition: "Preserving asexual history"
+description: "Ace Archive is a curated online archive for preserving asexual history."
+
+# Open Graph
+images: ["images/logo-card.webp"]
+ogLocale: "en_US"
+domainTLD: "acearchive.lgbt"
+titleHome: "Ace Archive"
+
+# JSON-LD
+schemaType: "Organization"
+schemaName: "Ace Archive"
+schemaAuthor: "Frawley"
+schemaAuthorGitHub: "https://github.com/frawleyskid"
+schemaLocale: "en-US"
+schemaLogo: "images/logo-transparent.webp"
+schemaLogoWidth: 912
+schemaLogoHeight: 912
+schemaImage: "images/logo-card.webp"
+schemaImageWidth: 2560
+schemaImageHeight: 1280
+schemaGitHub: "https://github.com/acearchive"
+
+# Sitelinks search box
+siteLinksSearchBox: false
+
+# Chromium browser
+themeColorLight: "#fff" # $body-bg
+themeColorDark: "#212529" # $body-bg-dark
+
+# Images
+quality: 100
+bgColor: "#fff"
+landscapePhotoWidths: [900, 800, 700, 600, 500]
+portraitPhotoWidths: [800, 700, 600, 500]
+lqipWidth: "20x"
+smallLimit: "300"
+logoBackgroundFill: "#fff"
+
+# Footer
+footer: 'Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://getdoks.org/">Doks</a>'
+
+# Feed
+copyRight: "Copyright © 2022 Frawley"
+
+# Alert
+alert: false
+alertDismissable: true
+alertText: ""
+
+# Edit page
+docsRepo: "https://github.com/acearchive/acearchive.lgbt"
+docsRepoBranch: "main"
+editPage: true
+
+# Feature flags
+options:
+  lazySizes: true
+  clipBoard: true
+  instantPage: true
+  flexSearch: true
+  darkMode: true
+  bootStrapJs: true
+  breadCrumb: false
+  highLight: true
+  kaTex: false
+  collapsibleSidebar: true
+  multilingualMode: false
+  docsVersioning: false

@@ -1,0 +1,57 @@
+hugoVersion:
+  extended: true
+  min: "0.100.0"
+
+imports:
+  path: "github.com/acearchive/artifacts"
+  mounts:
+    source: "artifacts"
+    target: "content/archive"
+
+mounts:
+  - source: "node_modules/@hyas/doks/archetypes"
+    target: "archetypes"
+  - source: "node_modules/@hyas/doks/assets"
+    target: "assets"
+  - source: "node_modules/@hyas/doks/data"
+    target: "data"
+  - source: "node_modules/@hyas/doks/layouts"
+    target: "layouts"
+  - source: "node_modules/@hyas/doks/static"
+    target: "static"
+    # Don't publish files we don't actually depend on.
+    includeFiles:
+      - "images/**"
+      - "js/**"
+      - "css/**"
+      - "fonts/**"
+  - source: "node_modules/ipfs-core"
+    target: "assets/js/vendor/ipfs-core"
+  - source: "node_modules/katex"
+    target: "assets/js/vendor/katex"
+  - source: "node_modules/@github/clipboard-copy-element"
+    target: "assets/js/vendor/clipboard-copy-element"
+  - source: "node_modules/bootstrap"
+    target: "assets/js/vendor/bootstrap"
+  - source: "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+    target: "static/js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+  - source: "assets"
+    target: "assets"
+  - source: "assets/scss"
+    target: "assets/scss"
+  - source: "static"
+    target: "static"
+  - source: "static/images"
+    target: "static/images"
+    # We use image pipelines to convert the site logo to different specific
+    # sizes and formats for favicons and web app manifests. The images that we
+    # use to do this needs to be assets, but we also want to publish them as
+    # static files.
+  - source: "assets/images"
+    target: "static/images"
+  - source: "layouts"
+    target: "layouts"
+  - source: "archetypes"
+    target: "archetypes"
+  - source: "data"
+    target: "data"
