@@ -1,7 +1,7 @@
 {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "site.webmanifest" . -}}
 
 {{- $logoTransparent := resources.Get "images/logo-transparent.png" -}}
-{{- $logoPadded := resources.Get "images/logo-transparent-padded.png" -}}
+{{- $logoPadded := resources.Get "images/logo-padded.png" -}}
 
 {{- $favicon16 := $logoTransparent.Resize "16x png" | resources.Copy "images/favicon-16x16.png" -}}
 {{- $favicon32 := $logoTransparent.Resize "32x png" | resources.Copy "images/favicon-32x32.png" -}}
