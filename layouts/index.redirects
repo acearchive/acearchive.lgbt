@@ -7,4 +7,6 @@
 {{- $absAlias | path.Clean }} {{ $page.RelPermalink }} 301
 {{ $absAlias | path.Clean | printf "%s/" }} {{ $page.RelPermalink }} 301
 {{ end -}}
-{{- end -}}
+{{- end }}
+
+/artifact/* /artifacts/:splat 301
