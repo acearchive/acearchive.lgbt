@@ -5,7 +5,7 @@ date: 2022-01-09T12:51:25-05:00
 menu:
   docs:
     parent: "contributing"
-weight: 203
+weight: 202
 ---
 
 This page outlines some best practices to follow when contributing content to

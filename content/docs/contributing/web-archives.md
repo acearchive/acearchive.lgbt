@@ -5,7 +5,7 @@ date: 2022-01-07T21:19:13-05:00
 menu:
   docs:
     parent: "contributing"
-weight: 204
+weight: 203
 ---
 
 We mention in {{< article "docs/contributing/best-practices.md"

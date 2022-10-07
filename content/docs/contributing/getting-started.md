@@ -6,6 +6,10 @@ menu:
   docs:
     parent: "contributing"
 weight: 201
+aliases:
+  - "docs/contributing/uploading-files"
+  - "docs/contributing/hosting-artifacts"
+  - "docs/contributing/artifact-files"
 ---
 
 Anyone can help contribute to Ace Archive, and there are various ways to
@@ -17,7 +21,7 @@ The simplest way to contribute is to suggest content to be added to the archive.
 All you have to do is fill out a form and answer a few questions. This requires
 a GitHub account, which is free.
 
-{{< link-button url="https://github.com/acearchive/artifacts/issues/new?labels=artifact&template=artifact.yml" >}}
+{{< link-button url="https://github.com/acearchive/artifact-submissions/issues/new?labels=artifact&template=artifact.yml" >}}
 Propose content
 {{< /link-button >}}
 
@@ -45,10 +49,7 @@ Open an issue
 <hr>
 
 If you're a developer or someone technically inclined, we have more technical
-documentation on GitHub about how this site works and how to use [our
-API](https://github.com/acearchive/artifact-action). We also maintain a few
-ancillary projects relating to digital archiving, which you can check out [on
-our GitHub page](https://github.com/acearchive).
+documentation on GitHub about how this site works.
 
 {{< link-button url="https://github.com/acearchive/acearchive.lgbt" >}}
 Get hacking

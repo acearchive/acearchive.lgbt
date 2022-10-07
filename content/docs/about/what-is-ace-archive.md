@@ -6,6 +6,9 @@ menu:
   docs:
     parent: "about"
 weight: 101
+aliases:
+  - "/docs/about/about-the-technology"
+  - "/docs/about/linking-to-content"
 ---
 
 Ace Archive is a project to preserve the history of queer communities, with a
@@ -24,8 +27,3 @@ website](https://github.com/acearchive/acearchive.lgbt) and use it however they
 wish. It also means that much like a wiki, anyone can help contribute to the
 archive, and we have [documentation]({{< ref
 "docs/contributing/getting-started.md" >}}) explaining how to do that.
-
-Something unique about Ace Archive is the use of distributed web technologies to
-help keep the archive independent and ensure ace history has a permanent home on
-the web. In the next section, we'll explain what that means and how these
-technologies help Ace Archive achieve its goals.
