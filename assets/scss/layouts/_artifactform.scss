@@ -1,20 +1,6 @@
 .new-artifact form {
-  .form-field,
-  .field-list {
-    margin-bottom: 1rem;
-  }
-
-  .form-field label {
+  .form-label {
     font-weight: 500;
-  }
-
-  .submit-control {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  fieldset.field-list legend.form-label {
-    @extend label;
   }
 
   :is(.form-label, .col-form-label) .required-label {
@@ -22,64 +8,10 @@
     margin-left: 0.25rem;
     vertical-align: middle;
   }
-
-  .form-field:last-child {
-    margin-bottom: 0;
-  }
-
-  .field-list-body .field-list-item {
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: start;
-
-    .list-item-gutter {
-      align-items: center;
-      margin-bottom: 0.5rem;
-
-      @include media-breakpoint-up(sm) {
-        margin-right: 1rem;
-        margin-bottom: 0;
-        gap: 0.5rem;
-      }
-
-      .list-item-index {
-        font-weight: 700;
-        font-size: $font-size-xl;
-        color: $form-text-color;
-      }
-
-      .form-button {
-        color: $form-text-color;
-
-        @include media-breakpoint-down(sm) {
-          padding-right: 0;
-          padding-left: 0;
-        }
-      }
-
-      .form-button:hover {
-        color: $body-color;
-      }
-    }
-  }
 }
 
 [data-dark-mode] .new-artifact form {
   :is(.form-label, .col-form-label) .required-label {
     color: $danger-dark;
-  }
-
-  .field-list-body .field-list-item .list-item-gutter {
-    .form-button {
-      color: $form-text-color-dark;
-    }
-
-    .form-button:hover {
-      color: $body-color-dark;
-    }
-
-    .list-item-index {
-      color: $form-text-color-dark;
-    }
   }
 }

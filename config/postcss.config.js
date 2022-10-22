@@ -33,6 +33,7 @@ module.exports = {
           "./node_modules/@hyas/doks/assets/scss/common/_dark.scss",
           "./node_modules/bootstrap/scss/_tooltip.scss",
           "./node_modules/katex/dist/katex.css",
+          "./node_modules/react-bootstrap/**/*.js",
           "./assets/scss/components/_filetype.scss",
           "./assets/scss/components/_schema.scss",
           "./assets/scss/layouts/_artifactform.scss",

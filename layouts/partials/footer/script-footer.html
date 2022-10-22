@@ -10,7 +10,7 @@
 {{ $katexAutoRender := resources.Get "js/vendor/katex/dist/contrib/auto-render.js" -}}
 {{ $mermaid := resources.Get "js/mermaid.js" | js.Build -}}
 {{ $replayWeb := resources.Get "js/replayweb-url.js" | js.Build -}}
-{{ $artifactForm := resources.Get "js/artifact-form/app.tsx" | js.Build -}}
+{{ $artifactForm := resources.Get "js/artifact-form/App.tsx" | js.Build -}}
 
 {{ $app := resources.Get "js/app.js" -}}
 {{ $slice := slice $app -}}
