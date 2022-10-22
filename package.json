@@ -1,15 +1,25 @@
 {
-  "name": "doks-child-theme",
-  "description": "Doks child theme",
-  "version": "0.3.5",
+  "name": "acearchive-lgbt",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The Ace Archive website",
+  "homepage": "https://acearchive.lgbt",
+  "bugs": {
+    "url": "https://github.com/acearchive/acearchive.lgbt/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/acearchive/acearchive.lgbt"
+  },
+  "author": {
+    "name": "Frawley",
+    "email": "frawley@duck.com",
+    "url": "https://github.com/frawleyskid"
+  },
+  "license": "MIT",
   "browserslist": [
     "defaults"
   ],
-  "repository": "https://github.com/h-enk/doks",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "init": "shx rm -rf .git && git init -b main",
     "create": "exec-bin node_modules/.bin/hugo/hugo new",
@@ -34,9 +44,6 @@
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15",
-    "@babel/core": "^7.15",
-    "@babel/preset-env": "^7.15",
     "@fullhuman/postcss-purgecss": "^4.0",
     "@github/clipboard-copy-element": "^1.1.2",
     "@hyas/doks": "^0.3",
@@ -72,5 +79,9 @@
   },
   "otherDependencies": {
     "hugo": "0.100.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

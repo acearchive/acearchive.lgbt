@@ -3,13 +3,6 @@
   {{- $artifacts = $artifacts | merge (dict $artifact.Params.slug $artifact.Params) -}}
 {{- end -}}
 
-{{ $ipfsShims := dict "ipfs-core" "js/shims/ipfs-core.js" -}}
-{{ $replayWebBuildParams := dict "shims" $ipfsShims -}}
-{{ $artifactFormBuildParams := dict
-  "shims" $ipfsShims
-  "params" (dict "schema" .Site.Data.artifacts.schema "artifacts" $artifacts)
--}}
-
 {{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | js.Build -}}
 {{ $bs := resources.Get "js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" -}}
 {{ $highlight := resources.Get "js/highlight.js" | js.Build -}}
@@ -17,8 +10,8 @@
 {{ $katexAutoRender := resources.Get "js/vendor/katex/dist/contrib/auto-render.js" -}}
 {{ $mermaid := resources.Get "js/mermaid.js" | js.Build -}}
 {{ $ipfs := resources.Get "js/vendor/ipfs-core/index.min.js" -}}
-{{ $replayWeb := resources.Get "js/replayweb-url.js" | js.Build $replayWebBuildParams -}}
-{{ $artifactForm := resources.Get "js/artifact-form/index.js" | js.Build $artifactFormBuildParams -}}
+{{ $replayWeb := resources.Get "js/replayweb-url.js" | js.Build -}}
+{{ $artifactForm := resources.Get "js/artifact-form/app.tsx" | js.Build -}}
 
 {{ $app := resources.Get "js/app.js" -}}
 {{ $slice := slice $app -}}
