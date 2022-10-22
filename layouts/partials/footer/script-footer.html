@@ -9,7 +9,6 @@
 {{ $katex := resources.Get "js/vendor/katex/dist/katex.js" -}}
 {{ $katexAutoRender := resources.Get "js/vendor/katex/dist/contrib/auto-render.js" -}}
 {{ $mermaid := resources.Get "js/mermaid.js" | js.Build -}}
-{{ $ipfs := resources.Get "js/vendor/ipfs-core/index.min.js" -}}
 {{ $replayWeb := resources.Get "js/replayweb-url.js" | js.Build -}}
 {{ $artifactForm := resources.Get "js/artifact-form/app.tsx" | js.Build -}}
 
@@ -43,16 +42,11 @@
 
 {{ $loadReplayWeb := .Page.Scratch.Get "replayweb" }}
 {{ $loadArtifactForm := eq .Type "new-artifact" }}
-{{ $loadIpfs := or $loadReplayWeb $loadArtifactForm }}
 {{ $loadSearch := eq .Section "docs" "archive" "identities" "decades" "people" }}
 
 {{ if eq (hugo.Environment) "development" -}}
   {{ if .Site.Params.options.bootStrapJs -}}
     <script defer src="{{ $bs.RelPermalink }}"></script>
-  {{ end -}}
-
-  {{ if $loadIpfs -}}
-    <script defer src="{{ $ipfs.RelPermalink }}"></script>
   {{ end -}}
 
   {{ if $loadArtifactForm -}}
@@ -94,7 +88,6 @@
   {{ $katex := $katex | minify | fingerprint "sha512" -}}
   {{ $katexAutoRender := $katexAutoRender | minify | fingerprint "sha512" -}}
   {{ $mermaid := $mermaid | minify | fingerprint "sha512" -}}
-  {{ $ipfs := $ipfs | fingerprint "sha512" -}}
   {{ $artifactForm := $artifactForm | minify | fingerprint "sha512" -}}
   {{ $replayWeb := $replayWeb | minify | fingerprint "sha512" -}}
 
@@ -104,15 +97,6 @@
       defer
       integrity="{{ $bs.Data.Integrity }}"
       src="{{ $bs.RelPermalink }}"
-    ></script>
-  {{ end -}}
-
-  {{ if $loadIpfs -}}
-    <script
-      crossorigin="anonymous"
-      defer
-      integrity="{{ $ipfs.Data.Integrity }}"
-      src="{{ $ipfs.RelPermalink }}"
     ></script>
   {{ end -}}
 
