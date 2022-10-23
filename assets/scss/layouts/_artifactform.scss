@@ -3,10 +3,24 @@
     font-weight: 500;
   }
 
+  .form-button {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .form-button button {
+    width: 5rem;
+  }
+
   :is(.form-label, .col-form-label) .required-label {
     color: $danger;
     margin-left: 0.25rem;
     vertical-align: middle;
+  }
+
+  .form-text {
+    display: inline-block;
+    margin-top: 0.5rem;
   }
 }
 
