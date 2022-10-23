@@ -23,7 +23,7 @@ const ArtifactSubmitForm = () => {
       validateOnChange={true}
     >
       {(props) => {
-        const { handleSubmit, isSubmitting, handleReset: handleResetWithoutPersistence } = props;
+        const { handleSubmit, isSubmitting, resetForm } = props;
 
         useEffect(() => {
           setSavedValues(props.values);
@@ -31,7 +31,7 @@ const ArtifactSubmitForm = () => {
 
         const handleReset = useCallback(() => {
           setSavedValues(initialValues);
-          handleResetWithoutPersistence();
+          resetForm({ values: initialValues });
         }, [setSavedValues]);
 
         return (
@@ -50,8 +50,8 @@ const ArtifactSubmitForm = () => {
                 </a>
               </p>
               <p>
-                When you add a new artifact, you need to choose a URL slug for it, which is that
-                last part of the path.
+                When you add a new artifact, you need to choose a URL slug for it, which is the part
+                after the last <code>/</code>.
               </p>
               <p>
                 A URL slug should always be lowercase and use hyphens to separate words, and it will
@@ -102,6 +102,17 @@ const ArtifactSubmitForm = () => {
                 quote or italicize the titles of works; you can add italics in an artifact title by
                 surrounding it in asterisks like <code>*Title of Work*</code>.
               </p>
+            </Field>
+
+            <Field
+              name="description"
+              label="Description"
+              inputType="text"
+              placeholder="A paper by the Asexual Caucus of the New York Radical Feminists in which Lisa Orlando argues…"
+              props={props}
+            >
+              If you want to provide more context than you can fit in the summary, you can
+              optionally provide a longer description that will appear in the page for the artifact.
             </Field>
 
             <Container fluid="md">

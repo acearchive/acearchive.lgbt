@@ -3,6 +3,13 @@ import * as Yup from "yup";
 export const isRequired = (name: string): boolean =>
   schema.fields[name]?.exclusiveTests?.required ?? false;
 
+// This schema should be kept in sync with the Joi schema in the
+// `acearchive/artifact-submit-action` repo.
+//
+// In the future, we may want to consider using the same schema in both places.
+// One important consideration is that this schema contains redundant rules
+// which serve to provide more friendly error messages than the one in
+// `artifact-submit-action`.
 export const schema = Yup.object({
   slug: Yup.string()
     .label("The URL slug")
