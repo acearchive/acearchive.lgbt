@@ -29,6 +29,7 @@ export const schema = Yup.object({
   title: Yup.string().label("The title").required().trim().max(100),
   summary: Yup.string().label("The summary").required().trim().max(150),
   description: Yup.string().label("The description").trim().max(1000),
+  files: Yup.array(),
 });
 
 export type Artifact = Yup.InferType<typeof schema>;

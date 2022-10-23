@@ -32,6 +32,7 @@ export const initialValues = {
   title: "",
   summary: "",
   description: "",
+  files: [],
 };
 
 export const useSavedFormValues = () =>

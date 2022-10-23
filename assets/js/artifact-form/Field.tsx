@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Form from "react-bootstrap/Form";
 import { HTMLInputTypeAttribute } from "react";
-import { FormikProps, ErrorMessage } from "formik";
+import { FormikProps, ErrorMessage, getIn } from "formik";
 import { Artifact, isRequired } from "./schema";
+import className from "classnames";
 
-type Props = {
+export type FieldProps = {
   name: string;
   label: string;
   inputType: HTMLInputTypeAttribute;
@@ -25,7 +26,7 @@ const FormLabel = ({ name, label }: { name: string; label: string }) => {
   }
 };
 
-const ArtifactFormField: React.FC<Props> = ({
+const Field: React.FC<FieldProps> = ({
   name,
   label,
   inputType,
@@ -34,21 +35,21 @@ const ArtifactFormField: React.FC<Props> = ({
   children,
 }) => {
   return (
-    <>
+    <div className={className("form-field")}>
       <Form.Label htmlFor={`field-input-${name}`}>
         <FormLabel name={name} label={label} />
       </Form.Label>
       <Form.Control
         type={inputType}
         name={name}
-        value={values[name]}
+        value={getIn(values, name)}
         id={`field-input-${name}`}
         aria-describedby={`field-help-${name} field-feedback-${name}`}
         placeholder={placeholder}
         onChange={handleChange}
         onBlur={handleBlur}
-        isValid={touched[name] && !errors[name]}
-        isInvalid={touched[name] && !!errors[name]}
+        isValid={getIn(touched, name) && !getIn(errors, name)}
+        isInvalid={getIn(touched, name) && !!getIn(errors, name)}
       />
       <ErrorMessage name={name}>
         {(msg) => (
@@ -57,9 +58,11 @@ const ArtifactFormField: React.FC<Props> = ({
           </Form.Control.Feedback>
         )}
       </ErrorMessage>
-      <Form.Text id={`field-help-${name}`}>{children}</Form.Text>
-    </>
+      <Form.Text id={`field-help-${name}`} className={className("field-help")}>
+        {children}
+      </Form.Text>
+    </div>
   );
 };
 
-export default ArtifactFormField;
+export default Field;

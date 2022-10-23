@@ -18,7 +18,7 @@ export default ({
   const htmlId = kind === "submit" ? "artifact-form-submit-button" : "artifact-form-reset-button";
 
   return (
-    <div className={className("form-button", "d-flex", "flex-column", "align-items-center")}>
+    <div className={className("submit-control", "d-flex", "flex-column", "align-items-center")}>
       <Button
         id={htmlId}
         variant={kind === "submit" ? "primary" : "secondary"}

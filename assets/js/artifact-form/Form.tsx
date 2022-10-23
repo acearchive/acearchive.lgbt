@@ -6,6 +6,9 @@ import Field from "./Field";
 import { schema } from "./schema";
 import FormButton from "./FormButton";
 import { initialValues, useSavedFormValues } from "./storage";
+import { FieldList } from "./FieldList";
+
+export const htmlFormId = "artifact-form";
 
 const ArtifactSubmitForm = () => {
   const [savedValues, setSavedValues] = useSavedFormValues();
@@ -35,7 +38,7 @@ const ArtifactSubmitForm = () => {
         }, [setSavedValues]);
 
         return (
-          <Form onSubmit={handleSubmit}>
+          <Form id={htmlFormId} onSubmit={handleSubmit}>
             <Field
               name="slug"
               label="URL Slug"
@@ -114,6 +117,34 @@ const ArtifactSubmitForm = () => {
               If you want to provide more context than you can fit in the summary, you can
               optionally provide a longer description that will appear in the page for the artifact.
             </Field>
+
+            <FieldList
+              name="files"
+              label="Files"
+              singularLabel="file"
+              props={props}
+              fields={[
+                {
+                  name: "name",
+                  label: "Name",
+                  inputType: "text",
+                  placeholder: "Digital Scan",
+                  helpText: (
+                    <>
+                      <p>A label for the file.</p>
+                      <p>
+                        If the artifact consists of multiple creative works, this should generally
+                        include the title of the work so people can disambiguate them. If the
+                        artifact consists of a single work, it can be something short like "Paper,"
+                        "Transcript," "Citation," etc.
+                      </p>
+                    </>
+                  ),
+                },
+              ]}
+            >
+              <p>The list files to include in the artifact.</p>
+            </FieldList>
 
             <Container fluid="md">
               <Row>
