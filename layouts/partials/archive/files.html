@@ -4,7 +4,7 @@
     <th scope="col">File</th>
   </thead>
   <tbody>
-    {{- range $file := .Params.files -}}
+    {{ range $file := .Params.files -}}
       <tr>
         <td>
           <div class="d-flex flex-align-start">
@@ -12,7 +12,13 @@
           </div>
         </td>
         <td>
-          <a class="me-1 float-start" href="{{ $file.url }}">{{ $file.name }}</a>
+          {{ $prettyUrl := $file.url -}}
+
+          {{- if strings.HasSuffix $file.url "/index.html" -}}
+            {{- $prettyUrl = strings.TrimSuffix "/index.html" $file.url | printf "%s/" -}}
+          {{- end -}}
+
+          <a class="me-1 float-start" href="{{ $prettyUrl }}">{{ $file.name }}</a>
         </td>
       </tr>
     {{ end -}}
