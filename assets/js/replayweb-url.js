@@ -15,9 +15,11 @@ for (const form of forms) {
 
   const getUrl = () =>
     new URL(
-      `https://replayweb.page/?source=https://files.acearchive.lgbt/${slugInputElement.value}/${
-        filenameInputElement.value
-      }#view=resources&urlSearchType=prefix&url=${encodeURIComponent(urlInputElement.value)}`
+      `https://replayweb.page/?source=https://files.acearchive.lgbt/artifacts/${
+        slugInputElement.value
+      }/${filenameInputElement.value}#view=resources&urlSearchType=prefix&url=${encodeURIComponent(
+        urlInputElement.value
+      )}`
     );
 
   for (const inputGroup of form.querySelectorAll(".needs-validated")) {
