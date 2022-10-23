@@ -5,22 +5,24 @@
   </thead>
   <tbody>
     {{ range $file := .Params.files -}}
-      <tr>
-        <td>
-          <div class="d-flex flex-align-start">
-            <file-type-icon filename="{{ $file.fileName }}" media-type="{{ $file.mediaType }}" />
-          </div>
-        </td>
-        <td>
-          {{ $prettyUrl := $file.url -}}
+    {{- if or (not (isset $file "hidden")) (not $file.hidden) -}}
+    <tr>
+      <td>
+        <div class="d-flex flex-align-start">
+          <file-type-icon filename="{{ $file.fileName }}" media-type="{{ $file.mediaType }}" />
+        </div>
+      </td>
+      <td>
+        {{ $prettyUrl := $file.url -}}
 
-          {{- if strings.HasSuffix $file.url "/index.html" -}}
-            {{- $prettyUrl = strings.TrimSuffix "/index.html" $file.url | printf "%s/" -}}
-          {{- end -}}
+        {{- if strings.HasSuffix $file.url "/index.html" -}}
+          {{- $prettyUrl = strings.TrimSuffix "/index.html" $file.url | printf "%s/" -}}
+        {{- end -}}
 
-          <a class="me-1 float-start" href="{{ $prettyUrl }}">{{ $file.name }}</a>
-        </td>
-      </tr>
+        <a class="me-1 float-start" href="{{ $prettyUrl }}">{{ $file.name }}</a>
+      </td>
+    </tr>
+    {{- end -}}
     {{ end -}}
   </tbody>
 </table>
