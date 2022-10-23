@@ -3,6 +3,8 @@ import * as Yup from "yup";
 export const isRequired = (name: string): boolean =>
   schema.fields[name]?.exclusiveTests?.required ?? false;
 
+const noWhitespacePattern = /^[^\s]*$/;
+
 // This schema should be kept in sync with the Joi schema in the
 // `acearchive/artifact-submit-action` repo.
 //
@@ -15,7 +17,7 @@ export const schema = Yup.object({
     .label("The URL slug")
     .required()
     .trim()
-    .matches(/^[^\s]*$/, ({ label }) => `${label} must not contain spaces`)
+    .matches(noWhitespacePattern, ({ label }) => `${label} must not contain spaces`)
     .matches(
       /^[a-z0-9-]*$/,
       ({ label }) => `${label} can only contain lowercase letters, numbers, and hyphens`
@@ -29,7 +31,27 @@ export const schema = Yup.object({
   title: Yup.string().label("The title").required().trim().max(100),
   summary: Yup.string().label("The summary").required().trim().max(150),
   description: Yup.string().label("The description").trim().max(1000),
-  files: Yup.array(),
+  files: Yup.array().of(
+    Yup.object({
+      name: Yup.string().label("File label").required().trim().max(256),
+      fileName: Yup.string()
+        .label("File name")
+        .required()
+        .trim()
+        .matches(noWhitespacePattern, ({ label }) => `${label} must not contain spaces`)
+        .matches(
+          /^[a-z0-9.\/-]*$/,
+          ({ label }) =>
+            `${label} can only contain lowercase letters, numbers, hyphens, and slashes`
+        )
+        .matches(/^[^\/]/, ({ label }) => `${label} can not start with a slash`)
+        .matches(/[^\/]$/, ({ label }) => `${label} can not end with a slash`)
+        .matches(
+          /^[a-z0-9][a-z0-9-]*[a-z0-9](\/[a-z0-9][a-z0-9-]*[a-z0-9])*(\.[a-z0-9]+)*$/,
+          "This is not a valid file name"
+        ),
+    })
+  ),
 });
 
 export type Artifact = Yup.InferType<typeof schema>;

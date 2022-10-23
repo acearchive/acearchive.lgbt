@@ -126,7 +126,7 @@ const ArtifactSubmitForm = () => {
               fields={[
                 {
                   name: "name",
-                  label: "Name",
+                  label: "Label",
                   inputType: "text",
                   placeholder: "Digital Scan",
                   helpText: (
@@ -137,6 +137,28 @@ const ArtifactSubmitForm = () => {
                         include the title of the work so people can disambiguate them. If the
                         artifact consists of a single work, it can be something short like "Paper,"
                         "Transcript," "Citation," etc.
+                      </p>
+                    </>
+                  ),
+                },
+                {
+                  name: "fileName",
+                  label: "File name",
+                  inputType: "text",
+                  placeholder: "the-asexual-manifesto.pdf",
+                  helpText: (
+                    <>
+                      <p>A file name to be used when downloading the file.</p>
+                      <p>
+                        This should be all lowercase and use hyphens instead of spaces, and it
+                        should always include an appropriate file extension. For complex use-cases,
+                        such as adding an HTML transcript with embedded images, file names can
+                        contain forward slashes.
+                      </p>
+
+                      <p>
+                        If you're updating an existing file, you should keep the existing file name
+                        the same.
                       </p>
                     </>
                   ),
