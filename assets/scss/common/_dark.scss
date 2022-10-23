@@ -21,7 +21,7 @@
 [data-dark-mode] body .btn-outline-primary {
   @include button-outline-variant($primary-dark, $primary-dark);
 
-  color: $link-color-dark;
+  color: $primary-dark;
 }
 
 [data-dark-mode] body .btn-outline-primary:hover {
@@ -31,13 +31,13 @@
 [data-dark-mode] body .btn-secondary {
   @include button-variant($secondary-dark, $secondary-dark);
 
-  color: $body-bg-dark !important;
+  color: $body-bg !important;
 }
 
 [data-dark-mode] body .btn-outline-secondary {
   @include button-outline-variant($secondary-dark, $secondary-dark);
 
-  color: $link-color-dark;
+  color: $secondary-dark;
 }
 
 [data-dark-mode] body .btn-doks-light {
