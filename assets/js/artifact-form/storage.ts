@@ -27,14 +27,5 @@ export const useLocalStorageState = (key: string, value: any): [any, (value: any
   return [localStorageState, handleUpdateLocalStorageState];
 };
 
-export const initialValues = {
-  slug: "",
-  title: "",
-  summary: "",
-  description: "",
-  files: [],
-  links: [],
-};
-
 export const useSavedFormValues = () =>
-  useLocalStorageState("new-artifact-form.initial-values", initialValues);
+  useLocalStorageState("new-artifact-form.initial-values", {});

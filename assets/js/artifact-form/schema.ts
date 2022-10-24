@@ -1,6 +1,8 @@
 import * as Yup from "yup";
 
 const noWhitespacePattern = /^[^\s]*$/;
+const doesNotStartWithCommaPattern = /^(?!,)/;
+const doesNotEndWithCommaPattern = /(?<!,)$/;
 
 // This schema should be kept in sync with the Joi schema in the
 // `acearchive/artifact-submit-action` repo.
@@ -41,8 +43,8 @@ export const schema = Yup.object({
           ({ label }) =>
             `${label} can only contain lowercase letters, numbers, hyphens, and slashes`
         )
-        .matches(/^[^\/]/, ({ label }) => `${label} can not start with a slash`)
-        .matches(/[^\/]$/, ({ label }) => `${label} can not end with a slash`)
+        .matches(/^(?!\/)/, ({ label }) => `${label} can not start with a slash`)
+        .matches(/(?<!\/)$/, ({ label }) => `${label} can not end with a slash`)
         .matches(
           /^[a-z0-9][a-z0-9-]*[a-z0-9](\/[a-z0-9][a-z0-9-]*[a-z0-9])*(\.[a-z0-9]+)*$/,
           "This is not a valid file name"
@@ -57,6 +59,46 @@ export const schema = Yup.object({
       url: Yup.string().label("URL").required().trim().url(),
     })
   ),
+  people: Yup.string()
+    .label("People")
+    .trim()
+    .matches(doesNotStartWithCommaPattern, ({ label }) => `${label} can not start with a comma`)
+    .matches(doesNotEndWithCommaPattern, ({ label }) => `${label} can not end with a comma`),
+  identities: Yup.string()
+    .label("Identities")
+    .trim()
+    .matches(doesNotStartWithCommaPattern, ({ label }) => `${label} can not start with a comma`)
+    .matches(doesNotEndWithCommaPattern, ({ label }) => `${label} can not end with a comma`),
+  fromYear: Yup.number().label("Start Year").required().integer().max(new Date().getUTCFullYear()),
+  toYear: Yup.number()
+    .label("End Year")
+    .integer()
+    .test("is-fromYear-defined", "You must enter the Start Year first", async function () {
+      return this.parent["fromYear"] !== undefined;
+    })
+    .moreThan(Yup.ref("fromYear"))
+    .max(new Date().getUTCFullYear()),
+  decades: Yup.string()
+    .label("Decades")
+    .required()
+    .trim()
+    .matches(doesNotStartWithCommaPattern, ({ label }) => `${label} can not start with a comma`)
+    .matches(doesNotEndWithCommaPattern, ({ label }) => `${label} can not end with a comma`)
+    .matches(
+      /^\s*[0-9]{1,3}0\s*(,\s*[0-9]{1,3}0\s*)*$/,
+      ({ label }) => `${label} must be a comma-separated list of decades`
+    )
+    .test(
+      "list-of-numbers-is-sorted",
+      ({ label }) =>
+        `${label} can not contain duplicates and must be sorted in chronological order`,
+      async (commaSeparated) =>
+        commaSeparated !== undefined &&
+        commaSeparated
+          .split(",")
+          .map((listItem) => parseInt(listItem.trim(), 10))
+          .every((decade, index, list) => index === 0 || list[index - 1] < decade)
+    ),
 });
 
 export type Artifact = Yup.InferType<typeof schema>;

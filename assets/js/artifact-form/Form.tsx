@@ -5,7 +5,7 @@ import Field from "./Field";
 
 import { schema } from "./schema";
 import FormButton from "./FormButton";
-import { initialValues, useSavedFormValues } from "./storage";
+import { useSavedFormValues } from "./storage";
 import { FieldList } from "./FieldList";
 
 export const htmlFormId = "artifact-form";
@@ -33,8 +33,8 @@ const ArtifactSubmitForm = () => {
         }, [props.values, setSavedValues]);
 
         const handleReset = useCallback(() => {
-          setSavedValues(initialValues);
-          resetForm({ values: initialValues });
+          setSavedValues({});
+          resetForm({ values: {} });
         }, [setSavedValues]);
 
         return (
@@ -146,8 +146,8 @@ const ArtifactSubmitForm = () => {
                       <p>
                         If the artifact consists of multiple creative works, this should generally
                         include the title of the work so people can disambiguate them. If the
-                        artifact consists of a single work, it can be something short like "Paper,"
-                        "Transcript," "Citation," etc.
+                        artifact consists of a single work, it can be something short like "Paper",
+                        "Transcript", "Citation", etc.
                       </p>
                     </>
                   ),
@@ -244,14 +244,16 @@ const ArtifactSubmitForm = () => {
                   label: "Label",
                   inputType: "text",
                   required: true,
+                  placeholder: "Internet Archive",
                   helpText: (
                     <>
                       <p>A label for the link.</p>
                       <p>
                         If the artifact consists of multiple creative works, this should generally
                         include the title of the work so people can disambiguate them. If the
-                        artifact consists of a single work, it can be something short like “Paper,”
-                        “Transcript,” “Citation,” etc.
+                        artifact consists of a single work, it can be something short like “Paper”,
+                        “Transcript”, or “Citation”, or it can refer to where the link points, such
+                        as "Internet Archive" or "JSTOR".
                       </p>
                     </>
                   ),
@@ -261,6 +263,7 @@ const ArtifactSubmitForm = () => {
                   label: "URL",
                   inputType: "url",
                   required: true,
+                  placeholder: "https://archive.org/details/asexualmanifestolisaorlando",
                   helpText: (
                     <p>
                       The <code>https://</code> URL that the link points to.
@@ -271,6 +274,111 @@ const ArtifactSubmitForm = () => {
             >
               <p>A list of links to web sites to include in the artifact.</p>
             </FieldList>
+
+            <Field
+              name="people"
+              label="People"
+              inputType="text"
+              required={false}
+              placeholder="Lisa Orlando, Barbara Getz"
+              props={props}
+            >
+              <>
+                <p>
+                  A list of (usually 1-5) people closely associated with the artifact as a
+                  comma-separated list.
+                </p>
+                <p>
+                  The kinds of people you could list here could include the author of a book, the
+                  subject of a photo, the original poster of a forum thread, the person who coined a
+                  new term, etc. This is helpful for linking together different artifacts which are
+                  associated with the same people. This can be omitted if the people associated with
+                  the artifact aren't clear or there were many different people involved.
+                </p>
+              </>
+            </Field>
+
+            <Field
+              name="identities"
+              label="Identities"
+              inputType="text"
+              required={false}
+              placeholder="asexual, lesbian, non-binary"
+              props={props}
+            >
+              <>
+                <p>
+                  A list of queer identities associated with the artifact as a comma-separated list.
+                </p>
+                <p>
+                  For example, if this is a blog post about aromanticism, then "aromantic" should be
+                  included in the list of identities. The identity should be in adjective form,
+                  meaning it can complete the sentence, "Artifacts about _ people". This can be
+                  omitted if the identities associated with the work aren't clear (e.g. it's about
+                  queer identities as a whole).
+                </p>
+              </>
+            </Field>
+
+            <Field
+              name="fromYear"
+              label="Start Year"
+              inputType="number"
+              required={true}
+              placeholder="1972"
+              props={props}
+            >
+              <>
+                <p>
+                  The year the creative work associated with the artifact was published (or written,
+                  posted, etc.).
+                </p>
+                <p>
+                  If the artifact encompasses multiple works that were published in different years,
+                  this should be the year the first work was published.
+                </p>
+              </>
+            </Field>
+
+            <Field
+              name="toYear"
+              label="End Year"
+              inputType="number"
+              required={false}
+              placeholder="1989"
+              props={props}
+            >
+              <>
+                <p>
+                  If the artifact encompasses multiple creative works that were published in
+                  different years, this should be the year the last work was published.
+                </p>
+                <p>
+                  If the works associated with the artifact were only published in one year, this
+                  should be omitted.
+                </p>
+              </>
+            </Field>
+
+            <Field
+              name="decades"
+              label="Decades"
+              inputType="text"
+              required={true}
+              placeholder="1970, 1980"
+              props={props}
+            >
+              <>
+                <p>
+                  The list of decades in which a creative work associated with the artifact was
+                  published as a comma-separated list.
+                </p>
+                <p>
+                  If a work was published in 1980 and another work was published in 2009, this
+                  should include 1980 and 2000.
+                </p>
+              </>
+            </Field>
 
             <Container fluid="md">
               <Row>
