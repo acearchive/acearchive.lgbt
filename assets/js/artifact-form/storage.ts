@@ -33,6 +33,7 @@ export const initialValues = {
   summary: "",
   description: "",
   files: [],
+  links: [],
 };
 
 export const useSavedFormValues = () =>

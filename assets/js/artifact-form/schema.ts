@@ -30,7 +30,7 @@ export const schema = Yup.object({
   description: Yup.string().label("Description").trim().max(1000),
   files: Yup.array().of(
     Yup.object({
-      name: Yup.string().label("Label").required().trim().max(256),
+      name: Yup.string().label("Label").required().trim().max(250),
       fileName: Yup.string()
         .label("File Name")
         .required()
@@ -49,6 +49,12 @@ export const schema = Yup.object({
         ),
       sourceUrl: Yup.string().label("File URL").required().trim().url(),
       hidden: Yup.bool().label("Hidden"),
+    })
+  ),
+  links: Yup.array().of(
+    Yup.object({
+      name: Yup.string().label("Label").required().trim().max(250),
+      url: Yup.string().label("URL").required().trim().url(),
     })
   ),
 });

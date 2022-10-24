@@ -229,6 +229,49 @@ const ArtifactSubmitForm = () => {
               <p>The list files to include in the artifact.</p>
             </FieldList>
 
+            <FieldList
+              name="links"
+              label="Links"
+              singularLabel="link"
+              props={props}
+              initialValues={{
+                name: "",
+                url: "",
+              }}
+              fields={[
+                {
+                  name: "name",
+                  label: "Label",
+                  inputType: "text",
+                  required: true,
+                  helpText: (
+                    <>
+                      <p>A label for the link.</p>
+                      <p>
+                        If the artifact consists of multiple creative works, this should generally
+                        include the title of the work so people can disambiguate them. If the
+                        artifact consists of a single work, it can be something short like “Paper,”
+                        “Transcript,” “Citation,” etc.
+                      </p>
+                    </>
+                  ),
+                },
+                {
+                  name: "url",
+                  label: "URL",
+                  inputType: "url",
+                  required: true,
+                  helpText: (
+                    <p>
+                      The <code>https://</code> URL that the link points to.
+                    </p>
+                  ),
+                },
+              ]}
+            >
+              <p>A list of links to web sites to include in the artifact.</p>
+            </FieldList>
+
             <Container fluid="md">
               <Row>
                 <Col>

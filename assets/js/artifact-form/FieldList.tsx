@@ -1,5 +1,5 @@
 import React, { HTMLInputTypeAttribute } from "react";
-import { FieldArray, FormikProps } from "formik";
+import { getIn, FieldArray, FormikProps } from "formik";
 import className from "classnames";
 import { PlusSquare, TrashIcon } from "./icons";
 import { Card } from "react-bootstrap";
@@ -96,8 +96,8 @@ export const FieldList: React.FC<FieldListProps> = ({
           <legend className={className("form-label")}>{label}</legend>
           <div className={className("field-help", "form-text")}>{children}</div>
           <div id={`field-list-body-${name}`} className={className("field-list-body")}>
-            {values[name].length > 0 &&
-              values[name].map((_, index) => (
+            {(getIn(values, name)?.length ?? 0) > 0 &&
+              getIn(values, name).map((_, index) => (
                 <FieldListItem index={index} handleDelete={() => remove(index)} key={index}>
                   {fields.map((fieldSpec) => (
                     <Field
