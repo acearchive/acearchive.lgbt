@@ -31,7 +31,7 @@ const FieldListItem: React.FC<FieldListItemProps> = ({ index, handleDelete, chil
           </span>
         </button>
       </span>
-      <Card>
+      <Card className={className("w-100")}>
         <Card.Body>
           <span
             className={className(
@@ -109,7 +109,7 @@ export const FieldList: React.FC<FieldListProps> = ({
                       props={props}
                       key={fieldSpec.name}
                     >
-                      {fieldSpec.helpText}
+                      {index === 0 && fieldSpec.helpText}
                     </Field>
                   ))}
                 </FieldListItem>
