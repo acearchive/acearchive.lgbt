@@ -18,6 +18,18 @@
   border: 1px solid transparent;
 }
 
+.form-check-input {
+  background: $gray-100;
+}
+
+.form-check-input:not(:checked) {
+  outline: 1px solid $border-color;
+}
+
+.form-check-input:checked {
+  background-color: $primary !important;
+}
+
 input.form-control::placeholder {
   color: $gray-500;
 }
@@ -31,6 +43,19 @@ input.form-control::placeholder {
   background: $body-overlay-dark;
   border: 1px solid transparent;
   color: $gray-300;
+}
+
+[data-dark-mode] .form-check-input {
+  background: $body-overlay-dark;
+  color: $gray-300;
+}
+
+[data-dark-mode] .form-check-input:not(:checked) {
+  outline: 1px solid $border-dark;
+}
+
+[data-dark-mode] .form-check-input:checked {
+  background-color: $primary-dark !important;
 }
 
 [data-dark-mode] input.form-control::placeholder {

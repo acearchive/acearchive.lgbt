@@ -43,6 +43,7 @@ const ArtifactSubmitForm = () => {
               name="slug"
               label="URL Slug"
               inputType="text"
+              required={true}
               placeholder="orlando-the-asexual-manifesto"
               props={props}
             >
@@ -76,6 +77,7 @@ const ArtifactSubmitForm = () => {
               name="title"
               label="Title"
               inputType="text"
+              required={true}
               placeholder="*The Asexual Manifesto*"
               props={props}
             >
@@ -93,6 +95,7 @@ const ArtifactSubmitForm = () => {
               name="summary"
               label="Summary"
               inputType="text"
+              required={true}
               placeholder="A paper by the Asexual Caucus of the New York Radical Feminists"
               props={props}
             >
@@ -111,6 +114,7 @@ const ArtifactSubmitForm = () => {
               name="description"
               label="Description"
               inputType="text"
+              required={false}
               placeholder="A paper by the Asexual Caucus of the New York Radical Feminists in which Lisa Orlando argues…"
               props={props}
             >
@@ -123,11 +127,18 @@ const ArtifactSubmitForm = () => {
               label="Files"
               singularLabel="file"
               props={props}
+              initialValues={{
+                name: "",
+                fileName: "",
+                sourceUrl: "",
+                hidden: false,
+              }}
               fields={[
                 {
                   name: "name",
                   label: "Label",
                   inputType: "text",
+                  required: true,
                   placeholder: "Digital Scan",
                   helpText: (
                     <>
@@ -143,8 +154,9 @@ const ArtifactSubmitForm = () => {
                 },
                 {
                   name: "fileName",
-                  label: "File name",
+                  label: "File Name",
                   inputType: "text",
+                  required: true,
                   placeholder: "the-asexual-manifesto.pdf",
                   helpText: (
                     <>
@@ -152,13 +164,62 @@ const ArtifactSubmitForm = () => {
                       <p>
                         This should be all lowercase and use hyphens instead of spaces, and it
                         should always include an appropriate file extension. For complex use-cases,
-                        such as adding an HTML transcript with embedded images, file names can
-                        contain forward slashes.
+                        such as adding an HTML page which links to static assets like images, file
+                        names can contain forward slashes.
                       </p>
-
                       <p>
                         If you're updating an existing file, you should keep the existing file name
                         the same.
+                      </p>
+                    </>
+                  ),
+                },
+                {
+                  name: "sourceUrl",
+                  label: "File URL",
+                  inputType: "url",
+                  required: true,
+                  placeholder:
+                    "https://archive.org/download/asexualmanifestolisaorlando/Asexual-Manifesto-Lisa-Orlando.pdf",
+                  helpText: (
+                    <>
+                      <p>
+                        The URL where this file can be downloaded from. This must be a direct
+                        download link.
+                      </p>
+                      <p>
+                        If you want to upload a file which isn't already available on the web
+                        somewhere (i.e. you wrote a transcript or translation), you'll need to
+                        upload it somewhere where it has a public URL until this submission is
+                        approved.
+                      </p>
+                      <p>
+                        ⚠️ This file will be temporarily downloaded to your device when you click
+                        "Submit". Keep this in mind if the file is large and you're on a metered or
+                        particularly slow connection.
+                      </p>
+                    </>
+                  ),
+                },
+                {
+                  name: "hidden",
+                  label: "Hidden",
+                  inputType: "checkbox",
+                  required: false,
+                  helpText: (
+                    <>
+                      <p>
+                        If this is checked, this file won't appear in the list of files on the
+                        artifact page. You'll usually want to leave this unchecked.
+                      </p>
+                      <p>
+                        If you want to add an HTML page which links to static assets like images,
+                        you may want to show a link to the HTML file on the site but not the static
+                        assets it links to. This is a case where checking this box might be useful.
+                      </p>
+                      <p>
+                        ⚠️ All this option does is hide the link to the file on the website; the
+                        file is still publicly accessible to anyone on the internet.
                       </p>
                     </>
                   ),

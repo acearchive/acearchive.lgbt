@@ -66,6 +66,7 @@ export type FieldListItemSpec = {
   name: string;
   label: string;
   inputType: HTMLInputTypeAttribute;
+  required: boolean;
   placeholder?: string;
   helpText: React.ReactNode;
 };
@@ -75,11 +76,8 @@ export type FieldListProps = {
   label: string;
   singularLabel: string;
   props: FormikProps<Artifact>;
+  initialValues: Record<string, any>;
   fields: ReadonlyArray<FieldListItemSpec>;
-};
-
-const initialValues = {
-  name: "",
 };
 
 export const FieldList: React.FC<FieldListProps> = ({
@@ -87,6 +85,7 @@ export const FieldList: React.FC<FieldListProps> = ({
   label,
   singularLabel,
   props,
+  initialValues,
   fields,
   children,
 }: FieldListProps) => {
@@ -105,6 +104,7 @@ export const FieldList: React.FC<FieldListProps> = ({
                       name={`${name}.${index}.${fieldSpec.name}`}
                       label={fieldSpec.label}
                       inputType={fieldSpec.inputType}
+                      required={fieldSpec.required}
                       placeholder={fieldSpec.placeholder}
                       props={props}
                       key={fieldSpec.name}
