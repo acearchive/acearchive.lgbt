@@ -73,12 +73,7 @@
     "showdown": "^2.1.0",
     "shx": "^0.3.3",
     "stylelint": "^14.5.1",
-    "stylelint-config-standard": "^25.0.0"
-  },
-  "otherDependencies": {
-    "hugo": "0.100.1"
-  },
-  "dependencies": {
+    "stylelint-config-standard": "^25.0.0",
     "bootstrap": "^5.2.2",
     "classnames": "^2.3.2",
     "formik": "^2.2.9",
@@ -86,5 +81,8 @@
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
     "yup": "^0.32.11"
+  },
+  "otherDependencies": {
+    "hugo": "0.100.1"
   }
 }
