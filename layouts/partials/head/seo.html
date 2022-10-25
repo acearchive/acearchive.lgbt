@@ -21,7 +21,7 @@
     {{ .Site.Params.titleSeparator }}
     {{ .Site.Params.titleAddition }}
   </title>
-{{ else if eq .Section "archive" -}}
+{{ else if eq .Section "artifacts" -}}
   <title>
     {{ .Title | markdownify | plainify | htmlUnescape | safeHTML }}
     {{ .Site.Params.titleSeparator }}

@@ -1,5 +1,5 @@
 {{- $artifacts := dict }}
-{{- range $artifact := (.Site.GetPage "/content/archive/_index.md").Pages -}}
+{{- range $artifact := (.Site.GetPage "/content/artifacts/_index.md").Pages -}}
   {{- $artifacts = $artifacts | merge (dict $artifact.Params.slug $artifact.Params) -}}
 {{- end -}}
 
@@ -40,8 +40,8 @@
 {{ $js := $slice | resources.Concat "js/main.js" -}}
 
 {{ $loadReplayWeb := .Page.Scratch.Get "replayweb" }}
-{{ $loadArtifactForm := eq .Type "new-artifact" }}
-{{ $loadSearch := eq .Section "docs" "archive" "identities" "decades" "people" }}
+{{ $loadArtifactForm := eq .Type "artifact-form" }}
+{{ $loadSearch := eq .Section "docs" "archive" "artifacts" "identities" "decades" "people" }}
 
 {{ if eq (hugo.Environment) "development" -}}
   {{ if .Site.Params.options.bootStrapJs -}}

@@ -3,9 +3,10 @@ title: "Create an artifact"
 description: "Contribute an artifact to the archive"
 date: 2022-05-15T14:37:40-04:00
 images: []
-type: "new-artifact"
+type: "artifact-form"
 aliases:
   - "/docs/contributing/pull-request"
+  - "/new-artifact"
 ---
 
 If you would like to contribute content to Ace Archive, you can use this form to

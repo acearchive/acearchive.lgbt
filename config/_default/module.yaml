@@ -6,7 +6,7 @@ imports:
   path: "github.com/acearchive/hugo-artifacts"
   mounts:
     source: "artifacts"
-    target: "content/archive"
+    target: "content/artifacts"
 
 mounts:
   - source: "node_modules/@hyas/doks/archetypes"

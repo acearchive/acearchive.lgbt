@@ -93,7 +93,7 @@ function indexArchiveSearch(search, suggestions) {
     });
 
 
-    {{ $artifactList := (where .Site.Pages "Section" "archive") -}}
+    {{ $artifactList := (where .Site.RegularPages "Section" "artifacts") -}}
     {{ $artifactLen := (len $artifactList) -}}
 
     index.add(

@@ -73,7 +73,6 @@ permalinks:
   people: "/categories/people/:title/"
   identities: "/categories/identities/:title/"
   decades: "/categories/decades/:title/"
-  archive: "/artifacts/:filename/"
 
 minify:
   # Settings for the HTML minifier.

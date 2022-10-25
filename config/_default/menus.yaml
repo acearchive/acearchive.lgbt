@@ -6,7 +6,7 @@ main:
     url: "/docs/contributing/getting-started"
     weight: 20
   - name: "Archive"
-    url: "/archive/"
+    url: "/artifacts/"
     weight: 30
 
 docs:
@@ -19,11 +19,11 @@ docs:
     identifier: "contributing"
     weight: 20
 
-archive:
+artifacts:
   - name: "Browse"
     weight: 20
     identifier: "browse"
-    url: "/archive/"
+    url: "/artifacts/"
 
 social:
   - name: "Contact"

@@ -33,7 +33,7 @@ you'll enter all the information necessary to add an artifact to the archive.
 Once you complete the form, you'll be redirected to GitHub to submit your
 proposal for approval by a team member.
 
-{{< link-button path="new-artifact/index.md" >}}
+{{< link-button path="/new/artifact.md" >}}
 Add an artifact
 {{< /link-button >}}
 
