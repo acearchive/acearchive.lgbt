@@ -5,37 +5,46 @@ import Field from "./Field";
 
 import { schema } from "./schema";
 import FormButton from "./FormButton";
-import { useSavedFormValues } from "./storage";
+import { initialValues, useSavedFormValues, useSavedSubmissionData } from "./storage";
 import { FieldList } from "./FieldList";
+import { toSubmission } from "./api";
+import { artifactFormSubmitUrl } from "./submit";
 
 export const htmlFormId = "artifact-form";
 
 const ArtifactSubmitForm = () => {
   const [savedValues, setSavedValues] = useSavedFormValues();
+  const [submissionData, setSubmissionData] = useSavedSubmissionData();
 
   return (
     <Formik
       initialValues={savedValues}
       validationSchema={schema}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+      onSubmit={async (values) => {
+        setSubmissionData(await toSubmission(values));
+        alert("Submitted!");
       }}
       validateOnChange={true}
     >
       {(props) => {
-        const { handleSubmit, isSubmitting, resetForm } = props;
+        const { handleSubmit, handleChange, isSubmitting, resetForm, isValid, submitCount } = props;
 
         useEffect(() => {
           setSavedValues(props.values);
         }, [props.values, setSavedValues]);
 
         const handleReset = useCallback(() => {
-          setSavedValues({});
-          resetForm({ values: {} });
+          setSavedValues(initialValues);
+          resetForm({ values: initialValues });
         }, [setSavedValues]);
+
+        const onChange = useCallback(
+          (e: React.ChangeEvent) => {
+            setSubmissionData(undefined);
+            handleChange(e);
+          },
+          [setSubmissionData]
+        );
 
         return (
           <Form id={htmlFormId} onSubmit={handleSubmit}>
@@ -45,6 +54,7 @@ const ArtifactSubmitForm = () => {
               inputType="text"
               required={true}
               placeholder="orlando-the-asexual-manifesto"
+              handleChange={onChange}
               props={props}
             >
               <p>Every artifact in the repository has a URL like:</p>
@@ -79,6 +89,7 @@ const ArtifactSubmitForm = () => {
               inputType="text"
               required={true}
               placeholder="*The Asexual Manifesto*"
+              handleChange={onChange}
               props={props}
             >
               <p>The title of the artifact.</p>
@@ -97,6 +108,7 @@ const ArtifactSubmitForm = () => {
               inputType="text"
               required={true}
               placeholder="A paper by the Asexual Caucus of the New York Radical Feminists"
+              handleChange={onChange}
               props={props}
             >
               <p>
@@ -116,6 +128,7 @@ const ArtifactSubmitForm = () => {
               inputType="text"
               required={false}
               placeholder="A paper by the Asexual Caucus of the New York Radical Feminists in which Lisa Orlando argues…"
+              handleChange={onChange}
               props={props}
             >
               If you want to provide more context than you can fit in the summary, you can
@@ -126,6 +139,7 @@ const ArtifactSubmitForm = () => {
               name="files"
               label="Files"
               singularLabel="file"
+              handleChange={onChange}
               props={props}
               initialValues={{
                 name: "",
@@ -233,6 +247,7 @@ const ArtifactSubmitForm = () => {
               name="links"
               label="Links"
               singularLabel="link"
+              handleChange={onChange}
               props={props}
               initialValues={{
                 name: "",
@@ -281,6 +296,7 @@ const ArtifactSubmitForm = () => {
               inputType="text"
               required={false}
               placeholder="Lisa Orlando, Barbara Getz"
+              handleChange={onChange}
               props={props}
             >
               <>
@@ -304,6 +320,7 @@ const ArtifactSubmitForm = () => {
               inputType="text"
               required={false}
               placeholder="asexual, lesbian, non-binary"
+              handleChange={onChange}
               props={props}
             >
               <>
@@ -326,6 +343,7 @@ const ArtifactSubmitForm = () => {
               inputType="number"
               required={true}
               placeholder="1972"
+              handleChange={onChange}
               props={props}
             >
               <>
@@ -346,6 +364,7 @@ const ArtifactSubmitForm = () => {
               inputType="number"
               required={false}
               placeholder="1989"
+              handleChange={onChange}
               props={props}
             >
               <>
@@ -366,6 +385,7 @@ const ArtifactSubmitForm = () => {
               inputType="text"
               required={true}
               placeholder="1970, 1980"
+              handleChange={onChange}
               props={props}
             >
               <>
@@ -383,16 +403,41 @@ const ArtifactSubmitForm = () => {
             <Container fluid="md">
               <Row>
                 <Col>
-                  <FormButton
-                    kind="submit"
-                    label="Submit your proposal on GitHub"
-                    isDisabled={isSubmitting}
-                  />
+                  {submissionData === undefined ? (
+                    <FormButton
+                      kind="submit"
+                      id="form-button-submit"
+                      label="Submit"
+                      description="Submit your proposal"
+                      variant="primary"
+                      isDisabled={isSubmitting}
+                      errorMessage={
+                        submitCount > 0 && !isValid
+                          ? "Looks like there were some problems."
+                          : undefined
+                      }
+                    />
+                  ) : (
+                    <FormButton
+                      kind="button"
+                      id="form-button-pr"
+                      label="Open GitHub"
+                      description="Finish submitting your proposal on GitHub"
+                      variant="primary"
+                      isDisabled={isSubmitting}
+                      onClick={() => {
+                        window.open(artifactFormSubmitUrl(submissionData), "_blank");
+                      }}
+                    />
+                  )}
                 </Col>
                 <Col>
                   <FormButton
                     kind="reset"
-                    label="Start over"
+                    id="form-button-reset"
+                    label="Reset"
+                    description="Start over"
+                    variant="secondary"
                     isDisabled={isSubmitting}
                     onClick={handleReset}
                   />

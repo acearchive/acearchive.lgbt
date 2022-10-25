@@ -10,9 +10,10 @@ import Field from "./Field";
 type FieldListItemProps = {
   index: number;
   handleDelete: () => void;
+  children: React.ReactNode;
 };
 
-const FieldListItem: React.FC<FieldListItemProps> = ({ index, handleDelete, children }) => {
+const FieldListItem = ({ index, handleDelete, children }: FieldListItemProps) => {
   return (
     <fieldset form={htmlFormId} className={className("field-list-item")}>
       <legend className={className("visually-hidden")}>#{index + 1}</legend>
@@ -75,15 +76,18 @@ export type FieldListProps = {
   name: string;
   label: string;
   singularLabel: string;
+  handleChange: (e: React.ChangeEvent) => void;
   props: FormikProps<Artifact>;
   initialValues: Record<string, any>;
   fields: ReadonlyArray<FieldListItemSpec>;
+  children: React.ReactNode;
 };
 
-export const FieldList: React.FC<FieldListProps> = ({
+export const FieldList = ({
   name,
   label,
   singularLabel,
+  handleChange,
   props,
   initialValues,
   fields,
@@ -97,7 +101,7 @@ export const FieldList: React.FC<FieldListProps> = ({
           <div className={className("field-help", "form-text")}>{children}</div>
           <div id={`field-list-body-${name}`} className={className("field-list-body")}>
             {(getIn(values, name)?.length ?? 0) > 0 &&
-              getIn(values, name).map((_, index) => (
+              getIn(values, name).map((_: any, index: number) => (
                 <FieldListItem index={index} handleDelete={() => remove(index)} key={index}>
                   {fields.map((fieldSpec) => (
                     <Field
@@ -106,6 +110,7 @@ export const FieldList: React.FC<FieldListProps> = ({
                       inputType={fieldSpec.inputType}
                       required={fieldSpec.required}
                       placeholder={fieldSpec.placeholder}
+                      handleChange={handleChange}
                       props={props}
                       key={fieldSpec.name}
                     >

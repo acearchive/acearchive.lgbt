@@ -102,6 +102,10 @@ $tooltip-color: $body-color-dark;
 $tooltip-bg-dark: $body-bg;
 $tooltip-color-dark: $body-color;
 
+[data-dark-mode] .text-danger {
+  color: $danger-dark !important;
+}
+
 [data-dark-mode] .tooltip .tooltip-inner {
   background-color: $tooltip-bg-dark;
   color: $tooltip-color-dark;

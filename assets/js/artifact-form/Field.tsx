@@ -11,7 +11,9 @@ export type FieldProps = {
   inputType: HTMLInputTypeAttribute;
   required: boolean;
   placeholder?: string;
+  handleChange: (e: React.ChangeEvent) => void;
   props: FormikProps<Artifact>;
+  children: React.ReactNode;
 };
 
 const FormLabel = ({ label, required }: { label: string; required: boolean }) => {
@@ -23,19 +25,20 @@ const FormLabel = ({ label, required }: { label: string; required: boolean }) =>
       </>
     );
   } else {
-    return label;
+    return <>{label}</>;
   }
 };
 
-const Field: React.FC<FieldProps> = ({
+const Field = ({
   name,
   label,
   inputType,
   required,
   placeholder,
-  props: { touched, errors, values, handleChange, handleBlur },
+  handleChange,
+  props: { touched, errors, values, handleBlur },
   children,
-}) => {
+}: FieldProps) => {
   return (
     <div className={className("form-field")}>
       <Form.Label htmlFor={`field-input-${name}`}>
@@ -44,7 +47,7 @@ const Field: React.FC<FieldProps> = ({
       {inputType === "checkbox" ? (
         <Form.Check
           name={name}
-          value={getIn(values, name)}
+          value={getIn(values, name) ?? ""}
           id={`field-input-${name}`}
           aria-describedby={`field-help-${name} field-feedback-${name}`}
           onChange={handleChange}
@@ -56,7 +59,7 @@ const Field: React.FC<FieldProps> = ({
         <Form.Control
           type={inputType}
           name={name}
-          value={getIn(values, name)}
+          value={getIn(values, name) ?? ""}
           id={`field-input-${name}`}
           aria-describedby={`field-help-${name} field-feedback-${name}`}
           placeholder={placeholder}
