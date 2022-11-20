@@ -63,14 +63,14 @@ const FieldListItem = ({ index, handleDelete, children }: FieldListItemProps) =>
   );
 };
 
-export type FieldListItemSpec = {
+export interface FieldListItemSpec {
   name: string;
   label: string;
   inputType: HTMLInputTypeAttribute;
   required: boolean;
   placeholder?: string;
   helpText: React.ReactNode;
-};
+}
 
 export type FieldListProps = {
   name: string;

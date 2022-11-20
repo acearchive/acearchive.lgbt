@@ -50,7 +50,7 @@ export const schema = Yup.object({
           "This is not a valid file name"
         ),
       sourceUrl: Yup.string().label("File URL").required().trim().url(),
-      hidden: Yup.bool().label("Hidden"),
+      hidden: Yup.bool().label("Hidden").default(false),
     })
   ),
   links: Yup.array().of(

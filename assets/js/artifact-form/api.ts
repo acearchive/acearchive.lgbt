@@ -1,18 +1,10 @@
 import { Artifact } from "./schema";
-import { downloadAndVerify } from "./submit";
-import { create as newMultihash } from "multiformats/hashes/digest";
 
 const version = 1;
-
-const multihashCodes = {
-  sha2_512: 0x1340,
-} as const;
 
 export type ArtifactFileSubmission = Readonly<{
   name: string;
   fileName: string;
-  mediaType?: string;
-  multihash: string;
   sourceUrl: URL;
   hidden: boolean;
   aliases: ReadonlyArray<string>;
@@ -46,25 +38,13 @@ export const toSubmission = async (formData: Artifact): Promise<ArtifactSubmissi
   summary: formData.summary,
   description: formData.description,
   files: await Promise.all(
-    formData.files?.map(async (fileData) => {
-      const metadataResult = await downloadAndVerify(new URL(fileData.sourceUrl));
-
-      if (!metadataResult.isValid) {
-        throw new Error(
-          `downloading file returned ${metadataResult.statusCode}: ${fileData.sourceUrl}`
-        );
-      }
-
-      return {
-        name: fileData.name,
-        fileName: fileData.fileName,
-        mediaType: metadataResult.metadata.mediaType,
-        multihash: metadataResult.metadata.multihash,
-        sourceUrl: new URL(fileData.sourceUrl),
-        hidden: fileData.hidden,
-        aliases: [],
-      };
-    }) ?? []
+    formData.files?.map(async (fileData) => ({
+      name: fileData.name,
+      fileName: fileData.fileName,
+      sourceUrl: new URL(fileData.sourceUrl),
+      hidden: fileData.hidden,
+      aliases: [],
+    })) ?? []
   ),
   links:
     formData.links?.map((linkData) => ({

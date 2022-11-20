@@ -22,7 +22,6 @@ const ArtifactSubmitForm = () => {
       validationSchema={schema}
       onSubmit={async (values) => {
         setSubmissionData(await toSubmission(values));
-        alert("Submitted!");
       }}
       validateOnChange={true}
     >
@@ -206,11 +205,6 @@ const ArtifactSubmitForm = () => {
                         somewhere (i.e. you wrote a transcript or translation), you'll need to
                         upload it somewhere where it has a public URL until this submission is
                         approved.
-                      </p>
-                      <p>
-                        ⚠️ This file will be temporarily downloaded to your device when you click
-                        "Submit". Keep this in mind if the file is large and you're on a metered or
-                        particularly slow connection.
                       </p>
                     </>
                   ),
