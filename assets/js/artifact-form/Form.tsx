@@ -5,12 +5,18 @@ import Field from "./Field";
 
 import { schema } from "./schema";
 import FormButton from "./FormButton";
-import { emptyFormInput, useSavedFormValues, useSavedSubmissionData } from "./storage";
+import {
+  emptyFormInput,
+  useSavedArtifactSlug,
+  useSavedFormValues,
+  useSavedSubmissionData,
+} from "./storage";
 import { FieldList } from "./FieldList";
 import { currentArtifacts, toSubmission, toFormInput } from "./api";
 import { artifactFormSubmitUrl } from "./submit";
 
 export const htmlFormId = "artifact-form";
+const artifactEditSlugQueryParam = "artifact";
 
 const useQueryParams = (): URLSearchParams =>
   useMemo(() => new URLSearchParams(window.location.search), [window.location.search]);
@@ -18,17 +24,28 @@ const useQueryParams = (): URLSearchParams =>
 const ArtifactSubmitForm = () => {
   const [savedValues, setSavedValues] = useSavedFormValues();
   const [submissionData, setSubmissionData] = useSavedSubmissionData();
+  const [artifactSlugToEdit, setArtifactSlugToEdit] = useSavedArtifactSlug();
+
+  // The slug of the artifact that the user was previously editing, if any.
+  const prevArtifactSlugToEdit = useMemo(() => artifactSlugToEdit, []);
+
+  console.log(`prevArtifactSlugToEdit = ${prevArtifactSlugToEdit}`);
 
   const queryParams = useQueryParams();
 
-  const artifactToEdit = useMemo(() => {
-    const artifactSlugToEdit = queryParams.get("artifact") ?? undefined;
-    return artifactSlugToEdit === undefined ? undefined : currentArtifacts[artifactSlugToEdit];
+  useEffect(() => {
+    setArtifactSlugToEdit(queryParams.get(artifactEditSlugQueryParam) ?? undefined);
   }, [queryParams]);
 
-  console.log(artifactToEdit);
+  console.log(`artifactSlugToEdit = ${artifactSlugToEdit}`);
+
+  const artifactToEdit = useMemo(() => {
+    return artifactSlugToEdit === undefined ? undefined : currentArtifacts[artifactSlugToEdit];
+  }, [artifactSlugToEdit]);
 
   const isEditing = useMemo(() => artifactToEdit !== undefined, [artifactToEdit]);
+
+  console.log(artifactToEdit);
 
   return (
     <Formik
@@ -43,12 +60,19 @@ const ArtifactSubmitForm = () => {
         const { handleSubmit, handleChange, isSubmitting, resetForm, isValid, submitCount } = props;
 
         useEffect(() => {
-          if (artifactToEdit !== undefined) {
+          // If the user was sent here by an edit link (the query param is in
+          // the URL), then pre-populate the form with that artifact's current
+          // data.
+          //
+          // However, if the user starts editing an artifact and then reloads
+          // the page, we should not overwrite their changes with the current
+          // artifact state unless they start editing a different artifact.
+          if (artifactToEdit !== undefined && artifactSlugToEdit !== prevArtifactSlugToEdit) {
             const formInput = toFormInput(artifactToEdit);
             setSavedValues(formInput);
             resetForm({ values: formInput });
           }
-        }, [isEditing]);
+        }, [isEditing, artifactSlugToEdit, prevArtifactSlugToEdit]);
 
         useEffect(() => {
           setSavedValues(props.values);
@@ -57,6 +81,17 @@ const ArtifactSubmitForm = () => {
         const handleReset = useCallback(() => {
           setSavedValues(emptyFormInput);
           resetForm({ values: emptyFormInput });
+
+          // When the user resets the form, stop acting as if they're editing
+          // an existing artifact.
+          if (isEditing) {
+            setArtifactSlugToEdit(undefined);
+
+            // Remove the query param from the URL.
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.delete(artifactEditSlugQueryParam);
+            window.history.replaceState({}, "", newUrl);
+          }
         }, [setSavedValues]);
 
         const onChange = useCallback(

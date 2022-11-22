@@ -56,3 +56,6 @@ export const useSavedSubmissionData = (): [
   ArtifactSubmission | undefined,
   (submission: ArtifactSubmission | undefined) => void
 ] => useLocalStorageState<ArtifactSubmission>("new_artifact_form.current_submission");
+
+export const useSavedArtifactSlug = (): [string | undefined, (slug: string | undefined) => void] =>
+  useLocalStorageState<string>("new_artifact_form.edit_slug");
