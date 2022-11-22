@@ -5,7 +5,9 @@ import { Artifact } from "./schema";
 // Adapted from this tutorial:
 // https://frankmeszaros.medium.com/use-localstorage-and-formik-to-supercharge-your-form-experience-a175d68e5ecb
 
-export const useLocalStorageState = <T>(key: string): [T | undefined, (value: T) => void] => {
+export const useLocalStorageState = <T>(
+  key: string
+): [T | undefined, (value: T | undefined) => void] => {
   let currentLocalStorage: T | undefined;
 
   try {
@@ -18,7 +20,7 @@ export const useLocalStorageState = <T>(key: string): [T | undefined, (value: T)
   const [localStorageState, setLocalStorageState] = useState(currentLocalStorage);
 
   const handleUpdateLocalStorageState = useCallback(
-    (value: T) => {
+    (value: T | undefined) => {
       setLocalStorageState(value);
       localStorage.setItem(key, JSON.stringify(value));
     },
@@ -53,10 +55,4 @@ export const useSavedFormValues = (): [Artifact, (values: Artifact) => void] => 
 export const useSavedSubmissionData = (): [
   ArtifactSubmission | undefined,
   (submission: ArtifactSubmission | undefined) => void
-] => {
-  const [submissionData, setSubmissionData] = useLocalStorageState<ArtifactSubmission>(
-    "new_artifact_form.current_submission"
-  );
-
-  return [submissionData, (submission) => submission && setSubmissionData(submission)];
-};
+] => useLocalStorageState<ArtifactSubmission>("new_artifact_form.current_submission");
