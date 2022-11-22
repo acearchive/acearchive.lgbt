@@ -1,6 +1,6 @@
 ---
-title: "Create an artifact"
-description: "Contribute an artifact to the archive"
+title: "Submit an artifact"
+description: "Submit an artifact to the archive"
 date: 2022-05-15T14:37:40-04:00
 images: []
 type: "artifact-form"

@@ -4,7 +4,7 @@ import className from "classnames";
 import { PlusSquare, TrashIcon } from "./icons";
 import { Card } from "react-bootstrap";
 import { htmlFormId } from "./Form";
-import { Artifact } from "./schema";
+import { ArtifactFormInput } from "./schema";
 import Field from "./Field";
 
 type FieldListItemProps = {
@@ -77,7 +77,7 @@ export type FieldListProps = {
   label: string;
   singularLabel: string;
   handleChange: (e: React.ChangeEvent) => void;
-  props: FormikProps<Artifact>;
+  props: FormikProps<ArtifactFormInput>;
   initialValues: Record<string, any>;
   fields: ReadonlyArray<FieldListItemSpec>;
   children: React.ReactNode;

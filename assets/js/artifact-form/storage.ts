@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { ArtifactSubmission } from "./api";
-import { Artifact } from "./schema";
+import { ArtifactFormInput } from "./schema";
 
 // Adapted from this tutorial:
 // https://frankmeszaros.medium.com/use-localstorage-and-formik-to-supercharge-your-form-experience-a175d68e5ecb
@@ -30,7 +30,7 @@ export const useLocalStorageState = <T>(
   return [localStorageState, handleUpdateLocalStorageState];
 };
 
-export const initialValues: Artifact = {
+export const emptyFormInput: ArtifactFormInput = {
   slug: "",
   title: "",
   summary: "",
@@ -44,12 +44,12 @@ export const initialValues: Artifact = {
   decades: "",
 };
 
-export const useSavedFormValues = (): [Artifact, (values: Artifact) => void] => {
-  const [savedValues, setSavedValues] = useLocalStorageState<Artifact>(
+export const useSavedFormValues = (): [ArtifactFormInput, (values: ArtifactFormInput) => void] => {
+  const [savedValues, setSavedValues] = useLocalStorageState<ArtifactFormInput>(
     "new_artifact_form.initial_values"
   );
 
-  return [savedValues ?? initialValues, setSavedValues];
+  return [savedValues ?? emptyFormInput, setSavedValues];
 };
 
 export const useSavedSubmissionData = (): [

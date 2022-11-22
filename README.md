@@ -13,8 +13,8 @@ repositories:
 
 - [artifact-submissions](https://github.com/acearchive/artifact-submissions):
   This is where new artifacts are submitted for approval. The [artifact
-  submission form](https://acearchive.lgbt/new/artifact) on the site generates
-  a JSON file and prompts the user to open a PR to add it to this repo.
+  submission form](https://acearchive.lgbt/submit) on the site generates a JSON
+  file and prompts the user to open a PR to add it to this repo.
 - [artifact-submit-action](https://github.com/acearchive/artifact-submit-action):
   This is a GitHub Action which uploads submitted artifacts to the site once PRs
   are approved.

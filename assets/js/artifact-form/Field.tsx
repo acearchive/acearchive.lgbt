@@ -2,7 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import { HTMLInputTypeAttribute } from "react";
 import { FormikProps, ErrorMessage, getIn } from "formik";
-import { Artifact } from "./schema";
+import { ArtifactFormInput } from "./schema";
 import className from "classnames";
 
 export type FieldProps = {
@@ -12,7 +12,8 @@ export type FieldProps = {
   required: boolean;
   placeholder?: string;
   handleChange: (e: React.ChangeEvent) => void;
-  props: FormikProps<Artifact>;
+  props: FormikProps<ArtifactFormInput>;
+  disabled?: boolean;
   children: React.ReactNode;
 };
 
@@ -37,6 +38,7 @@ const Field = ({
   placeholder,
   handleChange,
   props: { touched, errors, values, handleBlur },
+  disabled,
   children,
 }: FieldProps) => {
   return (
@@ -47,6 +49,7 @@ const Field = ({
       {inputType === "checkbox" ? (
         <Form.Check
           name={name}
+          disabled={disabled}
           value={getIn(values, name) ?? ""}
           id={`field-input-${name}`}
           aria-describedby={`field-help-${name} field-feedback-${name}`}
@@ -59,6 +62,7 @@ const Field = ({
         <Form.Control
           type={inputType}
           name={name}
+          disabled={disabled}
           value={getIn(values, name) ?? ""}
           id={`field-input-${name}`}
           aria-describedby={`field-help-${name} field-feedback-${name}`}

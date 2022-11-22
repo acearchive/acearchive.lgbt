@@ -39,7 +39,7 @@ export const schema = Yup.object({
         .trim()
         .matches(noWhitespacePattern, ({ label }) => `${label} must not contain spaces`)
         .matches(
-          /^[a-z0-9.\/-]*$/,
+          /^[a-z0-9./-]*$/,
           ({ label }) =>
             `${label} can only contain lowercase letters, numbers, hyphens, and slashes`
         )
@@ -101,4 +101,4 @@ export const schema = Yup.object({
     ),
 });
 
-export type Artifact = Yup.InferType<typeof schema>;
+export type ArtifactFormInput = Yup.InferType<typeof schema>;

@@ -1,20 +1,34 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useMemo } from "react";
 import { Formik } from "formik";
 import { Form, Container, Row, Col } from "react-bootstrap";
 import Field from "./Field";
 
 import { schema } from "./schema";
 import FormButton from "./FormButton";
-import { initialValues, useSavedFormValues, useSavedSubmissionData } from "./storage";
+import { emptyFormInput, useSavedFormValues, useSavedSubmissionData } from "./storage";
 import { FieldList } from "./FieldList";
-import { toSubmission } from "./api";
+import { currentArtifacts, toSubmission, toFormInput } from "./api";
 import { artifactFormSubmitUrl } from "./submit";
 
 export const htmlFormId = "artifact-form";
 
+const useQueryParams = (): URLSearchParams =>
+  useMemo(() => new URLSearchParams(window.location.search), [window.location.search]);
+
 const ArtifactSubmitForm = () => {
   const [savedValues, setSavedValues] = useSavedFormValues();
   const [submissionData, setSubmissionData] = useSavedSubmissionData();
+
+  const queryParams = useQueryParams();
+
+  const artifactToEdit = useMemo(() => {
+    const artifactSlugToEdit = queryParams.get("artifact") ?? undefined;
+    return artifactSlugToEdit === undefined ? undefined : currentArtifacts[artifactSlugToEdit];
+  }, [queryParams]);
+
+  console.log(artifactToEdit);
+
+  const isEditing = useMemo(() => artifactToEdit !== undefined, [artifactToEdit]);
 
   return (
     <Formik
@@ -29,12 +43,20 @@ const ArtifactSubmitForm = () => {
         const { handleSubmit, handleChange, isSubmitting, resetForm, isValid, submitCount } = props;
 
         useEffect(() => {
+          if (artifactToEdit !== undefined) {
+            const formInput = toFormInput(artifactToEdit);
+            setSavedValues(formInput);
+            resetForm({ values: formInput });
+          }
+        }, [isEditing]);
+
+        useEffect(() => {
           setSavedValues(props.values);
         }, [props.values, setSavedValues]);
 
         const handleReset = useCallback(() => {
-          setSavedValues(initialValues);
-          resetForm({ values: initialValues });
+          setSavedValues(emptyFormInput);
+          resetForm({ values: emptyFormInput });
         }, [setSavedValues]);
 
         const onChange = useCallback(
@@ -51,6 +73,7 @@ const ArtifactSubmitForm = () => {
               name="slug"
               label="URL Slug"
               inputType="text"
+              disabled={isEditing}
               required={true}
               placeholder="orlando-the-asexual-manifesto"
               handleChange={onChange}
