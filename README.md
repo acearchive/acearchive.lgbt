@@ -13,11 +13,11 @@ repositories:
 
 - [artifact-submissions](https://github.com/acearchive/artifact-submissions):
   This is where new artifacts are submitted for approval. The [artifact
-  submission form](https://acearchive.lgbt/submit) on the site generates a JSON
+  submission form](https://acearchive.lgbt/submit/) on the site generates a JSON
   file and prompts the user to open a PR to add it to this repo.
 - [artifact-submit-action](https://github.com/acearchive/artifact-submit-action):
-  This is a GitHub Action which uploads submitted artifacts to the site once PRs
-  are approved.
+  This is a GitHub Action which uploads submitted artifacts to the site once
+  they're manaully approved.
 - [files-worker](https://github.com/acearchive/files-worker): This is a
   serverless function which serves artifact files.
 - [hugo-artifact-action](https://github.com/acearchive/hugo-artifact-action):
@@ -25,7 +25,7 @@ repositories:
   the static site generator.
 - [yahoo-groups-reader](https://github.com/acearchive/yahoo-groups-reader): This
   is a CLI tool for building a static site from a Yahoo Groups archive. This was
-  purpose-build for [Haven for the Human
+  purpose-built for [Haven for the Human
   Amoeba](https://acearchive.lgbt/artifact/haven-for-the-human-amoeba/).
 - [infra](https://github.com/acearchive/infra): This repo contains the Terraform
   config for the site's infrastructure.
