@@ -51,8 +51,14 @@ export const toSubmission = async (formData: Artifact): Promise<ArtifactSubmissi
       name: linkData.name,
       url: new URL(linkData.url),
     })) ?? [],
-  people: formData.people?.split(",")?.map((segment) => segment.trim()) ?? [],
-  identities: formData.identities?.split(",")?.map((segment) => segment.trim()) ?? [],
+  people:
+    formData.people === "" || formData.people === undefined
+      ? []
+      : formData.people.split(",")?.map((segment) => segment.trim()),
+  identities:
+    formData.identities === "" || formData.identities === undefined
+      ? []
+      : formData.identities.split(",")?.map((segment) => segment.trim()),
   fromYear: formData.fromYear,
   toYear: formData.toYear,
   decades: formData.decades?.split(",").map((segment) => parseInt(segment.trim(), 10)) ?? [],
