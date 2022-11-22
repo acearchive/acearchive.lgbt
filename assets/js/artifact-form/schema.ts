@@ -29,7 +29,19 @@ export const schema = Yup.object({
     ),
   title: Yup.string().label("Title").required().trim().max(100),
   summary: Yup.string().label("Summary").required().trim().max(150),
-  description: Yup.string().label("Description").trim().max(1000),
+  description: Yup.string()
+    .label("Description")
+    .trim()
+    .max(1000)
+    .when("summary", {
+      is: undefined,
+      then: (schema) => schema,
+      otherwise: (schema) =>
+        schema.notOneOf(
+          [Yup.ref("summary")],
+          "This is exactly the same as the Summary. You can leave this blank instead and the Summary will be used in both places automatically."
+        ),
+    }),
   files: Yup.array().of(
     Yup.object({
       name: Yup.string().label("Label").required().trim().max(250),
