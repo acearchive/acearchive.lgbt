@@ -5,21 +5,20 @@ import { Artifact } from "./schema";
 // Adapted from this tutorial:
 // https://frankmeszaros.medium.com/use-localstorage-and-formik-to-supercharge-your-form-experience-a175d68e5ecb
 
-export const useLocalStorageState = (key: string, value: any): [any, (value: any) => void] => {
-  let currentLocalStorage: any;
+export const useLocalStorageState = <T>(key: string): [T | undefined, (value: T) => void] => {
+  let currentLocalStorage: T | undefined;
 
   try {
-    currentLocalStorage = JSON.parse(localStorage.getItem(key) ?? "null");
+    const localStorageItem = localStorage.getItem(key);
+    currentLocalStorage = localStorageItem === null ? undefined : JSON.parse(localStorageItem);
   } catch (e) {
-    currentLocalStorage = null;
+    currentLocalStorage = undefined;
   }
 
-  const initialValue = currentLocalStorage === null ? value : currentLocalStorage;
-
-  const [localStorageState, setLocalStorageState] = useState(initialValue);
+  const [localStorageState, setLocalStorageState] = useState(currentLocalStorage);
 
   const handleUpdateLocalStorageState = useCallback(
-    (value: any) => {
+    (value: T) => {
       setLocalStorageState(value);
       localStorage.setItem(key, JSON.stringify(value));
     },
@@ -39,21 +38,25 @@ export const initialValues: Artifact = {
   people: "",
   identities: "",
   fromYear: 0,
-  toYear: 0,
+  toYear: undefined,
   decades: "",
 };
 
-export const useSavedFormValues = (): [Artifact, (values: Artifact) => void] =>
-  useLocalStorageState("new-artifact-form.initial-values", initialValues);
+export const useSavedFormValues = (): [Artifact, (values: Artifact) => void] => {
+  const [savedValues, setSavedValues] = useLocalStorageState<Artifact>(
+    "new_artifact_form.initial_values"
+  );
+
+  return [savedValues ?? initialValues, setSavedValues];
+};
 
 export const useSavedSubmissionData = (): [
   ArtifactSubmission | undefined,
   (submission: ArtifactSubmission | undefined) => void
 ] => {
-  const [submissionData, setSubmissionData] = useLocalStorageState(
-    "new-artifact-form.current-submission",
-    null
+  const [submissionData, setSubmissionData] = useLocalStorageState<ArtifactSubmission>(
+    "new_artifact_form.current_submission"
   );
 
-  return [submissionData ?? undefined, (submission) => setSubmissionData(submission ?? null)];
+  return [submissionData, (submission) => submission && setSubmissionData(submission)];
 };
