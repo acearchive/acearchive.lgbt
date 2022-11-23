@@ -23,5 +23,5 @@ internet.
 
 If you want a simpler option for contributing content to the archive, you can
 also [fill out this
-form](https://github.com/acearchive/artifact-submissions/issues/new?labels=artifact&template=artifact.yml)
+form](https://github.com/acearchive/artifact-submissions/issues/new?labels=proposal&template=proposal.yaml)
 to make a suggestion.

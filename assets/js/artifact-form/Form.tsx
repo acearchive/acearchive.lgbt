@@ -29,23 +29,17 @@ const ArtifactSubmitForm = () => {
   // The slug of the artifact that the user was previously editing, if any.
   const prevArtifactSlugToEdit = useMemo(() => artifactSlugToEdit, []);
 
-  console.log(`prevArtifactSlugToEdit = ${prevArtifactSlugToEdit}`);
-
   const queryParams = useQueryParams();
 
   useEffect(() => {
     setArtifactSlugToEdit(queryParams.get(artifactEditSlugQueryParam) ?? undefined);
   }, [queryParams]);
 
-  console.log(`artifactSlugToEdit = ${artifactSlugToEdit}`);
-
   const artifactToEdit = useMemo(() => {
     return artifactSlugToEdit === undefined ? undefined : currentArtifacts[artifactSlugToEdit];
   }, [artifactSlugToEdit]);
 
   const isEditing = useMemo(() => artifactToEdit !== undefined, [artifactToEdit]);
-
-  console.log(artifactToEdit);
 
   return (
     <Formik
@@ -478,7 +472,7 @@ const ArtifactSubmitForm = () => {
                       variant="primary"
                       isDisabled={isSubmitting}
                       onClick={() => {
-                        window.open(artifactFormSubmitUrl(submissionData), "_blank");
+                        window.open(artifactFormSubmitUrl(submissionData, isEditing), "_blank");
                       }}
                     />
                   )}

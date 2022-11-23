@@ -21,7 +21,7 @@ The simplest way to contribute is to suggest content to be added to the archive.
 All you have to do is fill out a form and answer a few questions. This requires
 a GitHub account, which is free.
 
-{{< link-button url="https://github.com/acearchive/artifact-submissions/issues/new?labels=artifact&template=artifact.yml" >}}
+{{< link-button url="https://github.com/acearchive/artifact-submissions/issues/new?labels=proposal&template=proposal.yaml" >}}
 Propose content
 {{< /link-button >}}
 

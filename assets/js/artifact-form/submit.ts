@@ -11,26 +11,36 @@ const buildUrl = (path: string, queryParams: Record<string, string>) => {
   return new URL(`${strippedPath}/?${paramString}`);
 };
 
-const githubPrSubmitUrl = ({
-  fileName,
-  content,
+const githubOpenIssueUrl = ({
   githubUser,
   githubRepo,
+  title,
+  labels,
+  template,
+  fields,
 }: {
-  fileName: string;
-  content: string;
   githubUser: string;
   githubRepo: string;
+  title: string;
+  labels: ReadonlyArray<string>;
+  template: string;
+  fields?: Record<string, string>;
 }): URL =>
-  buildUrl(`https://github.com/${githubUser}/${githubRepo}/new/main`, {
-    filename: fileName,
-    value: content,
+  buildUrl(`https://github.com/${githubUser}/${githubRepo}/issues/new`, {
+    ...fields,
+    title: title,
+    labels: labels.join(","),
+    template: template,
   });
 
-export const artifactFormSubmitUrl = (submission: ArtifactSubmission) =>
-  githubPrSubmitUrl({
-    fileName: `submissions/${submission.slug}.json`,
+export const artifactFormSubmitUrl = (submission: ArtifactSubmission, isEditing: boolean): URL =>
+  githubOpenIssueUrl({
     githubUser: "acearchive",
     githubRepo: "artifact-submissions",
-    content: JSON.stringify(submission, null, 2),
+    title: `[Submission] ${submission.title}`,
+    labels: isEditing ? ["submission", "edit"] : ["submission"],
+    template: "submission.yaml",
+    fields: {
+      artifact: JSON.stringify(submission, null, 2),
+    },
   });
