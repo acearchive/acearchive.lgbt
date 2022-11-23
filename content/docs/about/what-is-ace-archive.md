@@ -7,6 +7,7 @@ menu:
     parent: "about"
 weight: 101
 aliases:
+  - "/about"
   - "/docs/about/about-the-technology"
   - "/docs/about/linking-to-content"
 ---

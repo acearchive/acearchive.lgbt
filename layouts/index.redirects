@@ -9,4 +9,9 @@
 {{ end -}}
 {{- end }}
 
+{{- range .Site.Params.redirects -}}
+{{ .from | path.Clean }} {{ .to }} {{ .status }}
+{{ .from | path.Clean | printf "%s/" }} {{ .to }} {{ .status }}
+{{ end -}}
+
 /artifact/* /artifacts/:splat 301
