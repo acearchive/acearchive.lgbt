@@ -44,7 +44,6 @@
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^4.0",
     "@github/clipboard-copy-element": "^1.1.2",
     "@hyas/doks": "^0.3",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
@@ -67,10 +66,7 @@
     "lazysizes": "^5.3",
     "markdownlint-cli": "^0.31.1",
     "mime": "^3.0.0",
-    "postcss": "^8.3",
-    "postcss-cli": "^9.1",
     "prettier": "^2.6.2",
-    "purgecss-whitelister": "^2.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",

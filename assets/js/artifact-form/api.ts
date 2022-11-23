@@ -14,6 +14,7 @@ export type ArtifactFile = Readonly<{
   mediaType?: string;
   hash: string;
   hashAlgorithm: string;
+  multihash: string;
   storageKey: string;
   url: string;
   hidden: boolean;
@@ -53,6 +54,8 @@ export type HugoArtifact = {
 export type ArtifactFileSubmission = Readonly<{
   name: string;
   fileName: string;
+  mediaType?: string;
+  multihash?: string;
   sourceUrl: URL;
   hidden: boolean;
   aliases: ReadonlyArray<string>;
@@ -93,15 +96,26 @@ export const toSubmission = async (
   summary: formData.summary,
   description: formData.description,
   files: await Promise.all(
-    formData.files?.map(async (fileData) => ({
-      name: fileData.name,
-      fileName: fileData.fileName,
-      sourceUrl: new URL(fileData.sourceUrl),
-      hidden: fileData.hidden,
-      aliases:
-        baseArtifact?.files?.find((baseFile) => baseFile.fileName === fileData.fileName)?.aliases ??
-        [],
-    })) ?? []
+    formData.files?.map(async (fileData) => {
+      const baseArtifactFile =
+        baseArtifact === undefined
+          ? undefined
+          : baseArtifact?.files?.find((baseFile) => baseFile.fileName === fileData.fileName);
+
+      console.log(baseArtifactFile);
+      console.log(baseArtifactFile?.multihash);
+      console.log(baseArtifactFile?.mediaType);
+
+      return {
+        name: fileData.name,
+        fileName: fileData.fileName,
+        sourceUrl: new URL(fileData.sourceUrl),
+        hidden: fileData.hidden,
+        aliases: baseArtifactFile?.aliases ?? [],
+        multihash: baseArtifactFile?.multihash,
+        mediaType: baseArtifactFile?.mediaType,
+      };
+    }) ?? []
   ),
   links:
     formData.links?.map((linkData) => ({

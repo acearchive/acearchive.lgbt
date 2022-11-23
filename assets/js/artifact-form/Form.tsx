@@ -46,7 +46,7 @@ const ArtifactSubmitForm = () => {
       initialValues={savedValues}
       validationSchema={schema}
       onSubmit={async (values) => {
-        setSubmissionData(await toSubmission(values));
+        setSubmissionData(await toSubmission(values, artifactToEdit));
       }}
       validateOnChange={true}
     >
