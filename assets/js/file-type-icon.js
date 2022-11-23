@@ -68,8 +68,20 @@ mime.define({
 class FileTypeIcon extends HTMLElement {
   connectedCallback() {
     const filename = this.getAttribute("filename") || "";
-    const mediaType =
-      this.getAttribute("media-type") || mime.getType(filename) || "application/octet-stream";
+    const mediaTypeFromFileName = mime.getType(filename);
+    const mediaTypeFromMetadata = this.getAttribute("media-type");
+
+    let mediaType;
+
+    if (mediaTypeFromMetadata === "text/plain" && mediaTypeFromFileName !== "text/plain") {
+      // Some plain-text formats may be served as `Content-Type: text/plain`,
+      // when their file extension provides more specific information. This is
+      // typically the case with BibTex files given the lack of standardized
+      // IANA media type.
+      mediaType = mediaTypeFromFileName;
+    } else {
+      mediaType = mediaTypeFromMetadata ?? mediaTypeFromFileName ?? "application/octet-stream";
+    }
 
     let extension = mime.getExtension(mediaType);
     if (mediaType === "application/octet-stream") {
