@@ -83,10 +83,13 @@ class FileTypeIcon extends HTMLElement {
       mediaType = mediaTypeFromMetadata ?? mediaTypeFromFileName ?? "application/octet-stream";
     }
 
-    let extension = mime.getExtension(mediaType);
-    if (mediaType === "application/octet-stream") {
-      extension = filename.split(".").pop();
-    }
+    const extensionFromFileName = filename.split(".").pop();
+    const extensionFromMediaType = mime.getExtension(mediaType);
+
+    const extension =
+      mediaType === "application/octet-stream"
+        ? extensionFromFileName
+        : extensionFromMediaType ?? extensionFromFileName;
 
     let icon;
     let title;
