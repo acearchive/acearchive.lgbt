@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { ArtifactSubmission } from "./api";
 import { ArtifactSchema } from "./schema";
 
@@ -57,14 +57,48 @@ export const emptyFormInput: ArtifactFormData = {
 export const useSavedFormValues = (): [
   ArtifactFormData | undefined,
   (values: ArtifactFormData) => void
-] => {
-  return useLocalStorageState<ArtifactFormData>("new_artifact_form.initial_values");
-};
+] => useLocalStorageState<ArtifactFormData>("new_artifact_form.initial_values");
 
 export const useSavedSubmissionData = (): [
   ArtifactSubmission | undefined,
   (submission: ArtifactSubmission | undefined) => void
 ] => useLocalStorageState<ArtifactSubmission>("new_artifact_form.current_submission");
 
-export const useSavedArtifactSlug = (): [string | undefined, (slug: string | undefined) => void] =>
-  useLocalStorageState<string>("new_artifact_form.edit_slug");
+const artifactEditSlugQueryParam = "artifact";
+
+export const useArtifactSlug = (): {
+  artifactSlug: string | undefined;
+  artifactSlugHasChanged: boolean;
+  clearArtifactSlug: () => void;
+} => {
+  const [savedArtifactSlug, setSavedArtifactSlug] = useLocalStorageState<string>(
+    "new_artifact_form.edit_slug"
+  );
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const prevArtifactSlug = useMemo(() => savedArtifactSlug, []);
+
+  useEffect(() => {
+    setSavedArtifactSlug(queryParams.get(artifactEditSlugQueryParam) ?? undefined);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const queryParams = useMemo(() => new URLSearchParams(window.location.search), []);
+
+  const clearArtifactSlug = useCallback(() => {
+    setSavedArtifactSlug(undefined);
+
+    queryParams.delete(artifactEditSlugQueryParam);
+
+    const newUrl = new URL(window.location.href);
+    newUrl.search = `?${queryParams.toString()}`;
+    console.log(newUrl.toString());
+    window.history.replaceState({}, "", newUrl);
+  }, [queryParams, setSavedArtifactSlug]);
+
+  return {
+    artifactSlug: savedArtifactSlug,
+    artifactSlugHasChanged: savedArtifactSlug !== prevArtifactSlug,
+    clearArtifactSlug,
+  };
+};

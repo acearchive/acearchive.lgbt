@@ -5,7 +5,7 @@ import className from "classnames";
 export type FormButtonType = "submit" | "button" | "reset";
 export type FormButtonVariant = "primary" | "secondary";
 
-export default ({
+export const FormButton = ({
   kind,
   id,
   label,
