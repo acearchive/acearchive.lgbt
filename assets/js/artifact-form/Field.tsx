@@ -2,8 +2,8 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import { HTMLInputTypeAttribute } from "react";
 import { FormikProps, ErrorMessage, getIn } from "formik";
-import { ArtifactFormInput } from "./schema";
 import className from "classnames";
+import { ArtifactFormData } from "./storage";
 
 export type FieldProps = {
   name: string;
@@ -12,7 +12,7 @@ export type FieldProps = {
   required: boolean;
   placeholder?: string;
   handleChange: (e: React.ChangeEvent) => void;
-  props: FormikProps<ArtifactFormInput>;
+  props: FormikProps<ArtifactFormData>;
   disabled?: boolean;
   children: React.ReactNode;
 };

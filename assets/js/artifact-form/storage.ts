@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { ArtifactSubmission } from "./api";
-import { ArtifactFormInput } from "./schema";
+import { ArtifactSchema } from "./schema";
 
 // Adapted from this tutorial:
 // https://frankmeszaros.medium.com/use-localstorage-and-formik-to-supercharge-your-form-experience-a175d68e5ecb
@@ -30,7 +30,17 @@ export const useLocalStorageState = <T>(
   return [localStorageState, handleUpdateLocalStorageState];
 };
 
-export const emptyFormInput: ArtifactFormInput = {
+type FormData<T> = {
+  [P in keyof T]: NonNullable<T[P]> extends Array<any>
+    ? Array<FormData<NonNullable<T[P]>[number]>>
+    : T[P] extends boolean
+    ? boolean
+    : string;
+};
+
+export type ArtifactFormData = FormData<ArtifactSchema>;
+
+export const emptyFormInput: ArtifactFormData = {
   slug: "",
   title: "",
   summary: "",
@@ -39,17 +49,16 @@ export const emptyFormInput: ArtifactFormInput = {
   links: [],
   people: "",
   identities: "",
-  fromYear: 0,
-  toYear: undefined,
+  fromYear: "",
+  toYear: "",
   decades: "",
 };
 
-export const useSavedFormValues = (): [ArtifactFormInput, (values: ArtifactFormInput) => void] => {
-  const [savedValues, setSavedValues] = useLocalStorageState<ArtifactFormInput>(
-    "new_artifact_form.initial_values"
-  );
-
-  return [savedValues ?? emptyFormInput, setSavedValues];
+export const useSavedFormValues = (): [
+  ArtifactFormData | undefined,
+  (values: ArtifactFormData) => void
+] => {
+  return useLocalStorageState<ArtifactFormData>("new_artifact_form.initial_values");
 };
 
 export const useSavedSubmissionData = (): [

@@ -113,4 +113,4 @@ export const schema = Yup.object({
     ),
 });
 
-export type ArtifactFormInput = Yup.InferType<typeof schema>;
+export type ArtifactSchema = Yup.InferType<typeof schema>;

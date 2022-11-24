@@ -1,5 +1,5 @@
-import { ArtifactFormInput } from "./schema";
 import { artifacts as rawCurrentArtifacts } from "@params";
+import { ArtifactFormData } from "./storage";
 
 const version = 1;
 
@@ -87,14 +87,14 @@ export type ArtifactSubmission = Readonly<{
 // artifact and added to the submission, since they currently can't be set via
 // the HTML form.
 export const toSubmission = async (
-  formData: ArtifactFormInput,
+  formData: ArtifactFormData,
   baseArtifact?: HugoArtifact
 ): Promise<ArtifactSubmission> => ({
   version: version,
   slug: formData.slug,
   title: formData.title,
   summary: formData.summary,
-  description: formData.description,
+  description: formData.description === "" ? undefined : formData.description,
   files: await Promise.all(
     formData.files?.map(async (fileData) => {
       const baseArtifactFile =
@@ -130,19 +130,19 @@ export const toSubmission = async (
     formData.identities === "" || formData.identities === undefined
       ? []
       : formData.identities.split(",")?.map((segment) => segment.trim()),
-  fromYear: formData.fromYear,
-  toYear: formData.toYear,
+  fromYear: parseInt(formData.fromYear, 10),
+  toYear: formData.toYear === "" ? undefined : parseInt(formData.toYear, 10),
   decades: formData.decades?.split(",").map((segment) => parseInt(segment.trim(), 10)) ?? [],
   aliases: baseArtifact?.aliases ?? [],
 });
 
 // This converts an existing artifact to the necessary shape to import it into
 // the HTML form to support editing existing artifacts.
-export const toFormInput = (artifact: HugoArtifact): ArtifactFormInput => ({
+export const toFormInput = (artifact: HugoArtifact): ArtifactFormData => ({
   slug: artifact.slug,
   title: artifact.title,
   summary: artifact.summary,
-  description: artifact.description,
+  description: artifact.description === undefined ? "" : artifact.description,
   files: artifact.files.map((file) => ({
     name: file.name,
     fileName: file.fileName,
@@ -155,8 +155,8 @@ export const toFormInput = (artifact: HugoArtifact): ArtifactFormInput => ({
   })),
   people: artifact.people.join(", "),
   identities: artifact.identities.join(", "),
-  fromYear: artifact.fromyear,
-  toYear: artifact.toyear,
+  fromYear: artifact.fromyear.toString(10),
+  toYear: artifact.toyear?.toString(10) ?? "",
   decades: artifact.decades.map((decade) => decade.toString(10)).join(", "),
 });
 

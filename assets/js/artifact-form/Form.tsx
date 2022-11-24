@@ -43,7 +43,7 @@ const ArtifactSubmitForm = () => {
 
   return (
     <Formik
-      initialValues={savedValues}
+      initialValues={savedValues ?? emptyFormInput}
       validationSchema={schema}
       onSubmit={async (values) => {
         setSubmissionData(await toSubmission(values, artifactToEdit));
@@ -74,6 +74,7 @@ const ArtifactSubmitForm = () => {
 
         const handleReset = useCallback(() => {
           setSavedValues(emptyFormInput);
+          setSubmissionData(undefined);
           resetForm({ values: emptyFormInput });
 
           // When the user resets the form, stop acting as if they're editing
