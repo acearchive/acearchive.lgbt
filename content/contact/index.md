@@ -13,6 +13,6 @@ If you want to suggest content to be added to the archive, [read our
 contributing documentation]({{< ref "docs/contributing/getting-started.md"
 >}}).
 
-If you want to contact us for any other reason, you can email:
+If you want to contact us for any reason, you can email:
 
 <contact@acearchive.lgbt>

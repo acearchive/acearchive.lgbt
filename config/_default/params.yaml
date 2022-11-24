@@ -8,8 +8,8 @@ maxPeoplePerCard: 4
 # Homepage
 title: "Ace Archive"
 titleSeparator: "-"
-titleAddition: "Preserving asexual history"
-description: "Ace Archive is a curated online archive for preserving asexual history."
+titleAddition: "Preserving queer history"
+description: "Ace Archive is a curated online archive for preserving queer history."
 
 # Open Graph
 images: ["images/logo-card.webp"]
