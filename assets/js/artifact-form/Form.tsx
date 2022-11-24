@@ -109,30 +109,51 @@ const ArtifactSubmitForm = () => {
               handleChange={onChange}
               props={props}
             >
-              <p>Every artifact in the repository has a URL like:</p>
-              <p>
-                <a href="https://acearchive.lgbt/artifact/orlando-the-asexual-manifesto">
-                  https://acearchive.lgbt/artifact/orlando-the-asexual-manifesto
-                </a>
-              </p>
-              <p>
-                When you add a new artifact, you need to choose a URL slug for it, which is the part
-                after the last <code>/</code>.
-              </p>
-              <p>
-                A URL slug should always be lowercase and use hyphens to separate words, and it will
-                generally follow the format <code>author-title</code>. If the author has a first and
-                last name (i.e. isn't a handle or username), you can just use the last name. If the
-                title of the work is long, you can use a shortened version of it. If there is no
-                obvious author associated with the work, you can just use the title.
-              </p>
-              <p>
-                If the combination of the author and the title of the work is ambiguous, (such as a
-                forum thread where the title of the thread might just be "asexuality"), then you can
-                provide additional context like <code>context-author-title</code>. For an AVEN forum
-                thread by "coolasexualperson" called "romance", the URL slug might be
-                <code>aven-forums-coolasexualperson-romance</code>.
-              </p>
+              {isEditing ? (
+                <>
+                  <p>You are currently editing an existing artifact.</p>
+                  <p>
+                    Want to submit a new artifact instead? Press the "Reset" button at the bottom of
+                    this form.
+                  </p>
+                  <p>
+                    Think this URL slug should be changed?{" "}
+                    <a href="https://github.com/acearchive/acearchive.lgbt/issues/new">
+                      Open an issue
+                    </a>
+                    .
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>Every artifact in the repository has a URL like:</p>
+                  <p>
+                    <a href="https://acearchive.lgbt/artifact/orlando-the-asexual-manifesto">
+                      https://acearchive.lgbt/artifact/orlando-the-asexual-manifesto
+                    </a>
+                  </p>
+                  <p>
+                    When you add a new artifact, you need to choose a URL slug for it, which is the
+                    part after the last <code>/</code>.
+                  </p>
+                  <p>
+                    A URL slug should always be lowercase and use hyphens to separate words, and it
+                    will generally follow the format <code>author-title</code>. If the author has a
+                    first and last name (i.e. isn't a handle or username), you can just use the last
+                    name. If the title of the work is long, you can use a shortened version of it.
+                    If there is no obvious author associated with the work, you can just use the
+                    title.
+                  </p>
+                  <p>
+                    If the combination of the author and the title of the work is ambiguous, (such
+                    as a forum thread where the title of the thread might just be "asexuality"),
+                    then you can provide additional context like <code>context-author-title</code>.
+                    For an AVEN forum thread by "coolasexualperson" called "romance", the URL slug
+                    might be
+                    <code>aven-forums-coolasexualperson-romance</code>.
+                  </p>
+                </>
+              )}
             </Field>
 
             <Field
