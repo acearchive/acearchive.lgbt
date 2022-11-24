@@ -50,7 +50,7 @@ const Field = ({
         <Form.Check
           name={name}
           disabled={disabled}
-          value={getIn(values, name) ?? ""}
+          checked={getIn(values, name) ?? false}
           id={`field-input-${name}`}
           aria-describedby={`field-help-${name} field-feedback-${name}`}
           onChange={handleChange}
