@@ -1,7 +1,8 @@
-<table class="table table-hover" id="artifact-files-table">
+<table class="table" id="artifact-files-table">
   <thead>
     <th class="w-25" scope="col">Type</th>
     <th scope="col">File</th>
+    <th scope="col">Language</th>
   </thead>
   <tbody>
     {{ range $file := .Params.files -}}
@@ -19,7 +20,10 @@
           {{- $prettyUrl = strings.TrimSuffix "/index.html" $file.url | printf "%s/" -}}
         {{- end -}}
 
-        <a class="me-1 float-start" href="{{ $prettyUrl }}">{{ $file.name }}</a>
+        <a class="me-1 float-start" href="{{ $prettyUrl }}" hreflang="{{ $file.lang }}">{{ $file.name }}</a>
+      </td>
+      <td>
+        <lang-name code="{{ $file.lang }}"/>
       </td>
     </tr>
     {{- end -}}

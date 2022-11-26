@@ -1,3 +1,15 @@
 #artifact-files-table tbody td {
   vertical-align: middle;
 }
+
+#artifact-files-table lang-name {
+  @extend .badge;
+  font-size: $font-size-sm;
+  background-color: $gray-100;
+  color: $body-color;
+}
+
+[data-dark-mode] #artifact-files-table lang-name {
+  background-color: $body-overlay-dark;
+  color: $body-color-dark;
+}
