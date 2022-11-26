@@ -1,8 +1,18 @@
+{{- $displayLangColumn := false -}}
+
+{{- range $file := .Params.files -}}
+  {{- if $file.lang -}}
+    {{- $displayLangColumn = true -}}
+  {{- end -}}
+{{- end -}}
+
 <table class="table" id="artifact-files-table">
   <thead>
     <th class="w-25" scope="col">Type</th>
     <th scope="col">File</th>
+    {{ if $displayLangColumn -}}
     <th scope="col">Language</th>
+    {{- end }}
   </thead>
   <tbody>
     {{ range $file := .Params.files -}}
@@ -22,9 +32,13 @@
 
         <a class="me-1 float-start" href="{{ $prettyUrl }}" hreflang="{{ $file.lang }}">{{ $file.name }}</a>
       </td>
+      {{ if $displayLangColumn -}}
       <td>
+        {{ if $file.lang -}}
         <lang-name code="{{ $file.lang }}"/>
+        {{- end }}
       </td>
+      {{- end }}
     </tr>
     {{- end -}}
     {{ end -}}

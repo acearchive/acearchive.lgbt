@@ -1,10 +1,10 @@
-import React, { HTMLInputTypeAttribute } from "react";
+import React from "react";
 import { getIn, FieldArray, FormikProps } from "formik";
 import className from "classnames";
 import { PlusSquare, TrashIcon } from "./icons";
 import { Card } from "react-bootstrap";
 import { htmlFormId } from "./Form";
-import Field from "./Field";
+import Field, { InputType } from "./Field";
 import { ArtifactFormData } from "./storage";
 
 type FieldListItemProps = {
@@ -63,12 +63,13 @@ const FieldListItem = ({ index, handleDelete, children }: FieldListItemProps) =>
   );
 };
 
-export interface FieldListItemSpec {
+export interface FieldListItemSpec<T extends InputType> {
   name: string;
   label: string;
-  inputType: HTMLInputTypeAttribute;
+  inputType: InputType;
   required: boolean;
   placeholder?: string;
+  options: T extends "select" ? ReadonlyArray<SelectOption> : undefined;
   helpText: React.ReactNode;
 }
 
@@ -79,7 +80,7 @@ export type FieldListProps = {
   handleChange: (e: React.ChangeEvent) => void;
   props: FormikProps<ArtifactFormData>;
   initialValues: Record<string, any>;
-  fields: ReadonlyArray<FieldListItemSpec>;
+  fields: ReadonlyArray<FieldListItemSpec<InputType>>;
   children: React.ReactNode;
 };
 
@@ -110,6 +111,7 @@ export const FieldList = ({
                       inputType={fieldSpec.inputType}
                       required={fieldSpec.required}
                       placeholder={fieldSpec.placeholder}
+                      options={fieldSpec.options}
                       handleChange={handleChange}
                       props={props}
                       key={fieldSpec.name}

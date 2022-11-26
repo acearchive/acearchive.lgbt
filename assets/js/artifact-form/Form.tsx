@@ -1,8 +1,9 @@
 import React, { useEffect, useCallback, useMemo } from "react";
 import { Formik, FormikProps } from "formik";
 import { Form, Container, Row, Col } from "react-bootstrap";
-import Field from "./Field";
+import ISO6391 from "iso-639-1";
 
+import Field, { SelectOption } from "./Field";
 import { schema } from "./schema";
 import { FormButton } from "./FormButton";
 import {
@@ -71,6 +72,16 @@ const ArtifactForm = ({
     setSavedValues(values);
   }, [values, setSavedValues]);
 
+  const langNameOptions: ReadonlyArray<SelectOption> = useMemo(() => {
+    const langCodes = ISO6391.getAllCodes();
+    const options: SelectOption[] = langCodes.map((code) => ({
+      key: code,
+      label: ISO6391.getName(code),
+    }));
+    options.sort((a, b) => a.label.localeCompare(b.label));
+    return options;
+  }, []);
+
   const handleReset = useCallback(() => {
     setSavedValues(emptyFormInput);
     setSubmissionData(undefined);
@@ -98,6 +109,7 @@ const ArtifactForm = ({
         disabled={isEditing}
         required={true}
         placeholder="orlando-the-asexual-manifesto"
+        options={undefined}
         handleChange={onChange}
         props={formikProps}
       >
@@ -150,6 +162,7 @@ const ArtifactForm = ({
         inputType="text"
         required={true}
         placeholder="*The Asexual Manifesto*"
+        options={undefined}
         handleChange={onChange}
         props={formikProps}
       >
@@ -169,6 +182,7 @@ const ArtifactForm = ({
         inputType="text"
         required={true}
         placeholder="A paper by the Asexual Caucus of the New York Radical Feminists"
+        options={undefined}
         handleChange={onChange}
         props={formikProps}
       >
@@ -189,6 +203,7 @@ const ArtifactForm = ({
         inputType="text"
         required={false}
         placeholder="A paper by the Asexual Caucus of the New York Radical Feminists in which Lisa Orlando argues…"
+        options={undefined}
         handleChange={onChange}
         props={formikProps}
       >
@@ -215,6 +230,7 @@ const ArtifactForm = ({
             inputType: "text",
             required: true,
             placeholder: "Digital Scan",
+            options: undefined,
             helpText: (
               <>
                 <p>A label for the file.</p>
@@ -233,6 +249,7 @@ const ArtifactForm = ({
             inputType: "text",
             required: true,
             placeholder: "the-asexual-manifesto.pdf",
+            options: undefined,
             helpText: (
               <>
                 <p>A file name to be used when downloading the file.</p>
@@ -256,6 +273,7 @@ const ArtifactForm = ({
             required: true,
             placeholder:
               "https://archive.org/download/asexualmanifestolisaorlando/Asexual-Manifesto-Lisa-Orlando.pdf",
+            options: undefined,
             helpText: (
               <>
                 <p>
@@ -271,10 +289,33 @@ const ArtifactForm = ({
             ),
           },
           {
+            name: "lang",
+            label: "Language",
+            inputType: "select",
+            required: false,
+            options: langNameOptions,
+            helpText: (
+              <>
+                <p>The language of this file.</p>
+                <p>
+                  This could be the language a text is written in, the language spoken in a video,
+                  etc. If this file contains no written or spoken natural language (e.g. it&apos;s a
+                  photograph), then leave this blank.
+                </p>
+                <p>
+                  This list of languages is not comprehensive and does not include any signed
+                  languages. If you&apos;re trying to submit a file that is not in one of these
+                  languages, <a href="/contact">contact us</a>.
+                </p>
+              </>
+            ),
+          },
+          {
             name: "hidden",
             label: "Hidden",
             inputType: "checkbox",
             required: false,
+            options: undefined,
             helpText: (
               <>
                 <p>
@@ -315,6 +356,7 @@ const ArtifactForm = ({
             inputType: "text",
             required: true,
             placeholder: "Internet Archive",
+            options: undefined,
             helpText: (
               <>
                 <p>A label for the link.</p>
@@ -334,6 +376,7 @@ const ArtifactForm = ({
             inputType: "url",
             required: true,
             placeholder: "https://archive.org/details/asexualmanifestolisaorlando",
+            options: undefined,
             helpText: (
               <p>
                 The <code>https://</code> URL that the link points to.
@@ -351,6 +394,7 @@ const ArtifactForm = ({
         inputType="text"
         required={false}
         placeholder="Lisa Orlando, Barbara Getz"
+        options={undefined}
         handleChange={onChange}
         props={formikProps}
       >
@@ -375,6 +419,7 @@ const ArtifactForm = ({
         inputType="text"
         required={false}
         placeholder="asexual, lesbian, non-binary"
+        options={undefined}
         handleChange={onChange}
         props={formikProps}
       >
@@ -396,6 +441,7 @@ const ArtifactForm = ({
         inputType="number"
         required={true}
         placeholder="1972"
+        options={undefined}
         handleChange={onChange}
         props={formikProps}
       >
@@ -417,6 +463,7 @@ const ArtifactForm = ({
         inputType="number"
         required={false}
         placeholder="1989"
+        options={undefined}
         handleChange={onChange}
         props={formikProps}
       >
@@ -438,6 +485,7 @@ const ArtifactForm = ({
         inputType="text"
         required={true}
         placeholder="1970, 1980"
+        options={undefined}
         handleChange={onChange}
         props={formikProps}
       >

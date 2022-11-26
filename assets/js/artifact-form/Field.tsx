@@ -5,12 +5,20 @@ import { FormikProps, ErrorMessage, getIn } from "formik";
 import className from "classnames";
 import { ArtifactFormData } from "./storage";
 
-export type FieldProps = {
+export type InputType = HTMLInputTypeAttribute | "select";
+
+export type SelectOption = Readonly<{
+  key: string;
+  label: string;
+}>;
+
+export type FieldProps<T extends InputType> = {
   name: string;
   label: string;
-  inputType: HTMLInputTypeAttribute;
+  inputType: T;
   required: boolean;
   placeholder?: string;
+  options: T extends "select" ? ReadonlyArray<SelectOption> : undefined;
   handleChange: (e: React.ChangeEvent) => void;
   props: FormikProps<ArtifactFormData>;
   disabled?: boolean;
@@ -30,17 +38,18 @@ const FormLabel = ({ label, required }: { label: string; required: boolean }) =>
   }
 };
 
-const Field = ({
+const Field = <T extends InputType>({
   name,
   label,
   inputType,
   required,
   placeholder,
+  options,
   handleChange,
   props: { touched, errors, values, handleBlur },
   disabled,
   children,
-}: FieldProps) => {
+}: FieldProps<T>) => {
   return (
     <div className={className("form-field")}>
       <Form.Label htmlFor={`field-input-${name}`}>
@@ -58,6 +67,26 @@ const Field = ({
           isValid={getIn(touched, name) && !getIn(errors, name)}
           isInvalid={getIn(touched, name) && !!getIn(errors, name)}
         />
+      ) : inputType === "select" ? (
+        <Form.Control
+          as="select"
+          name={name}
+          disabled={disabled}
+          id={`field-input-${name}`}
+          aria-describedby={`field-help-${name} field-feedback-${name}`}
+          value={getIn(values, name) ?? ""}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          isValid={getIn(touched, name) && !getIn(errors, name)}
+          isInvalid={getIn(touched, name) && !!getIn(errors, name)}
+        >
+          {!required && <option value=""></option>}
+          {(options ?? []).map(({ key, label }) => (
+            <option value={key} key={key}>
+              {label}
+            </option>
+          ))}
+        </Form.Control>
       ) : (
         <Form.Control
           type={inputType}

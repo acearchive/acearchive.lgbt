@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import ISO6391 from "iso-639-1";
 
 const noWhitespacePattern = /^[^\s]*$/;
 const doesNotStartWithCommaPattern = /^(?!,)/;
@@ -62,6 +63,7 @@ export const schema = Yup.object({
           "This is not a valid file name"
         ),
       sourceUrl: Yup.string().label("File URL").required().trim().url(),
+      lang: Yup.string().label("Language").trim().oneOf(ISO6391.getAllCodes()),
       hidden: Yup.bool().label("Hidden").default(false),
     })
   ),

@@ -1,4 +1,5 @@
 import { artifacts as rawCurrentArtifacts } from "@params";
+import { LanguageCode } from "iso-639-1";
 import { ArtifactFormData } from "./storage";
 
 const version = 1;
@@ -17,6 +18,7 @@ export type ArtifactFile = Readonly<{
   multihash: string;
   storageKey: string;
   url: string;
+  lang?: LanguageCode;
   hidden: boolean;
   aliases: ReadonlyArray<string>;
 }>;
@@ -57,6 +59,7 @@ export type ArtifactFileSubmission = Readonly<{
   mediaType?: string;
   multihash?: string;
   sourceUrl: URL;
+  lang?: LanguageCode;
   hidden: boolean;
   aliases: ReadonlyArray<string>;
 }>;
@@ -102,14 +105,11 @@ export const toSubmission = async (
           ? undefined
           : baseArtifact?.files?.find((baseFile) => baseFile.fileName === fileData.fileName);
 
-      console.log(baseArtifactFile);
-      console.log(baseArtifactFile?.multihash);
-      console.log(baseArtifactFile?.mediaType);
-
       return {
         name: fileData.name,
         fileName: fileData.fileName,
         sourceUrl: new URL(fileData.sourceUrl),
+        lang: fileData.lang === "" ? undefined : (fileData.lang as LanguageCode),
         hidden: fileData.hidden,
         aliases: baseArtifactFile?.aliases ?? [],
         multihash: baseArtifactFile?.multihash,
@@ -147,6 +147,7 @@ export const toFormInput = (artifact: HugoArtifact): ArtifactFormData => ({
     name: file.name,
     fileName: file.fileName,
     sourceUrl: file.url,
+    lang: file.lang === undefined ? "" : file.lang,
     hidden: file.hidden,
   })),
   links: artifact.links.map((link) => ({
