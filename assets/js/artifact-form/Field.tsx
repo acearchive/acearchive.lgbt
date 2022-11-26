@@ -109,9 +109,11 @@ const Field = <T extends InputType>({
           </Form.Control.Feedback>
         )}
       </ErrorMessage>
-      <Form.Text id={`field-help-${name}`} className={className("field-help")}>
-        {children}
-      </Form.Text>
+      {children && (
+        <Form.Text id={`field-help-${name}`} className={className("field-help")}>
+          {children}
+        </Form.Text>
+      )}
     </div>
   );
 };

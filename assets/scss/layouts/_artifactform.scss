@@ -4,6 +4,12 @@
     margin-bottom: 1rem;
   }
 
+  // Remove the margin from the bottom of the field help for final form field
+  // in the field list.
+  .form-field:last-child .field-help *:last-child {
+    margin-bottom: 0;
+  }
+
   .form-field label {
     font-weight: 500;
   }
