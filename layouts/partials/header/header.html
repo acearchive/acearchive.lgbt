@@ -399,7 +399,7 @@
   <div class="container-xxl">
     <aside class="doks-sidebar">
       <nav id="doks-archive-nav" class="collapse d-lg-none" aria-label="Tertiary navigation">
-        {{ partial "archive/sidebar.html" . }}
+        {{- partial "archive/sidebar.html" (dict "ctx" . "id" "header") }}
       </nav>
     </aside>
   </div>

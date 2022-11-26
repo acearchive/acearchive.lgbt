@@ -1,4 +1,8 @@
-{{ $currentPage := . -}}
+{{- $parentId := .id -}}
+
+{{- with .ctx -}}
+
+{{- $currentPage := . -}}
 
 <ul class="list-unstyled collapsible-sidebar">
   <li class="mb-b">
@@ -11,19 +15,19 @@
   <li class="mb-2">
     {{- $active := eq .Section "identities" -}}
     <button
-      aria-controls="identities-menu"
+      aria-controls="{{ $parentId }}-identities-menu"
       aria-expanded="{{ if $active -}}
         true
       {{- else -}}
         false
       {{- end }}"
       class="btn btn-toggle align-items-center rounded"
-      data-bs-target="#identities-menu"
+      data-bs-target="#{{ $parentId }}-identities-menu"
       data-bs-toggle="collapse"
     >
       Identities
     </button>
-    <div class="collapse {{ if $active }}show{{ end }}" id="identities-menu">
+    <div class="collapse {{ if $active }}show{{ end }}" id="{{ $parentId }}-identities-menu">
       <ul class="btn-toggle-nav list-unstyled">
         {{ range .Site.Taxonomies.identities }}
           {{ $active := eq .Page.Title
@@ -45,19 +49,19 @@
   <li class="mb-2">
     {{- $active := eq .Section "decades" -}}
     <button
-      aria-controls="decades-menu"
+      aria-controls="{{ $parentId }}-decades-menu"
       aria-expanded="{{ if $active -}}
         true
       {{- else -}}
         false
       {{- end }}"
       class="btn btn-toggle align-items-center rounded"
-      data-bs-target="#decades-menu"
+      data-bs-target="#{{ $parentId }}-decades-menu"
       data-bs-toggle="collapse"
     >
       Decades
     </button>
-    <div class="collapse {{ if $active }}show{{ end }}" id="decades-menu">
+    <div class="collapse {{ if $active }}show{{ end }}" id="{{ $parentId }}-decades-menu">
       <ul class="btn-toggle-nav list-unstyled">
         {{ range .Site.Taxonomies.decades }}
           {{ $active := eq .Page.Title
@@ -79,19 +83,19 @@
   <li class="mb-2">
     {{- $active := eq .Section "people" -}}
     <button
-      aria-controls="people-menu"
+      aria-controls="{{ $parentId }}-people-menu"
       aria-expanded="{{ if $active -}}
         true
       {{- else -}}
         false
       {{- end }}"
       class="btn btn-toggle align-items-center rounded collapsed"
-      data-bs-target="#people-menu"
+      data-bs-target="#{{ $parentId }}-people-menu"
       data-bs-toggle="collapse"
     >
       People
     </button>
-    <div class="collapse {{ if $active }}show{{ end }}" id="people-menu">
+    <div class="collapse {{ if $active }}show{{ end }}" id="{{ $parentId }}-people-menu">
       <ul class="btn-toggle-nav list-unstyled">
         {{ range .Site.Taxonomies.people }}
           {{ $active := eq .Page.Title
@@ -110,3 +114,4 @@
     </div>
   </li>
 </ul>
+{{- end }}

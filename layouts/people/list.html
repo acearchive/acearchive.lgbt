@@ -2,7 +2,7 @@
   <div class="row flex-xl-nowrap">
     <div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block">
       <nav class="docs-links" aria-label="Main navigation">
-        {{ partial "archive/sidebar.html" . }}
+        {{ partial "archive/sidebar.html" (dict "ctx" . "id" "list") }}
       </nav>
     </div>
     <main class="docs-content col-lg-11 mx-xl-auto">
