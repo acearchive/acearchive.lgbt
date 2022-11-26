@@ -1,6 +1,9 @@
-.cid {
-  font-size: $font-size-base;
-  font-family: $font-family-monospace;
+.artifact-card.card .card-title {
+  font-size: $font-size-lg;
+}
+
+.artifact-list-title {
+  margin-bottom: 2.5rem;
 }
 
 .icon-button {
