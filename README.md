@@ -12,14 +12,15 @@ services, CI jobs, and associated projects can be found in the following
 repositories:
 
 - [artifact-submissions](https://github.com/acearchive/artifact-submissions):
-  This is where new artifacts are submitted for approval. The [artifact
-  submission form](https://acearchive.lgbt/submit/) on the site generates a JSON
-  file and prompts the user to open a PR to add it to this repo.
+  This is where new artifacts are submitted for approval. Users create
+  submissions via the [artifact submission
+  form](https://acearchive.lgbt/submit/), which generates a JSON file that is
+  checked into this repo.
 - [artifact-submit-action](https://github.com/acearchive/artifact-submit-action):
   This is a GitHub Action which uploads submitted artifacts to the site once
-  they're manaully approved.
+  they're manually approved.
 - [files-worker](https://github.com/acearchive/files-worker): This is a
-  serverless function which serves artifact files.
+  serverless function which serves artifact files from object storage.
 - [hugo-artifact-action](https://github.com/acearchive/hugo-artifact-action):
   This is a GitHub Action which converts dynamic content into static pages for
   the static site generator.
