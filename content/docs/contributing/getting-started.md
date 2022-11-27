@@ -7,9 +7,10 @@ menu:
     parent: "contributing"
 weight: 201
 aliases:
-  - "docs/contributing/uploading-files"
-  - "docs/contributing/hosting-artifacts"
-  - "docs/contributing/artifact-files"
+  - "/contribute"
+  - "/docs/contributing/uploading-files"
+  - "/docs/contributing/hosting-artifacts"
+  - "/docs/contributing/artifact-files"
 ---
 
 Anyone can help contribute to Ace Archive, and there are various ways to
