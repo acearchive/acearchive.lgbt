@@ -123,14 +123,21 @@ export const FieldList = ({
               ))}
           </div>
           <button
-            className={className("btn", "add-button", "icon-button", "form-button")}
+            className={className(
+              "btn",
+              "add-button",
+              "icon-button",
+              "form-button",
+              "d-flex",
+              "align-items-center"
+            )}
             type="button"
             onClick={() => push(initialValues)}
           >
-            <span className={className("me-1")} aria-hidden="true">
+            <span className={className("me-2", "d-flex")} aria-hidden="true">
               <PlusSquare />
             </span>
-            Add {singularLabel}
+            <span>Add {singularLabel}</span>
           </button>
         </fieldset>
       )}
