@@ -29,6 +29,7 @@ export type ArtifactLink = Readonly<{
 }>;
 
 type Artifact = Readonly<{
+  id: string;
   slug: string;
   title: string;
   summary: string;
@@ -70,6 +71,8 @@ export type ArtifactLinkSubmission = Readonly<{
 }>;
 
 export type ArtifactSubmission = Readonly<{
+  // The submission will only include the ID when editing an existing artifact.
+  id?: string;
   version: number;
   slug: string;
   title: string;
@@ -93,6 +96,7 @@ export const toSubmission = async (
   formData: ArtifactFormData,
   baseArtifact?: HugoArtifact
 ): Promise<ArtifactSubmission> => ({
+  id: baseArtifact?.id,
   version: version,
   slug: formData.slug,
   title: formData.title,
