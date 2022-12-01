@@ -27,4 +27,4 @@ free to [read the source code of the
 website](https://github.com/acearchive/acearchive.lgbt) and use it however they
 wish. It also means that much like a wiki, anyone can help contribute to the
 archive, and we have [documentation]({{< ref
-"docs/contributing/getting-started.md" >}}) explaining how to do that.
+"docs/contributing/start.md" >}}) explaining how to do that.

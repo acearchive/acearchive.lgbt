@@ -3,7 +3,7 @@ main:
     url: "/docs/about/what-is-ace-archive"
     weight: 10
   - name: "Contribute"
-    url: "/docs/contributing/getting-started"
+    url: "/docs/contributing/start"
     weight: 20
   - name: "Archive"
     url: "/artifacts/"

@@ -8,6 +8,7 @@ menu:
 weight: 201
 aliases:
   - "/contribute"
+  - "/docs/contributing/getting-started"
   - "/docs/contributing/uploading-files"
   - "/docs/contributing/hosting-artifacts"
   - "/docs/contributing/artifact-files"
@@ -49,9 +50,8 @@ Open an issue
 
 <hr>
 
-If you're a developer or someone technically inclined, we have more technical
-documentation on GitHub about how this site works.
+If you're a developer or someone technically inclined, check out our API!
 
-{{< link-button url="https://github.com/acearchive/acearchive.lgbt" >}}
+{{< link-button path="/docs/contributing/api.md" >}}
 Get hacking
 {{< /link-button >}}

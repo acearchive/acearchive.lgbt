@@ -10,7 +10,7 @@ is to [open an issue on
 GitHub](https://github.com/acearchive/acearchive.lgbt/issues/new).
 
 If you want to suggest content to be added to the archive, [read our
-contributing documentation]({{< ref "docs/contributing/getting-started.md"
+contributing documentation]({{< ref "docs/contributing/start.md"
 >}}).
 
 If you want to contact us for any reason, you can email:
