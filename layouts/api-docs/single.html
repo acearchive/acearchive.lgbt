@@ -1,0 +1,19 @@
+{{- $js := resources.Get "js/vendor/stoplight/web-components.min.js" -}}
+{{- $css := resources.Get "js/vendor/stoplight/styles.min.css" -}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ace Archive API Docs</title>
+  
+    <script src="{{ $js.RelPermalink }}"></script>
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  </head>
+  <body>
+    <elements-api
+      apiDescriptionUrl="{{ $.Site.Params.openapiSpecUrl }}"
+      router="hash"
+    />
+  </body>
+</html>
