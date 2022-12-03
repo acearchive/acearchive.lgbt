@@ -14,8 +14,8 @@ artifacts in the archive.
 Currently this API is experimental. The API is `v0`, which means that
 **backwards-incompatible** changes could happen **at any time**.
 
-To aid in development, at the bottom of each artifact page on this site, you'll
-find that artifact's unique ID in the API.
+To help with development, at the bottom of each artifact page on this site is
+that artifact's unique ID in the API.
 
 Check out the API docs below.
 
