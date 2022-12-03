@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="{{ $css.RelPermalink }}">
   </head>
   <body>
+    <!-- The "try it" feature does not work because our site-wide CSP is too strict. In the future
+    we may serve this page with its own CSP. -->
     <elements-api
       apiDescriptionUrl="{{ $.Site.Params.openapiSpecUrl }}"
+      hideTryIt="true"
       router="hash"
     />
   </body>
