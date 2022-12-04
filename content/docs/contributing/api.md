@@ -11,7 +11,7 @@ weight: 204
 Ace Archive has a minimal REST API developers can use to query information about
 artifacts in the archive.
 
-Currently this API is experimental. The API is `v0`, which means that
+This API is currently experimental. The API is `v0`, which means that
 **backwards-incompatible** changes could happen **at any time**.
 
 To help with development, at the bottom of each artifact page on this site is
