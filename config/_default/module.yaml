@@ -35,6 +35,8 @@ mounts:
     target: "static/js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js.map"
   - source: "node_modules/@stoplight/elements"
     target: "assets/js/vendor/stoplight"
+  - source: "node_modules/bootstrap-icons/bootstrap-icons.svg"
+    target: "assets/icons/bootstrap-icons.svg"
   - source: "assets"
     target: "assets"
   - source: "assets/scss"

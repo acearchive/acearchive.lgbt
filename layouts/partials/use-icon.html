@@ -1,0 +1,2 @@
+{{- $icons := resources.Get "icons/bootstrap-icons.svg" | resources.Fingerprint "sha256" -}}
+<use xlink:href="{{ printf "%s#%s" $icons.Permalink . }}" />
