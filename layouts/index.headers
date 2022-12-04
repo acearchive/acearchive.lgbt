@@ -1,3 +1,7 @@
+#
+# Headers which are common to all paths. This includes most security headers.
+#
+
 /*
     X-Content-Type-Options: nosniff
     X-Frame-Options: DENY
@@ -7,6 +11,41 @@
     Cache-Control: no-cache
     Access-Control-Allow-Origin: *
     Permissions-Policy: camera=(), microphone=(), geolocation=(), display-capture=()
+
+#
+# Path-specific caching headers. We want to employ a different caching strategy
+# with files that have cache-busting filenames (e.g. JS/CSS) vs those that do
+# not (e.g. HTML).
+#
+
+/js/*
+  ! Cache-Control
+  Cache-Control: public, immutable, max-age=31536000
+
+/js/vendor/*
+  ! Cache-Control
+  Cache-Control: no-cache
+
+/css/*
+  ! Cache-Control
+  Cache-Control: public, immutable, max-age=31536000
+
+/css/vendor/*
+  ! Cache-Control
+  Cache-Control: no-cache
+
+/icons/*
+  ! Cache-Control
+  Cache-Control: public, immutable, max-age=31536000
+
+/icons/vendor/*
+  ! Cache-Control
+  Cache-Control: no-cache
+
+
+#
+# File-specific header overrides.
+#
 
 /cute.gif
     Content-Type: image/webp
