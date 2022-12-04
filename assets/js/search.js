@@ -181,8 +181,8 @@ function indexDocsSearch(search, suggestions) {
         cache: 100,
         document: {
             id: "id",
-            store: ["href", "title", "description"],
-            index: ["title", "description", "content"],
+            store: ["href", "title", "summary"],
+            index: ["title", "summary", "content"],
         },
     });
 
@@ -194,7 +194,7 @@ function indexDocsSearch(search, suggestions) {
         id: "{{ printf "doc-%d" $index }}",
         href: "{{ .RelPermalink }}",
         title: {{ .Title | jsonify }},
-        description: {{ .Params.description | jsonify }},
+        summary: {{ .Params.description | jsonify }},
         content: {{ .Content | jsonify }},
     })
         {{- if ne (add $index 1) $docsLen -}}
