@@ -44,6 +44,16 @@
 
 
 #
+# Headers specific to Stoplight Elements, the app we embed for rendering the
+# OpenAPI docs.
+#
+
+/docs/api/*
+  ! Content-Security-Policy
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src https:; frame-ancestors 'none';
+
+
+#
 # File-specific header overrides.
 #
 
