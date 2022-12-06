@@ -41,7 +41,7 @@
 
 /docs/api/*
   ! Content-Security-Policy
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src https:; frame-ancestors 'none';
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src https://raw.githubusercontent.com https://api.acearchive.lgbt; frame-ancestors 'none';
 
 #
 # File-specific header overrides.
