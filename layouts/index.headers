@@ -34,6 +34,10 @@
   ! Cache-Control
   Cache-Control: no-cache
 
+/icons/*
+  ! Cache-Control
+  Cache-Control: public, immutable, max-age=31536000
+
 #
 # Headers specific to Stoplight Elements, the app we embed for rendering the
 # OpenAPI docs.
