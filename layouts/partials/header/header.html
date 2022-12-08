@@ -11,7 +11,7 @@
 <div class="header-bar"></div>
 
 <header class="navbar navbar-expand-md navbar-light doks-navbar">
-  <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main navigation">
+  <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main">
     <a
       class="navbar-brand p-0 me-auto"
       href="{{ "/" | relLangURL }}"
@@ -26,7 +26,7 @@
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasDoks"
       aria-controls="offcanvasDoks"
-      aria-label="Open main menu"
+      aria-label="Open Main Menu"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -39,6 +39,7 @@
         stroke-linecap="round"
         stroke-linejoin="round"
         class="feather feather-menu"
+        aria-hidden="true"
       >
         <line x1="3" y1="12" x2="21" y2="12"></line>
         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -51,7 +52,6 @@
       tabindex="-1"
       id="offcanvasDoks"
       data-bs-backdrop="true"
-      aria-labelledby="offcanvasDoksLabel"
     >
       <div class="header-bar d-md-none"></div>
       <div class="offcanvas-header d-md-none">
@@ -62,11 +62,11 @@
           type="button"
           class="btn-close text-reset me-2"
           data-bs-dismiss="offcanvas"
-          aria-label="Close main menu"
+          aria-label="Close Main Menu"
         ></button>
       </div>
       <div class="offcanvas-body px-4">
-        <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
+        <h3 class="h6 text-uppercase mb-3 d-md-none">Pages</h3>
         <ul class="nav flex-column flex-md-row ms-md-n3">
           {{- $current := . -}}
           {{ range .Site.Menus.main -}}
@@ -86,11 +86,11 @@
         <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-2">
           {{ range .Site.Menus.social -}}
             <li class="nav-item">
-              <a class="nav-link ps-0 py-1" href="{{ .URL | relURL }}"
-                >{{ .Pre | safeHTML }}<small class="ms-2 d-md-none"
-                  >{{ .Name | safeHTML }}</small
-                ></a
-              >
+              <a class="nav-link ps-0 py-1" href="{{ .URL | relURL }}">
+                {{ .Pre | safeHTML }}
+                <small class="ms-2 d-md-none">{{ .Name }}</small>
+                <small class="d-none d-md-inline visually-hidden">{{ .Name }}</small>
+              </a>
             </li>
           {{ end -}}
         </ul>
@@ -101,7 +101,7 @@
         id="mode"
         class="btn btn-link order-md-1"
         type="button"
-        aria-label="Toggle user interface mode"
+        aria-label="Toggle Light/Dark Theme"
       >
         <span class="toggle-dark"
           ><svg
@@ -115,6 +115,7 @@
             stroke-linecap="round"
             stroke-linejoin="round"
             class="feather feather-moon"
+            aria-hidden="true"
           >
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg
         ></span>
