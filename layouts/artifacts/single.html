@@ -88,7 +88,14 @@
         <div class="col d-flex align-items-center justify-content-center fs-5">
           <span class="badge text-dark">ID</span>
           <code class="text-muted me-2">{{ .Params.id }}</code>
-          <a aria-label="Help" href="{{ ref . "docs/contributing/api" }}">
+          <a
+            id="artifact-id-help-link"
+            aria-label="Help"
+            href="{{ ref . "docs/contributing/api" }}"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="This is the artifact's unique ID, used in the Ace Archive API."
+          >
             <div class="d-inline-flex align-center">
               <svg
                 height="12"

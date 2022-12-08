@@ -12,6 +12,7 @@
 {{ $katexAutoRender := resources.Get "js/vendor/katex/dist/contrib/auto-render.js" -}}
 {{ $replayWeb := resources.Get "js/replayweb-url.js" | js.Build -}}
 {{ $artifactForm := resources.Get "js/artifact-form/App.tsx" | js.Build (dict "params" (dict "artifacts" $artifacts "iconSpritePath" $iconSprite.Permalink)) -}}
+{{ $artifactPage := resources.Get "js/artifact-page.ts" | js.Build -}}
 
 {{ $app := resources.Get "js/app.js" -}}
 {{ $slice := slice $app -}}
@@ -43,9 +44,10 @@
 
 {{ $js := $slice | resources.Concat "js/main.js" -}}
 
-{{ $loadReplayWeb := .Page.Scratch.Get "replayweb" }}
-{{ $loadArtifactForm := eq .Type "artifact-form" }}
-{{ $loadSearch := eq .Section "docs" "archive" "artifacts" "identities" "decades" "people" }}
+{{ $loadReplayWeb := .Page.Scratch.Get "replayweb" -}}
+{{ $loadArtifactForm := eq .Type "artifact-form" -}}
+{{ $loadSearch := eq .Section "docs" "archive" "artifacts" "identities" "decades" "people" -}}
+{{ $loadArtifactPage := eq .Section "artifacts" -}}
 
 {{ if eq (hugo.Environment) "development" -}}
   {{ if .Site.Params.options.bootStrapJs -}}
@@ -54,6 +56,10 @@
 
   {{ if $loadArtifactForm -}}
     <script defer src="{{ $artifactForm.RelPermalink }}"></script>
+  {{ end -}}
+
+  {{ if $loadArtifactPage -}}
+    <script defer src="{{ $artifactPage.RelPermalink }}"></script>
   {{ end -}}
 
   {{ if .Site.Params.options.highLight -}}
@@ -87,6 +93,7 @@
   {{ $katex := $katex | minify | fingerprint "sha512" -}}
   {{ $katexAutoRender := $katexAutoRender | minify | fingerprint "sha512" -}}
   {{ $artifactForm := $artifactForm | minify | fingerprint "sha512" -}}
+  {{ $artifactPage := $artifactPage | minify | fingerprint "sha512" -}}
   {{ $replayWeb := $replayWeb | minify | fingerprint "sha512" -}}
 
   {{ if .Site.Params.options.bootStrapJs -}}
@@ -104,6 +111,15 @@
       defer
       integrity="{{ $artifactForm.Data.Integrity }}"
       src="{{ $artifactForm.RelPermalink }}"
+    ></script>
+  {{ end -}}
+
+  {{ if $loadArtifactPage -}}
+    <script
+      crossorigin="anonymous"
+      defer
+      integrity="{{ $artifactPage.Data.Integrity }}"
+      src="{{ $artifactPage.RelPermalink }}"
     ></script>
   {{ end -}}
 

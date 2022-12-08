@@ -46,6 +46,7 @@
   "devDependencies": {
     "@github/clipboard-copy-element": "^1.1.2",
     "@hyas/doks": "^0.3",
+    "@types/bootstrap": "^5.2.6",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "auto-changelog": "^2.3.0",
     "autoprefixer": "^10.4",
