@@ -25,9 +25,35 @@
         </div>
       {{ end -}}
       {{- if .Params.links }}
+        {{ $hasAnyArchiveLinks := false -}}
+
+        {{- range $link := .Params.links -}}
+          {{- $url := urls.Parse $link.url -}}
+          {{- if partial "archive/is-archive-url.html" $url -}}
+            {{- $hasAnyArchiveLinks = true -}}
+          {{- end -}}
+        {{- end -}}
+
         <div class="row justify-content-center text-center">
           <div class="col">
             <h2>Links</h2>
+            {{ if $hasAnyArchiveLinks -}}
+            <p class="fs-6 text-muted">
+              <i>
+                Links marked with
+                <svg
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  {{ partial "use-icon.html" "archive-fill" }}
+                </svg>
+                <span class="visually-hidden">Archive Link</span>
+                are archived links.
+              </i>
+            </p>
+            {{- end }}
             {{ partial "archive/links.html" .Params.links }}
           </div>
         </div>
@@ -94,7 +120,7 @@
             href="{{ ref . "docs/contributing/api" }}"
             data-bs-toggle="tooltip"
             data-bs-placement="top"
-            title="This is the artifact's unique ID, used in the Ace Archive API."
+            title="The artifact's unique ID, used in the Ace Archive API."
           >
             <div class="d-inline-flex align-center">
               <svg

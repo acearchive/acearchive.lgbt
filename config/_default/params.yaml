@@ -5,6 +5,12 @@ maxPeoplePerCard: 4
 # The URL of the OpenAPI spec for rendering the API docs.
 openapiSpecUrl: "https://raw.githubusercontent.com/acearchive/api-worker/main/openapi.yaml"
 
+# If the URL of a link in an artifact has one of these domain names, it will be
+# marked as an archive link.
+archiveLinkDomains:
+  - "web.archive.org"
+  - "replayweb.page"
+
 #
 # Metadata for SEO
 #

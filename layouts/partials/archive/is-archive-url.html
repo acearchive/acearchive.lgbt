@@ -1,0 +1,13 @@
+{{- $url := urls.Parse . -}}
+
+{{- $isArchive := false -}}
+
+{{- if eq $url.Scheme "http" "https" -}}
+  {{- range $archiveLinkDomain := site.Params.archiveLinkDomains -}}
+    {{- if eq $url.Host $archiveLinkDomain -}}
+      {{- $isArchive = true -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $isArchive -}}

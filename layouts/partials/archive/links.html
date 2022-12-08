@@ -1,24 +1,7 @@
 <div class="artifact-links-table list-group">
   {{- range $link := . }}
-    {{- $url := urls.Parse .url -}}
-    {{- $isArchive :=
-      false
-    -}}
-    {{- if and (eq $url.Scheme "http" "https") (eq $url.Host
-      "web.archive.org") (hasPrefix $url.Path "/web/")
-    -}}
-      {{ $isArchive = true }}
-    {{ end -}}
-    {{- if and (eq $url.Scheme "http" "https") (eq $url.Host
-      "replayweb.page")
-    -}}
-      {{ $isArchive = true }}
-    {{ end -}}
-    {{- if and (eq
-      $url.Scheme "http" "https") (eq $url.Host "hha.acearchive.lgbt")
-    -}}
-      {{ $isArchive = true }}
-    {{ end -}}
+    {{- $url := urls.Parse $link.url -}}
+    {{- $isArchive := partial "archive/is-archive-url.html" $url -}}
     <a
       class="list-group-item py-3 list-group-item-action d-flex align-items-center"
       href="{{ .url }}"
