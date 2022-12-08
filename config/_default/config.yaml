@@ -78,4 +78,4 @@ minify:
   # Settings for the HTML minifier.
   tdewolff:
     html:
-      keepWhitespace: false
+      keepWhitespace: true
