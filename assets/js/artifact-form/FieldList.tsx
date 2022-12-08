@@ -100,7 +100,11 @@ export const FieldList = ({
         <fieldset form={htmlFormId} className={className("field-list")}>
           <legend className={className("form-label")}>{label}</legend>
           <div className={className("field-help", "form-text")}>{children}</div>
-          <div id={`field-list-body-${name}`} className={className("field-list-body")}>
+          <div
+            id={`field-list-body-${name}`}
+            className={className("field-list-body")}
+            aria-live="polite"
+          >
             {(getIn(values, name)?.length ?? 0) > 0 &&
               getIn(values, name).map((_: any, index: number) => (
                 <FieldListItem index={index} handleDelete={() => remove(index)} key={index}>
@@ -132,6 +136,7 @@ export const FieldList = ({
               "align-items-center"
             )}
             type="button"
+            aria-controls={`field-list-body-${name}`}
             onClick={() => push(initialValues)}
           >
             <span className={className("me-2", "d-flex")} aria-hidden="true">
