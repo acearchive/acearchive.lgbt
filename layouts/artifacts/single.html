@@ -40,7 +40,7 @@
             {{ if $hasAnyArchiveLinks -}}
             <p class="fs-6 text-muted">
               <i>
-                Links marked with
+                <span>Links marked with </span>
                 <svg
                   width="16"
                   height="16"
@@ -50,7 +50,7 @@
                   {{ partial "use-icon.html" "archive-fill" }}
                 </svg>
                 <span class="visually-hidden">Archive Link</span>
-                are archived links.
+                <span> are archived links.</span>
               </i>
             </p>
             {{- end }}
