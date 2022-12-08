@@ -104,7 +104,8 @@ website is also an archive or online database like the Internet Archive, you
 don't need to include a Wayback link.
 
 You can give both the regular link and the Wayback link the same name in the
-artifact; the artifact page on Ace Archive will show which is the archive link.
+artifact; the artifact page on Ace Archive will show which is the archive link
+with an icon.
 
 If you need to archive a page that the Wayback Machine isn't able to crawl,
 such as a page behind a confirmation prompt or login page, check out {{<
