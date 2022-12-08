@@ -65,7 +65,7 @@
             {{- $taxonomy := .Site.Taxonomies.identities }}
             <ul>
               {{- range .Params.identities }}
-                <li>
+                <li class="text-nowrap">
                   <a href="{{ "/categories/identities/" | relURL }}{{ . | urlize }}/"
                     >{{ . | title }}</a
                   >
@@ -83,7 +83,7 @@
             {{- $taxonomy := .Site.Taxonomies.decades }}
             <ul>
               {{- range .Params.decades }}
-                <li>
+                <li class="text-nowrap">
                   <a href="{{ "/categories/decades/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
                   <span class="badge bg-light text-dark fw-normal ms-1"
                     >{{ . | urlize | $taxonomy.Count }}</span
@@ -99,7 +99,7 @@
             {{- $taxonomy := .Site.Taxonomies.people }}
             <ul>
               {{- range .Params.people }}
-                <li>
+                <li class="text-nowrap">
                   <a href="{{ "/categories/people/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
                   <span class="badge bg-light text-dark fw-normal ms-1"
                     >{{ . | urlize | $taxonomy.Count }}</span
