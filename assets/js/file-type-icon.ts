@@ -1,7 +1,7 @@
 import { iconSpritePath } from "@params";
 import mime from "mime";
 
-const getIcon = (name) => `
+const getIcon = (name: string): string => `
   <svg width="20" height="20" fill="currentColor">
     <use xlink:href="${iconSpritePath}#${name}" />
   </svg>
@@ -48,8 +48,8 @@ class FileTypeIcon extends HTMLElement {
         ? extensionFromFileName
         : extensionFromMediaType ?? extensionFromFileName;
 
-    let icon;
-    let title;
+    let icon: string;
+    let title: string;
 
     if (mediaType === "application/pdf") {
       icon = pdfIcon;
@@ -85,12 +85,12 @@ class FileTypeIcon extends HTMLElement {
     }
 
     const iconElement = document.createElement("span");
-    iconElement.setAttribute("aria-hidden", true);
+    iconElement.setAttribute("aria-hidden", "true");
     iconElement.innerHTML = icon;
     iconElement.classList.add("type-icon");
 
     const extensionElement = document.createElement("span");
-    extensionElement.setAttribute("aria-hidden", true);
+    extensionElement.setAttribute("aria-hidden", "true");
     extensionElement.innerHTML = `.${extension}`;
     extensionElement.classList.add("extension-pill");
 

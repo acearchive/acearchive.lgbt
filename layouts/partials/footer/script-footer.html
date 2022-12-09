@@ -10,7 +10,7 @@
 {{ $highlight := resources.Get "js/highlight.js" | js.Build -}}
 {{ $katex := resources.Get "js/vendor/katex/dist/katex.js" -}}
 {{ $katexAutoRender := resources.Get "js/vendor/katex/dist/contrib/auto-render.js" -}}
-{{ $replayWeb := resources.Get "js/replayweb-url.js" | js.Build -}}
+{{ $replayWeb := resources.Get "js/replayweb-url.ts" | js.Build -}}
 {{ $artifactForm := resources.Get "js/artifact-form/App.tsx" | js.Build (dict "params" (dict "artifacts" $artifacts "iconSpritePath" $iconSprite.Permalink)) -}}
 {{ $artifactPage := resources.Get "js/artifact-page.ts" | js.Build -}}
 
@@ -37,8 +37,8 @@
 {{ end -}}
 
 {{ $slice := $slice | append (resources.Get "js/vendor/clipboard-copy-element/dist/index.esm.js" | js.Build) -}}
-{{ $slice := $slice | append (resources.Get "js/clipboard-copy-button.js" | js.Build) -}}
-{{ $slice := $slice | append (resources.Get "js/file-type-icon.js" | js.Build (dict "params" (dict
+{{ $slice := $slice | append (resources.Get "js/clipboard-copy-button.ts" | js.Build) -}}
+{{ $slice := $slice | append (resources.Get "js/file-type-icon.ts" | js.Build (dict "params" (dict
 "iconSpritePath" $iconSprite.Permalink))) -}}
 {{ $slice := $slice | append (resources.Get "js/lang-name.ts" | js.Build) -}}
 

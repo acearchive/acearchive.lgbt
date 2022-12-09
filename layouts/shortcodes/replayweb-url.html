@@ -11,9 +11,7 @@
             aria-describedby="invalid-feedback-slug-{{ .Ordinal }}"
             class="form-control"
             id="replayweb-url-slug-input-{{ .Ordinal }}"
-            pattern="^[a-z0-9][a-z0-9-]*[a-z0-9]$"
             placeholder="kaz-a-slash-romanticism"
-            required
           />
           <div class="invalid-feedback" id="invalid-feedback-slug-{{ .Ordinal }}"></div>
         </div>
@@ -28,9 +26,7 @@
             aria-describedby="invalid-feedback-filename-{{ .Ordinal }}"
             class="form-control"
             id="replayweb-url-filename-input-{{ .Ordinal }}"
-            pattern="^[\w\d][\w\d-]*[\w\d]\.warc$"
             placeholder="coining-of-queerplatonic.warc"
-            required
           />
           <div class="invalid-feedback" id="invalid-feedback-filename-{{ .Ordinal }}"></div>
         </div>
@@ -45,10 +41,7 @@
             aria-describedby="invalid-feedback-url-{{ .Ordinal }}"
             class="form-control"
             id="replayweb-url-url-input-{{ .Ordinal }}"
-            pattern="^https?://.*$"
             placeholder="https://kaz.dreamwidth.org/238564.html"
-            required
-            type="url"
           />
           <div class="invalid-feedback" id="invalid-feedback-url-{{ .Ordinal }}"></div>
         </div>
