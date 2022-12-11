@@ -1,0 +1,38 @@
+{{- $category := .category -}}
+{{- $parentId := .id -}}
+{{- with .ctx -}}
+
+  {{- $currentPage := . -}}
+
+  <li class="mb-2">
+    {{- $active := eq .Section $category -}}
+    <button
+      aria-controls="{{ $parentId }}-{{ $category }}-menu"
+      aria-expanded="{{ if $active -}}
+        true
+      {{- else -}}
+        false
+      {{- end }}"
+      class="btn btn-toggle align-items-center rounded"
+      data-bs-target="#{{ $parentId }}-{{ $category }}-menu"
+      data-bs-toggle="collapse"
+    >
+      {{ humanize $category }}
+    </button>
+    <div class="collapse {{ if $active }}show{{ end }}" id="{{ $parentId }}-{{ $category }}-menu">
+      <ul class="btn-toggle-nav list-unstyled">
+        {{ range (index .Site.Taxonomies $category) }}
+          {{ $active := eq .Page.Title $currentPage.Title -}}
+          <li>
+            <a class="docs-link d-flex {{ if $active }}active{{ end }}" href="{{ .Page.Permalink }}"
+              ><span>{{ .Page.Title | title }}</span
+              ><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4"
+                >{{ .Count }}</span
+              ></a
+            >
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+  </li>
+{{- end }}
