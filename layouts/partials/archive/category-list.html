@@ -1,0 +1,19 @@
+{{- $category := .category -}}
+{{- with .ctx -}}
+  <div class="col-md-4">
+    <h2>{{ humanize $category }}</h2>
+    {{- $taxonomy := (index .Site.Taxonomies $category) }}
+    <ul>
+      {{- range (index .Params $category) }}
+        <li class="text-nowrap">
+          <a href="{{ printf "/categories/%s/" $category | relURL }}{{ . | urlize }}/"
+            >{{ . | title }}</a
+          >
+          <span class="badge bg-light text-dark fw-normal ms-1"
+            >{{ . | urlize | $taxonomy.Count }}</span
+          >
+        </li>
+      {{ end -}}
+    </ul>
+  </div>
+{{- end -}}
