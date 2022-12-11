@@ -10,7 +10,7 @@
     Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
     Cache-Control: no-cache
     Access-Control-Allow-Origin: *
-    Permissions-Policy: camera=(), microphone=(), geolocation=(), display-capture=()
+    Permissions-Policy: camera=(), microphone=(), geolocation=(), display-capture=(), document-domain=()
 
 #
 # Path-specific caching headers. We want to employ a different caching strategy
@@ -26,7 +26,7 @@
   ! Cache-Control
   Cache-Control: no-cache
 
-/js/vendor/bootstrap/*.js
+/js/vendor/bootstrap/dist/js/*.js
   ! Cache-Control
   Cache-Control: public, immutable, max-age=31536000
 
