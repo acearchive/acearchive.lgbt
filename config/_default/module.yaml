@@ -25,8 +25,6 @@ mounts:
       - "js/**"
       - "css/**"
       - "fonts/**"
-  - source: "node_modules/katex"
-    target: "assets/js/vendor/katex"
   - source: "node_modules/@github/clipboard-copy-element"
     target: "assets/js/vendor/clipboard-copy-element"
   - source: "node_modules/bootstrap"

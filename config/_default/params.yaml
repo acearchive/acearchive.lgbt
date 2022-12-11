@@ -83,7 +83,6 @@ options:
   bootStrapJs: true
   breadCrumb: false
   highLight: true
-  kaTex: false
   collapsibleSidebar: true
   multilingualMode: false
   docsVersioning: false

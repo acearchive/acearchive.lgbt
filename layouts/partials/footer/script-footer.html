@@ -8,46 +8,43 @@
 {{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | js.Build -}}
 {{ $bs := resources.Get "js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" -}}
 {{ $highlight := resources.Get "js/highlight.js" | js.Build -}}
-{{ $katex := resources.Get "js/vendor/katex/dist/katex.js" -}}
-{{ $katexAutoRender := resources.Get "js/vendor/katex/dist/contrib/auto-render.js" -}}
 {{ $replayWeb := resources.Get "js/replayweb-url.ts" | js.Build -}}
 {{ $artifactForm := resources.Get "js/artifact-form/App.tsx" | js.Build (dict "params" (dict "artifacts" $artifacts "iconSpritePath" $iconSprite.Permalink)) -}}
-{{ $artifactPage := resources.Get "js/artifact-page.ts" | js.Build -}}
+{{ $clipboardCopyButton := resources.Get "js/clipboard-copy-button.ts" | js.Build -}}
+
+{{ $artifactPageTooltips := resources.Get "js/artifact-page-tooltips.ts" -}}
+{{ $langName := resources.Get "js/lang-name.ts" -}}
+{{ $fileTypeIcon := resources.Get "js/file-type-icon.ts" -}}
+{{ $artifactPage := slice $artifactPageTooltips $langName $fileTypeIcon | resources.Concat "js/artifact-page.ts" | js.Build (dict "params" (dict "iconSpritePath" $iconSprite.Permalink)) }}
 
 {{ $app := resources.Get "js/app.js" -}}
-{{ $slice := slice $app -}}
+{{ $jsSlice := slice $app -}}
 
 {{ if .Site.Params.options.lazySizes -}}
-  {{ $slice = $slice | append (resources.Get "js/lazysizes.js" | js.Build) -}}
+  {{ $jsSlice = $jsSlice | append (resources.Get "js/lazysizes.js") -}}
 {{ end -}}
 {{ if .Site.Params.options.clipBoard -}}
-  {{ $slice = $slice | append (resources.Get "js/clipboard.js" | js.Build) -}}
+  {{ $jsSlice = $jsSlice | append (resources.Get "js/clipboard.js") -}}
 {{ end -}}
 {{ if .Site.Params.options.instantPage -}}
-  {{ $slice = $slice | append (resources.Get "js/instant.page.js" | js.Build) -}}
+  {{ $jsSlice = $jsSlice | append (resources.Get "js/instant.page.js") -}}
 {{ end -}}
 {{ if .Site.Params.options.darkMode -}}
-  {{ $slice = $slice | append (resources.Get "js/darkmode.js" | js.Build) -}}
+  {{ $jsSlice = $jsSlice | append (resources.Get "js/darkmode.js") -}}
 {{ end -}}
 {{ if .Site.Params.alertDismissable -}}
-  {{ $slice = $slice | append (resources.Get "js/alert.js" | js.Build) -}}
-{{ end -}}
-{{ if .Site.Params.options.kaTex -}}
-  {{ $slice = $slice | append (resources.Get "js/katex.js" | js.Build) -}}
+  {{ $jsSlice = $jsSlice | append (resources.Get "js/alert.js") -}}
 {{ end -}}
 
-{{ $slice := $slice | append (resources.Get "js/vendor/clipboard-copy-element/dist/index.esm.js" | js.Build) -}}
-{{ $slice := $slice | append (resources.Get "js/clipboard-copy-button.ts" | js.Build) -}}
-{{ $slice := $slice | append (resources.Get "js/file-type-icon.ts" | js.Build (dict "params" (dict
-"iconSpritePath" $iconSprite.Permalink))) -}}
-{{ $slice := $slice | append (resources.Get "js/lang-name.ts" | js.Build) -}}
+{{ $jsSlice := $jsSlice | append (resources.Get "js/vendor/clipboard-copy-element/dist/index.esm.js") -}}
 
-{{ $js := $slice | resources.Concat "js/main.js" -}}
+{{ $jsBundle := resources.Concat "js/main.ts" $jsSlice | js.Build -}}
 
 {{ $loadReplayWeb := .Page.Scratch.Get "replayweb" -}}
 {{ $loadArtifactForm := eq .Type "artifact-form" -}}
 {{ $loadSearch := eq .Section "docs" "archive" "artifacts" "identities" "decades" "people" -}}
 {{ $loadArtifactPage := eq .Section "artifacts" -}}
+{{ $loadClipboardCopyButton := or $loadReplayWeb -}}
 
 {{ if eq (hugo.Environment) "development" -}}
   {{ if .Site.Params.options.bootStrapJs -}}
@@ -66,35 +63,28 @@
     <script defer src="{{ $highlight.RelPermalink }}"></script>
   {{ end -}}
 
-  {{ if .Site.Params.options.kaTex -}}
-    <script defer src="{{ $katex.RelPermalink }}"></script>
-    <script
-      defer
-      onload="renderMathInElement(document.body);"
-      src="{{ $katexAutoRender.RelPermalink }}"
-    ></script>
-  {{ end -}}
-
-
-  <script defer src="{{ $js.RelPermalink }}"></script>
+  <script defer src="{{ $jsBundle.RelPermalink }}"></script>
 
   {{ if $loadSearch -}}
     <script defer src="{{ $search.RelPermalink }}"></script>
+  {{ end -}}
+
+  {{ if $loadClipboardCopyButton -}}
+    <script defer src="{{ $clipboardCopyButton.RelPermalink }}"></script>
   {{ end -}}
 
   {{ if $loadReplayWeb -}}
     <script defer src="{{ $replayWeb.RelPermalink }}"></script>
   {{ end -}}
 {{ else -}}
-  {{ $js := $js | minify | fingerprint "sha512" -}}
+  {{ $jsBundle := $jsBundle | minify | fingerprint "sha512" -}}
   {{ $search := $search | minify | fingerprint "sha512" -}}
   {{ $bs := $bs | fingerprint "sha512" -}}
   {{ $highlight := $highlight | minify | fingerprint "sha512" -}}
-  {{ $katex := $katex | minify | fingerprint "sha512" -}}
-  {{ $katexAutoRender := $katexAutoRender | minify | fingerprint "sha512" -}}
   {{ $artifactForm := $artifactForm | minify | fingerprint "sha512" -}}
   {{ $artifactPage := $artifactPage | minify | fingerprint "sha512" -}}
   {{ $replayWeb := $replayWeb | minify | fingerprint "sha512" -}}
+  {{ $clipboardCopyButton := $clipboardCopyButton | minify | fingerprint "sha512" -}}
 
   {{ if .Site.Params.options.bootStrapJs -}}
     <script
@@ -132,27 +122,11 @@
     ></script>
   {{ end -}}
 
-  {{ if .Site.Params.options.kaTex -}}
-    <script
-      crossorigin="anonymous"
-      defer
-      integrity="{{ $katex.Data.Integrity }}"
-      src="{{ $katex.RelPermalink }}"
-    ></script>
-    <script
-      crossorigin="anonymous"
-      defer
-      integrity="{{ $katexAutoRender.Data.Integrity }}"
-      src="{{ $katexAutoRender.RelPermalink }}"
-    ></script>
-  {{ end -}}
-
-
   <script
     crossorigin="anonymous"
     defer
-    integrity="{{ $js.Data.Integrity }}"
-    src="{{ $js.RelPermalink }}"
+    integrity="{{ $jsBundle.Data.Integrity }}"
+    src="{{ $jsBundle.RelPermalink }}"
   ></script>
 
   {{ if $loadSearch -}}
@@ -161,6 +135,15 @@
       defer
       integrity="{{ $search.Data.Integrity }}"
       src="{{ $search.Permalink }}"
+    ></script>
+  {{ end -}}
+
+  {{ if $loadClipboardCopyButton -}}
+    <script
+      crossorigin="anonymous"
+      defer
+      integrity="{{ $clipboardCopyButton.Data.Integrity }}"
+      src="{{ $clipboardCopyButton.Permalink }}"
     ></script>
   {{ end -}}
 
