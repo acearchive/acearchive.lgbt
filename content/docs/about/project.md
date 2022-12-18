@@ -1,6 +1,5 @@
 ---
-title: "What is Ace Archive"
-description: "About the project"
+title: "About the project"
 date: 2022-01-08T08:41:19-05:00
 menu:
   docs:
@@ -8,6 +7,7 @@ menu:
 weight: 101
 aliases:
   - "/about"
+  - "/docs/about/what-is-ace-archive"
   - "/docs/about/about-the-technology"
   - "/docs/about/linking-to-content"
 ---
@@ -26,5 +26,5 @@ license](https://choosealicense.com/licenses/mit/), which means that anyone is
 free to [read the source code of the
 website](https://github.com/acearchive/acearchive.lgbt) and use it however they
 wish. It also means that much like a wiki, anyone can help contribute to the
-archive, and we have [documentation]({{< ref
-"docs/contributing/start.md" >}}) explaining how to do that.
+archive, and we have [documentation]({{< ref "docs/contributing/start.md" >}})
+explaining how to do that.

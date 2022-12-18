@@ -1,6 +1,6 @@
 main:
   - name: "About"
-    url: "/docs/about/what-is-ace-archive"
+    url: "/docs/about/project"
     weight: 10
   - name: "Contribute"
     url: "/docs/contributing/start"
