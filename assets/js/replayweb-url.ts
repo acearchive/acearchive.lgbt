@@ -3,10 +3,12 @@ import { schema as artifactSlugSchema } from "./artifact-form/schema";
 
 const forms = document.querySelectorAll(".replayweb-url-form form");
 
-const slugSchema = Yup.reach(artifactSlugSchema, "slug");
+const slugSchema = Yup.reach(artifactSlugSchema, "slug").label("Artifact Slug");
+
 const fileNameSchema = Yup.reach(artifactSlugSchema, "files[].fileName")
-  .matches(/.warc$/, ({ label }: { label: string }) => `${label} must have a .warc file extension`)
-  .label("File Name");
+  .label("File Name")
+  .matches(/.warc$/, ({ label }: { label: string }) => `${label} must have a .warc file extension`);
+
 const urlSchema = Yup.string()
   .label("Archived URL")
   .required()
