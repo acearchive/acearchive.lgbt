@@ -14,8 +14,7 @@ aliases:
   - "/docs/contributing/artifact-files"
 ---
 
-Anyone can help contribute to Ace Archive, and there are various ways to
-contribute for users of all skill levels.
+Anyone can help contribute to Ace Archive, and there are various ways to do so.
 
 <hr>
 
@@ -33,7 +32,7 @@ If you're willing to get your hands a little dirty, you can also add content to
 the archive yourself. This involves filling out a more comprehensive form where
 you'll enter all the information necessary to add an artifact to the archive.
 Once you complete the form, you'll be redirected to GitHub to submit your
-proposal for approval by a team member.
+proposal for approval.
 
 {{< link-button path="/submit/index.md" >}}
 Add an artifact

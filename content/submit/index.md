@@ -16,9 +16,8 @@ information about how to fill out this form. Once you submit the form, you'll be
 redirected to GitHub to complete the process. You'll need a GitHub account,
 which is free.
 
-Your proposal will need to be approved before it's added to the archive, and
-you'll have the chance to make changes if we ask for them. Remember that
-whatever you submit to GitHub will be public and viewable by anyone on the
+Your proposal will need to be approved before it's added to the archive.
+Whatever you submit to GitHub will be public and viewable by anyone on the
 internet.
 
 If you want a simpler option for contributing content to the archive, you can
