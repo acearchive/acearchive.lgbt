@@ -37,9 +37,9 @@ export const artifactFormSubmitUrl = (submission: ArtifactSubmission, isEditing:
   githubOpenIssueUrl({
     githubUser: "acearchive",
     githubRepo: "artifact-submissions",
-    title: `[Submission] ${submission.title}`,
-    labels: isEditing ? ["submission", "edit"] : ["submission"],
-    template: "submission.yaml",
+    title: isEditing ? `[Edit] ${submission.title}` : `[Submission] ${submission.title}`,
+    labels: isEditing ? ["edit"] : ["submission"],
+    template: isEditing ? "edit.yaml" : "submission.yaml",
     fields: {
       artifact: JSON.stringify(submission, null, 2),
     },
