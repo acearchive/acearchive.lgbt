@@ -282,7 +282,7 @@ const ArtifactForm = ({
                 </p>
                 <p>
                   If you want to upload a file which isn&apos;t already available on the web
-                  somewhere (i.e. you wrote a transcript or translation), you&apos;ll need to upload
+                  somewhere (e.g. you wrote a transcript or translation), you&apos;ll need to upload
                   it somewhere where it has a public URL until this submission is approved.
                 </p>
               </>
