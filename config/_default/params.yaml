@@ -61,7 +61,7 @@ logoBackgroundFill: "#fff"
 footer: 'Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://getdoks.org/">Doks</a>'
 
 # Feed
-copyRight: "Copyright © 2022 Frawley"
+copyRight: "Copyright © 2022-2023 Frawley"
 
 # Alert
 alert: false
