@@ -26,8 +26,6 @@ The intent was for this site to serve two purposes:
 1. Make it easy to find and browse primary sources related to asexual history.
 2. Host files that don't otherwise have a permanent home on the web.
 
-While asexual history was (and still is) the primary focus, there's no reason
-why the site couldn't host other artifacts related to queer history. So if you
-happen to be particularly knowledgeable about other areas of queer history or
-have files you want to contribute, [check out the docs]({{< ref
+If you happen to be particularly knowledgeable about aro and ace history or have
+files you want to contribute, [check out the docs]({{< ref
 "docs/contributing/start" >}}) or [get in touch]({{< ref "contact" >}})!

@@ -18,8 +18,9 @@ archiveLinkDomains:
 # Homepage
 title: "Ace Archive"
 titleSeparator: "-"
-titleAddition: "Preserving queer history"
-description: "Ace Archive is a curated online archive for preserving queer history."
+titleAddition: "Asexual and aromantic history"
+description: >
+  Ace Archive is a curated online archive of asexual and aromantic history.
 
 # Open Graph
 images: ["images/logo-card.webp"]
