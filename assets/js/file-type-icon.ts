@@ -14,6 +14,7 @@ const videoIcon = getIcon("file-earmark-play");
 const audioIcon = getIcon("file-earmark-music");
 const pdfIcon = getIcon("file-earmark-pdf");
 const referenceIcon = getIcon("bookmark");
+const epubIcon = getIcon("book");
 const archiveIcon = getIcon("file-earmark-zip");
 const fileIcon = getIcon("file-earmark");
 
@@ -56,11 +57,15 @@ class FileTypeIcon extends HTMLElement {
       title = "PDF document";
     } else if (
       mediaType === "application/x-bibtex" ||
+      mediaType === "text/x-bibtex" ||
       mediaType === "application/x-research-info-systems" ||
       mediaType === "application/rdf+xml"
     ) {
       icon = referenceIcon;
       title = "Citation file";
+    } else if (mediaType === "application/epub+zip") {
+      icon = epubIcon;
+      title = "Epub book";
     } else if (mediaType === "application/zip" || mediaType === "application/x-tar") {
       icon = archiveIcon;
       title = "Archive file";
