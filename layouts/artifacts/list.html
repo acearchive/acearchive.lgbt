@@ -5,16 +5,22 @@
         {{ partial "archive/sidebar.html" (dict "ctx" . "id" "list") }}
       </nav>
     </div>
-    <main class="docs-content col-lg-11 mx-xl-auto">
-      <div class="artifact-list-title">
-        <h1 class="text-center">{{ .Title }}</h1>
-        <p class="lead text-center">{{ .Params.description | markdownify }}</p>
-      </div>
-      <div class="row row-cols-1 row-cols-md-2 g-5">
-        {{ range sort (where ($.Site.GetPage "/content/artifacts/_index.md").Pages "Section" "artifacts") "Params.fromYear" "desc" }}
-          <div class="col">{{ .Render "card" -}}</div>
-        {{ end }}
-      </div>
-    </main>
+    <div class="docs-content col-lg-11 mx-xl-auto">
+      <main>
+        <div class="artifact-list-title">
+          <h1 class="text-center">{{ .Title }}</h1>
+          <p class="lead text-center">{{ .Params.description | markdownify }}</p>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 g-5">
+          {{ $paginator := .Paginate (sort (where ($.Site.GetPage "/content/artifacts/_index.md").Pages "Section" "artifacts") "Params.fromYear" "desc") }}
+          {{ range $paginator.Pages }}
+            <div class="col">{{ .Render "card" -}}</div>
+          {{ end }}
+        </div>
+      </main>
+      <nav class="d-flex mt-5 justify-content-center" aria-label="Pages">
+        {{ template "_internal/pagination.html" . }}
+      </nav>
+    </div>
   </div>
 {{ end }}
