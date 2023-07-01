@@ -232,7 +232,7 @@
     class="doks-subnavbar py-2 sticky-lg-top {{ if eq .Site.Params.options.flexSearch false }}
       d-lg-none
     {{ end }}"
-    aria-label="Secondary navigation"
+    aria-label="Secondary"
   >
     <div class="container-xxl d-flex align-items-md-center">
       {{ if .Site.Params.options.flexSearch -}}
@@ -332,13 +332,13 @@
 
   <div class="container-xxl">
     <aside class="doks-sidebar">
-      <nav id="doks-docs-nav" class="collapse d-lg-none" aria-label="Tertiary navigation">
+      <nav id="doks-docs-nav" class="collapse d-lg-none" aria-label="Tertiary">
         {{ partial "sidebar/docs-menu.html" . }}
       </nav>
     </aside>
   </div>
 {{ else if eq .Section "archive" "artifacts" "identities" "decades" "people" -}}
-  <nav class="doks-subnavbar py-2 sticky-lg-top" aria-label="Secondary navigation">
+  <nav class="doks-subnavbar py-2 sticky-lg-top" aria-label="Secondary">
     <div class="container-xxl d-flex align-items-md-center">
       <form id="archive-search" class="doks-search position-relative flex-grow-1 me-auto">
         <input
@@ -399,7 +399,7 @@
 
   <div class="container-xxl">
     <aside class="doks-sidebar">
-      <nav id="doks-archive-nav" class="collapse d-lg-none" aria-label="Tertiary navigation">
+      <nav id="doks-archive-nav" class="collapse d-lg-none" aria-label="Tertiary">
         {{- partial "archive/sidebar.html" (dict "ctx" . "id" "header") }}
       </nav>
     </aside>
