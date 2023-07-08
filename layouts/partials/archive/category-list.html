@@ -1,7 +1,7 @@
 {{- $category := .category -}}
 {{- with .ctx -}}
-  <div class="col-md-4">
-    <h2>{{ humanize $category }}</h2>
+  <div class="col-md-4 mt-2">
+    <h2 class="artifact-category-header">{{ humanize $category }}</h2>
     {{- $taxonomy := (index .Site.Taxonomies $category) }}
     <ul>
       {{- range (index .Params $category) }}

@@ -1,4 +1,4 @@
-<div class="artifact-links-table list-group">
+<div id="artifact-links-table" class="list-group">
   {{- range $link := . }}
     {{- $url := urls.Parse $link.url -}}
     {{- $isArchive := partial "archive/is-archive-url.html" $url -}}
