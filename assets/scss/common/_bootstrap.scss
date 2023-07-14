@@ -182,3 +182,15 @@ form .form-text {
     $form-feedback-icon-invalid-dark
   );
 }
+
+.pagination > .page-item:not(.active) > .page-link:hover {
+  color: $primary;
+  background-color: $border-color;
+  border-color: $border-color;
+}
+
+[data-dark-mode] .pagination > .page-item:not(.active) > .page-link:hover {
+  color: $primary-dark;
+  background-color: $border-dark;
+  border-color: $border-dark;
+}
