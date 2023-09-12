@@ -12,13 +12,13 @@ aliases:
   - "/docs/about/linking-to-content"
 ---
 
-Ace Archive is a project to preserve the history of queer communities, with a
+Ace Archive is a project to document the history of queer communities, with a
 particular focus on the asexual, aromantic, and other aspec communities.
 
-Much of ace history is poorly documented, and between dead links, lost media,
-and defunct websites, primary sources can be difficult to track down. The
-purpose of this website is to consolidate important artifacts in ace history to
-make them easy to find, and to act as a permanent home for these artifacts that
+Between dead links, lost media, and defunct websites, primary sources related to
+ace history can be difficult to track down. The purpose of this site is to
+consolidate important documents, photos, and websites from ace history to make
+them easy to find, and to act as a permanent home for these artifacts that
 people can link to from blogs, wikis, etc.
 
 Ace Archive is open-source and licensed under the [MIT
