@@ -42,3 +42,13 @@ npm run build
 ```
 
 The site will be built at `./public`.
+
+## Local Development
+
+To start a server for local development, run:
+
+```shell
+npm run server
+```
+
+The site will be served on port `1313`.
