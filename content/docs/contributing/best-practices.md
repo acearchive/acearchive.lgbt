@@ -68,10 +68,9 @@ easiest for you.
 ## Include citations where applicable
 
 If the artifact contains a published work, include a citation for it as a
-separate file using a standardized file format like BibTeX. These
-files can be imported into reference managers like
-[Zotero](https://www.zotero.org/) and help people cite the work or find it on
-the legacy web.
+separate file using a standardized file format like BibTeX. These files can be
+imported into reference managers like [Zotero](https://www.zotero.org/) and help
+people cite the work or find it on the web.
 
 ## Include both files and links in artifacts when possible
 
@@ -104,7 +103,7 @@ website is also an archive or online database like the Internet Archive, you
 don't need to include a Wayback link.
 
 You can give both the regular link and the Wayback link the same name in the
-artifact; the artifact page on Ace Archive will show which is the archive link
+artifact; the artifact page on Ace Archive will show which is the Wayback link
 with an icon.
 
 If you need to archive a page that the Wayback Machine isn't able to crawl,

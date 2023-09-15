@@ -46,9 +46,8 @@ To host the generated web archive on Ace Archive, include it in the artifact
 file as a file.
 
 {{< alert icon="❗" >}}
-Be very cautious about archiving content behind a login page and think
-carefully about whether it contains any personal information. Files uploaded to
-Ace Archive can never be deleted, even if the links are removed from the site.
+Be very cautious about archiving content behind a login page and think carefully
+about whether it contains any personal information.
 {{< /alert >}}
 
 ## Browsing the web archive
