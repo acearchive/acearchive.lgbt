@@ -52,3 +52,7 @@ github.com/acearchive/hugo-artifacts v0.0.0-20230915190929-807da78737db h1:ezMpj
 github.com/acearchive/hugo-artifacts v0.0.0-20230915190929-807da78737db/go.mod h1:3FFCyjgQ/vd1RULLwSy8QRn5M8JnWacSS+q9HSktXwQ=
 github.com/acearchive/hugo-artifacts v0.0.0-20230917154050-1c663c8a7e43 h1:7jocXusz7i+e7dqMm9j9TQYrmfJOnfsAuYzZJ7Z2vnU=
 github.com/acearchive/hugo-artifacts v0.0.0-20230917154050-1c663c8a7e43/go.mod h1:3FFCyjgQ/vd1RULLwSy8QRn5M8JnWacSS+q9HSktXwQ=
+github.com/acearchive/hugo-artifacts v0.0.0-20230917224355-dd08044c4ff5 h1:wmatkx9UP0NpNBURN9rsjSFO3tViWQAHAcvszH5eFPQ=
+github.com/acearchive/hugo-artifacts v0.0.0-20230917224355-dd08044c4ff5/go.mod h1:3FFCyjgQ/vd1RULLwSy8QRn5M8JnWacSS+q9HSktXwQ=
+github.com/acearchive/hugo-artifacts v0.0.0-20230917225633-1455ba2355ba h1:tmVS0Y5orV0u6xzfSDKoyA1+/K2WU09CXklktiXMHO8=
+github.com/acearchive/hugo-artifacts v0.0.0-20230917225633-1455ba2355ba/go.mod h1:3FFCyjgQ/vd1RULLwSy8QRn5M8JnWacSS+q9HSktXwQ=
