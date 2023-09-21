@@ -58,3 +58,5 @@ github.com/acearchive/hugo-artifacts v0.0.0-20230917225633-1455ba2355ba h1:tmVS0
 github.com/acearchive/hugo-artifacts v0.0.0-20230917225633-1455ba2355ba/go.mod h1:3FFCyjgQ/vd1RULLwSy8QRn5M8JnWacSS+q9HSktXwQ=
 github.com/acearchive/hugo-artifacts v0.0.0-20230918145326-28f38e6fe2e1 h1:aqlQuAjMBwChRL6oMM8in83fw5OZup8kzAya0A6vYNQ=
 github.com/acearchive/hugo-artifacts v0.0.0-20230918145326-28f38e6fe2e1/go.mod h1:3FFCyjgQ/vd1RULLwSy8QRn5M8JnWacSS+q9HSktXwQ=
+github.com/acearchive/hugo-artifacts v0.0.0-20230921132618-4511e249b2d3 h1:GhvBTpQgZLr8xSdT90Ya0SPlHdGwGdqTvTHS4euqINU=
+github.com/acearchive/hugo-artifacts v0.0.0-20230921132618-4511e249b2d3/go.mod h1:3FFCyjgQ/vd1RULLwSy8QRn5M8JnWacSS+q9HSktXwQ=
