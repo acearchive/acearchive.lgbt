@@ -1,7 +1,7 @@
 import FlexSearch from "flexsearch";
 
 function inputFocus(e, search, suggestions) {
-    if (e.ctrlKey && e.key === "/") {
+    if (e.key === "/") {
         e.preventDefault();
         search.focus();
     }

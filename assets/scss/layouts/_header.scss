@@ -182,7 +182,7 @@ button#doks-versions {
 }
 
 .form-control.is-search {
-  padding-right: 4rem;
+  padding-right: 2rem;
   border: 1px solid transparent;
   background: $gray-100;
 }
@@ -203,7 +203,7 @@ button#doks-versions {
   padding-left: 0.3125rem;
   font-size: $font-size-base * 0.75;
   color: $gray-700;
-  content: "Ctrl + /";
+  content: "/";
   border: 1px solid $gray-300;
   border-radius: 0.25rem;
 }
@@ -282,11 +282,15 @@ button#doks-versions {
     width: auto !important;
   }
 
-  .algolia-autocomplete .algolia-docsearch-suggestion .algolia-docsearch-suggestion--subcategory-column {
+  .algolia-autocomplete
+    .algolia-docsearch-suggestion
+    .algolia-docsearch-suggestion--subcategory-column {
     font-weight: normal;
   }
 
-  .algolia-autocomplete .algolia-docsearch-suggestion .algolia-docsearch-suggestion--subcategory-column::after {
+  .algolia-autocomplete
+    .algolia-docsearch-suggestion
+    .algolia-docsearch-suggestion--subcategory-column::after {
     content: "/";
     margin-right: 0.25rem;
   }
