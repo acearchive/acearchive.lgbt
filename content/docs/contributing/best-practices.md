@@ -127,10 +127,7 @@ So if "gray-asexual" already exists in the archive, don't add "grey-asexual" or
 "gray-ace" unless there's a good reason (e.g. the author of a work makes a case
 that they're distinct identities).
 
-## Use links to provide context
+## Look to existing artifacts as examples
 
-Because Ace Archive is intended to be an archive of primary sources rather than
-a wiki or encyclopedia, the descriptions of artifacts should generally be kept
-brief. However, if context is required to understand an artifact, you can
-include a link to an outside website that provides the necessary context for the
-artifact.
+If you're not sure about something, look at existing artifacts in the archive as
+an example!
