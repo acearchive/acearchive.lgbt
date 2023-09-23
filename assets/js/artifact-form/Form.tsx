@@ -139,18 +139,10 @@ const ArtifactForm = ({
             </p>
             <p>
               A URL slug should always be lowercase and use hyphens to separate words, and it will
-              generally follow the format <code>author-title</code>. If the author has a first and
-              last name (i.e. isn&apos;t a handle or username), you can just use the last name. If
-              the title of the work is long, you can use a shortened version of it. If there is no
-              obvious author associated with the work, you can just use the title.
-            </p>
-            <p>
-              If the combination of the author and the title of the work is ambiguous, (such as a
-              forum thread where the title of the thread might just be &quot;asexuality&quot;), then
-              you can provide additional context like <code>context-author-title</code>. For an AVEN
-              forum thread by &quot;coolasexualperson&quot; called &quot;romance&quot;, the URL slug
-              might be
-              <code>aven-forums-coolasexualperson-romance</code>.
+              generally follow the format <code>author-title</code> or{" "}
+              <code>publication-title</code>. If the author has a first and last name (i.e.
+              isn&apos;t a handle or username), you can just use the last name. If the title of the
+              work is long, you can use a shortened version of it.
             </p>
           </>
         )}
@@ -191,9 +183,9 @@ const ArtifactForm = ({
           its significance to the queer community (i.e. why it’s in the archive).
         </p>
         <p>
-          This description should complete the sentence “This artifact is…” You should always quote
-          or italicize the titles of works; you can add italics in an artifact title by surrounding
-          it in asterisks like <code>*Title of Work*</code>.
+          This description should complete the sentence “This artifact is…” You should quote or
+          italicize the titles of works; you can add italics in an artifact title by surrounding it
+          in asterisks like <code>*Title of Work*</code>.
         </p>
       </Field>
 
@@ -255,9 +247,7 @@ const ArtifactForm = ({
                 <p>A file name to be used when downloading the file.</p>
                 <p>
                   This should be all lowercase and use hyphens instead of spaces, and it should
-                  always include an appropriate file extension. For complex use-cases, such as
-                  adding an HTML page which links to static assets like images, file names can
-                  contain forward slashes.
+                  always include an appropriate file extension.
                 </p>
                 <p>
                   If you&apos;re updating an existing file, you should keep the existing file name
@@ -303,9 +293,8 @@ const ArtifactForm = ({
                   photograph), then leave this blank.
                 </p>
                 <p>
-                  This list of languages is not comprehensive and does not include any signed
-                  languages. If you&apos;re trying to submit a file that is not in one of these
-                  languages, <a href="/contact">contact us</a>.
+                  If you&apos;re trying to submit a file that is not in one of these languages,{" "}
+                  <a href="/contact">contact us</a>.
                 </p>
               </>
             ),
@@ -321,11 +310,6 @@ const ArtifactForm = ({
                 <p>
                   If this is checked, this file won&apos;t appear in the list of files on the
                   artifact page. You&apos;ll usually want to leave this unchecked.
-                </p>
-                <p>
-                  If you want to add an HTML page which links to static assets like images, you may
-                  want to show a link to the HTML file on the site but not the static assets it
-                  links to. This is a case where checking this box might be useful.
                 </p>
                 <p>
                   ⚠️ All this option does is hide the link to the file on the website; the file is
