@@ -1,0 +1,16 @@
+<a
+  class="btn btn-outline-primary btn-lg d-flex justify-content-between align-items-center mx-auto nav-button"
+  href="{{ .url | default .path }}"
+>
+  {{ .text }}
+  <span class="nav-button-arrow d-flex align-items-center">
+    <svg
+      height="20"
+      width="20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      {{ partial "use-icon.html" "chevron-compact-right" }}
+    </svg>
+  </span>
+</a>

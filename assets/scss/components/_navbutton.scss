@@ -1,0 +1,11 @@
+.nav-button {
+  max-width: 18rem;
+}
+
+.nav-button .nav-button-arrow {
+  transition: transform #{$btn-transition-duration * 2} ease-in-out;
+}
+
+.nav-button:hover .nav-button-arrow {
+  transform: translateX(4px);
+}
