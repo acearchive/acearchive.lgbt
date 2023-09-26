@@ -1,3 +1,11 @@
+.artifact-card:hover {
+  filter: brightness(98%);
+}
+
+[data-dark-mode] .artifact-card:hover {
+  filter: brightness(92%);
+}
+
 .artifact-card.card .card-title {
   font-size: $font-size-lg;
 }
