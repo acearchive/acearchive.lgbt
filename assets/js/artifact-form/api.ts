@@ -56,10 +56,10 @@ export type HugoArtifact = {
 
 export type ArtifactFileSubmission = Readonly<{
   name: string;
-  fileName: string;
-  mediaType?: string;
+  filename: string;
+  media_type?: string;
   multihash?: string;
-  sourceUrl: URL;
+  source_url: URL;
   lang?: LanguageCode;
   hidden: boolean;
   aliases: ReadonlyArray<string>;
@@ -82,8 +82,8 @@ export type ArtifactSubmission = Readonly<{
   links: ReadonlyArray<ArtifactLinkSubmission>;
   people: ReadonlyArray<string>;
   identities: ReadonlyArray<string>;
-  fromYear: number;
-  toYear?: number;
+  from_year: number;
+  to_year?: number;
   decades: ReadonlyArray<number>;
   aliases: ReadonlyArray<string>;
 }>;
@@ -111,13 +111,13 @@ export const toSubmission = async (
 
       return {
         name: fileData.name,
-        fileName: fileData.fileName,
-        sourceUrl: new URL(fileData.sourceUrl),
+        filename: fileData.fileName,
+        source_url: new URL(fileData.sourceUrl),
         lang: fileData.lang === "" ? undefined : (fileData.lang as LanguageCode),
         hidden: fileData.hidden,
         aliases: baseArtifactFile?.aliases ?? [],
         multihash: baseArtifactFile?.multihash,
-        mediaType: baseArtifactFile?.mediaType,
+        media_type: baseArtifactFile?.mediaType,
       };
     }) ?? []
   ),
@@ -134,8 +134,8 @@ export const toSubmission = async (
     formData.identities === "" || formData.identities === undefined
       ? []
       : formData.identities.split(",")?.map((segment) => segment.trim()),
-  fromYear: parseInt(formData.fromYear, 10),
-  toYear: formData.toYear === "" ? undefined : parseInt(formData.toYear, 10),
+  from_year: parseInt(formData.fromYear, 10),
+  to_year: formData.toYear === "" ? undefined : parseInt(formData.toYear, 10),
   decades: formData.decades?.split(",").map((segment) => parseInt(segment.trim(), 10)) ?? [],
   aliases: baseArtifact?.aliases ?? [],
 });
