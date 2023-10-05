@@ -9,45 +9,40 @@ const version = 1;
 // page params and passed into this React app.
 //
 
-export type ArtifactFile = Readonly<{
+export type HugoArtifactFile = Readonly<{
   name: string;
-  fileName: string;
-  mediaType?: string;
+  filename: string;
+  media_type?: string;
   hash: string;
-  hashAlgorithm: string;
+  hash_algorithm: string;
   multihash: string;
-  storageKey: string;
+  storage_key: string;
   url: string;
   lang?: LanguageCode;
   hidden: boolean;
   aliases: ReadonlyArray<string>;
 }>;
 
-export type ArtifactLink = Readonly<{
+export type HugoArtifactLink = Readonly<{
   name: string;
   url: string;
 }>;
 
-type Artifact = Readonly<{
+type HugoArtifact = Readonly<{
   id: string;
   slug: string;
   title: string;
   summary: string;
   description?: string;
-  files: ReadonlyArray<ArtifactFile>;
-  links: ReadonlyArray<ArtifactLink>;
+  files: ReadonlyArray<HugoArtifactFile>;
+  links: ReadonlyArray<HugoArtifactLink>;
   people: ReadonlyArray<string>;
   identities: ReadonlyArray<string>;
-  fromYear: number;
-  toYear?: number;
+  from_year: number;
+  to_year?: number;
   decades: ReadonlyArray<number>;
   aliases: ReadonlyArray<string>;
 }>;
-
-// Hugo implicitly converts all top-level page params to lowercase.
-export type HugoArtifact = {
-  [P in keyof Artifact as Lowercase<P>]: Artifact[P];
-};
 
 //
 // This schema represents the shape of artifact submissions that are committed
@@ -107,7 +102,7 @@ export const toSubmission = async (
       const baseArtifactFile =
         baseArtifact === undefined
           ? undefined
-          : baseArtifact?.files?.find((baseFile) => baseFile.fileName === fileData.fileName);
+          : baseArtifact?.files?.find((baseFile) => baseFile.filename === fileData.fileName);
 
       return {
         name: fileData.name,
@@ -117,7 +112,7 @@ export const toSubmission = async (
         hidden: fileData.hidden,
         aliases: baseArtifactFile?.aliases ?? [],
         multihash: baseArtifactFile?.multihash,
-        media_type: baseArtifactFile?.mediaType,
+        media_type: baseArtifactFile?.media_type,
       };
     }) ?? []
   ),
@@ -149,7 +144,7 @@ export const toFormInput = (artifact: HugoArtifact): ArtifactFormData => ({
   description: artifact.description === undefined ? "" : artifact.description,
   files: artifact.files.map((file) => ({
     name: file.name,
-    fileName: file.fileName,
+    fileName: file.filename,
     sourceUrl: file.url,
     lang: file.lang === undefined ? "" : file.lang,
     hidden: file.hidden,
@@ -160,8 +155,8 @@ export const toFormInput = (artifact: HugoArtifact): ArtifactFormData => ({
   })),
   people: artifact.people.join(", "),
   identities: artifact.identities.join(", "),
-  fromYear: artifact.fromyear.toString(10),
-  toYear: artifact.toyear?.toString(10) ?? "",
+  fromYear: artifact.from_year.toString(10),
+  toYear: artifact.to_year?.toString(10) ?? "",
   decades: artifact.decades.map((decade) => decade.toString(10)).join(", "),
 });
 
