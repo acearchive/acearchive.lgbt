@@ -2,7 +2,7 @@ import { artifacts as rawCurrentArtifacts } from "@params";
 import { LanguageCode } from "iso-639-1";
 import { ArtifactFormData } from "./storage";
 
-const version = 1;
+const version = 2;
 
 //
 // This schema represents the shape of artifact data as it is stored in the Hugo
