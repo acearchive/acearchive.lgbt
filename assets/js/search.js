@@ -104,7 +104,7 @@ function indexArchiveSearch(search, suggestions) {
         summary: {{ .Params.summary | markdownify | jsonify }},
         description: {{ .Params.description | markdownify | jsonify }},
         content: {{ .Content | jsonify }},
-        years: rangeYears({{ .Params.fromYear | jsonify }}, {{ .Params.toYear | jsonify }}),
+        years: rangeYears({{ .Params.from_year | jsonify }}, {{ .Params.to_year | jsonify }}),
         identities: {{ .Params.identities | jsonify }},
         people: {{ .Params.people | jsonify }},
     })

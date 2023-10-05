@@ -1,11 +1,11 @@
-{{- if .Params.toYear -}}
-  {{- if eq .Params.fromYear .Params.toYear -}}
-    {{- .Params.fromYear -}}
+{{- if .Params.to_year -}}
+  {{- if eq .Params.from_year .Params.to_year -}}
+    {{- .Params.from_year -}}
   {{- else -}}
-    {{- printf "%d–%d" .Params.fromYear
-      .Params.toYear
+    {{- printf "%d–%d" .Params.from_year
+      .Params.to_year
     -}}
   {{- end -}}
 {{- else -}}
-  {{- .Params.fromYear -}}
+  {{- .Params.from_year -}}
 {{- end -}}
