@@ -1,9 +1,9 @@
 .artifact-card:hover {
-  filter: brightness(98%);
+  filter: brightness($card-hover-brighness-light);
 }
 
 [data-dark-mode] .artifact-card:hover {
-  filter: brightness(92%);
+  filter: brightness($card-hover-brighness-dark);
 }
 
 .artifact-card.card .card-title {

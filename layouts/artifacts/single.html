@@ -17,45 +17,10 @@
         </p>
         <p class="text-center mb-0">{{ partial "archive/year.html" . }}</p>
       </div>
-      {{- if .Params.files }}
+      {{- if (or .Params.files .Params.links) }}
         <div class="row mt-5 justify-content-center">
           <div class="col">
-            <h2 class="artifact-table-header">Files</h2>
             {{ partial "archive/files.html" . }}
-          </div>
-        </div>
-      {{ end -}}
-      {{- if .Params.links }}
-        {{ $hasAnyArchiveLinks := false -}}
-
-        {{- range $link := .Params.links -}}
-          {{- $url := urls.Parse $link.url -}}
-          {{- if partial "archive/is-archive-url.html" $url -}}
-            {{- $hasAnyArchiveLinks = true -}}
-          {{- end -}}
-        {{- end -}}
-
-        <div class="row mt-5 justify-content-center text-center">
-          <div class="col">
-            <h2 class="artifact-table-header">Links</h2>
-            {{ if $hasAnyArchiveLinks -}}
-            <p class="fs-6 text-muted">
-              <i>
-                <span>Links marked with </span>
-                <svg
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  {{ partial "use-icon.html" "archive-fill" }}
-                </svg>
-                <span class="visually-hidden">Archive Link</span>
-                <span> are archived links.</span>
-              </i>
-            </p>
-            {{- end }}
-            {{ partial "archive/links.html" .Params.links }}
           </div>
         </div>
       {{ end -}}

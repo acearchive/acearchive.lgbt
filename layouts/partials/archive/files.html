@@ -6,41 +6,93 @@
   {{- end -}}
 {{- end -}}
 
-<table class="table my-0" id="artifact-files-table">
-  <thead>
-    <th class="w-25" scope="col">Type</th>
-    <th scope="col">File</th>
-    {{ if $displayLangColumn -}}
-    <th scope="col">Language</th>
-    {{- end }}
-  </thead>
-  <tbody>
-    {{ range $file := .Params.files -}}
-    {{- if or (not (isset $file "hidden")) (not $file.hidden) -}}
-    <tr>
-      <td>
-        <div class="d-flex flex-align-start">
-          <file-type-icon filename="{{ $file.filename }}" media-type="{{ $file.media_type }}" />
+<div id="artifact-files-table">
+  {{ range $file := .Params.files -}}
+  {{ if or (not (isset $file "hidden")) (not $file.hidden) }}
+
+  {{ $prettyUrl := $file.url -}}
+
+  {{ if strings.HasSuffix $file.url "/index.html" }}
+    {{ $prettyUrl = strings.TrimSuffix "/index.html" $file.url | printf "%s/" }}
+  {{ end }}
+  <a href="{{ $prettyUrl }}" hreflang="{{ $file.lang }}" class="card artifact-file-card">
+    <div class="card-body">
+      <div class="card-text">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <svg
+              class="me-3"
+              width="22"
+              height="22"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              {{ partial "use-icon.html" "file-earmark" }}
+            </svg>
+            <div class="d-flex flex-column gap-1">
+              <div class="d-flex gap-1">
+                <span class="file-name">{{ $file.name }}</span>
+                {{ if $file.lang }}
+                <span class="file-lang">(<lang-name code="{{ $file.lang }}"></lang-name>)</span>
+                {{ end }}
+              </div>
+              <footer class="d-flex gap-2">
+                <span class="file-extension">
+                <!-- This needs to support files with multiple file extensions, like ".tar.gz" -->
+                {{ delimit (append (split $file.filename "." | after 1) (slice "")) "." }}
+                </span>
+              </footer>
+            </div>
+          </div>
+          <span class="file-type">File</span>
         </div>
-      </td>
-      <td>
-        {{ $prettyUrl := $file.url -}}
+      </div>
+    </div>
+  </a>
+  {{ end }}
+  {{ end }}
 
-        {{- if strings.HasSuffix $file.url "/index.html" -}}
-          {{- $prettyUrl = strings.TrimSuffix "/index.html" $file.url | printf "%s/" -}}
-        {{- end -}}
+  {{ range $link := .Params.links }}
 
-        <a class="me-1 float-start" href="{{ $prettyUrl }}" hreflang="{{ $file.lang }}">{{ $file.name }}</a>
-      </td>
-      {{ if $displayLangColumn -}}
-      <td>
-        {{ if $file.lang -}}
-        <lang-name code="{{ $file.lang }}"/>
-        {{- end }}
-      </td>
-      {{- end }}
-    </tr>
-    {{- end -}}
-    {{ end -}}
-  </tbody>
-</table>
+  {{- $url := urls.Parse $link.url -}}
+  {{- $isArchive := partial "archive/is-archive-url.html" $url -}}
+  <a href="{{ .url }}" class="card artifact-file-card">
+    <div class="card-body">
+      <div class="card-text">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <svg
+              class="me-3"
+              width="26"
+              height="26"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              {{ partial "use-icon.html" "link-45deg" }}
+            </svg>
+            <div class="d-flex flex-column gap-1">
+              <div class="file-name">{{ $link.name }}</div>
+              <footer class="link-domain d-flex gap-2">
+                {{ if $isArchive }}
+                <span class="d-flex align-items-center gap-1">
+                  <svg
+                    width="14"
+                    height="14"
+                    fill="currentColor"
+                  >
+                    <title>Archive Link</title>
+                    {{ partial "use-icon.html" "archive-fill" }}
+                  </svg>
+                </span>
+                {{ end }}
+                {{ $url.Host }}
+              </footer>
+            </div>
+          </div>
+          <span class="file-type">Link</span>
+        </div>
+      </div>
+    </div>
+  </a>
+  {{ end }}
+</div>

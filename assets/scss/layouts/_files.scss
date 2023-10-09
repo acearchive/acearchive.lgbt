@@ -1,15 +1,74 @@
-#artifact-files-table tbody td {
-  vertical-align: middle;
+#artifact-files-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 45rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  .artifact-file-card .file-name {
+    font-size: 1rem;
+  }
+
+  .card-body {
+    padding: 0.7rem;
+  }
+
+  .artifact-file-card:hover {
+    filter: brightness($card-hover-brighness-light);
+  }
+
+  a.artifact-file-card {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .artifact-file-card .file-extension {
+    font-size: 0.8rem;
+    @extend .badge, .rounded-pill, .bg-primary;
+  }
+
+  .artifact-file-card .file-type {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+
+  .artifact-file-card :is(.file-lang, .link-domain) {
+    color: $gray-700;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
 }
 
-#artifact-files-table lang-name {
-  @extend .badge;
-  font-size: $font-size-sm;
-  background-color: $gray-100;
-  color: $body-color;
+@include media-breakpoint-up(sm) {
+  #artifact-files-table {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
 }
 
-[data-dark-mode] #artifact-files-table lang-name {
-  background-color: $body-overlay-dark;
-  color: $body-color-dark;
+[data-dark-mode] #artifact-files-table {
+  .artifact-file-card:hover {
+    filter: brightness($card-hover-brighness-dark);
+  }
+
+  .artifact-file-card :is(.file-lang, .link-domain) {
+    color: $gray-500;
+  }
 }
+
+// #artifact-files-table tbody td {
+//   vertical-align: middle;
+// }
+
+// #artifact-files-table lang-name {
+//   @extend .badge;
+//   font-size: $font-size-sm;
+//   background-color: $gray-100;
+//   color: $body-color;
+// }
+
+// [data-dark-mode] #artifact-files-table lang-name {
+//   background-color: $body-overlay-dark;
+//   color: $body-color-dark;
+// }
