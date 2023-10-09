@@ -38,11 +38,8 @@
                 <span class="file-lang">(<lang-name code="{{ $file.lang }}"></lang-name><noscript>{{ $file.lang }}</noscript>)</span>
                 {{ end }}
               </div>
-              <footer class="d-flex gap-2">
-                <span class="file-extension">
-                <!-- This needs to support files with multiple file extensions, like ".tar.gz" -->
-                {{ delimit (append (split $file.filename "." | after 1) (slice "")) "." }}
-                </span>
+              <footer class="file-subtitle d-flex gap-2">
+                {{ $file.filename }}
               </footer>
             </div>
           </div>
@@ -76,7 +73,7 @@
             </div>
             <div class="d-flex flex-column gap-1">
               <div class="file-name">{{ $link.name }}</div>
-              <footer class="link-domain d-flex gap-2">
+              <footer class="file-subtitle d-flex gap-2">
                 {{ if $isArchive }}
                 <span class="d-flex align-items-center gap-1">
                   <svg

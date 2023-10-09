@@ -23,18 +23,13 @@
     text-decoration: none;
   }
 
-  .artifact-file-card .file-extension {
-    font-size: 0.8rem;
-    @extend .badge, .rounded-pill, .bg-primary;
-  }
-
   .artifact-file-card .file-type {
     font-size: 1rem;
     margin-right: 0.5rem;
     padding: 0.5rem;
   }
 
-  .artifact-file-card :is(.file-lang, .link-domain) {
+  .artifact-file-card :is(.file-lang, .file-subtitle) {
     color: $gray-700;
     font-style: italic;
     font-size: 0.9rem;
@@ -53,23 +48,7 @@
     filter: brightness($card-hover-brighness-dark);
   }
 
-  .artifact-file-card :is(.file-lang, .link-domain) {
+  .artifact-file-card :is(.file-lang, .file-subtitle) {
     color: $gray-500;
   }
 }
-
-// #artifact-files-table tbody td {
-//   vertical-align: middle;
-// }
-
-// #artifact-files-table lang-name {
-//   @extend .badge;
-//   font-size: $font-size-sm;
-//   background-color: $gray-100;
-//   color: $body-color;
-// }
-
-// [data-dark-mode] #artifact-files-table lang-name {
-//   background-color: $body-overlay-dark;
-//   color: $body-color-dark;
-// }
