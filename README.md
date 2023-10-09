@@ -22,6 +22,9 @@ tools, and infrastructure can be found in the following repos:
   serverless function which serves artifact files from object storage.
 - [api-worker](https://github.com/acearchive/api-worker): This is a serverless
   function which serves the REST API.
+- [submission-worker](https://github.com/acearchive/submission-worker): This is
+  a serverless function used to import metadata from artifact submissions into
+  the database.
 - [hugo-artifact-action](https://github.com/acearchive/hugo-artifact-action):
   This is a GitHub Action which converts dynamic content into static pages for
   the static site generator.
