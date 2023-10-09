@@ -36,8 +36,22 @@
         {{ end -}}
       </div>
       <div class="row mt-4">
-        <div class="col d-flex align-items-center justify-content-center fs-5">
-          <span class="badge text-dark">ID</span>
+      </div>
+      <div class="d-flex justify-content-evenly align-items-center mt-5">
+        <div class="edit-page">
+          <a href="{{ ref . "/submit" }}?artifact={{ .Params.slug }}">
+            <svg
+              height="20"
+              width="20"
+              fill="currentColor"
+              aria-hiden="true"
+            >
+            {{ partial "use-icon.html" "pencil" }}
+            </svg>
+            Edit this artifact
+          </a>
+        </div>
+        <div class="d-flex align-items-center justify-content-center fs-5">
           <code class="text-muted me-2">{{ .Params.id }}</code>
           <a
             id="artifact-id-help-link"
@@ -49,8 +63,8 @@
           >
             <div class="d-inline-flex align-center">
               <svg
-                height="12"
-                width="12"
+                height="14"
+                width="14"
                 fill="currentColor"
                 aria-hidden="true"
               >
@@ -59,27 +73,6 @@
             </div>
           </a>
         </div>
-      </div>
-      <div class="row">
-        <p class="edit-page">
-          <a href="{{ ref . "/submit" }}?artifact={{ .Params.slug }}">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-edit-2"
-            >
-              <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-            </svg>
-            Edit this artifact
-          </a>
-        </p>
       </div>
     </main>
   </div>
