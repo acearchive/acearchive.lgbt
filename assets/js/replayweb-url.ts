@@ -102,18 +102,6 @@ for (const form of forms) {
     }
   };
 
-  /*
-  const isFormValid = async (): Promise<boolean> => {
-    const formData: FormData = {
-      slug: slugInputElement.value,
-      fileName: fileNameInputElement.value,
-      url: urlInputElement.value,
-    };
-
-    return await schema.isValid(formData, { abortEarly: true });
-  };
-  */
-
   const isFormValid = async (): Promise<boolean> => {
     return (
       await Promise.all([

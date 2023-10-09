@@ -6,9 +6,9 @@
       >
     </h2>
     <p class="card-text mb-2">{{ .Params.summary | markdownify }}</p>
-    {{ if or .Params.people .Params.fromYear -}}
+    {{ if or .Params.people .Params.from_year -}}
       <div class="d-inline-block fs-6 mt-auto">
-        {{ if .Params.fromYear -}}
+        {{ if .Params.from_year -}}
           <span>{{ partial "archive/year.html" . }}</span>
           {{ if .Params.people }}<span>•</span>{{ end }}
         {{- end }}
