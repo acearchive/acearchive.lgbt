@@ -1,0 +1,40 @@
+{{- $mediaType := . -}}
+
+{{- /*
+  Because proper media type parsing is more difficult than what we can
+  reasonably do a build-time with Hugo, this template just checks for string
+  prefixes, which should be good enough 95% of the time. Even when we're
+  targeting a specific media type like `application/pdf`, we still check for a
+  prefix because IANA media types can contain *suffix* and *parameter*
+  components.
+*/ -}}
+
+{{- if strings.HasPrefix $mediaType "text/html" -}}
+  Document
+{{- else if strings.HasPrefix $mediaType "application/pdf" -}}
+  Document
+{{- else if strings.HasPrefix $mediaType "application/epub+zip" -}}
+  Ebook
+{{- else if or
+  (strings.HasPrefix $mediaType "application/x-bibtex")
+  (strings.HasPrefix $mediaType "text/x-bibtex")
+  (strings.HasPrefix $mediaType "application/x-research-info-systems")
+  (strings.HasPrefix $mediaType "application/rdf+xml")
+-}}
+  Citation File
+{{- else if or
+  (strings.HasPrefix $mediaType "application/zip")
+  (strings.HasPrefix $mediaType "application/x-tar")
+-}}
+  Archive File
+{{- else if strings.HasPrefix $mediaType "text/plain" -}}
+  Text File
+{{- else if strings.HasPrefix $mediaType "image/" -}}
+  Image
+{{- else if strings.HasPrefix $mediaType "video/" -}}
+  Video
+{{- else if strings.HasPrefix $mediaType "audio/" -}}
+  Audio File
+{{- else -}}
+  File
+{{- end -}}

@@ -43,7 +43,7 @@
               </footer>
             </div>
           </div>
-          <span class="file-type">File</span>
+          <span class="file-type">{{ partial "archive/file-type-name.html" $file.media_type }}</span>
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@
                     height="14"
                     fill="currentColor"
                   >
-                    <title>Archive Link</title>
+                    <title>Archived</title>
                     {{ partial "use-icon.html" "archive-fill" }}
                   </svg>
                 </span>
