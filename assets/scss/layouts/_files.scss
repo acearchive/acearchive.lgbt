@@ -30,7 +30,8 @@
 
   .artifact-file-card .file-type {
     font-size: 1rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
   }
 
   .artifact-file-card :is(.file-lang, .link-domain) {

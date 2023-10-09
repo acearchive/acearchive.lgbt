@@ -20,17 +20,19 @@
       <div class="card-text">
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center">
-            <svg
-              class="me-3"
-              width="22"
-              height="22"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              {{ partial "use-icon.html" "file-earmark" }}
-            </svg>
+            <div class="flex-shrink-0">
+              <svg
+                class="me-3"
+                width="22"
+                height="22"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                {{ partial "use-icon.html" "file-earmark" }}
+              </svg>
+            </div>
             <div class="d-flex flex-column gap-1">
-              <div class="d-flex gap-1">
+              <div>
                 <span class="file-name">{{ $file.name }}</span>
                 {{ if $file.lang }}
                 <span class="file-lang">(<lang-name code="{{ $file.lang }}"></lang-name>)</span>
@@ -61,15 +63,17 @@
       <div class="card-text">
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center">
-            <svg
-              class="me-3"
-              width="26"
-              height="26"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              {{ partial "use-icon.html" "link-45deg" }}
-            </svg>
+            <div class="flex-shrink-0">
+              <svg
+                class="me-3"
+                width="26"
+                height="26"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                {{ partial "use-icon.html" "link-45deg" }}
+              </svg>
+            </div>
             <div class="d-flex flex-column gap-1">
               <div class="file-name">{{ $link.name }}</div>
               <footer class="link-domain d-flex gap-2">
