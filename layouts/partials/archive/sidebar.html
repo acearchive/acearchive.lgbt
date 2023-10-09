@@ -12,7 +12,7 @@
     </h3>
   </li>
 
-  {{ partial "archive/category-menu.html" (dict "ctx" . "id" $parentId "category" "identities") }}
   {{ partial "archive/category-menu.html" (dict "ctx" . "id" $parentId "category" "decades") }}
+  {{ partial "archive/category-menu.html" (dict "ctx" . "id" $parentId "category" "identities") }}
 </ul>
 {{- end }}
