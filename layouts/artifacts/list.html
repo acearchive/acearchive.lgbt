@@ -7,6 +7,7 @@
     </div>
     <div class="docs-content col-lg-11 mx-xl-auto">
       <main>
+        {{ $paginator := .Paginate (sort (where ($.Site.GetPage "/content/artifacts/_index.md").Pages "Section" "artifacts") "Params.from_year" "desc") }}
         <div class="artifact-list-title">
           <h1 class="text-center">{{ .Title }}</h1>
           <p class="lead text-center">{{ .Params.description | markdownify }}</p>
@@ -15,7 +16,6 @@
           {{ template "_internal/pagination.html" . }}
         </nav>
         <div class="row row-cols-1 row-cols-md-2 g-5">
-          {{ $paginator := .Paginate (sort (where ($.Site.GetPage "/content/artifacts/_index.md").Pages "Section" "artifacts") "Params.from_year" "desc") }}
           {{ range $paginator.Pages }}
             <div class="col">{{ .Render "card" -}}</div>
           {{ end }}
