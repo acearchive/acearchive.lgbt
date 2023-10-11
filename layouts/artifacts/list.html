@@ -11,6 +11,9 @@
           <h1 class="text-center">{{ .Title }}</h1>
           <p class="lead text-center">{{ .Params.description | markdownify }}</p>
         </div>
+        <nav class="d-flex mb-4 justify-content-center" aria-label="Pages">
+          {{ template "_internal/pagination.html" . }}
+        </nav>
         <div class="row row-cols-1 row-cols-md-2 g-5">
           {{ $paginator := .Paginate (sort (where ($.Site.GetPage "/content/artifacts/_index.md").Pages "Section" "artifacts") "Params.from_year" "desc") }}
           {{ range $paginator.Pages }}
