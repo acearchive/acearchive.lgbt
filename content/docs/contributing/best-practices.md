@@ -62,18 +62,18 @@ easiest for you.
 
 ## Include citations where applicable
 
-If the artifact contains a published work, include a citation for it as a
-separate file using a standardized file format like BibTeX. These files can be
-imported into reference managers like [Zotero](https://www.zotero.org/) and help
-people cite the work or find it on the web.
+If you're referencing a published work, include a citation for it as a separate
+file using a standardized file format like BibTeX. These files can be imported
+into reference managers like [Zotero](https://www.zotero.org/) and help people
+cite the work or find it on the web.
 
-## Include both files and links in artifacts when possible
+## Include both files and links in your submission
 
-The two ways to include content in an artifact are *files* and *links*.
+The two ways to include content in your submission are *files* and *links*.
 
-If the content is a file like a PDF, image, or video, include it in the artifact
-as a file and also add a link to where it can be found on the web. This ensures
-that people can always trace where content came from.
+If the content is a file like a PDF, image, or video, include it in your
+submission as a file and also add a link to where it can be found on the web.
+This ensures that people can always trace where content came from.
 
 When possible, make sure you link to reputable, permanent sites like libraries,
 journal databases, or archives like the Internet Archive.
@@ -100,15 +100,15 @@ as a page behind a confirmation prompt or login page, check out {{< article
 If you want to contribute a video that's hosted on a video sharing platform like
 YouTube, in addition to linking to the source, consider downloading the video
 directly using a tool like [youtube-dl](https://ytdl-org.github.io/youtube-dl/)
-and adding it to the artifact as a file. Contrary to the name, youtube-dl
+and including it in your submission as a file. Contrary to the name, youtube-dl
 supports many sites besides YouTube; you can find a full list of supported sites
 [here](https://github.com/ytdl-org/youtube-dl/blob/master/docs/supportedsites.md).
 
 ## Use existing tags when possible
 
 When listing the people and identities associated with an artifact, prefer using
-identities and names as they currently appear in other artifacts in the archive.
-So if "gray-asexual" already exists in the archive, don't add "grey-asexual" or
+identities and names as they currently appear in the archive. So if
+"gray-asexual" already exists in the archive, don't add "grey-asexual" or
 "gray-ace" unless there's a good reason (e.g. the author of a work makes a case
 that they're distinct identities).
 
