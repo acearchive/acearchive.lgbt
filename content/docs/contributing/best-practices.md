@@ -89,26 +89,16 @@ page which is different than the URL in your address bar. Always use a permalink
 when one is provided.
 {{< /alert >}}
 
-## Include Wayback links when linking to websites
+## Use Wayback Machine links when necessary
 
-When a primary source is a website like a blog or forum thread, the easiest way
-to include it in an artifact is to add a link. If the website is no longer
-available on the web, include a [Wayback Machine](https://web.archive.org/)
-link.
+When linking to a website like a blog post or a forum thread, use a [Wayback
+Machine](https://web.archive.org/) link if the website is no longer available on
+the web or has changed substantially since the version you're trying to
+reference.
 
-However, even if the website is still available on the web, you should
-include a Wayback link alongside a regular link. This ensures that even if the
-content moves, changes, or is taken down, users can still find it. If the
-website is also an archive or online database like the Internet Archive, you
-don't need to include a Wayback link.
-
-You can give both the regular link and the Wayback link the same name in the
-artifact; the artifact page on Ace Archive will show which is the Wayback link
-with an icon.
-
-If you need to archive a page that the Wayback Machine isn't able to crawl,
-such as a page behind a confirmation prompt or login page, check out {{<
-article "docs/contributing/web-archives.md" >}} for an alternative approach.
+If you need to archive a page that the Wayback Machine isn't able to crawl, such
+as a page behind a confirmation prompt or login page, check out {{< article
+"docs/contributing/web-archives.md" >}} for an alternative approach.
 
 ## Download videos from sites like YouTube
 
