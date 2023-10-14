@@ -7,7 +7,7 @@
   margin-right: auto;
 
   .artifact-file-card .file-name {
-    font-size: 1rem;
+    font-size: $font-size-base;
   }
 
   .card-body {
@@ -24,7 +24,7 @@
   }
 
   .artifact-file-card .file-type {
-    font-size: 1rem;
+    font-size: $font-size-base;
     margin-right: 0.5rem;
     padding: 0.5rem;
   }
@@ -32,7 +32,7 @@
   .artifact-file-card :is(.file-lang, .file-subtitle) {
     color: $gray-700;
     font-style: italic;
-    font-size: 0.9rem;
+    font-size: $font-size-sm;
   }
 }
 
