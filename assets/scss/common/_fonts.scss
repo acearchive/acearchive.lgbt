@@ -24,6 +24,14 @@
 
 @font-face {
   font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local("Fira Sans"), url("/fonts/vendor/fira/FiraSans-Black.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Fira Sans";
   font-style: italic;
   font-weight: 400;
   font-display: swap;
@@ -44,4 +52,12 @@
   font-weight: 700;
   font-display: swap;
   src: local("Fira Sans"), url("/fonts/vendor/fira/FiraSans-BoldItalic.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Fira Sans";
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: local("Fira Sans"), url("/fonts/vendor/fira/FiraSans-BlackItalic.ttf") format("ttf");
 }
