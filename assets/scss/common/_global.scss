@@ -67,8 +67,16 @@ body.docs {
   }
 }
 
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
 .home h1 {
-  font-size: calc(#{$font-size-lg} + 1.5vw);
+  font-size: 3.2rem;
 }
 
 a:hover,
