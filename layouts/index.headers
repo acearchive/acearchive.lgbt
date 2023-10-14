@@ -5,12 +5,13 @@
 /*
     X-Content-Type-Options: nosniff
     X-Frame-Options: DENY
-    Content-Security-Policy: default-src 'none'; connect-src *; prefetch-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; script-src 'self' 'sha256-vOgyKS2vkH4n5TxBJpeh9SgzrE6LVGsAeOAvEST6oCc='; style-src 'self' 'unsafe-inline'; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';
+    Content-Security-Policy: default-src 'none'; connect-src *; font-src 'self'; img-src 'self' data:; media-src 'self'; script-src 'self' 'sha256-vOgyKS2vkH4n5TxBJpeh9SgzrE6LVGsAeOAvEST6oCc='; style-src 'self' 'unsafe-inline'; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';
     Referrer-Policy: strict-origin
     Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
     Cache-Control: no-cache
     Access-Control-Allow-Origin: *
-    Permissions-Policy: camera=(), microphone=(), geolocation=(), display-capture=(), document-domain=()
+    # Explicitly disallow permissions we will never ask for.
+    Permissions-Policy: camera=(), microphone=(), geolocation=(), display-capture=()
 
 #
 # Path-specific caching headers. We want to employ a different caching strategy
