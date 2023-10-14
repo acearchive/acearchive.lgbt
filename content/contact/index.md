@@ -16,3 +16,5 @@ contributing documentation]({{< ref "docs/contributing/start.md"
 If you want to contact us for any reason, you can email:
 
 <contact@acearchive.lgbt>
+
+We'd love to hear from you! Even just to say you found the site helpful.
