@@ -29,7 +29,7 @@
 }
 
 .alert-warning {
-  background: $beige;
+  background: $code-bg;
   color: $black;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .alert code {
-  background: darken($beige, 5%);
+  background: darken($code-bg, 5%);
   color: $black;
   padding: 0.25rem 0.5rem;
 }

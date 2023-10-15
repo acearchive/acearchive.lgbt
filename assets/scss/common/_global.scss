@@ -115,20 +115,17 @@ a.btn:focus {
   padding-bottom: 1rem;
 }
 
-/*
-.section svg {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  vertical-align: text-top;
+// This fixes the footer taking up too much vertical space on large displays
+// when the content doesn't push it down.
+body:is(.home, .single) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
-*/
 
-/*
-body {
-  padding-top: 3.5625rem;
+footer.footer {
+  margin-top: auto;
 }
-*/
 
 .docs-sidebar {
   order: 2;
