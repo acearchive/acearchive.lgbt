@@ -80,9 +80,19 @@ h2 {
   font-weight: $brand-font-weight;
 }
 
+a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+:is(a.btn, a.page-link, a.nav-link, a.navbar-brand) {
+  text-decoration: none;
+}
+
 a:hover,
 a:focus {
-  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 a.btn:hover,
