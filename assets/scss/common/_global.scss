@@ -226,6 +226,10 @@ footer.footer {
   list-style: none;
 }
 
+#TableOfContents a {
+  text-decoration: none;
+}
+
 ::selection {
   background: scale-color($primary, $alpha: -90%);
 }
