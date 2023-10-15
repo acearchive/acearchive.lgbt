@@ -86,7 +86,7 @@ a {
   text-underline-offset: 2px;
 }
 
-:is(a.btn, a.page-link, a.nav-link, a.navbar-brand) {
+:is(a.btn, a.page-link, a.nav-link, a.docs-link, a.navbar-brand) {
   text-decoration: none;
 }
 
