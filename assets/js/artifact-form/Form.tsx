@@ -129,8 +129,8 @@ const ArtifactForm = ({
           <>
             <p>Every artifact in the repository has a URL like:</p>
             <p>
-              <a href="https://acearchive.lgbt/artifact/orlando-the-asexual-manifesto">
-                https://acearchive.lgbt/artifact/orlando-the-asexual-manifesto
+              <a href="https://acearchive.lgbt/artifacts/orlando-the-asexual-manifesto">
+                https://acearchive.lgbt/artifacts/orlando-the-asexual-manifesto
               </a>
             </p>
             <p>
@@ -289,8 +289,8 @@ const ArtifactForm = ({
                 <p>The language of this file.</p>
                 <p>
                   This could be the language a text is written in, the language spoken in a video,
-                  etc. If this file contains no written or spoken natural language (e.g. it&apos;s a
-                  photograph), then leave this blank.
+                  etc. If a language is not applicable (e.g. it&apos;s a photograph), then leave
+                  this blank.
                 </p>
                 <p>
                   If you&apos;re trying to submit a file that is not in one of these languages,{" "}
