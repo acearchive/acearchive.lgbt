@@ -60,6 +60,25 @@ Finally, if you find this website difficult to use for any reason, we consider
 that a high-priority bug. Please [contact us]({{< ref "contact" >}}) however is
 easiest for you.
 
+## Add content warnings where necessary
+
+Archives often include content which doesn't represent the values of the
+project. However, we can empower visitors to decide what kind of content they
+are willing to engage with by attaching content warnings.
+
+If you're submitting content which is queerphobic, pathologizing, hateful, or
+could otherwise be distressing to view, add content warnings.
+
+Content warnings are added at the end of the artifact description (not the
+summary), and are formatted like this:
+
+> (CW: *warning 1*, *warning 2*, *etc.*)
+
+Here's an example:
+
+> David Jay, founder of AVEN, is interviewed on ABC's *The View* (CW: acephobia,
+> invasive questions toward asexual people)
+
 ## Include citations where applicable
 
 If you're referencing a published work, include a citation for it as a separate
