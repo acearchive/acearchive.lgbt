@@ -11,6 +11,8 @@ module.exports = {
         "./layouts/**/*.html",
         "./content/**/*.md",
         "./assets/js/**/*.js",
+        "./assets/js/**/*.ts",
+        "./assets/js/**/*.tsx",
       ],
       safelist: [
         "lazyloaded",
@@ -23,7 +25,7 @@ module.exports = {
         "h5",
         "alert-link",
         ...whitelister([
-          "./nassets/scss/common/*.scss",
+          "./assets/scss/common/*.scss",
           "./assets/scss/components/*.scss",
           "./assets/scss/layouts/*.scss",
           // "./node_modules/bootstrap/scss/_tooltip.scss",
