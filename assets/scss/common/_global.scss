@@ -89,7 +89,7 @@ a {
 /* TODO: For some reason, even though it's whitelisted in the
  * `postcss.config.js`, this selector is being stripped.
  */
-/* purgecss ignore */
+/*! purgecss ignore */
 :is(a.btn, a.page-link, a.nav-link, a.docs-link, a.navbar-brand) {
   text-decoration: none;
 }
