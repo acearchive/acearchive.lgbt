@@ -17,7 +17,7 @@ module.exports = {
       safelist: [
         "lazyload",
         "lazyloaded",
-        ...whitelister(["./assets/scss/**/*.scss", "./node_modules/react-bootstrap/**/*.js"]),
+        ...whitelister(["./node_modules/react-bootstrap/**/*.js"]),
       ],
     }),
   ],
