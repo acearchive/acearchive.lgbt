@@ -2,15 +2,14 @@
 @import "bootstrap/scss/functions";
 
 /** Import theme variables */
+/*! purgecss ignore */
 @import "common/variables";
 
 /** Import Bootstrap */
 @import "bootstrap/scss/bootstrap";
 
-/** Import highlight.js */
-// @import "highlight.js/scss/github-dark-dimmed";
+/*! purgecss start ignore */
 
-/** Import theme styles */
 @import "common/fonts";
 @import "common/global";
 @import "common/dark";
@@ -36,3 +35,5 @@
 @import "layouts/archive";
 @import "layouts/artifactform";
 @import "layouts/files";
+
+/*! purgecss end ignore */
