@@ -2,11 +2,13 @@
   To minimize the amount of render-blocking preloading we're doing, we only
   preload the Latin characters from these fonts. This is an optimization for
   the fact that this site is primarily an English-language site. If non-Latin
-  characters appear, then the full fonts will be loaded after initial page
-  render.
+  characters appear, then the full fonts will still be loaded after initial
+  page render.
 -->
 <link rel="preload" as="font" href="{{ "fonts/fira-sans/FiraSans-Regular-latin.woff2" | absURL }}" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="{{ "fonts/fira-sans/FiraSans-Italic-latin.woff2" | absURL }}" type="font/woff2" crossorigin>
 <link rel="preload" as="font" href="{{ "fonts/fira-sans/FiraSans-Bold-latin.woff2" | absURL }}" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="{{ "fonts/fira-sans/FiraSans-BoldItalic-latin.woff2" | absURL }}" type="font/woff2" crossorigin>
 
 <!--
   This font subset contains exactly the necessary characters for the
