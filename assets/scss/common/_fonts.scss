@@ -27,7 +27,10 @@
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: local("Fira Sans"), url("/fonts/fira-sans/FiraSans-Black.woff2") format("woff2");
+  src: local("Fira Sans"), url("/fonts/fira-sans/FiraSans-Black-ASCII.woff2") format("woff2");
+  /* We only use this font for the "Ace Archive" title, so it only needs ASCII
+   * characters. */
+  unicode-range: U+20-7E;
 }
 
 @font-face {
@@ -52,12 +55,4 @@
   font-weight: 700;
   font-display: swap;
   src: local("Fira Sans"), url("/fonts/fira-sans/FiraSans-BoldItalic.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "Fira Sans";
-  font-style: italic;
-  font-weight: 900;
-  font-display: swap;
-  src: local("Fira Sans"), url("/fonts/fira-sans/FiraSans-BlackItalic.woff2") format("woff2");
 }
