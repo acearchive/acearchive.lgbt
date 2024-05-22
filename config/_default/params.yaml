@@ -17,7 +17,7 @@ archiveLinkDomains:
 
 # Homepage
 title: "Ace Archive"
-headerLogo: "/images/logo-transparent.webp"
+headerLogo: "/images/logo-transparent-header.webp"
 headerLogoAlt: "The Ace Archive logo, a rainbow file box"
 titleSeparator: "-"
 titleAddition: "Asexual and aromantic history"
