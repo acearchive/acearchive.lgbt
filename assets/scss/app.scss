@@ -2,13 +2,10 @@
 @import "bootstrap/scss/functions";
 
 /** Import theme variables */
-/*! purgecss ignore */
 @import "common/variables";
 
 /** Import Bootstrap */
 @import "bootstrap/scss/bootstrap";
-
-/*! purgecss start ignore */
 
 @import "common/fonts";
 @import "common/global";
@@ -35,5 +32,3 @@
 @import "layouts/archive";
 @import "layouts/artifactform";
 @import "layouts/files";
-
-/*! purgecss end ignore */

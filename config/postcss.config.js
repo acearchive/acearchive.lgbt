@@ -17,7 +17,17 @@ module.exports = {
       safelist: [
         "lazyload",
         "lazyloaded",
-        ...whitelister(["./assets/scss/**/*.scss", "./node_modules/react-bootstrap/**/*.js"]),
+
+        // These are populated by Hugo and don't appear in our HTML.
+        "pagination",
+        "page-item",
+        "page-link",
+
+        // These are from the artifact submission form.
+        "btn-secondary",
+        "form-check-input",
+
+        ...whitelister(["./node_modules/bootstrap/scss/_tooltip.scss"]),
       ],
     }),
   ],
