@@ -5,13 +5,6 @@
 {{- $currentPage := . -}}
 
 <ul class="list-unstyled collapsible-sidebar">
-  <li class="mb-b">
-    {{ $active := and (eq .CurrentSection .FirstSection) (eq .Title "Archive") -}}
-    <h3>
-      <a class="docs-link {{ if $active }}active{{ end }}" href="/artifacts/">All artifacts</a>
-    </h3>
-  </li>
-
   {{ partial "archive/category-menu.html" (dict "ctx" . "id" $parentId "category" "decades") }}
   {{ partial "archive/category-menu.html" (dict "ctx" . "id" $parentId "category" "identities") }}
 </ul>
