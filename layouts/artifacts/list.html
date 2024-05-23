@@ -3,35 +3,39 @@
       <h1 class="text-center">{{ .Title }}</h1>
       <p class="lead text-center">{{ .Params.description | markdownify }}</p>
       <div class="row">
-        <div class="col-md-5 mx-auto">
-          <h2>By Decade</h2>
-          <ul class="list-unstyled">
-            {{ range (index .Site.Taxonomies "decades") }}
-              <li>
-                <a class="category-link d-flex" href="{{ .Page.Permalink }}"
-                  ><span>{{ .Page.Title | title }}</span
-                  ><span class="badge bg-light text-dark fw-normal ms-auto"
-                    >{{ .Count }}</span
-                  ></a
-                >
-              </li>
-            {{ end }}
-          </ul>
+        <div class="col-md-5 ms-auto">
+          <div class="mx-2 mx-sm-5 mx-md-0">
+            <h2>By Decade</h2>
+            <ul class="list-unstyled">
+              {{ range (index .Site.Taxonomies "decades") }}
+                <li>
+                  <a class="category-link d-flex" href="{{ .Page.Permalink }}"
+                    ><span>{{ .Page.Title | title }}</span
+                    ><span class="badge bg-light text-dark fw-normal ms-auto"
+                      >{{ .Count }}</span
+                    ></a
+                  >
+                </li>
+              {{ end }}
+            </ul>
+          </div>
         </div>
-        <div class="col-md-5 mx-auto">
-          <h2>By Identity</h2>
-          <ul class="list-unstyled">
-            {{ range (index .Site.Taxonomies "identities") }}
-              <li>
-                <a class="category-link d-flex" href="{{ .Page.Permalink }}"
-                  ><span>{{ .Page.Title | title }}</span
-                  ><span class="badge bg-light text-dark fw-normal ms-auto"
-                    >{{ .Count }}</span
-                  ></a
-                >
-              </li>
-            {{ end }}
-          </ul>
+        <div class="col-md-5 me-auto">
+          <div class="mx-2 mx-sm-5 mx-md-0">
+            <h2>By Identity</h2>
+            <ul class="list-unstyled">
+              {{ range (index .Site.Taxonomies "identities") }}
+                <li>
+                  <a class="category-link d-flex" href="{{ .Page.Permalink }}"
+                    ><span>{{ .Page.Title | title }}</span
+                    ><span class="badge bg-light text-dark fw-normal ms-auto"
+                      >{{ .Count }}</span
+                    ></a
+                  >
+                </li>
+              {{ end }}
+            </ul>
+          </div>
         </div>
       </div>
     </main>
