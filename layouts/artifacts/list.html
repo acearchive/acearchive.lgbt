@@ -8,9 +8,9 @@
           <ul class="list-unstyled">
             {{ range (index .Site.Taxonomies "decades") }}
               <li>
-                <a class="docs-link d-flex" href="{{ .Page.Permalink }}"
+                <a class="category-link d-flex" href="{{ .Page.Permalink }}"
                   ><span>{{ .Page.Title | title }}</span
-                  ><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4"
+                  ><span class="badge bg-light text-dark fw-normal ms-auto"
                     >{{ .Count }}</span
                   ></a
                 >
@@ -23,9 +23,9 @@
           <ul class="list-unstyled">
             {{ range (index .Site.Taxonomies "identities") }}
               <li>
-                <a class="docs-link d-flex" href="{{ .Page.Permalink }}"
+                <a class="category-link d-flex" href="{{ .Page.Permalink }}"
                   ><span>{{ .Page.Title | title }}</span
-                  ><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4"
+                  ><span class="badge bg-light text-dark fw-normal ms-auto"
                     >{{ .Count }}</span
                   ></a
                 >

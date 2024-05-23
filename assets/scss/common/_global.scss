@@ -87,7 +87,7 @@ a {
 }
 
 /*! purgecss ignore */
-:is(a.btn, a.page-link, a.nav-link, a.docs-link, a.navbar-brand) {
+:is(a.btn, a.page-link, a.nav-link, a.docs-link, a.category-link, a.navbar-brand) {
   text-decoration: none;
 }
 

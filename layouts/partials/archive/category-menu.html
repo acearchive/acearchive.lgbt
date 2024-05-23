@@ -15,14 +15,14 @@
     >
       {{ humanize $category }}
     </button>
-    <div class="collapse show" id="{{ $parentId }}-{{ $category }}-menu">
+    <div class="collapse show pe-lg-4" id="{{ $parentId }}-{{ $category }}-menu">
       <ul class="btn-toggle-nav list-unstyled">
         {{ range (index .Site.Taxonomies $category) }}
           {{ $active := eq .Page.Title $currentPage.Title -}}
           <li>
-            <a class="docs-link d-flex {{ if $active }}active{{ end }}" href="{{ .Page.Permalink }}"
+            <a class="category-link d-flex {{ if $active }}active{{ end }}" href="{{ .Page.Permalink }}"
               ><span>{{ .Page.Title | title }}</span
-              ><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4"
+              ><span class="badge bg-light text-dark fw-normal ms-auto"
                 >{{ .Count }}</span
               ></a
             >
