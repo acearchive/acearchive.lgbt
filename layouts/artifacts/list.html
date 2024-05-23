@@ -1,29 +1,39 @@
 {{ define "main" }}
-  <div class="row flex-xl-nowrap">
-    <div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block">
-      <nav aria-label="Main" class="docs-links">
-        {{ partial "archive/sidebar.html" (dict "ctx" . "id" "list") }}
-      </nav>
-    </div>
-    <div class="docs-content col-lg-11 mx-xl-auto">
-      <main>
-        {{ $paginator := .Paginate (sort (where ($.Site.GetPage "/content/artifacts/_index.md").Pages "Section" "artifacts") "Params.id" "asc") }}
-        <div class="artifact-list-title">
-          <h1 class="text-center">{{ .Title }}</h1>
-          <p class="lead text-center">{{ .Params.description | markdownify }}</p>
+    <main>
+      <h1 class="text-center">{{ .Title }}</h1>
+      <p class="lead text-center">{{ .Params.description | markdownify }}</p>
+      <div class="row">
+        <div class="col-md-5 mx-auto">
+          <h2>By Decade</h2>
+          <ul class="list-unstyled">
+            {{ range (index .Site.Taxonomies "decades") }}
+              <li>
+                <a class="docs-link d-flex" href="{{ .Page.Permalink }}"
+                  ><span>{{ .Page.Title | title }}</span
+                  ><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4"
+                    >{{ .Count }}</span
+                  ></a
+                >
+              </li>
+            {{ end }}
+          </ul>
         </div>
-        <nav class="d-flex mb-4 justify-content-center" aria-label="Pages">
-          {{ template "_internal/pagination.html" . }}
-        </nav>
-        <div class="row row-cols-1 row-cols-md-2 g-5">
-          {{ range $paginator.Pages }}
-            <div class="col">{{ .Render "card" -}}</div>
-          {{ end }}
+        <div class="col-md-5 mx-auto">
+          <h2>By Identity</h2>
+          <ul class="list-unstyled">
+            {{ range (index .Site.Taxonomies "identities") }}
+              <li>
+                <a class="docs-link d-flex" href="{{ .Page.Permalink }}"
+                  ><span>{{ .Page.Title | title }}</span
+                  ><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4"
+                    >{{ .Count }}</span
+                  ></a
+                >
+              </li>
+            {{ end }}
+          </ul>
         </div>
-      </main>
-      <nav class="d-flex mt-5 justify-content-center" aria-label="Pages">
-        {{ template "_internal/pagination.html" . }}
-      </nav>
-    </div>
+      </div>
+    </main>
   </div>
 {{ end }}
