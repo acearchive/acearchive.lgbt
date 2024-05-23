@@ -118,7 +118,7 @@ a.btn:focus {
 
 // This fixes the footer taking up too much vertical space on large displays
 // when the content doesn't push it down.
-body:is(.home, .single) {
+body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
