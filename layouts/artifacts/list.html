@@ -1,8 +1,22 @@
 {{ define "main" }}
-    <main>
-      <h1 class="text-center">{{ .Title }}</h1>
-      <p class="lead text-center">{{ .Params.description | markdownify }}</p>
-      <div class="row">
+  <div class="row flex-xl-nowrap">
+    <div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block">
+      <nav aria-label="Main" class="docs-links">
+        {{ partial "archive/sidebar.html" (dict "ctx" . "id" "list") }}
+      </nav>
+    </div>
+    <div class="docs-content col-lg-11 mx-xl-auto">
+      <div class="artifact-list-title">
+        <h1 class="text-center">{{ .Title }}</h1>
+        <p class="lead text-center d-lg-none">
+          Welcome to the archive! Filter by decade or identity to get started.
+        </p>
+        <p class="lead text-center d-none d-lg-block">
+          Welcome to the archive! Filter by decade or identity using the
+          sidebar on the left to get started.
+        </p>
+      </div>
+      <main class="row d-lg-none">
         <div class="col-md-5 ms-auto">
           <div class="mx-2 mx-sm-5 mx-md-0">
             <h2>By Decade</h2>
@@ -37,7 +51,18 @@
             </ul>
           </div>
         </div>
+      </main>
+      <div class="d-none d-lg-flex justify-content-center">
+        <svg
+          width="200"
+          height="200"
+          fill="currentColor"
+          id="artifacts-list-placeholder-icon"
+          aria-hidden="true"
+        >
+          {{ partial "use-icon.html" "archive-fill" }}
+        </svg>
       </div>
-    </main>
+    </div>
   </div>
 {{ end }}

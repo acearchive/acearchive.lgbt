@@ -66,3 +66,12 @@
   font-size: $font-size-xl;
   margin-top: 0;
 }
+
+#artifacts-list-placeholder-icon {
+  margin-top: 6rem;
+  color: $gray-200;
+}
+
+[data-dark-mode] #artifacts-list-placeholder-icon {
+  color: $gray-800;
+}
