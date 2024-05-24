@@ -6,11 +6,14 @@
       </nav>
     </div>
     <div class="docs-content col-lg-11 mx-xl-auto">
+      <div class="artifact-list-title">
+        <h1 class="text-center">{{ .Title | title }}</h1>
+        <p class="lead text-center">Artifacts involving {{ .Title }}</p>
+      </div>
+      <nav class="d-flex my-5 justify-content-center" aria-label="Pages">
+        {{ template "_internal/pagination.html" . }}
+      </nav>
       <main>
-        <div class="artifact-list-title">
-          <h1 class="text-center">{{ .Title | title }}</h1>
-          <p class="lead text-center">Artifacts involving {{ .Title }}</p>
-        </div>
         <div class="row row-cols-1 row-cols-md-2 g-5">
           {{ range (.Paginate (.Pages.ByParam "from_year").Reverse).Pages }}
             <div class="col">{{ .Render "card" -}}</div>
