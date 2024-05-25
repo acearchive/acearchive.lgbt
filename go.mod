@@ -2,4 +2,4 @@ module github.com/acearchive/acearchive.lgbt
 
 go 1.19
 
-require github.com/acearchive/hugo-artifacts v0.0.0-20240523100317-aca2b33d6f45 // indirect
+require github.com/acearchive/hugo-artifacts v0.0.0-20240525121045-a80647094753 // indirect
