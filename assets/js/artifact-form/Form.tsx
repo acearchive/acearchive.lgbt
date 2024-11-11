@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useMemo } from "react";
+import React, { useEffect, useCallback, useMemo, useState } from "react";
 import { Formik, FormikProps } from "formik";
 import { Form, Container, Row, Col } from "react-bootstrap";
 import ISO6391 from "iso-639-1";
@@ -44,7 +44,7 @@ const ArtifactForm = ({
   clearArtifactSlug,
 }: {
   formikProps: FormikProps<ArtifactFormData>;
-  artifactToEdit: HugoArtifact | undefined;
+  artifactToEdit: HugoArtifact | ArtifactSubmission | undefined;
   artifactSlugHasChanged: boolean;
   setSavedValues: (values: ArtifactFormData) => void;
   setSubmissionData: (submission: ArtifactSubmission | undefined) => void;
@@ -531,15 +531,43 @@ const ArtifactForm = ({
   );
 };
 
+const fetchArtifactJsonFromIssue = async (url: string): Promise<ArtifactSubmission | undefined> => {
+  const resp = await fetch(url);
+
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(await resp.text(), "text/html");
+  const firstJsonCodeBlock = doc.querySelector(".highlight.highlight-source-json");
+
+  if (firstJsonCodeBlock === null) {
+    return undefined;
+  } else {
+    return JSON.parse(firstJsonCodeBlock.textContent ?? "");
+  }
+};
+
 const ArtifactSubmitForm = () => {
   const [savedValues, setSavedValues] = useSavedFormValues();
   const [submissionData, setSubmissionData] = useSavedSubmissionData();
-  const { artifactSlug, artifactSlugHasChanged, clearArtifactSlug } = useArtifactSlug();
+  const { artifactSlugOrIssueUrl, artifactSource, artifactSlugHasChanged, clearArtifactSlug } =
+    useArtifactSlug();
 
-  const artifactToEdit = useMemo(
-    () => (artifactSlug === undefined ? undefined : currentArtifacts[artifactSlug]),
-    [artifactSlug]
-  );
+  const [artifactToEdit, setArtifactToEdit] = useState<
+    HugoArtifact | ArtifactSubmission | undefined
+  >(undefined);
+
+  useEffect(() => {
+    if (artifactSlugOrIssueUrl === undefined || artifactSource === undefined) {
+      return;
+    } else if (artifactSource === "github-issue") {
+      fetchArtifactJsonFromIssue(artifactSlugOrIssueUrl).then((artifact) => {
+        if (artifact !== undefined) {
+          setArtifactToEdit(artifact);
+        }
+      });
+    } else if (artifactSource === "ace-archive") {
+      setArtifactToEdit(currentArtifacts[artifactSlugOrIssueUrl]);
+    }
+  }, [artifactSlugOrIssueUrl, artifactSource]);
 
   return (
     <Formik

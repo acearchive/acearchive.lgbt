@@ -28,7 +28,7 @@ export type HugoArtifactLink = Readonly<{
   url: string;
 }>;
 
-type HugoArtifact = Readonly<{
+export type HugoArtifact = Readonly<{
   id: string;
   slug: string;
   title: string;
@@ -89,7 +89,7 @@ export type ArtifactSubmission = Readonly<{
 // the HTML form.
 export const toSubmission = async (
   formData: ArtifactFormData,
-  baseArtifact?: HugoArtifact
+  baseArtifact?: HugoArtifact | ArtifactSubmission
 ): Promise<ArtifactSubmission> => ({
   id: baseArtifact?.id,
   version: version,
@@ -135,9 +135,17 @@ export const toSubmission = async (
   aliases: baseArtifact?.aliases ?? [],
 });
 
+const isArtifactFileSubmission = (
+  artifact: HugoArtifactFile | ArtifactFileSubmission
+): artifact is ArtifactFileSubmission => Object.hasOwn(artifact, "source_url");
+
+const isArtifactLinkSubmission = (
+  artifact: HugoArtifactLink | ArtifactLinkSubmission
+): artifact is ArtifactLinkSubmission => typeof artifact.url !== "string";
+
 // This converts an existing artifact to the necessary shape to import it into
 // the HTML form to support editing existing artifacts.
-export const toFormInput = (artifact: HugoArtifact): ArtifactFormData => ({
+export const toFormInput = (artifact: HugoArtifact | ArtifactSubmission): ArtifactFormData => ({
   slug: artifact.slug,
   title: artifact.title,
   summary: artifact.summary,
@@ -145,13 +153,13 @@ export const toFormInput = (artifact: HugoArtifact): ArtifactFormData => ({
   files: artifact.files.map((file) => ({
     name: file.name,
     fileName: file.filename,
-    sourceUrl: file.url,
+    sourceUrl: isArtifactFileSubmission(file) ? file.source_url?.toString() : file.url,
     lang: file.lang === undefined ? "" : file.lang,
     hidden: file.hidden,
   })),
   links: artifact.links.map((link) => ({
     name: link.name,
-    url: link.url,
+    url: isArtifactLinkSubmission(link) ? link.url.toString() : link.url,
   })),
   people: artifact.people.join(", "),
   identities: artifact.identities.join(", "),

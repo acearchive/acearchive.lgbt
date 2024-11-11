@@ -65,9 +65,11 @@ export const useSavedSubmissionData = (): [
 ] => useLocalStorageState<ArtifactSubmission>("new_artifact_form.current_submission");
 
 const artifactEditSlugQueryParam = "artifact";
+const githubIssuePrefix = "https://github.com/acearchive/artifact-submissions/issues/";
 
 export const useArtifactSlug = (): {
-  artifactSlug: string | undefined;
+  artifactSlugOrIssueUrl: string | undefined;
+  artifactSource: "github-issue" | "ace-archive" | undefined;
   artifactSlugHasChanged: boolean;
   clearArtifactSlug: () => void;
 } => {
@@ -96,8 +98,19 @@ export const useArtifactSlug = (): {
     window.history.replaceState({}, "", newUrl);
   }, [queryParams, setSavedArtifactSlug]);
 
+  let artifactSource: "github-issue" | "ace-archive" | undefined;
+
+  if (savedArtifactSlug === undefined) {
+    artifactSource = undefined;
+  } else if (savedArtifactSlug?.startsWith(githubIssuePrefix)) {
+    artifactSource = "github-issue";
+  } else {
+    artifactSource = "ace-archive";
+  }
+
   return {
-    artifactSlug: savedArtifactSlug,
+    artifactSlugOrIssueUrl: savedArtifactSlug,
+    artifactSource,
     artifactSlugHasChanged: savedArtifactSlug !== prevArtifactSlug,
     clearArtifactSlug,
   };
