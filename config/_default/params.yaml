@@ -25,7 +25,7 @@ description: >-
   Ace Archive is a curated online archive of asexual and aromantic history.
 
 # Open Graph
-image: "images/logo-padded.webp"
+image: "/images/logo-padded.webp"
 ogLocale: "en_US"
 domainTLD: "acearchive.lgbt"
 titleHome: "Ace Archive"
@@ -36,10 +36,10 @@ schemaName: "Ace Archive"
 schemaAuthor: "Frawley"
 schemaAuthorGitHub: "https://github.com/frawleyskid"
 schemaLocale: "en-US"
-schemaLogo: "images/logo-transparent.webp"
+schemaLogo: "/images/logo-transparent.webp"
 schemaLogoWidth: 912
 schemaLogoHeight: 912
-schemaImage: "images/logo-card.webp"
+schemaImage: "/images/logo-card.webp"
 schemaImageWidth: 2560
 schemaImageHeight: 1280
 schemaGitHub: "https://github.com/acearchive"
