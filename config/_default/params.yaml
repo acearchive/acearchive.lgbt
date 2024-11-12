@@ -25,7 +25,7 @@ description: >-
   Ace Archive is a curated online archive of asexual and aromantic history.
 
 # Open Graph
-images: ["images/logo-card.webp"]
+image: "images/logo-padded.webp"
 ogLocale: "en_US"
 domainTLD: "acearchive.lgbt"
 titleHome: "Ace Archive"
