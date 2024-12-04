@@ -2,3 +2,7 @@
   {{ $darkModeInit := resources.Get "js/darkmode-init.js" | js.Build | minify -}}
   <script>{{ $darkModeInit.Content | safeJS }}</script>
 {{ end -}}
+
+<!-- Privacy-preserving self-hosted analytics -->
+<!-- https://umami.is/ -->
+<script defer src="https://umami.acearchive.lgbt/script.js" data-website-id="714b60e8-1432-4bfa-8e32-78615321b77a"></script>
