@@ -25,6 +25,8 @@ tools, and infrastructure can be found in the following repos:
 - [submission-worker](https://github.com/acearchive/submission-worker): This is
   a serverless function used to import metadata from artifact submissions into
   the database.
+- [db-backup-worker](https://github.com/acearchive/db-backup-worker): This is a
+  serverless function used to regularly back up the database to object storage.
 - [hugo-artifact-action](https://github.com/acearchive/hugo-artifact-action):
   This is a GitHub Action which converts dynamic content into static pages for
   the static site generator.
