@@ -16,41 +16,8 @@
           sidebar on the left to get started.
         </p>
       </div>
-      <main class="row d-lg-none">
-        <div class="col-md-5 ms-auto">
-          <div class="mx-2 mx-sm-5 mx-md-0">
-            <h2>By Decade</h2>
-            <ul class="list-unstyled">
-              {{ range (index .Site.Taxonomies "decades") }}
-                <li>
-                  <a class="category-link d-flex" href="{{ .Page.Permalink }}"
-                    ><span>{{ .Page.Title | title }}</span
-                    ><span class="badge bg-light text-dark fw-normal ms-auto"
-                      >{{ .Count }}</span
-                    ></a
-                  >
-                </li>
-              {{ end }}
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-5 me-auto">
-          <div class="mx-2 mx-sm-5 mx-md-0">
-            <h2>By Identity</h2>
-            <ul class="list-unstyled">
-              {{ range (index .Site.Taxonomies "identities") }}
-                <li>
-                  <a class="category-link d-flex" href="{{ .Page.Permalink }}"
-                    ><span>{{ .Page.Title | title }}</span
-                    ><span class="badge bg-light text-dark fw-normal ms-auto"
-                      >{{ .Count }}</span
-                    ></a
-                  >
-                </li>
-              {{ end }}
-            </ul>
-          </div>
-        </div>
+      <main class="d-lg-none">
+        {{ partial "archive/sidebar.html" (dict "ctx" . "id" "list") }}
       </main>
       <div class="d-none d-lg-flex justify-content-center">
         <svg
