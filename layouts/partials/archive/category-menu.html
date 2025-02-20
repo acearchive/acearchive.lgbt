@@ -1,5 +1,7 @@
 {{- $category := .category -}}
 {{- $parentId := .id -}}
+{{- $infoRef := .infoRef -}}
+{{- $infoText := .infoText -}}
 {{- with .ctx -}}
 
   {{- $currentPage := . -}}
@@ -13,7 +15,29 @@
       data-bs-target="#{{ $parentId }}-{{ $category }}-menu"
       data-bs-toggle="collapse"
     >
-      {{ humanize $category }}
+      <div class="d-flex align-items-center gap-2">
+        {{ humanize $category }}
+        {{- if (and $infoRef $infoText) }}
+          <a
+            id="{{ $parentId }}-{{ $category }}-info-link"
+            aria-label="Info"
+            href="{{ ref . $infoRef }}"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="{{ $infoText }}"
+            class="d-flex"
+          >
+            <svg
+              height="14"
+              width="14"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              {{ partial "use-icon.html" "info-circle" }}
+            </svg>
+          </a>
+        {{ end -}}
+      </div>
     </button>
     <div class="collapse show pe-lg-4" id="{{ $parentId }}-{{ $category }}-menu">
       <ul class="btn-toggle-nav list-unstyled">

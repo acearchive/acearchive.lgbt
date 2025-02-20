@@ -11,7 +11,7 @@ weight: 202
 This page outlines some best practices to follow when contributing content to
 Ace Archive.
 
-## Respect creators
+## Respect creators {#creators}
 
 Please be respectful of creators, particularly independent creators, when
 deciding whether to rehost content.
@@ -21,10 +21,9 @@ in danger of becoming lost media. We may remove files from submissions that we
 feel are included in bad faith.
 
 If you want your content removed from this site, feel free to [contact us]({{<
-ref "contact"
->}}).
+ref "contact" >}}).
 
-## Respect the privacy of individuals
+## Respect the privacy of individuals {#privacy}
 
 When listing the people associated with an artifact, make sure to respect the
 privacy of individuals. This means using handles or usernames when a person
@@ -34,8 +33,21 @@ person's deadname.
 If you have any privacy concerns about content on this site, feel free to
 [contact us]({{< ref "contact" >}}).
 
+## Respect identity labels {#labels}
 
-## Make content accessible
+The language people and groups use to identify themselves can shift over time,
+and as part of this process, old labels that fall out of use may come to be
+considered outdated or offensive. It's important, however, that we do not
+attempt to retroactively apply contemporary identity labels to people who did or
+do not use those labels themselves.
+
+When listing the identities associated with an artifact, prefer the identity
+labels that appear in the text or that the people described use to identify
+themselves. However, if it is clear that the text is not attempting to
+accurately represent the identities of the people described, you do not need to
+mirror the language it uses.
+
+## Make content accessible {#accessibility}
 
 If the content is in a format that's not accessible (such as a photo, a video,
 or a digital scan of a physical document), include transcripts/subtitles where
@@ -60,7 +72,7 @@ Finally, if you find this website difficult to use for any reason, we consider
 that a high-priority bug. Please [contact us]({{< ref "contact" >}}) however is
 easiest for you.
 
-## Add content warnings where necessary
+## Add content warnings where necessary {#content-warnings}
 
 Archives often include content which doesn't represent the values of the
 project. However, we can empower visitors to decide what kind of content they
@@ -79,14 +91,14 @@ Here's an example:
 > David Jay, founder of AVEN, is interviewed on ABC's *The View* (CW: acephobia,
 > invasive questions toward asexual people)
 
-## Include citations where applicable
+## Include citations where applicable {#citations}
 
 If you're referencing a published work, include a citation for it as a separate
 file using a standardized file format like BibTeX. These files can be imported
 into reference managers like [Zotero](https://www.zotero.org/) and help people
 cite the work or find it on the web.
 
-## Include both files and links in your submission
+## Include both files and links in your submission {#files}
 
 The two ways to include content in your submission are *files* and *links*.
 
@@ -103,7 +115,7 @@ page which is different than the URL in your address bar. Always use a permalink
 when one is provided.
 {{< /alert >}}
 
-## Use Wayback Machine links when necessary
+## Use Wayback Machine links when necessary {#wayback-machine}
 
 When linking to a website like a blog post or a forum thread, use a [Wayback
 Machine](https://web.archive.org/) link if the website is no longer available on
@@ -114,7 +126,7 @@ If you need to archive a page that the Wayback Machine isn't able to crawl, such
 as a page behind a confirmation prompt or login page, check out {{< article
 "docs/contributing/web-archives.md" >}} for an alternative approach.
 
-## Download videos from sites like YouTube
+## Download videos from sites like YouTube {#videos}
 
 If you want to contribute a video that's hosted on a video sharing platform like
 YouTube, in addition to linking to the source, consider downloading the video
@@ -123,7 +135,7 @@ and including it in your submission as a file. Contrary to the name, youtube-dl
 supports many sites besides YouTube; you can find a full list of supported sites
 [here](https://github.com/ytdl-org/youtube-dl/blob/master/docs/supportedsites.md).
 
-## Use existing tags when possible
+## Use existing tags when possible {#tags}
 
 When listing the people and identities associated with an artifact, prefer using
 identities and names as they currently appear in the archive. So if
@@ -131,7 +143,7 @@ identities and names as they currently appear in the archive. So if
 "gray-ace" unless there's a good reason (e.g. the author of a work makes a case
 that they're distinct identities).
 
-## Look to existing artifacts as examples
+## Look to existing artifacts as examples {#examples}
 
 If you're not sure about something, look at existing artifacts in the archive as
 an example!
