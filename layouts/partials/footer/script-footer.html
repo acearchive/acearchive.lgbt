@@ -11,10 +11,10 @@
 {{ $replayWeb := resources.Get "js/replayweb-url.ts" | js.Build -}}
 {{ $artifactForm := resources.Get "js/artifact-form/App.tsx" | js.Build (dict "params" (dict "artifacts" $artifacts "iconSpritePath" $iconSprite.Permalink)) -}}
 {{ $clipboardCopyButton := resources.Get "js/clipboard-copy-button.ts" | js.Build -}}
+{{ $tooltips := resources.Get "js/tooltips.ts" | js.Build -}}
 
-{{ $artifactPageTooltips := resources.Get "js/artifact-page-tooltips.ts" -}}
 {{ $langName := resources.Get "js/lang-name.ts" -}}
-{{ $artifactPage := slice $artifactPageTooltips $langName | resources.Concat "js/artifact-page.ts" | js.Build (dict "params" (dict "iconSpritePath" $iconSprite.Permalink)) }}
+{{ $artifactPage := slice $langName | resources.Concat "js/artifact-page.ts" | js.Build (dict "params" (dict "iconSpritePath" $iconSprite.Permalink)) }}
 
 {{ $app := resources.Get "js/app.js" -}}
 {{ $jsSlice := slice $app -}}
@@ -43,7 +43,6 @@
 {{ $loadArtifactForm := eq .Type "artifact-form" -}}
 {{ $loadSearch := eq .Section "docs" "archive" "artifacts" "identities" "decades" "people" -}}
 {{ $loadArtifactPage := eq .Section "artifacts" -}}
-{{ $loadClipboardCopyButton := or $loadReplayWeb -}}
 
 {{ if eq (hugo.Environment) "development" -}}
   {{ if .Site.Params.options.bootStrapJs -}}
@@ -68,13 +67,12 @@
     <script defer src="{{ $search.RelPermalink }}"></script>
   {{ end -}}
 
-  {{ if $loadClipboardCopyButton -}}
-    <script defer src="{{ $clipboardCopyButton.RelPermalink }}"></script>
-  {{ end -}}
-
   {{ if $loadReplayWeb -}}
     <script defer src="{{ $replayWeb.RelPermalink }}"></script>
   {{ end -}}
+
+  <script defer src="{{ $clipboardCopyButton.RelPermalink }}"></script>
+  <script defer src="{{ $tooltips.RelPermalink }}"></script>
 {{ else -}}
   {{ $jsBundle := $jsBundle | minify | fingerprint "sha512" -}}
   {{ $search := $search | minify | fingerprint "sha512" -}}
@@ -84,6 +82,7 @@
   {{ $artifactPage := $artifactPage | minify | fingerprint "sha512" -}}
   {{ $replayWeb := $replayWeb | minify | fingerprint "sha512" -}}
   {{ $clipboardCopyButton := $clipboardCopyButton | minify | fingerprint "sha512" -}}
+  {{ $tooltips := $tooltips | minify | fingerprint "sha512" -}}
 
   {{ if .Site.Params.options.bootStrapJs -}}
     <script
@@ -137,15 +136,6 @@
     ></script>
   {{ end -}}
 
-  {{ if $loadClipboardCopyButton -}}
-    <script
-      crossorigin="anonymous"
-      defer
-      integrity="{{ $clipboardCopyButton.Data.Integrity }}"
-      src="{{ $clipboardCopyButton.Permalink }}"
-    ></script>
-  {{ end -}}
-
   {{ if $loadReplayWeb -}}
     <script
       crossorigin="anonymous"
@@ -154,4 +144,18 @@
       src="{{ $replayWeb.Permalink }}"
     ></script>
   {{ end -}}
+
+  <script
+    crossorigin="anonymous"
+    defer
+    integrity="{{ $clipboardCopyButton.Data.Integrity }}"
+    src="{{ $clipboardCopyButton.Permalink }}"
+  ></script>
+
+  <script
+    crossorigin="anonymous"
+    defer
+    integrity="{{ $tooltips.Data.Integrity }}"
+    src="{{ $tooltips.Permalink }}"
+  ></script>
 {{ end -}}
