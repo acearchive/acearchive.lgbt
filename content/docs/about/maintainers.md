@@ -7,7 +7,7 @@ menu:
 weight: 102
 ---
 
-Hey, I'm [Frawley](https://en.gravatar.com/frawleyskid)!
+Hey, I'm Frawley (they/them)!
 
 I made this site as a hobby project after I started researching asexual history
 and grew frustrated by how difficult tracking down primary sources was. I wanted
