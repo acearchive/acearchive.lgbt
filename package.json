@@ -40,7 +40,8 @@
     "precheck": "npm version",
     "check": "exec-bin node_modules/.bin/hugo/hugo version",
     "postinstall": "hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo",
-    "version": "auto-changelog -p && git add CHANGELOG.md"
+    "version": "auto-changelog -p && git add CHANGELOG.md",
+    "update-artifacts": "exec-bin node_modules/.bin/hugo/hugo mod get github.com/acearchive/hugo-artifacts"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^6.0.0",
