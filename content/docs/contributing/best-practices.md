@@ -47,6 +47,14 @@ themselves. However, if it is clear that the text is not attempting to
 accurately represent the identities of the people described, you do not need to
 mirror the language it uses.
 
+In the words of the [Digital Transgender
+Archive](https://www.digitaltransgenderarchive.net/about/policies):
+
+> The creation of metadata requires interpretation and labeling and it can be a
+> highly subjective and political act.
+
+This bears keeping in mind.
+
 ## Make content accessible {#accessibility}
 
 If the content is in a format that's not accessible (such as a photo, a video,
@@ -90,6 +98,12 @@ Here's an example:
 
 > David Jay, founder of AVEN, is interviewed on ABC's *The View* (CW: acephobia,
 > invasive questions toward asexual people)
+
+In addition to attaching content warnings, works that are queerphobic,
+pathologizing, inaccurate, or otherwise hateful should be properly
+contextualized. For example, a work that spreads misinformation or doesn't meet
+contemporary standards for ethical reporting should be called out as such in the
+artifact description.
 
 ## Include citations where applicable {#citations}
 
