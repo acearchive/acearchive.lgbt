@@ -57,3 +57,16 @@ npm run server
 ```
 
 The site will be served on port `1313`.
+
+## Deployment
+
+There are two deployments of Ace Archive:
+
+1. The prod environment (<https://acearchive.lgbt>) is automatically deployed
+   when changes are pushed to the `prod` branch.
+1. The dev environment (<https://dev.acearchive.lgbt>) is automatically deployed
+   when changes are pushed to the `main` branch.
+
+Each environment has an entirely separate infrastructure stack: separate
+databases, separate object storage buckets, and separate deployments of the
+backend services.
