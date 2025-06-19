@@ -56,6 +56,7 @@ export const schema = Yup.object({
           ({ label }) =>
             `${label} can only contain lowercase letters, numbers, hyphens, and slashes`
         )
+        .matches(/^[a-z0-9./-]*\.[a-z0-9]+$/, ({ label }) => `${label} must have a file extension`)
         .matches(/^(?!\/)/, ({ label }) => `${label} can not start with a slash`)
         .matches(/(?<!\/)$/, ({ label }) => `${label} can not end with a slash`)
         .matches(
