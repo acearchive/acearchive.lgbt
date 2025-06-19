@@ -34,6 +34,8 @@
         {{- if .Params.people }}
           {{ partial "archive/category-list.html" (dict "ctx" . "category" "people") }}
         {{ end -}}
+      </div>
+      <div class="row justify-content-center">
         {{- if .Params.collections }}
           {{ partial "archive/category-list.html" (dict "ctx" . "category" "collections") }}
         {{ end -}}
