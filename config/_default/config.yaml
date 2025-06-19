@@ -68,11 +68,13 @@ taxonomies:
   person: "people"
   identity: "identities"
   decade: "decades"
+  collection: "collections"
 
 permalinks:
   people: "/categories/people/:title/"
   identities: "/categories/identities/:title/"
   decades: "/categories/decades/:title/"
+  collections: "/categories/collections/:title/"
 
 minify:
   # Settings for the HTML minifier.

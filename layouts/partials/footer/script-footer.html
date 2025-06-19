@@ -41,7 +41,7 @@
 
 {{ $loadReplayWeb := .Page.Scratch.Get "replayweb" -}}
 {{ $loadArtifactForm := eq .Type "artifact-form" -}}
-{{ $loadSearch := eq .Section "docs" "archive" "artifacts" "identities" "decades" "people" -}}
+{{ $loadSearch := eq .Section "docs" "archive" "artifacts" "identities" "decades" "people" "collections" -}}
 {{ $loadArtifactPage := eq .Section "artifacts" -}}
 
 {{ if eq (hugo.Environment) "development" -}}

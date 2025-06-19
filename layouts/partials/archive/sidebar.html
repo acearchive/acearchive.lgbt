@@ -5,6 +5,7 @@
 {{- $currentPage := . -}}
 
 <ul class="list-unstyled collapsible-sidebar">
+  {{ partial "archive/category-menu.html" (dict "ctx" . "id" $parentId "category" "collections") }}
   {{ partial "archive/category-menu.html" (dict "ctx" . "id" $parentId "category" "decades") }}
   {{ partial "archive/category-menu.html" (dict
     "ctx" .

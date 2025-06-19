@@ -34,6 +34,9 @@
         {{- if .Params.people }}
           {{ partial "archive/category-list.html" (dict "ctx" . "category" "people") }}
         {{ end -}}
+        {{- if .Params.collections }}
+          {{ partial "archive/category-list.html" (dict "ctx" . "category" "collections") }}
+        {{ end -}}
       </div>
       <div class="row mt-4">
       </div>
