@@ -1,9 +1,28 @@
 import * as Yup from "yup";
 import ISO6391 from "iso-639-1";
+import { Message } from "yup/lib/types";
 
 const noWhitespacePattern = /^[^\s]*$/;
 const doesNotStartWithCommaPattern = /^(?!,)/;
 const doesNotEndWithCommaPattern = /(?<!,)$/;
+const filenamePattern = /^[a-z0-9][a-z0-9-]*[a-z0-9](\/[a-z0-9][a-z0-9-]*[a-z0-9])*(\.[a-z0-9]+)*$/;
+const mediaTypePattern =
+  /^(application|audio|font|image|model|text|video|message|multipart)\/[\w\d.+-]+$/;
+const multihashPattern = /^[0-9a-f]+$/;
+
+declare module "yup" {
+  interface ArraySchema<T, C, TIn, TOut> {
+    unique(message: Message, mapper?: (value: T) => T): this;
+  }
+}
+
+const yup = Yup;
+
+yup.addMethod(Yup.array, "unique", function (message, mapper = (value) => value) {
+  return this.test("unique", message, function (list) {
+    return list.length === new Set(list.map(mapper)).size;
+  });
+});
 
 // This schema should be kept in sync with the Joi schema in the
 // `acearchive/artifact-submit-action` repo.
@@ -12,7 +31,7 @@ const doesNotEndWithCommaPattern = /(?<!,)$/;
 // One important consideration is that this schema contains redundant rules
 // which serve to provide more friendly error messages than the one in
 // `artifact-submit-action`.
-export const schema = Yup.object({
+export const schema = yup.object({
   slug: Yup.string()
     .label("URL Slug")
     .required()
@@ -43,31 +62,51 @@ export const schema = Yup.object({
           "This is exactly the same as the Summary. You can leave this blank instead and the Summary will be used in both places automatically."
         ),
     }),
-  files: Yup.array().of(
-    Yup.object({
-      name: Yup.string().label("Label").required().trim().max(250),
-      fileName: Yup.string()
-        .label("File Name")
-        .required()
-        .trim()
-        .matches(noWhitespacePattern, ({ label }) => `${label} must not contain spaces`)
-        .matches(
-          /^[a-z0-9./-]*$/,
-          ({ label }) =>
-            `${label} can only contain lowercase letters, numbers, hyphens, and slashes`
-        )
-        .matches(/^(?!\/)/, ({ label }) => `${label} can not start with a slash`)
-        .matches(/(?<!\/)$/, ({ label }) => `${label} can not end with a slash`)
-        .matches(/^[a-z0-9./-]*\.[a-z0-9]+$/, ({ label }) => `${label} must have a file extension`)
-        .matches(
-          /^[a-z0-9][a-z0-9-]*[a-z0-9](\/[a-z0-9][a-z0-9-]*[a-z0-9])*(\.[a-z0-9]+)*$/,
-          "This is not a valid file name"
-        ),
-      sourceUrl: Yup.string().label("File URL").required().trim().url(),
-      lang: Yup.string().label("Language").trim().oneOf(ISO6391.getAllCodes()),
-      hidden: Yup.bool().label("Hidden").default(false),
-    })
-  ),
+  files: Yup.array()
+    .of(
+      Yup.object({
+        name: Yup.string().label("Label").required().trim().max(250),
+        filename: Yup.string()
+          .label("File Name")
+          .required()
+          .trim()
+          .matches(noWhitespacePattern, ({ label }) => `${label} must not contain spaces`)
+          .matches(
+            /^[a-z0-9./-]*$/,
+            ({ label }) =>
+              `${label} can only contain lowercase letters, numbers, hyphens, and slashes`
+          )
+          .matches(/^(?!\/)/, ({ label }) => `${label} can not start with a slash`)
+          .matches(/(?<!\/)$/, ({ label }) => `${label} can not end with a slash`)
+          .matches(
+            /^[a-z0-9./-]*\.[a-z0-9]+$/,
+            ({ label }) => `${label} must have a file extension`
+          )
+          .matches(filenamePattern, "This is not a valid file name"),
+        media_type: Yup.string().when("$mode", {
+          is: "complete",
+          then: Yup.string().matches(mediaTypePattern).required().trim(),
+          otherwise: Yup.string().matches(mediaTypePattern).trim(),
+        }),
+        multihash: Yup.string().when("$mode", {
+          is: "complete",
+          then: Yup.string().matches(multihashPattern).required().trim(),
+          otherwise: Yup.string().matches(multihashPattern).trim(),
+        }),
+        source_url: Yup.string().label("File URL").required().trim().url(),
+        lang: Yup.string().label("Language").trim().oneOf(ISO6391.getAllCodes()),
+        hidden: Yup.bool().label("Hidden").default(false),
+        aliases: Yup.array()
+          .label("Aliases")
+          .unique(({ label }) => `${label} must not contain duplicates`)
+          .of(Yup.string().matches(filenamePattern).trim())
+          .default([]),
+      })
+    )
+    .unique(
+      ({ label }) => `${label} must not contain duplicate file names`,
+      (file) => file.filename
+    ),
   links: Yup.array().of(
     Yup.object({
       name: Yup.string().label("Label").required().trim().max(250),
