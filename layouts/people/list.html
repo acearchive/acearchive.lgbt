@@ -9,6 +9,17 @@
       <div class="artifact-list-title">
         <h1 class="text-center">{{ .Title | title }}</h1>
         <p class="lead text-center">Artifacts involving {{ .Title }}</p>
+        {{ $metadata := resources.Get "metadata.json" | transform.Unmarshal }}
+        {{ $allTags := index $metadata "tags" }}
+        {{ $tagsOfKind := where $allTags "kind" "person" }}
+        {{ $matchingTags := where $tagsOfKind "name" .Title }}
+        {{ $thisTag := index $matchingTags 0 }}
+        {{ if $thisTag }}
+          {{ $tagDescription := index $thisTag "description" }}
+          {{ if $tagDescription }}
+            <p class="lead text-center">{{ $tagDescription }}</p>
+          {{ end }}
+        {{ end }}
       </div>
       <nav class="d-flex my-5 justify-content-center" aria-label="Pages">
         {{ template "_internal/pagination.html" . }}

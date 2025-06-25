@@ -5,8 +5,10 @@ hugoVersion:
 imports:
   path: "github.com/acearchive/hugo-artifacts"
   mounts:
-    source: "artifacts"
-    target: "content/artifacts"
+    - source: "artifacts"
+      target: "content/artifacts"
+    - source: "metadata.json"
+      target: "assets/metadata.json"
 
 mounts:
   - source: "node_modules/@github/clipboard-copy-element"
