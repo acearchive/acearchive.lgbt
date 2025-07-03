@@ -9,7 +9,9 @@ enableGitInfo: true
 enableRobotsTXT: true
 languageCode: "en-US"
 disableKinds: ["RSS"]
-paginate: 20
+
+pagination:
+  pagerSize: 20
 
 # Multilingual
 defaultContentLanguage: "en"

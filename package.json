@@ -86,7 +86,7 @@
     "yup": "^0.32.11"
   },
   "otherDependencies": {
-    "hugo": "0.100.1"
+    "hugo": "0.147.9"
   },
   "dependencies": {
     "@stoplight/elements": "^8.0.5"
