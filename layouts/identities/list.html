@@ -21,18 +21,19 @@
           {{ end }}
         {{ end }}
       </div>
+      {{ $paginator := .Paginate (.Pages.ByParam "from_year").Reverse }}
       <nav class="d-flex my-5 justify-content-center" aria-label="Pages">
-        {{ template "_internal/pagination.html" . }}
+        {{ partial "pagination.html" . }}
       </nav>
       <main>
         <div class="row row-cols-1 row-cols-md-2 g-5">
-          {{ range (.Paginate (.Pages.ByParam "from_year").Reverse).Pages }}
+          {{ range $paginator.Pages }}
             <div class="col">{{ .Render "card" -}}</div>
           {{ end }}
         </div>
       </main>
       <nav class="d-flex my-5 justify-content-center" aria-label="Pages">
-        {{ template "_internal/pagination.html" . }}
+        {{ partial "pagination.html" . }}
       </nav>
     </div>
   </div>
