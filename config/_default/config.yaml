@@ -13,10 +13,6 @@ disableKinds: ["RSS"]
 pagination:
   pagerSize: 20
 
-# Multilingual
-defaultContentLanguage: "en"
-defaultContentLanguageInSubdir: true
-
 # Use Netlify-style `_headers` and `_redirects` files.
 outputs:
   home: ["HTML", "REDIRECTS", "HEADERS"]
