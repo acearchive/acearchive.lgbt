@@ -11,7 +11,7 @@
         {{ $metadata := resources.Get "metadata.json" | transform.Unmarshal }}
         {{ $allTags := index $metadata "tags" }}
         {{ $tagsOfKind := where $allTags "kind" "collection" }}
-        {{ $matchingTags := where $tagsOfKind "name" .Title }}
+        {{ $matchingTags := where $tagsOfKind "name" (lower .Title) }}
         {{ $thisTag := index $matchingTags 0 }}
         {{ if $thisTag }}
           {{ $tagDescription := index $thisTag "description" }}
