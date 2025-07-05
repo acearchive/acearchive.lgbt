@@ -1,6 +1,7 @@
 name = "acearchive-site"
 account_id = "9d143afa60e911e9904e835bd1db8504"
 compatibility_date = "2025-05-07"
+preview_urls = false
 
 [assets]
 directory = "./public"
