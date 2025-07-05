@@ -37,26 +37,11 @@ tools, and infrastructure can be found in the following repos:
 - [infra](https://github.com/acearchive/infra): This repo contains the Terraform
   config for the site's infrastructure.
 
-## Building
+## Development
 
-To build the site, make sure npm is installed and run:
-
-```shell
-npm install
-npm run build
-```
-
-The site will be built at `./public`.
-
-## Local Development
-
-To start a server for local development, run:
-
-```shell
-npm run server
-```
-
-The site will be served on port `1313`.
+You can use [just](https://github.com/casey/just) to build and deploy the app.
+Run `just` to see a list of recipes. Some recipes accept a stage, either `prod`
+or `dev`.
 
 ## Deployment
 

@@ -1,0 +1,22 @@
+name = "acearchive-site"
+account_id = "9d143afa60e911e9904e835bd1db8504"
+compatibility_date = "2025-05-07"
+
+[assets]
+directory = "./public"
+not_found_handling = "404-page"
+
+[observability]
+enabled = true
+
+[env.dev]
+
+[env.dev.route]
+pattern = "dev.acearchive.lgbt"
+custom_domain = true
+
+[env.prod]
+
+[env.prod.route]
+pattern = "acearchive.lgbt"
+custom_domain = true

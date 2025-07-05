@@ -26,7 +26,8 @@
     "prestart": "npm run clean",
     "start": "exec-bin node_modules/.bin/hugo/hugo server  --bind=0.0.0.0 --disableFastRender",
     "prebuild": "npm run clean",
-    "build": "exec-bin node_modules/.bin/hugo/hugo --gc --minify",
+    "build:prod": "exec-bin node_modules/.bin/hugo/hugo --gc --minify --baseURL https://acearchive.lgbt/",
+    "build:dev": "exec-bin node_modules/.bin/hugo/hugo --gc --minify --baseURL https://dev.acearchive.lgbt/",
     "build:preview": "npm run build -D -F",
     "clean": "shx rm -rf public resources",
     "clean:install": "shx rm -rf package-lock.json node_modules ",
@@ -41,8 +42,8 @@
     "check": "exec-bin node_modules/.bin/hugo/hugo version",
     "postinstall": "hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo",
     "version": "auto-changelog -p && git add CHANGELOG.md",
-    "update-artifacts": "exec-bin node_modules/.bin/hugo/hugo mod get github.com/acearchive/hugo-artifacts",
-    "update-artifacts-dev": "exec-bin node_modules/.bin/hugo/hugo mod get github.com/acearchive/hugo-artifacts@dev"
+    "sync:prod": "exec-bin node_modules/.bin/hugo/hugo mod get github.com/acearchive/hugo-artifacts",
+    "sync:dev": "exec-bin node_modules/.bin/hugo/hugo mod get github.com/acearchive/hugo-artifacts@dev"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^6.0.0",
