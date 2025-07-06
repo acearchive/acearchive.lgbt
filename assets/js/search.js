@@ -111,7 +111,7 @@ function indexArchiveSearch(search, suggestions) {
   for (const artifact of artifactsData) {
     index.add({
       id: `artifact/${artifact.id}`,
-      href: artifact.url,
+      href: new URL(artifact.url).pathname,
       title: mdConverter.makeHtml(artifact.title),
       summary: mdConverter.makeHtml(artifact.summary),
       description: artifact.description,
@@ -186,7 +186,7 @@ function indexDocsSearch(search, suggestions) {
   for (const [i, page] of docsPages.entries()) {
     index.add({
       id: `docs/${i}`,
-      href: page.url,
+      href: new URL(page.url).pathname,
       title: page.title,
       summary: page.summary,
       content: page.content,
