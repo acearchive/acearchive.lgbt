@@ -10,7 +10,7 @@
             >{{ . | title }}</a
           >
           <span class="badge bg-light text-dark fw-normal ms-1"
-            >{{ . | urlize | $taxonomy.Count }}</span
+            >{{ . | string | $taxonomy.Count }}</span
           >
         </li>
       {{ end -}}
