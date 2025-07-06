@@ -43,7 +43,7 @@ function acceptSuggestion(suggestions) {
 }
 
 function showResults(index, search, suggestions) {
-  const maxResult = 5;
+  const maxResult = 10;
 
   const value = search.value;
   const results = index.search(value, { limit: maxResult, enrich: true });
