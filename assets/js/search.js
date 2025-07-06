@@ -1,4 +1,5 @@
 import FlexSearch from "flexsearch";
+import * as params from "@params";
 
 function inputFocus(e, search, suggestions) {
     if (e.ctrlKey && e.key === "/") {
@@ -186,22 +187,17 @@ function indexDocsSearch(search, suggestions) {
         },
     });
 
-    {{ $docsList := (where .Site.Pages "Section" "docs") -}}
-    {{ $docsLen := (len $docsList) -}}
+    const docsPages = params.docsPages;
 
-    index.add(
-    {{- range $index, $element := $docsList -}}{
-        id: "{{ printf "doc-%d" $index }}",
-        href: "{{ .RelPermalink }}",
-        title: {{ .Title | jsonify }},
-        summary: {{ .Params.description | jsonify }},
-        content: {{ .Content | jsonify }},
-    })
-        {{- if ne (add $index 1) $docsLen -}}
-            .add(
-        {{- end -}}
-        {{ end -}}
-    ;
+    for (const [i, page] of docsPages.entries()) {
+        index.add({
+            id: `docs-${i}`,
+            href: page.url,
+            title: page.title,
+            summary: page.summary,
+            content: page.content,
+        });
+    }
 
     search.addEventListener("input", () => showResults(index, search, suggestions), true);
     suggestions.addEventListener("click", () => acceptSuggestion(suggestions), true);

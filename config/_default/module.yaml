@@ -9,6 +9,8 @@ imports:
       target: "content/artifacts"
     - source: "metadata.json"
       target: "assets/metadata.json"
+    - source: "artifacts.json"
+      target: "assets/artifacts.json"
 
 mounts:
   - source: "node_modules/@github/clipboard-copy-element"

@@ -5,7 +5,13 @@
 
 {{- $iconSprite := resources.Get "icons/bootstrap-icons.svg" | resources.Minify | resources.Fingerprint -}}
 
-{{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | js.Build -}}
+{{ $docsPages := where .Site.Pages "Section" "docs" }}
+{{ $docsPagesData := slice }}
+{{ range $page := $docsPages -}}
+  {{ $docsPagesData = $docsPagesData | append (dict "title" $page.Title "url" $page.RelPermalink "summary" $page.Description "content" $page.Content) }}
+{{ end -}}
+
+{{ $search := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" . | js.Build (dict "params" (dict "docsPages" $docsPagesData)) -}}
 {{ $bs := resources.Get "js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" -}}
 {{ $highlight := resources.Get "js/highlight.js" | js.Build -}}
 {{ $replayWeb := resources.Get "js/replayweb-url.ts" | js.Build -}}
