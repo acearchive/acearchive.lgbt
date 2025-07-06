@@ -1,5 +1,7 @@
 import FlexSearch from "flexsearch";
 import * as params from "@params";
+import artifactsData from "artifacts.json";
+import showdown from "showdown";
 
 function inputFocus(e, search, suggestions) {
     if (e.ctrlKey && e.key === "/") {
@@ -89,31 +91,24 @@ function indexArchiveSearch(search, suggestions) {
         document: {
             id: "id",
             store: ["href", "title", "summary"],
-            index: ["title", "summary", "description", "content", "years", "identities", "people"],
+            index: ["title", "summary", "description", "years", "identities", "people"],
         },
     });
 
+    const mdConverter = new showdown.Converter();
 
-    {{ $artifactList := (where .Site.RegularPages "Section" "artifacts") -}}
-    {{ $artifactLen := (len $artifactList) -}}
-
-    index.add(
-    {{- range $index, $element := $artifactList }}{
-        id: "{{ printf "artifact-%d" $index }}",
-        href: "{{ .RelPermalink }}",
-        title: {{ .Title | markdownify | jsonify }},
-        summary: {{ .Params.summary | markdownify | jsonify }},
-        description: {{ .Params.description | markdownify | jsonify }},
-        content: {{ .Content | jsonify }},
-        years: rangeYears({{ .Params.from_year | jsonify }}, {{ .Params.to_year | jsonify }}),
-        identities: {{ .Params.identities | jsonify }},
-        people: {{ .Params.people | jsonify }},
-    })
-        {{- if ne (add $index 1) $artifactLen -}}
-            .add(
-        {{- end -}}
-        {{ end -}}
-    ;
+    for (const [i, artifact] of artifactsData.entries()) {
+    index.add({
+        id: `artifact-${i}`,
+        href: artifact.url,
+        title: mdConverter.makeHtml(artifact.title),
+        summary: mdConverter.makeHtml(artifact.summary),
+        description: artifact.description,
+        years: rangeYears(artifact.from_year, artifact.toYear),
+        identities: artifact.identities,
+        people: artifact.people,
+      });
+    }
 
     {{ $identityList := slice -}}
     {{ range .Site.Taxonomies.identities -}}
