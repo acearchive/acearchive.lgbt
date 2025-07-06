@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: "Install"
         run: npm ci
@@ -34,6 +36,8 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: "Install"
         run: npm ci
