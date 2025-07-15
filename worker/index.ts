@@ -64,7 +64,10 @@ const headerPatterns: Headers = {
 
 export default {
   async fetch(request: Request, env: Env) {
-    const requests = await env.ASSETS.fetch("/redirects.json");
+    const requestsUrl = new URL(request.url);
+    requestsUrl.pathname = "/redirects.json";
+
+    const requests = await env.ASSETS.fetch(requestsUrl);
     const redirects: Redirects = await requests.json();
 
     for (const redirect of redirects) {
