@@ -1,5 +1,5 @@
 {{- $artifacts := dict }}
-{{- range $artifact := (.Site.GetPage "/content/artifacts/_index.md").Pages -}}
+{{- range $artifact := (.Site.GetPage "/artifacts/_index.md").Pages -}}
   {{- $artifacts = $artifacts | merge (dict $artifact.Params.slug $artifact.Params) -}}
 {{- end -}}
 
