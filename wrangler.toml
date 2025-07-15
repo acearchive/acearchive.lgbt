@@ -7,6 +7,7 @@ main = "./worker/index.ts"
 [assets]
 directory = "./site/public/"
 binding = "ASSETS"
+not_found_handling = "404-page"
 
 [observability]
 enabled = true
