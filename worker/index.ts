@@ -1,4 +1,4 @@
-import { type Fetcher, Request } from "@cloudflare/workers-types";
+import type { Fetcher, Request } from "@cloudflare/workers-types";
 import { minimatch } from 'minimatch'
 
 interface Env {
@@ -64,9 +64,7 @@ const headerPatterns: Headers = {
 
 export default {
   async fetch(request: Request, env: Env) {
-    const redirectsJsonRequest = new Request("/redirects.json");
-
-    const requests = await env.ASSETS.fetch(redirectsJsonRequest);
+    const requests = await env.ASSETS.fetch("/redirects.json");
     const redirects: Redirects = await requests.json();
 
     for (const redirect of redirects) {
