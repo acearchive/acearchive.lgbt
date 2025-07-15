@@ -28,6 +28,7 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           environment: dev
+          wranglerVersion: latest
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
@@ -56,5 +57,6 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           environment: prod
+          wranglerVersion: latest
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
