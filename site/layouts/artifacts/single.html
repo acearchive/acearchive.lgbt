@@ -43,40 +43,42 @@
       <div class="row mt-4">
       </div>
       <div class="d-flex justify-content-evenly align-items-center mt-5">
-        <div class="edit-page">
-          <a href="{{ ref . "/submit" }}?artifact={{ .Params.slug }}">
-            <svg
-              height="18"
-              width="18"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-            {{ partial "use-icon.html" "pencil" }}
-            </svg
-            >Edit this page
-          </a>
-        </div>
-        <div class="d-flex align-items-center justify-content-center fs-5">
-          <code class="text-muted me-2">{{ .Params.id }}</code>
-          <a
-            id="artifact-id-help-link"
-            aria-label="Help"
-            href="{{ ref . "docs/contributing/api" }}"
-            data-bs-toggle="tooltip"
-            data-bs-placement="top"
-            title="The artifact's unique ID, used in the Ace Archive API."
-          >
-            <div class="d-inline-flex align-center">
+        <div class="d-flex flex-column gap-1 align-items-center">
+          <span class="fs-6">Edit this page</span>
+          <a class="btn btn-outline-primary" href="{{ ref . "/submit" }}?artifact={{ .Params.slug }}">
+            <span class="d-flex gap-2 align-items-center">
               <svg
-                height="14"
-                width="14"
+                height="18"
+                width="18"
                 fill="currentColor"
                 aria-hidden="true"
               >
-                {{ partial "use-icon.html" "question-circle" }}
+                {{ partial "use-icon.html" "pencil" }}
               </svg>
-            </div>
+              Open Editor
+            </span>
           </a>
+        </div>
+        <div class="d-flex flex-column gap-1 align-items-center">
+          <label class="fs-6" for="copy-short-url-button">Get short URL</label>
+          <button
+            id="copy-short-url-button"
+            type="button"
+            data-short-url="{{ printf "%sa/%s/" .Site.BaseURL .Params.id }}"
+            class="btn btn-outline-primary"
+          >
+            <span class="d-flex gap-2 align-items-center">
+              <svg
+                height="18"
+                width="18"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                {{ partial "use-icon.html" "share-fill" }}
+              </svg>
+              Copy URL
+            </span>
+          </button>
         </div>
       </div>
     </main>

@@ -20,7 +20,8 @@
 {{ $tooltips := resources.Get "js/tooltips.ts" | js.Build -}}
 
 {{ $langName := resources.Get "js/lang-name.ts" -}}
-{{ $artifactPage := slice $langName | resources.Concat "js/artifact-page.ts" | js.Build (dict "params" (dict "iconSpritePath" $iconSprite.Permalink)) }}
+{{ $shortUrl := resources.Get "js/short-url.ts" -}}
+{{ $artifactPage := slice $langName $shortUrl | resources.Concat "js/artifact-page.ts" | js.Build (dict "params" (dict "iconSpritePath" $iconSprite.Permalink)) }}
 
 {{ $app := resources.Get "js/app.js" -}}
 {{ $jsSlice := slice $app -}}
