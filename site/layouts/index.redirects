@@ -1,32 +1,45 @@
 [
 {{ range $page := .Site.Pages }}
+  {{ if $page.Params.id }}
+    {
+      "from": {{ $page.Params.id | printf "/a/%s/" | jsonify }},
+      "to": {{ $page.RelPermalink | jsonify }},
+      "status": 301,
+      "kind": "static"
+    },
+  {{ end }}
+
   {{ range $alias := $page.Aliases }}
     {{ $absAlias := $alias }}
     {{ if not (hasPrefix $absAlias "/") }}
       {{ $absAlias = path.Join (path.Clean $page.RelPermalink | path.Dir) $absAlias }}
     {{ end }}
-  {
-    "from": {{ $absAlias | path.Clean | jsonify }},
-    "to": {{ $page.RelPermalink | jsonify }},
-    "status": 301,
-    "kind": "static"
-  },
-  {
-    "from": {{ $absAlias | path.Clean | printf "%s/" | jsonify }},
-    "to": {{ $page.RelPermalink | jsonify }},
-    "status": 301,
-    "kind": {{ if (eq $page.Kind "page" "home") }}"static"{{ else }}"dynamic"{{ end }}
-  },
+
+    {{ if (ne $page.Kind "page" "home") }}
+      {
+        "from": {{ $absAlias | path.Clean | jsonify }},
+        "to": {{ $page.RelPermalink | jsonify }},
+        "status": 301,
+        "kind": "static"
+      },
+    {{ end }}
+
+    {
+      "from": {{ $absAlias | path.Clean | printf "%s/" | jsonify }},
+      "to": {{ $page.RelPermalink | jsonify }},
+      "status": 301,
+      "kind": {{ if (eq $page.Kind "page" "home") }}"static"{{ else }}"dynamic"{{ end }}
+    },
   {{ end }}
 {{ end }}
 
 {{ range $index, $redirect := .Site.Params.redirects }}
   {{ $numRedirects := len .Site.Params.redirects }}
-  {
-    "from": {{ $redirect.from | path.Clean | jsonify }},
-    "to": {{ $redirect.to | jsonify }},
-    "status": {{ $redirect.status | jsonify }},
-    "kind": "static"
-  }{{ if (eq $index (sub $numRedirects 1)) }},{{ end }}
+    {
+      "from": {{ $redirect.from | path.Clean | jsonify }},
+      "to": {{ $redirect.to | jsonify }},
+      "status": {{ $redirect.status | jsonify }},
+      "kind": "static"
+    }{{ if (eq $index (sub $numRedirects 1)) }},{{ end }}
 {{ end }}
 ]

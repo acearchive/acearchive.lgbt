@@ -62,6 +62,8 @@ const headerPatterns: HeaderPatterns = {
   }
 };
 
+const stripTrailingSlash = (url: string): string => url.endsWith("/") ? url.slice(0, -1) : url;
+
 export default {
   async fetch(request: Request, env: Env) {
     const requestUrl = new URL(request.url);
@@ -73,7 +75,7 @@ export default {
     const redirects: Redirects = await redirectsResponse.json();
 
     for (const redirect of redirects) {
-      if (redirect.kind === "static" && requestUrl.pathname === redirect.from) {
+      if (redirect.kind === "static" && (stripTrailingSlash(requestUrl.pathname) === stripTrailingSlash(redirect.from))) {
         const url = new URL(request.url);
         url.pathname = redirect.to;
         return Response.redirect(url.toString(), redirect.status);
