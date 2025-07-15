@@ -8,6 +8,7 @@ main = "./worker/index.ts"
 directory = "./site/public/"
 binding = "ASSETS"
 not_found_handling = "404-page"
+run_worker_first = true
 
 [observability]
 enabled = true
