@@ -5,7 +5,5 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250715.0"
   },
-  "dependencies": {
-    "minimatch": "^10.0.3"
-  }
+  "dependencies": {}
 }
