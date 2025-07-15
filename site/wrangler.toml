@@ -4,7 +4,7 @@ compatibility_date = "2025-05-07"
 preview_urls = false
 
 [assets]
-directory = "./site/public"
+directory = "./public/"
 not_found_handling = "404-page"
 
 [observability]
