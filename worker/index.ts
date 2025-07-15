@@ -64,14 +64,16 @@ const headerPatterns: Headers = {
 
 export default {
   async fetch(request: Request, env: Env) {
-    const requestsUrl = new URL(request.url);
-    requestsUrl.pathname = "/redirects.json";
+    const requestUrl = new URL(request.url);
 
-    const requests = await env.ASSETS.fetch(requestsUrl);
-    const redirects: Redirects = await requests.json();
+    const redirectsUrl = new URL(request.url);
+    redirectsUrl.pathname = "/redirects.json";
+
+    const redirectsResponse = await env.ASSETS.fetch(redirectsUrl);
+    const redirects: Redirects = await redirectsResponse.json();
 
     for (const redirect of redirects) {
-      if (minimatch(request.url, redirect.from)) {
+      if (minimatch(requestUrl.pathname, redirect.from)) {
         const url = new URL(request.url);
         url.pathname = redirect.to;
         return Response.redirect(url.toString(), redirect.status);
@@ -81,7 +83,7 @@ export default {
     const responseHeaders = new Headers();
 
     for (const [pattern, patternHeaders] of Object.entries(headerPatterns)) {
-      if (minimatch(request.url, pattern)) {
+      if (minimatch(requestUrl.pathname, pattern)) {
         for (const [key, value] of Object.entries(patternHeaders)) {
           responseHeaders.set(key, value);
         }
