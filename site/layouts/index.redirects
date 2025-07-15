@@ -8,12 +8,14 @@
   {
     "from": {{ $absAlias | path.Clean | jsonify }},
     "to": {{ $page.RelPermalink | jsonify }},
-    "status": 301
+    "status": 301,
+    "kind": "static"
   },
   {
     "from": {{ $absAlias | path.Clean | printf "%s/" | jsonify }},
     "to": {{ $page.RelPermalink | jsonify }},
-    "status": 301
+    "status": 301,
+    "kind": {{ if (eq $page.Kind "page" "home") }}"static"{{ else }}"dynamic"{{ end }}
   },
   {{ end }}
 {{ end }}
@@ -24,6 +26,7 @@
     "from": {{ $redirect.from | path.Clean | jsonify }},
     "to": {{ $redirect.to | jsonify }},
     "status": {{ $redirect.status | jsonify }},
+    "kind": "static"
   }{{ if (eq $index (sub $numRedirects 1)) }},{{ end }}
 {{ end }}
 ]

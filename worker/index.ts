@@ -8,6 +8,7 @@ interface Redirect {
   from: string;
   to: string;
   status: number;
+  kind: "static" | "dynamic";
 };
 
 type Redirects = ReadonlyArray<Redirect>;
@@ -72,7 +73,10 @@ export default {
     const redirects: Redirects = await redirectsResponse.json();
 
     for (const redirect of redirects) {
-      if (requestUrl.pathname === redirect.from) {
+      if (
+        (redirect.kind === "static" && requestUrl.pathname === redirect.from)
+        || (redirect.kind === "dynamic" && requestUrl.pathname.startsWith(redirect.from))
+      ) {
         const url = new URL(request.url);
         url.pathname = redirect.to;
         return Response.redirect(url.toString(), redirect.status);
