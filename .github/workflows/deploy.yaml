@@ -14,18 +14,22 @@ jobs:
           lfs: true
 
       - name: "Install"
+        working-directory: ./site/
         run: npm ci
 
       - name: "Sync Artifacts"
+        working-directory: ./site/
         run: npm run sync:dev
 
       - name: "Build"
+        working-directory: ./site/
         run: npm run build:dev
 
       - name: "Deploy"
         uses: cloudflare/wrangler-action@v3
         with:
           environment: dev
+          workingDirectory: ./site/
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
@@ -40,17 +44,21 @@ jobs:
           lfs: true
 
       - name: "Install"
+        working-directory: ./site/
         run: npm ci
 
       - name: "Sync Artifacts"
+        working-directory: ./site/
         run: npm run sync:prod
 
       - name: "Build"
+        working-directory: ./site/
         run: npm run build:prod
 
       - name: "Deploy"
         uses: cloudflare/wrangler-action@v3
         with:
           environment: prod
+          workingDirectory: ./site/
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
