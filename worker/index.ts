@@ -66,6 +66,8 @@ export default {
   async fetch(request: Request, env: Env) {
     const requestUrl = new URL(request.url);
 
+    console.log(`Request URL: ${requestUrl.pathname}`);
+
     const redirectsUrl = new URL(request.url);
     redirectsUrl.pathname = "/redirects.json";
 
@@ -73,7 +75,10 @@ export default {
     const redirects: Redirects = await redirectsResponse.json();
 
     for (const redirect of redirects) {
+      console.log(`Checking redirect: ${redirect.from} -> ${redirect.to} (${redirect.status})`);
+
       if (minimatch(requestUrl.pathname, redirect.from)) {
+        console.log(`Redirecting: ${redirect.from} -> ${redirect.to} (${redirect.status})`);
         const url = new URL(request.url);
         url.pathname = redirect.to;
         return Response.redirect(url.toString(), redirect.status);
