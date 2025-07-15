@@ -1,17 +1,29 @@
-{{- range $page := .Site.Pages -}}
-{{- range $alias := $page.Aliases -}}
-{{- $absAlias := $alias -}}
-{{- if not (hasPrefix $absAlias "/") -}}
-  {{- $absAlias = path.Join (path.Clean $page.RelPermalink | path.Dir) $absAlias -}}
-{{- end -}}
-{{- $absAlias | path.Clean }} {{ $page.RelPermalink }} 301
-{{ $absAlias | path.Clean | printf "%s/" }} {{ $page.RelPermalink }} 301
-{{ end -}}
-{{- end }}
+[
+{{ range $page := .Site.Pages }}
+  {{ range $alias := $page.Aliases }}
+    {{ $absAlias := $alias }}
+    {{ if not (hasPrefix $absAlias "/") }}
+      {{ $absAlias = path.Join (path.Clean $page.RelPermalink | path.Dir) $absAlias }}
+    {{ end }}
+  {
+    "from": {{ $absAlias | path.Clean | jsonify }},
+    "to": {{ $page.RelPermalink | jsonify }},
+    "status": 301
+  },
+  {
+    "from": {{ $absAlias | path.Clean | printf "%s/" | jsonify }},
+    "to": {{ $page.RelPermalink | jsonify }},
+    "status": 301
+  },
+  {{ end }}
+{{ end }}
 
-{{- range .Site.Params.redirects -}}
-{{ .from | path.Clean }} {{ .to }} {{ .status }}
-{{ .from | path.Clean | printf "%s/" }} {{ .to }} {{ .status }}
-{{ end -}}
-
-/artifact/* /artifacts/:splat 301
+{{ range $index, $redirect := .Site.Params.redirects }}
+  {{ $numRedirects := len .Site.Params.redirects }}
+  {
+    "from": {{ $redirect.from | path.Clean | jsonify }},
+    "to": {{ $redirect.to | jsonify }},
+    "status": {{ $redirect.status | jsonify }},
+  }{{ if (eq $index (sub $numRedirects 1)) }},{{ end }}
+{{ end }}
+]

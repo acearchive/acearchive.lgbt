@@ -17,8 +17,11 @@ dev: install
 sync stage:
   npm run sync:{{ stage }}
 
-# deploy the site
+# build the site
 [working-directory: "./site/"]
-deploy stage: install (sync stage)
+build stage: install (sync stage)
   npm run build:{{ stage }}
+
+# deploy the site
+deploy stage: (build stage)
   npx wrangler@latest deploy --env {{ stage }}

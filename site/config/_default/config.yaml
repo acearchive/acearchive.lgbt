@@ -13,9 +13,8 @@ disableKinds: ["RSS"]
 pagination:
   pagerSize: 20
 
-# Use Netlify-style `_headers` and `_redirects` files.
 outputs:
-  home: ["HTML", "REDIRECTS", "HEADERS"]
+  home: ["HTML", "REDIRECTS"]
   section: ["HTML", "SITEMAP"]
 
 # Generate higher quality WebP images than the default.
@@ -29,17 +28,10 @@ mediaTypes:
     delimiter: ""
 
 outputFormats:
-  # Add an output format for the `_redirects` file.
+  # Add an output format for the `redirects.json` file.
   REDIRECTS:
-    mediaType: "text/netlify"
-    baseName: "_redirects"
-    isPlainText: true
-    notAlternative: true
-
-  # Add an output format for the `_headers` file.
-  HEADERS:
-    mediaType: "text/netlify"
-    baseName: "_headers"
+    mediaType: "application/json"
+    baseName: "redirects"
     isPlainText: true
     notAlternative: true
 

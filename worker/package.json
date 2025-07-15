@@ -1,0 +1,11 @@
+{
+  "name": "acearchive-lgbt-worker",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250715.0"
+  },
+  "dependencies": {
+    "minimatch": "^10.0.3"
+  }
+}
