@@ -3,7 +3,6 @@ default:
   @just --list
 
 # install npm dependencies
-[working-directory: "./site/"]
 install:
   npm install
 

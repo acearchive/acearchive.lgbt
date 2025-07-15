@@ -14,7 +14,6 @@ jobs:
           lfs: true
 
       - name: "Install"
-        working-directory: ./site/
         run: npm ci
 
       - name: "Sync Artifacts"
@@ -43,7 +42,6 @@ jobs:
           lfs: true
 
       - name: "Install"
-        working-directory: ./site/
         run: npm ci
 
       - name: "Sync Artifacts"
