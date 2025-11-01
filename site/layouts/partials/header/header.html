@@ -86,7 +86,7 @@
         <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-2">
           {{ range .Site.Menus.social -}}
             <li class="nav-item">
-              <a class="nav-link ps-0 py-1" href="{{ .URL | relURL }}">
+              <a class="nav-link ps-0 py-1" target="_blank" href="{{ .URL | relURL }}">
                 {{ .Pre | safeHTML }}
                 <small class="ms-2 d-md-none">{{ .Name }}</small>
                 <small class="d-none d-md-inline visually-hidden">{{ .Name }}</small>
