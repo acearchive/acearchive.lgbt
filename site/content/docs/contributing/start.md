@@ -18,9 +18,26 @@ Anyone can help contribute to Ace Archive, and there are various ways to do so.
 
 <hr>
 
-The simplest way to contribute is to suggest content to be added to the archive.
-All you have to do is fill out a form and answer a few questions. This requires
-a GitHub account, which is free.
+First and foremost, consider joining our Discord server! We have a "job board"
+tracking all the tasks we could use help with, big and small.
+
+Don't feel like you need to have any special skills or prior experience to help
+out; however you want to contribute, we're happy to teach and walk you through
+it.
+
+Ace Archive is a community project; building community and giving folks the
+opportunity to participate in the process is the goal.
+
+{{< link-button url="https://discord.gg/Pk54SzxA8m/" >}}
+Join the Discord server
+{{< /link-button >}}
+
+<hr>
+
+If you're not feeling social and just looking to contribute something to the
+archive, you can submit a proposal without needing to talk to anyone. All you
+have to do is fill out a form and answer a few questions. This requires a GitHub
+account, which is free.
 
 {{< link-button url="https://github.com/acearchive/artifact-submissions/issues/new?labels=proposal&template=proposal.yaml" >}}
 Propose content
@@ -36,15 +53,6 @@ proposal for approval.
 
 {{< link-button path="/submit/index.md" >}}
 Add an artifact
-{{< /link-button >}}
-
-<hr>
-
-If you would like to report a bug or make a feature request, you can open an
-issue.
-
-{{< link-button url="https://github.com/acearchive/acearchive.lgbt/issues/new" >}}
-Open an issue
 {{< /link-button >}}
 
 <hr>
