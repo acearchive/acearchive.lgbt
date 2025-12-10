@@ -11,4 +11,4 @@ If you want to contact us for any reason, you can email:
 
 We'd love to hear from you! Even just to say you found the site useful.
 
-Also consider joining [our Discord server](https://discord.gg/Pk54SzxA8m/).
+Also consider joining [our Discord server](https://discord.gg/Pk54SzxA8m).

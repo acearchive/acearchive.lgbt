@@ -28,7 +28,7 @@ it.
 Ace Archive is a community project; building community and giving folks the
 opportunity to participate in the process is the goal.
 
-{{< link-button url="https://discord.gg/Pk54SzxA8m/" >}}
+{{< link-button url="https://discord.gg/Pk54SzxA8m" >}}
 Join the Discord server
 {{< /link-button >}}
 
