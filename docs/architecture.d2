@@ -1,0 +1,131 @@
+direction: up
+
+title: "Ace Archive Architecture" {
+  shape: text
+  near: top-center
+  style: {
+    font-size: 40
+  }
+}
+
+legend: "Legend" {
+  user: "User" {
+    shape: "person"
+  }
+
+  compute: "Compute" {
+    shape: "queue"
+  }
+
+  storage: "Storage" {
+    shape: "cylinder"
+  }
+
+  service: "Service" {
+    shape: "cloud"
+  }
+
+  repository: "Source\nRepository" {
+    shape: "package"
+  }
+}
+
+visitor: "Visitor" {
+  shape: "person"
+}
+
+api-user: "API User" {
+  shape: "person"
+}
+
+submitter: "Contributor" {
+  shape: "person"
+}
+
+cf: Cloudflare {
+  cdn: "CDN" {
+    shape: "cloud"
+  }
+
+  db: "SQLite DB" {
+    shape: "cylinder"
+  }
+
+  client-worker: "Client\nWorker" {
+    shape: "queue"
+  }
+
+  files-worker: "Files\nWorker" {
+    shape: "queue"
+  }
+
+  api-worker: "API\nWorker" {
+    shape: "queue"
+  }
+
+  submission-worker: "Artifact\nSubmission\nWorker" {
+    shape: "queue"
+  }
+
+  db-backup-worker: "DB\nBackup\nWorker" {
+    shape: "queue"
+  }
+
+  db-backup-bucket: "DB\nBackup\nBucket" {
+    shape: "cylinder"
+  }
+
+  files-bucket: "Files\nBucket" {
+    shape: "cylinder"
+  }
+}
+
+gh: GitHub {
+  site-repo: "Static\nSite\nRepo" {
+    shape: "package"
+  }
+
+  submission-repo: "Artifact\nSubmission\nRepo" {
+    shape: "package"
+  }
+
+  hugo-repo: "Hugo\nArtifact\nRepo" {
+    shape: "package"
+  }
+
+  hugo-action: "Hugo\nArtifact\nAction" {
+    shape: "queue"
+  }
+
+  submit-action: "Artifact\nSubmission\nAction" {
+    shape: "queue"
+  }
+}
+
+visitor -> cf.client-worker: "Visit https://acearchive.lgbt"
+visitor -> cf.files-worker: "Download a file"
+
+cf.client-worker -> cf.cdn: "Request static assets"
+
+cf.files-worker -> cf.db: "Query file metadata"
+cf.files-worker -> cf.files-bucket: "Fetch file data"
+
+api-user -> cf.api-worker: "Call API"
+cf.api-worker -> cf.db: "Query artifact metadata"
+
+cf.db-backup-worker -> cf.db: "Dump database"
+cf.db-backup-worker -> cf.db-backup-bucket: "Store backup"
+cf.db-backup-worker -> cf.db-backup-worker: "Cron trigger"
+
+gh.submit-action -> cf.submission-worker: "Upload artifact metadata"
+cf.submission-worker -> cf.db: "Store artifact metadata"
+gh.submit-action -> cf.files-bucket: "Upload artifact files"
+
+submitter -> gh.submission-repo: "Submit artifact"
+gh.submission-repo -> gh.submit-action: "Trigger artifact submission"
+gh.submission-repo -> gh.hugo-action: "Generate static assets"
+gh.submission-repo -> gh.site-repo: "Trigger site rebuild"
+gh.hugo-action -> gh.hugo-repo: "Push generated assets"
+gh.hugo-action -> cf.api-worker: "Fetch artifact metadata"
+gh.site-repo -> gh.hugo-repo: "Load generated assets"
+gh.site-repo -> cf.cdn: "Deploy static site"
