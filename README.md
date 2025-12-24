@@ -37,6 +37,9 @@ tools, and infrastructure can be found in the following repos:
 - [infra](https://github.com/acearchive/infra): This repo contains the Terraform
   config for the site's infrastructure.
 
+See the [architecture diagram](./docs/architecture.svg) for an overview of how
+these different services talk to one another.
+
 ## Development
 
 You can use [just](https://github.com/casey/just) to build and deploy the app.
