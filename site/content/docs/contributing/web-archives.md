@@ -6,6 +6,7 @@ menu:
   docs:
     parent: "contributing"
 weight: 203
+draft: true
 ---
 
 Occasionally, you'll find a website that the [Wayback
