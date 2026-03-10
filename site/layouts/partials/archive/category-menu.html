@@ -2,57 +2,40 @@
 {{- $parentId := .id -}}
 {{- $infoRef := .infoRef -}}
 {{- $infoText := .infoText -}}
+{{- $useLowerCase := .useLowerCase }}
 {{- with .ctx -}}
 
-  {{- $currentPage := . -}}
+{{- $currentPage := . -}}
 
-  <li class="mb-2">
-    {{- $active := eq .Section $category -}}
-    <button
-      aria-controls="{{ $parentId }}-{{ $category }}-menu"
-      aria-expanded="true"
-      class="btn btn-toggle align-items-center rounded"
-      data-bs-target="#{{ $parentId }}-{{ $category }}-menu"
-      data-bs-toggle="collapse"
-    >
-      <div class="d-flex align-items-center gap-2">
-        {{ humanize $category }}
-        {{- if (and $infoRef $infoText) }}
-          <a
-            id="{{ $parentId }}-{{ $category }}-info-link"
-            aria-label="Info"
-            href="{{ ref . $infoRef }}"
-            data-bs-toggle="tooltip"
-            data-bs-placement="top"
-            title="{{ $infoText }}"
-            class="d-flex"
-          >
-            <svg
-              height="14"
-              width="14"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              {{ partial "use-icon.html" "info-circle" }}
-            </svg>
-          </a>
-        {{ end -}}
-      </div>
-    </button>
-    <div class="collapse show pe-lg-4" id="{{ $parentId }}-{{ $category }}-menu">
-      <ul class="btn-toggle-nav list-unstyled">
-        {{ range (index .Site.Taxonomies $category) }}
-          {{ $active := eq .Page.Title $currentPage.Title -}}
-          <li>
-            <a class="category-link d-flex {{ if $active }}active{{ end }}" href="{{ .Page.Permalink }}"
-              ><span>{{ .Page.Title | title }}</span
-              ><span class="badge bg-light text-dark fw-normal ms-auto my-auto"
-                >{{ .Count }}</span
-              ></a
-            >
-          </li>
-        {{ end }}
-      </ul>
+<li class="mb-2">
+  {{- $active := eq .Section $category -}}
+  <button aria-controls="{{ $parentId }}-{{ $category }}-menu" aria-expanded="true"
+    class="btn btn-toggle align-items-center rounded" data-bs-target="#{{ $parentId }}-{{ $category }}-menu"
+    data-bs-toggle="collapse">
+    <div class="d-flex align-items-center gap-2">
+      {{ humanize $category }}
+      {{- if (and $infoRef $infoText) }}
+      <a id="{{ $parentId }}-{{ $category }}-info-link" aria-label="Info" href="{{ ref . $infoRef }}"
+        data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $infoText }}" class="d-flex">
+        <svg height="14" width="14" fill="currentColor" aria-hidden="true">
+          {{ partial "use-icon.html" "info-circle" }}
+        </svg>
+      </a>
+      {{ end -}}
     </div>
-  </li>
+  </button>
+  <div class="collapse show pe-lg-4" id="{{ $parentId }}-{{ $category }}-menu">
+    <ul class="btn-toggle-nav list-unstyled">
+      {{ range (index .Site.Taxonomies $category) }}
+      {{ $active := eq .Page.Title $currentPage.Title -}}
+      <li>
+        <a class="category-link d-flex {{ if $active }}active{{ end }}" href="{{ .Page.Permalink }}">
+          <span>{{ if $useLowerCase }}{{ .Page.Title | lower }}{{ else }}{{ .Page.Title }}{{ end }}</span>
+          <span class="badge bg-light text-dark fw-normal ms-auto my-auto">{{ .Count }}</span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</li>
 {{- end }}

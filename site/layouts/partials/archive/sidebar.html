@@ -5,12 +5,21 @@
 {{- $currentPage := . -}}
 
 <ul class="list-unstyled collapsible-sidebar">
-  {{ partial "archive/category-menu.html" (dict "ctx" . "id" $parentId "category" "collections") }}
-  {{ partial "archive/category-menu.html" (dict "ctx" . "id" $parentId "category" "decades") }}
+  {{ partial "archive/category-menu.html" (dict
+    "ctx" .
+    "id" $parentId
+    "category" "collections"
+  ) }}
+  {{ partial "archive/category-menu.html" (dict
+    "ctx" .
+    "id" $parentId
+    "category" "decades"
+  ) }}
   {{ partial "archive/category-menu.html" (dict
     "ctx" .
     "id" $parentId
     "category" "identities"
+    "useLowerCase" true
     "infoRef" "docs/contributing/best-practices#labels"
     "infoText" "Some of these terms are outdated. Why?"
   ) }}

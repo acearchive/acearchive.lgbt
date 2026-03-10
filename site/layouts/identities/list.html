@@ -7,8 +7,8 @@
     </div>
     <div class="docs-content col-lg-11 mx-xl-auto">
       <div class="artifact-list-title">
-        <h1 class="text-center">{{ .Title | title }}</h1>
-        <p class="lead text-center">Artifacts involving {{ .Title }} people</p>
+        <h1 class="text-center">{{ .Title | lower }}</h1>
+        <p class="lead text-center">Artifacts involving {{ .Title | lower }} people</p>
         {{ $metadata := resources.Get "metadata.json" | transform.Unmarshal }}
         {{ $allTags := index $metadata "tags" }}
         {{ $tagsOfKind := where $allTags "kind" "identity" }}
