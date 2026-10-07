@@ -26,10 +26,10 @@ function rangeYears(fromYear, toYear) {
 }
 
 function toSlug(value) {
-  return value
+  return encodeURIComponent(value
     .toLowerCase()
-    .replace(/[\s\W-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/[\s-]+/g, "-")
+    .replace(/^-+|-+$/g, ""));
 }
 
 function toTitle(value) {

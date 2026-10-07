@@ -6,9 +6,7 @@
     <ul>
       {{- range (index .Params $category) }}
         <li class="text-nowrap">
-          <a href="{{ printf "/categories/%s/" $category | relURL }}{{ . | urlize }}/"
-            >{{ . | title }}</a
-          >
+          <a href="{{ printf "/categories/%s/" $category | relURL }}{{ . | urlize }}/">{{ . }}</a>
           <span class="badge bg-light text-dark fw-normal ms-1"
             >{{ . | string | $taxonomy.Count }}</span
           >
