@@ -64,7 +64,7 @@ logoBackgroundFill: "#fff"
 footer: 'Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://getdoks.org/">Doks</a>'
 
 # Feed
-copyRight: "Copyright © 2022-2025 Frawley"
+copyRight: "Copyright © 2022-2026 Frawley"
 
 # Alert
 alert: false
@@ -75,6 +75,10 @@ alertText: ""
 docsRepo: "https://github.com/acearchive/acearchive.lgbt"
 docsRepoBranch: "main"
 editPage: true
+
+# Omeka Data Connector
+artifactsContentAdapterUrl: "https://connector.acearchive.lgbt/hugo-items"
+collectionMetadataUrl: "https://connector.acearchive.lgbt/hugo-metadata"
 
 # Feature flags
 options:
