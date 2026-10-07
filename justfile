@@ -11,14 +11,9 @@ install:
 dev: install
   npm run server
 
-# load the latest artifacts
-[working-directory: "./site/"]
-sync stage:
-  npm run sync:{{ stage }}
-
 # build the site
 [working-directory: "./site/"]
-build stage: install (sync stage)
+build stage: install
   npm run build:{{ stage }}
 
 # deploy the site
