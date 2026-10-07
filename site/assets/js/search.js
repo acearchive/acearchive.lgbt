@@ -1,7 +1,9 @@
 import FlexSearch from "flexsearch";
 import * as params from "@params";
-import artifactsData from "artifacts.json";
 import showdown from "showdown";
+
+const docsPages = params.docsPages;
+const searchData = params.searchData;
 
 function inputFocus(e, search, suggestions) {
   if (e.ctrlKey && e.key === "/") {
@@ -108,10 +110,10 @@ function indexArchiveSearch(search, suggestions) {
 
   const mdConverter = new showdown.Converter();
 
-  for (const artifact of artifactsData) {
+  for (const artifact of searchData) {
     index.add({
       id: `artifact/${artifact.id}`,
-      href: new URL(artifact.url).pathname,
+      href: `/artifacts/${artifact.slug}`,
       title: mdConverter.makeHtml(artifact.title),
       summary: mdConverter.makeHtml(artifact.summary),
       description: artifact.description,
@@ -125,7 +127,7 @@ function indexArchiveSearch(search, suggestions) {
   const identities = new Set();
   const decades = new Set();
 
-  for (const artifact of artifactsData) {
+  for (const artifact of searchData) {
     for (const person of artifact.people) {
       people.add(person);
     }
@@ -153,7 +155,7 @@ function indexArchiveSearch(search, suggestions) {
       id: `identity/${toSlug(identity)}`,
       href: `/categories/identities/${toSlug(identity)}/`,
       title: toTitle(identity),
-      summary: `Artifacts involving ${identity} people`,
+      summary: `Artifacts involving ${identity}`,
     });
   }
 
@@ -180,8 +182,6 @@ function indexDocsSearch(search, suggestions) {
       index: ["title", "summary", "content"],
     },
   });
-
-  const docsPages = params.docsPages;
 
   for (const [i, page] of docsPages.entries()) {
     index.add({

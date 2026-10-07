@@ -1,0 +1,12 @@
+{{ $data := "" }}
+{{ $url := .Site.Params.collectionMetadataUrl }}
+{{ with try (resources.GetRemote $url) }}
+  {{ with .Err }}
+    {{ errorf "Failed fetching collection metadata (%s): %s" $url . }}
+  {{ else with .Value }}
+    {{ $data = resources.FromString "data/metadata.json" .Content }}
+  {{ else }}
+    {{ errorf "Failed fetching collection metadata (%s)" $url }}
+  {{ end }}
+{{ end }}
+{{ return $data }}

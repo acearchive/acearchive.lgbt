@@ -8,11 +8,11 @@
     <div class="docs-content col-lg-11 mx-xl-auto">
       <div class="artifact-list-title">
         <h1 class="text-center">{{ .Title | lower }}</h1>
-        <p class="lead text-center">Artifacts involving {{ .Title | lower }} people</p>
-        {{ $metadata := resources.Get "metadata.json" | transform.Unmarshal }}
+        <p class="lead text-center">Artifacts involving {{ .Title | lower }}</p>
+        {{ $metadata := partialCached "data/metadata.html" . | transform.Unmarshal }}
         {{ $allTags := index $metadata "tags" }}
         {{ $tagsOfKind := where $allTags "kind" "identity" }}
-        {{ $matchingTags := where $tagsOfKind "name" (lower .Title) }}
+        {{ $matchingTags := where $tagsOfKind "name" .Title }}
         {{ $thisTag := index $matchingTags 0 }}
         {{ if $thisTag }}
           {{ $tagDescription := index $thisTag "description" }}

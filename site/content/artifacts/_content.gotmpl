@@ -1,28 +1,4 @@
-{{ $url := .Site.Params.collectionMetadataUrl }}
-{{ with try (resources.GetRemote $url) }}
-  {{ with .Err }}
-    {{ errorf "Failed fetching collection metadata ($url): %s" . }}
-  {{ else with .Value }}
-    {{ $json := resources.FromString "assets/metadata.json" .Content }}
-    {{ $json.Publish }}
-  {{ else }}
-    {{ errorf "Failed fetching collection metadata ($url)" }}
-  {{ end }}
-{{ end }}
-
-{{ $data := dict }}
-{{ $url := .Site.Params.artifactsContentAdapterUrl }}
-{{ with try (resources.GetRemote $url) }}
-  {{ with .Err }}
-    {{ errorf "Failed fetching artifact metadata (%s): %s" $url . }}
-  {{ else with .Value }}
-    {{ $data = . | transform.Unmarshal }}
-    {{ $json := resources.FromString "assets/artifacts.json" .Content }}
-    {{ $json.Publish }}
-  {{ else }}
-    {{ errorf "Failed fetching artifact metadata (%s)" $url }}
-  {{ end }}
-{{ end }}
+{{ $data := partialCached "data/artifacts.html" . | transform.Unmarshal }}
 
 {{ range $data }}
   {{ $page := dict

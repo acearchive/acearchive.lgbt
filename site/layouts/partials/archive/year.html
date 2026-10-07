@@ -2,7 +2,7 @@
   {{- if eq .Params.from_year .Params.to_year -}}
     {{- .Params.from_year -}}
   {{- else -}}
-    {{- printf "%d–%d" .Params.from_year
+    {{- printf "%v–%v" .Params.from_year
       .Params.to_year
     -}}
   {{- end -}}

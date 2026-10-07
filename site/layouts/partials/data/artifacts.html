@@ -1,0 +1,12 @@
+{{ $data := "" }}
+{{ $url := .Site.Params.artifactsContentAdapterUrl }}
+{{ with try (resources.GetRemote $url) }}
+  {{ with .Err }}
+    {{ errorf "Failed fetching artifact metadata (%s): %s" $url . }}
+  {{ else with .Value }}
+    {{ $data = resources.FromString "data/artifacts.json" .Content }}
+  {{ else }}
+    {{ errorf "Failed fetching artifact metadata (%s)" $url }}
+  {{ end }}
+{{ end }}
+{{ return $data }}

@@ -30,7 +30,7 @@
       {{ $active := eq .Page.Title $currentPage.Title -}}
       <li>
         <a class="category-link d-flex {{ if $active }}active{{ end }}" href="{{ .Page.Permalink }}">
-          <span>{{ if $useLowerCase }}{{ .Page.Title | lower }}{{ else }}{{ .Page.Title }}{{ end }}</span>
+          <span>{{ if $useLowerCase }}{{ .Page.Title }}{{ else }}{{ .Page.Title }}{{ end }}</span>
           <span class="badge bg-light text-dark fw-normal ms-auto my-auto">{{ .Count }}</span>
         </a>
       </li>
