@@ -155,7 +155,7 @@ function indexArchiveSearch(search, suggestions) {
       id: `identity/${toSlug(identity)}`,
       href: `/categories/identities/${toSlug(identity)}/`,
       title: toTitle(identity),
-      summary: `Artifacts involving ${identity}`,
+      summary: `Artifacts involving ${identity} people`,
     });
   }
 
