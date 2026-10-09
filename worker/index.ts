@@ -9,7 +9,7 @@ interface Redirect {
   to: string;
   status: number;
   kind: "static" | "dynamic";
-};
+}
 
 type Redirects = ReadonlyArray<Redirect>;
 
@@ -21,7 +21,8 @@ const headerPatterns: HeaderPatterns = {
   "/.*": {
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "DENY",
-    "Content-Security-Policy": "default-src 'self'; connect-src *; img-src 'self' data:; script-src 'self' 'sha256-dNGbdYMnwBYenrRGOHR0l33DkR37uJKlpRHFVeG85Lk=' https://umami.acearchive.lgbt; style-src 'self' 'unsafe-inline'; base-uri 'self'; frame-ancestors 'none';",
+    "Content-Security-Policy":
+      "default-src 'self'; connect-src *; img-src 'self' data:; script-src 'self' 'sha256-dNGbdYMnwBYenrRGOHR0l33DkR37uJKlpRHFVeG85Lk=' https://umami.acearchive.lgbt; style-src 'self' 'unsafe-inline'; base-uri 'self'; frame-ancestors 'none';",
     "Referrer-Policy": "strict-origin",
     "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
     "Cache-Control": "no-cache",
@@ -54,19 +55,30 @@ const headerPatterns: HeaderPatterns = {
   // Headers specific to Stoplight Elements, the app we embed for rendering the
   // OpenAPI docs.
   "/docs/api/.+": {
-    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src https://raw.githubusercontent.com https://api.acearchive.lgbt; frame-ancestors 'none';",
+    "Content-Security-Policy":
+      "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src https://raw.githubusercontent.com https://api.acearchive.lgbt; frame-ancestors 'none';",
   },
   // File-specific header overrides.
   "/cute\\.gif": {
     "Content-Type": "image/webp",
-  }
+  },
 };
 
-const stripTrailingSlash = (url: string): string => url.endsWith("/") ? url.slice(0, -1) : url;
+const stripTrailingSlash = (url: string): string =>
+  url.endsWith("/") ? url.slice(0, -1) : url;
 
 export default {
   async fetch(request: Request, env: Env) {
     const requestUrl = new URL(request.url);
+
+    // Some ad blockers seem to block Umami's tracking script. To work around
+    // that, we proxy it through this worker. I'm generally not a fan of trying
+    // to circumvent privacy tools, but under the circumstances I think it's
+    // reasonable. We're deliberately using an open-source, self-hosted
+    // analytics solution to preserve users' privacy.
+    if (requestUrl.pathname === "/stats.js") {
+      return await fetch("https://umami.acearchive.lgbt/script.js");
+    }
 
     const redirectsUrl = new URL(request.url);
     redirectsUrl.pathname = "/redirects.json";
@@ -75,13 +87,20 @@ export default {
     const redirects: Redirects = await redirectsResponse.json();
 
     for (const redirect of redirects) {
-      if (redirect.kind === "static" && (stripTrailingSlash(requestUrl.pathname) === stripTrailingSlash(redirect.from))) {
+      if (
+        redirect.kind === "static" &&
+        stripTrailingSlash(requestUrl.pathname) ===
+        stripTrailingSlash(redirect.from)
+      ) {
         const url = new URL(request.url);
         url.pathname = redirect.to;
         return Response.redirect(url.toString(), redirect.status);
       }
 
-      if (redirect.kind === "dynamic" && requestUrl.pathname.startsWith(redirect.from)) {
+      if (
+        redirect.kind === "dynamic" &&
+        requestUrl.pathname.startsWith(redirect.from)
+      ) {
         const url = new URL(request.url);
         const suffix = requestUrl.pathname.slice(redirect.from.length);
         url.pathname = redirect.to + suffix;
