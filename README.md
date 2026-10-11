@@ -1,7 +1,7 @@
 # Ace Archive
 
 This is the repo for the [Ace Archive](https://acearchive.lgbt) website, a
-static site built with [Hugo](https://gethugo.io).
+static site built with [Hugo](https://gohugo.io).
 
 This website is a custom frontend for a self-hosted [Omeka
 S](https://omeka.org/s/) instance that houses the collection. You can find more
