@@ -5,11 +5,11 @@
   "description": "The Ace Archive website",
   "homepage": "https://acearchive.lgbt",
   "bugs": {
-    "url": "https://github.com/acearchive/acearchive.lgbt/issues"
+    "url": "https://github.com/acearchive/site/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/acearchive/acearchive.lgbt"
+    "url": "https://github.com/acearchive/site"
   },
   "author": {
     "name": "Frawley",
