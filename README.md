@@ -1,4 +1,4 @@
-# Ace Archive
+# Ace Archive Site
 
 This is the repo for the [Ace Archive](https://acearchive.lgbt) website, a
 static site built with [Hugo](https://gohugo.io).
