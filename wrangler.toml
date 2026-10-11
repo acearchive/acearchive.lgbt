@@ -1,5 +1,5 @@
 name = "acearchive-site"
-account_id = "9d143afa60e911e9904e835bd1db8504"
+account_id = "dd48e1a60e3648ec3f391663eadf89b8"
 compatibility_date = "2025-05-07"
 preview_urls = false
 main = "./worker/index.ts"
