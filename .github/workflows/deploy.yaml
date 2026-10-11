@@ -16,10 +16,6 @@ jobs:
       - name: "Install"
         run: npm ci
 
-      - name: "Sync Artifacts"
-        working-directory: ./site/
-        run: npm run sync:dev
-
       - name: "Build"
         working-directory: ./site/
         run: npm run build:dev
@@ -44,10 +40,6 @@ jobs:
 
       - name: "Install"
         run: npm ci
-
-      - name: "Sync Artifacts"
-        working-directory: ./site/
-        run: npm run sync:prod
 
       - name: "Build"
         working-directory: ./site/
