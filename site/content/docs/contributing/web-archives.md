@@ -1,7 +1,6 @@
 ---
 title: "Archiving web pages"
 description: "How to archive web pages in Ace Archive"
-date: 2022-01-07T21:19:13-05:00
 menu:
   docs:
     parent: "contributing"

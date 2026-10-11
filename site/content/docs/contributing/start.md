@@ -1,7 +1,6 @@
 ---
 title: "Getting started"
 description: "Start here"
-date: 2022-01-07T09:23:23-05:00
 menu:
   docs:
     parent: "contributing"
@@ -34,31 +33,10 @@ Join the Discord server
 
 <hr>
 
-If you're not feeling social and just looking to contribute something to the
-archive, you can submit a proposal without needing to talk to anyone. All you
-have to do is fill out a form and answer a few questions. This requires a GitHub
-account, which is free.
+If you're looking to contribute something to the archive, you can submit a
+proposal. While we work on implementing a more streamlined process, you can just
+email us.
 
-{{< link-button url="https://github.com/acearchive/artifact-submissions/issues/new?labels=proposal&template=proposal.yaml" >}}
+{{< link-button path="/docs/contributing/by-email.md" >}}
 Propose content
-{{< /link-button >}}
-
-<hr>
-
-If you're willing to get your hands a little dirty, you can also add content to
-the archive yourself. This involves filling out a more comprehensive form where
-you'll enter all the information necessary to add an artifact to the archive.
-Once you complete the form, you'll be redirected to GitHub to submit your
-proposal for approval.
-
-{{< link-button path="/submit/index.md" >}}
-Add an artifact
-{{< /link-button >}}
-
-<hr>
-
-If you're a developer or someone technically inclined, check out our API!
-
-{{< link-button path="/docs/contributing/api.md" >}}
-Get hacking
 {{< /link-button >}}
