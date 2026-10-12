@@ -50,7 +50,7 @@ const headerPatterns: HeaderPatterns = {
     "Cache-Control": "public, immutable, max-age=31536000",
   },
   "/fonts/.+": {
-    "Cache-Control": "public, immutable, max-age=31536000",
+    "Cache-Control": "public, max-age=86400",
   },
   // Headers specific to Stoplight Elements, the app we embed for rendering the
   // OpenAPI docs.
