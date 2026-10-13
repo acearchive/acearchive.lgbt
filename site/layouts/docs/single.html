@@ -32,9 +32,6 @@
 			</nav>
 			{{ end -}}
 			{{ .Content | safeHTML }}
-			{{ if .Site.Params.editPage -}}
-				{{ partial "main/edit-page.html" . }}
-			{{ end -}}
 			{{ partial "main/docs-navigation.html" . }}
 			<!--
 			{{ if not .Site.Params.options.collapsibleSidebar -}}

@@ -72,11 +72,6 @@ alert: false
 alertDismissable: true
 alertText: ""
 
-# Edit page
-docsRepo: "https://github.com/acearchive/site"
-docsRepoBranch: "main"
-editPage: true
-
 # Omeka Data Connector
 artifactsContentAdapterUrl: "https://connector.acearchive.lgbt/hugo-items"
 collectionMetadataUrl: "https://connector.acearchive.lgbt/hugo-metadata"
