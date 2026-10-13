@@ -11,9 +11,7 @@ archiveLinkDomains:
   - "web.archive.org"
   - "replayweb.page"
 
-# The base URL of the bucket that hosts static media like images. Objects in
-# this bucket should be treated as immutable; Hugo caches remote resources, so
-# upload a changed file under a new name.
+# The base URL of the bucket that hosts static media like images.
 staticBaseURL: "https://static.acearchive.lgbt/"
 
 #
