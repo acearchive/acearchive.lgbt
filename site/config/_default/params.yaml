@@ -64,9 +64,6 @@ lqipWidth: "20x"
 smallLimit: "300"
 logoBackgroundFill: "#fff"
 
-# Footer
-footer: 'Powered by <a href="https://gohugo.io/">Hugo</a> and <a href="https://getdoks.org/">Doks</a>'
-
 # Feed
 copyRight: "Copyright © 2022-2026 Frawley"
 
