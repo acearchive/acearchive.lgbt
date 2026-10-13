@@ -5,9 +5,9 @@
         {{ partial "archive/sidebar.html" (dict "ctx" . "id" "single") }}
       </nav>
     </div>
-    <main class="docs-content col-lg-11 mx-xl-auto">
+    <main class="docs-content col-sm-15 col-md-13 col-lg-9 mx-auto">
       <h1 class="text-center">{{ .Title | markdownify }}</h1>
-      <div class="row justify-content-center text-center">
+      <div class="justify-content-center text-center">
         <p class="lead text-center">
           {{- if .Params.description }}
             {{ .Params.description | markdownify }}
@@ -18,13 +18,13 @@
         <p class="text-center mb-0">{{ partial "archive/year.html" . }}</p>
       </div>
       {{- if (or .Params.files .Params.links) }}
-        <div class="row mt-5 justify-content-center">
+        <div class="mt-5 justify-content-center">
           <div class="col">
             {{ partial "archive/files.html" . }}
           </div>
         </div>
       {{ end -}}
-      <div class="row mt-5 justify-content-center">
+      <div class="d-flex flex-wrap mt-5 justify-content-start gap-4">
         {{- if .Params.identities }}
           {{ partial "archive/category-list.html" (dict "ctx" . "category" "identities") }}
         {{ end -}}
@@ -34,52 +34,30 @@
         {{- if .Params.people }}
           {{ partial "archive/category-list.html" (dict "ctx" . "category" "people") }}
         {{ end -}}
-      </div>
-      <div class="row justify-content-center">
         {{- if .Params.collections }}
           {{ partial "archive/category-list.html" (dict "ctx" . "category" "collections") }}
         {{ end -}}
       </div>
-      <div class="row mt-4">
-      </div>
-      <div class="d-flex justify-content-evenly align-items-center mt-5">
-        <div class="d-flex flex-column gap-1 align-items-center">
-          <span class="fs-6">Edit this page</span>
-          <a class="btn btn-outline-primary" href="{{ ref . "/submit" }}?artifact={{ .Params.slug }}">
-            <span class="d-flex gap-2 align-items-center">
-              <svg
-                height="18"
-                width="18"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                {{ partial "use-icon.html" "pencil" }}
-              </svg>
-              Open Editor
-            </span>
-          </a>
-        </div>
-        <div class="d-flex flex-column gap-1 align-items-center">
-          <label class="fs-6" for="copy-short-url-button">Get short URL</label>
-          <button
-            id="copy-short-url-button"
-            type="button"
-            data-short-url="{{ printf "%sa/%s/" .Site.BaseURL .Params.id }}"
-            class="btn btn-outline-primary"
-          >
-            <span class="d-flex gap-2 align-items-center">
-              <svg
-                height="18"
-                width="18"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                {{ partial "use-icon.html" "share-fill" }}
-              </svg>
-              Copy URL
-            </span>
-          </button>
-        </div>
+      <div class="d-flex mt-5 flex-column gap-1 align-items-center">
+        <label class="fs-6" for="copy-short-url-button">Get short URL</label>
+        <button
+          id="copy-short-url-button"
+          type="button"
+          data-short-url="{{ printf "%sa/%s/" .Site.BaseURL .Params.id }}"
+          class="btn btn-outline-primary"
+        >
+          <span class="d-flex gap-2 align-items-center">
+            <svg
+              height="18"
+              width="18"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              {{ partial "use-icon.html" "share-fill" }}
+            </svg>
+            Copy URL
+          </span>
+        </button>
       </div>
     </main>
   </div>
