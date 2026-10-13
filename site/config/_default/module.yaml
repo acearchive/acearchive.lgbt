@@ -11,20 +11,21 @@ mounts:
     target: "static/js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js.map"
   - source: "node_modules/@stoplight/elements"
     target: "assets/js/vendor/stoplight"
+  - source: "../node_modules/@fontsource/fira-sans/files"
+    target: "static/fonts/fira-sans"
+    includeFiles:
+      - "fira-sans-latin-400-*.woff2"
+      - "fira-sans-latin-ext-400-*.woff2"
+      - "fira-sans-latin-500-*.woff2"
+      - "fira-sans-latin-ext-500-*.woff2"
+      - "fira-sans-latin-700-*.woff2"
+      - "fira-sans-latin-ext-700-*.woff2"
   - source: "assets"
     target: "assets"
   - source: "assets/scss"
     target: "assets/scss"
   - source: "static"
     target: "static"
-  - source: "static/images"
-    target: "static/images"
-    # We use image pipelines to convert the site logo to different specific
-    # sizes and formats for favicons and web app manifests. The images that we
-    # use to do this needs to be assets, but we also want to publish them as
-    # static files.
-  - source: "assets/images"
-    target: "static/images"
   - source: "layouts"
     target: "layouts"
   - source: "archetypes"

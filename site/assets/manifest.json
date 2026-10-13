@@ -1,5 +1,5 @@
-{{- $logoTransparent := resources.Get "images/logo-transparent.png" -}}
-{{- $logoMaskable := resources.Get "images/logo-manifest-maskable.png" -}}
+{{- $logoTransparent := resources.GetRemote (urls.JoinPath site.Params.staticBaseURL "images/logo-transparent.png") -}}
+{{- $logoMaskable := resources.GetRemote (urls.JoinPath site.Params.staticBaseURL "images/logo-manifest-maskable.png") -}}
 
 {{- $manifest192Webp := $logoTransparent.Resize "192x webp icon" | resources.Copy "images/logo-manifest-192x192.webp" -}}
 {{- $manifest192Png := $logoTransparent.Resize "192x png" | resources.Copy "images/logo-manifest-192x192.png" -}}

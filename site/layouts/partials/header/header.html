@@ -16,7 +16,9 @@
       class="navbar-brand d-flex align-items-center gap-3 p-0 me-auto"
       href="{{ "/" | relLangURL }}"
     >
-      <img class="header-logo" src="{{ .Site.Params.HeaderLogo }}" width="28" height="28" alt="{{ .Site.Params.HeaderLogoAlt }}" />
+      {{- /* Publish a same-origin copy so we don't need a separate connection to the static bucket on every page. */ -}}
+      {{ $headerLogo := resources.GetRemote (urls.JoinPath .Site.Params.staticBaseURL .Site.Params.headerLogo) | resources.Copy .Site.Params.headerLogo -}}
+      <img class="header-logo" src="{{ $headerLogo.RelPermalink }}" width="28" height="28" alt="{{ .Site.Params.HeaderLogoAlt }}" />
       {{ .Site.Params.Title }}
     </a>
 

@@ -58,11 +58,16 @@ const headerPatterns: HeaderPatterns = {
     "Content-Security-Policy":
       "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src https://raw.githubusercontent.com https://api.acearchive.lgbt; frame-ancestors 'none';",
   },
-  // File-specific header overrides.
-  "/cute\\.gif": {
-    "Content-Type": "image/webp",
-  },
 };
+
+// Static media used to be served from this site, but now lives in a separate
+// bucket. Redirect the old paths so that external links keep working.
+const staticBaseUrl = "https://static.acearchive.lgbt";
+// Note that Hugo generates other `/images/logo-*` files (favicons and manifest
+// icons, and the header logo) which are still served from here, so this list
+// is deliberately exact.
+const staticMediaPattern =
+  /^\/images\/logo-(card|manifest-maskable|padded|transparent|wordmark)\.(png|webp)$/;
 
 const stripTrailingSlash = (url: string): string =>
   url.endsWith("/") ? url.slice(0, -1) : url;
@@ -78,6 +83,10 @@ export default {
     // analytics solution to preserve users' privacy.
     if (requestUrl.pathname === "/stats.js") {
       return await fetch("https://umami.acearchive.lgbt/script.js");
+    }
+
+    if (staticMediaPattern.test(requestUrl.pathname)) {
+      return Response.redirect(`${staticBaseUrl}${requestUrl.pathname}`, 301);
     }
 
     const redirectsUrl = new URL(request.url);

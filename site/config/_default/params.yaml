@@ -11,13 +11,19 @@ archiveLinkDomains:
   - "web.archive.org"
   - "replayweb.page"
 
+# The base URL of the bucket that hosts static media like images. Objects in
+# this bucket should be treated as immutable; Hugo caches remote resources, so
+# upload a changed file under a new name.
+staticBaseURL: "https://static.acearchive.lgbt/"
+
 #
 # Metadata for SEO
 #
 
 # Homepage
 title: "Ace Archive"
-headerLogo: "/images/logo-transparent-header.webp"
+# Path within `staticBaseURL`. This is published as a same-origin copy.
+headerLogo: "images/logo-transparent-header.webp"
 headerLogoAlt: "The Ace Archive logo, a rainbow file box"
 titleSeparator: "-"
 titleAddition: "Asexual and aromantic history"
@@ -25,7 +31,7 @@ description: >-
   Ace Archive is a curated digital archive of asexual and aromantic history.
 
 # Open Graph
-image: "/images/logo-padded.webp"
+image: "https://static.acearchive.lgbt/images/logo-padded.webp"
 ogLocale: "en_US"
 domainTLD: "acearchive.lgbt"
 titleHome: "Ace Archive"
@@ -36,10 +42,10 @@ schemaName: "Ace Archive"
 schemaAuthor: "Frawley"
 schemaAuthorGitHub: "https://github.com/frawleyskid"
 schemaLocale: "en-US"
-schemaLogo: "/images/logo-transparent.webp"
+schemaLogo: "https://static.acearchive.lgbt/images/logo-transparent.webp"
 schemaLogoWidth: 912
 schemaLogoHeight: 912
-schemaImage: "/images/logo-card.webp"
+schemaImage: "https://static.acearchive.lgbt/images/logo-card.webp"
 schemaImageWidth: 2560
 schemaImageHeight: 1280
 schemaGitHub: "https://github.com/acearchive"

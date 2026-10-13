@@ -44,6 +44,7 @@
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "devDependencies": {
+    "@fontsource/fira-sans": "5.3.0",
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "@github/clipboard-copy-element": "^1.1.2",
     "@types/bootstrap": "^5.2.6",
