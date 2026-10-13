@@ -23,8 +23,7 @@ people can link to from blogs, wikis, etc.
 
 Ace Archive is open-source and licensed under the [MIT
 license](https://choosealicense.com/licenses/mit/), which means that anyone is
-free to [read the source code of the
-website](https://github.com/acearchive/acearchive.lgbt) and use it however they
-wish. It also means that much like a wiki, anyone can help contribute to the
-archive, and we have [documentation]({{< ref "docs/contributing/start.md" >}})
-explaining how to do that.
+free to [read the source code of the website](https://github.com/acearchive) and
+use it however they wish. It also means that much like a wiki, anyone can help
+contribute to the archive, and we have [documentation]({{< ref
+"docs/contributing/start.md" >}}) explaining how to do that.

@@ -7,7 +7,7 @@ menu:
 weight: 102
 ---
 
-Hey, I'm Frawley (they/them)!
+Hey, I'm Frawley (they/it)!
 
 I made this site as a hobby project after I started researching asexual history
 and grew frustrated by how difficult tracking down primary sources was. I wanted

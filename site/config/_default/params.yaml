@@ -38,7 +38,7 @@ titleHome: "Ace Archive"
 schemaType: "Organization"
 schemaName: "Ace Archive"
 schemaAuthor: "Frawley"
-schemaAuthorGitHub: "https://github.com/frawleyskid"
+schemaAuthorGitHub: "https://github.com/justlark"
 schemaLocale: "en-US"
 schemaLogo: "https://static.acearchive.lgbt/images/logo-transparent.webp"
 schemaLogoWidth: 912
@@ -76,7 +76,7 @@ alertDismissable: true
 alertText: ""
 
 # Edit page
-docsRepo: "https://github.com/acearchive/acearchive.lgbt"
+docsRepo: "https://github.com/acearchive/site"
 docsRepoBranch: "main"
 editPage: true
 
