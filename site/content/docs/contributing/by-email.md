@@ -27,10 +27,13 @@ works, we prefer more authoritative sources like journal databases, libraries,
 and archives like the Internet Archive, but this can also be as simple as a link
 to a forum thread or a blog post.
 
+If the content can't be found on the web (original research, scans of physical
+materials, transcripts, etc.), feel free to attach files to the email.
+
 If the content isn't accessible or is written in a language other than English,
 consider whether a transcript or a translation are available. If the content
 isn't available on the web anymore, [Wayback Machine](https://web.archive.org/)
-links are fine!
+links are fine.
 
 ## Content warnings {#content-warnings}
 
