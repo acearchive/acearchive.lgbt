@@ -1,6 +1,7 @@
 {{ if and (ne .Params.toc false) (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") -}}
   <div class="page-links">
     <h3>On this page</h3>
-    {{ .TableOfContents }}
+    {{/* Prefix fragment links with the page path, since the <base> tag would otherwise resolve them against the site root. */ -}}
+    {{ replace .TableOfContents `href="#` (printf `href="%s#` .RelPermalink) | safeHTML }}
   </div>
 {{ end -}}
