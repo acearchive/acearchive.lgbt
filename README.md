@@ -26,6 +26,10 @@ or `dev`.
 
 ## Deployment
 
+Because this is a static site, it needs to be redeployed to pick up changes in
+Omeka S. You can deploy by manually triggering the CI pipeline, or by running
+`just deploy prod`.
+
 There are two deployments of Ace Archive:
 
 1. The prod environment (<https://acearchive.lgbt>) is automatically deployed
