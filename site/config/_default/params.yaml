@@ -89,3 +89,21 @@ options:
   collapsibleSidebar: true
   multilingualMode: false
   docsVersioning: false
+
+# Site-level redirects. A `static` redirect matches a single path, while a
+# `dynamic` redirect matches every path under the `from` prefix and preserves
+# the rest of the path.
+redirects:
+  # Taxonomy term pages used to live under `/categories/`.
+  - from: "/categories/people/"
+    to: "/people/"
+    kind: "dynamic"
+  - from: "/categories/identities/"
+    to: "/identities/"
+    kind: "dynamic"
+  - from: "/categories/decades/"
+    to: "/decades/"
+    kind: "dynamic"
+  - from: "/categories/collections/"
+    to: "/collections/"
+    kind: "dynamic"

@@ -33,13 +33,13 @@
   {{ end }}
 {{ end }}
 
-{{ range $index, $redirect := .Site.Params.redirects }}
-  {{ $numRedirects := len .Site.Params.redirects }}
+{{ range $redirect := .Site.Params.redirects }}
+  {{ $kind := $redirect.kind | default "static" }}
     {
-      "from": {{ $redirect.from | path.Clean | jsonify }},
+      "from": {{ if (eq $kind "dynamic") }}{{ $redirect.from | jsonify }}{{ else }}{{ $redirect.from | path.Clean | jsonify }}{{ end }},
       "to": {{ $redirect.to | jsonify }},
-      "status": {{ $redirect.status | jsonify }},
-      "kind": "static"
-    }{{ if (eq $index (sub $numRedirects 1)) }},{{ end }}
+      "status": {{ $redirect.status | default 301 | jsonify }},
+      "kind": {{ $kind | jsonify }}
+    },
 {{ end }}
 ]

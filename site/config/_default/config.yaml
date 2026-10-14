@@ -62,10 +62,10 @@ taxonomies:
   collection: "collections"
 
 permalinks:
-  people: "/categories/people/:title/"
-  identities: "/categories/identities/:title/"
-  decades: "/categories/decades/:title/"
-  collections: "/categories/collections/:title/"
+  people: "/people/:title/"
+  identities: "/identities/:title/"
+  decades: "/decades/:title/"
+  collections: "/collections/:title/"
 
 minify:
   # Settings for the HTML minifier.

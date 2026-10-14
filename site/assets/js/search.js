@@ -144,7 +144,7 @@ function indexArchiveSearch(search, suggestions) {
   for (const person of people) {
     index.add({
       id: `person/${toSlug(person)}`,
-      href: `/categories/people/${toSlug(person)}/`,
+      href: `/people/${toSlug(person)}/`,
       title: person,
       summary: `Artifacts involving ${person}`,
     });
@@ -153,7 +153,7 @@ function indexArchiveSearch(search, suggestions) {
   for (const identity of identities) {
     index.add({
       id: `identity/${toSlug(identity)}`,
-      href: `/categories/identities/${toSlug(identity)}/`,
+      href: `/identities/${toSlug(identity)}/`,
       title: toTitle(identity),
       summary: `Artifacts involving ${identity} people`,
     });
@@ -162,7 +162,7 @@ function indexArchiveSearch(search, suggestions) {
   for (const decade of decades) {
     index.add({
       id: `decade/${decade}`,
-      href: `/categories/decades/${decade}/`,
+      href: `/decades/${decade}/`,
       title: decade,
       summary: `Artifacts from the ${decade}s`,
     });
