@@ -46,9 +46,9 @@ outputFormats:
 
 caches:
   getjson:
-    maxAge: "30s"
+    maxAge: "90s"
   getresource:
-    maxAge: "30s"
+    maxAge: "90s"
 
 sitemap:
   changefreq: "weekly"

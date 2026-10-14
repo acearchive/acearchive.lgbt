@@ -400,7 +400,7 @@
 }
 
 [data-dark-mode] body .text-muted {
-  color: darken($body-color-dark, 7.5%) !important;
+  color: darken($body-color-dark, 20%) !important;
 }
 
 [data-dark-mode] body .alert-primary {

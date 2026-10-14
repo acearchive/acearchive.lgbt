@@ -6,25 +6,25 @@
       </nav>
     </div>
     <main class="docs-content col-sm-15 col-md-13 col-lg-9 mx-auto">
-      <h1 class="text-center">{{ .Title | markdownify }}</h1>
-      <div class="justify-content-center text-center">
-        <p class="lead text-center">
-          {{- if .Params.description }}
-            {{ .Params.description | markdownify }}
-          {{- else }}
-            {{ .Params.summary | markdownify }}
-          {{- end -}}
-        </p>
-        <p class="text-center mb-0">{{ partial "archive/year.html" . }}</p>
+      <div class="my-4">
+        <h1 class="d-inline">{{ .Title | markdownify }}</h1>
+        <span class="fs-4 text-muted ms-2">({{ partial "archive/year.html" . }})</span>
+      </div>
+      <div class="lead">
+        {{- if .Params.description }}
+          {{ .Params.description | markdownify }}
+        {{- else }}
+          {{ .Params.summary | markdownify }}
+        {{- end -}}
       </div>
       {{- if (or .Params.files .Params.links) }}
-        <div class="mt-5 justify-content-center">
+        <div class="my-5 justify-content-center">
           <div class="col">
             {{ partial "archive/files.html" . }}
           </div>
         </div>
       {{ end -}}
-      <div class="d-flex flex-wrap mt-5 justify-content-start gap-4">
+      <div class="d-flex my-4 flex-wrap justify-content-start gap-4">
         {{- if .Params.identities }}
           {{ partial "archive/category-list.html" (dict "ctx" . "category" "identities") }}
         {{ end -}}
@@ -38,7 +38,7 @@
           {{ partial "archive/category-list.html" (dict "ctx" . "category" "collections") }}
         {{ end -}}
       </div>
-      <div class="d-flex mt-5 flex-column gap-1 align-items-center">
+      <div class="d-flex flex-column gap-1 align-items-center">
         <label class="fs-6" for="copy-short-url-button">Get short URL</label>
         <button
           id="copy-short-url-button"

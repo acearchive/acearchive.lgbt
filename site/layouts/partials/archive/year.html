@@ -1,11 +1,9 @@
 {{- if .Params.to_year -}}
   {{- if eq .Params.from_year .Params.to_year -}}
-    {{- .Params.from_year -}}
+    <time datetime="{{ .Params.from_year }}">{{ .Params.from_year }}</time>
   {{- else -}}
-    {{- printf "%v–%v" .Params.from_year
-      .Params.to_year
-    -}}
+    <time datetime="{{ .Params.from_year }}">{{ .Params.from_year }}</time>-<time datetime="{{ .Params.to_year }}">{{ .Params.to_year }}</time>
   {{- end -}}
 {{- else -}}
-  {{- .Params.from_year -}}
+  <time datetime="{{ .Params.from_year }}">{{ .Params.from_year }}</time>
 {{- end -}}
