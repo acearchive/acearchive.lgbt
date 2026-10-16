@@ -75,6 +75,7 @@ alertText: ""
 # Omeka Data Connector
 artifactsContentAdapterUrl: "https://connector.acearchive.lgbt/hugo-items"
 collectionMetadataUrl: "https://connector.acearchive.lgbt/hugo-metadata"
+jsonldBaseUrl: "https://connector.acearchive.lgbt/jsonld/"
 
 # Feature flags
 options:

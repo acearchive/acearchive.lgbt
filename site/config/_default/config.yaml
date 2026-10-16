@@ -26,8 +26,20 @@ mediaTypes:
   text/netlify:
     suffixes: [""]
     delimiter: ""
+  application/ld+json:
+    suffixes: ["jsonld"]
+    delimiter: "."
 
 outputFormats:
+  # Add an output format for the JSON-LD documents served by the Omeka Data
+  # Connector. Pages link to these as an alternate representation, and the
+  # worker serves them via content negotiation.
+  JSONLD:
+    mediaType: "application/ld+json"
+    baseName: "index"
+    isPlainText: true
+    rel: "alternate"
+
   # Add an output format for the `redirects.json` file.
   REDIRECTS:
     mediaType: "application/json"
@@ -43,6 +55,13 @@ outputFormats:
     isPlainText: true
     noUgly: true
     rel: "sitemap"
+
+# Trust the `Content-Type` of remote JSON-LD documents. Without this, defining
+# the `application/ld+json` media type above causes `resources.GetRemote` to
+# fail to resolve their media type.
+security:
+  http:
+    mediaTypes: ["^application/ld\\+json$"]
 
 caches:
   getjson:
@@ -60,6 +79,14 @@ taxonomies:
   identity: "identities"
   decade: "decades"
   collection: "collections"
+
+# Generate JSON-LD documents for the taxonomy terms the Omeka Data Connector
+# has documents for. There are none for decades.
+cascade:
+  - target:
+      kind: "term"
+      path: "{/people/**,/identities/**,/collections/**}"
+    outputs: ["HTML", "JSONLD"]
 
 permalinks:
   people: "/people/:title/"

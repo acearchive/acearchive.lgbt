@@ -15,6 +15,9 @@ type Redirects = ReadonlyArray<Redirect>;
 
 type HeaderPatterns = Record<string, Record<string, string>>;
 
+const jsonLdMediaType = "application/ld+json";
+const htmlMediaType = "text/html";
+
 const headerPatterns: HeaderPatterns = {
   // Headers which are common to all paths. This includes most security
   // headers.
@@ -52,6 +55,13 @@ const headerPatterns: HeaderPatterns = {
   "/fonts/.+": {
     "Cache-Control": "public, max-age=86400",
   },
+  // Pages which have a JSON-LD representation, served via content negotiation.
+  "/(artifacts|people|identities|collections)/.+": {
+    Vary: "Accept",
+  },
+  "\\.jsonld$": {
+    "Content-Type": jsonLdMediaType,
+  },
   // Headers specific to Stoplight Elements, the app we embed for rendering the
   // OpenAPI docs.
   "/docs/api/.+": {
@@ -71,6 +81,58 @@ const staticMediaPattern =
 
 const stripTrailingSlash = (url: string): string =>
   url.endsWith("/") ? url.slice(0, -1) : url;
+
+// The quality the client assigns to a media type in its `Accept` header, using
+// the most specific matching media range.
+const acceptQuality = (accept: string, mediaType: string): number => {
+  const [type] = mediaType.split("/");
+  let bestSpecificity = -1;
+  let bestQuality = 0;
+
+  for (const range of accept.split(",")) {
+    const [rangeType, ...params] = range.split(";").map((s) => s.trim());
+
+    let specificity: number;
+    if (rangeType === mediaType) {
+      specificity = 2;
+    } else if (rangeType === `${type}/*`) {
+      specificity = 1;
+    } else if (rangeType === "*/*") {
+      specificity = 0;
+    } else {
+      continue;
+    }
+
+    if (specificity <= bestSpecificity) continue;
+
+    const qParam = params.find((param) => param.startsWith("q="));
+    const quality = qParam === undefined ? 1 : parseFloat(qParam.slice(2));
+
+    bestSpecificity = specificity;
+    bestQuality = Number.isNaN(quality) ? 0 : quality;
+  }
+
+  return bestQuality;
+};
+
+// We serve HTML unless the client prefers JSON-LD.
+const prefersJsonLd = (accept: string | null): boolean =>
+  accept !== null &&
+  acceptQuality(accept, jsonLdMediaType) > acceptQuality(accept, htmlMediaType);
+
+const applyHeaders = (response: Response, pathname: string): Response => {
+  const newResponse = new Response(response.body, response);
+
+  for (const [pattern, patternHeaders] of Object.entries(headerPatterns)) {
+    if (new RegExp(pattern).test(pathname)) {
+      for (const [key, value] of Object.entries(patternHeaders)) {
+        newResponse.headers.set(key, value);
+      }
+    }
+  }
+
+  return newResponse;
+};
 
 export default {
   async fetch(request: Request, env: Env) {
@@ -117,17 +179,27 @@ export default {
       }
     }
 
-    const response = await env.ASSETS.fetch(request);
-    const newResponse = new Response(response.body, response);
+    // Pages for entities in the Omeka Data Connector's JSON-LD documents have
+    // an `index.jsonld` alongside their `index.html`. Serve it to clients that
+    // prefer JSON-LD. Pages without one fall through to HTML.
+    if (
+      (request.method === "GET" || request.method === "HEAD") &&
+      prefersJsonLd(request.headers.get("Accept"))
+    ) {
+      const jsonLdUrl = new URL(request.url);
+      jsonLdUrl.pathname = `${stripTrailingSlash(requestUrl.pathname)}/index.jsonld`;
+      jsonLdUrl.search = "";
 
-    for (const [pattern, patternHeaders] of Object.entries(headerPatterns)) {
-      if (new RegExp(pattern).test(requestUrl.pathname)) {
-        for (const [key, value] of Object.entries(patternHeaders)) {
-          newResponse.headers.set(key, value);
-        }
+      const jsonLdResponse = await env.ASSETS.fetch(jsonLdUrl, {
+        method: request.method,
+      });
+
+      if (jsonLdResponse.status === 200) {
+        return applyHeaders(jsonLdResponse, jsonLdUrl.pathname);
       }
     }
 
-    return newResponse;
+    const response = await env.ASSETS.fetch(request);
+    return applyHeaders(response, requestUrl.pathname);
   },
 };
