@@ -1,0 +1,9 @@
+{{- /* The Omeka Data Connector's JSON-LD document for an artifact or taxonomy
+  term page. Term titles are the original names, e.g. `Zoe O'Reilly`. */ -}}
+{{- $path := "" -}}
+{{- if eq .Kind "term" -}}
+  {{- $path = printf "%s/%s" .Data.Plural (urls.PathEscape .Title) -}}
+{{- else -}}
+  {{- $path = printf "items/%s" .Params.id -}}
+{{- end -}}
+{{- return partial "data/jsonld.html" $path -}}

@@ -58,7 +58,13 @@
   <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" />
 {{ end -}}
 {{/* Pages with a JSON-LD document from the Omeka Data Connector link to it
-  above instead. */ -}}
-{{ if not (.OutputFormats.Get "jsonld") -}}
+  above, and also embed it here, because search engines only read inline
+  JSON-LD. Unmarshalling it lets the template escape it safely for a script
+  element. */ -}}
+{{ if .OutputFormats.Get "jsonld" -}}
+  <script type="application/ld+json">
+    {{ partial "data/page-jsonld.html" . | transform.Unmarshal }}
+  </script>
+{{ else -}}
   {{ partial "head/structured-data.html" . }}
 {{ end -}}
