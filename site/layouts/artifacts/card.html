@@ -21,7 +21,7 @@
                   <li class="list-inline-item">
                     <a
                       class="stretched-link position-relative"
-                      href="{{ "/people/" | relURL }}{{ . | urlize }}/"
+                      href="{{ "/people/" | relURL }}{{ urls.PathEscape . }}/"
                       >{{ . }}</a
                     >
                     {{- if lt (add $index 1) $peopleLen }},{{ end -}}

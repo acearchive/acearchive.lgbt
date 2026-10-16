@@ -32,6 +32,14 @@ function toSlug(value) {
     .replace(/^-+|-+$/g, ""));
 }
 
+// Escape a URL path segment the same way as Go's `url.PathEscape`, which is how
+// Hugo and the Omeka Data Connector encode term names in URLs.
+function toPathSegment(value) {
+  return encodeURIComponent(value)
+    .replace(/[!'()*]/g, (char) => `%${char.charCodeAt(0).toString(16).toUpperCase()}`)
+    .replace(/%(24|26|2B|3A|3D|40)/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+}
+
 function toTitle(value) {
   return value.replace(/\b\w/g, (char) => char.toUpperCase());
 }
@@ -144,7 +152,7 @@ function indexArchiveSearch(search, suggestions) {
   for (const person of people) {
     index.add({
       id: `person/${toSlug(person)}`,
-      href: `/people/${toSlug(person)}/`,
+      href: `/people/${toPathSegment(person)}/`,
       title: person,
       summary: `Artifacts involving ${person}`,
     });
@@ -153,7 +161,7 @@ function indexArchiveSearch(search, suggestions) {
   for (const identity of identities) {
     index.add({
       id: `identity/${toSlug(identity)}`,
-      href: `/identities/${toSlug(identity)}/`,
+      href: `/identities/${toPathSegment(identity)}/`,
       title: toTitle(identity),
       summary: `Artifacts involving ${identity} people`,
     });

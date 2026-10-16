@@ -1,0 +1,23 @@
+{{- /* Add a page for each term in a taxonomy, so term pages keep the term's
+  original name as their title and URL, e.g. `/people/Zoe%20O%27Reilly/`. This
+  matches the `@id`s in the Omeka Data Connector's JSON-LD documents.
+
+  The URL is deliberately not escaped here. Hugo escapes it in permalinks but
+  writes the unescaped name to disk, which is what Cloudflare expects. */ -}}
+{{- $taxonomy := .taxonomy -}}
+{{- $data := partialCached "data/artifacts.html" .adapter | transform.Unmarshal -}}
+
+{{- $names := slice -}}
+{{- range $data -}}
+  {{- $names = $names | append (index . $taxonomy) -}}
+{{- end -}}
+
+{{- range uniq $names -}}
+  {{- $.adapter.AddPage (dict
+    "kind" "term"
+    "path" .
+    "title" .
+    "url" (printf "/%s/%s/" $taxonomy .)
+    "outputs" (slice "html" "jsonld")
+  ) -}}
+{{- end -}}

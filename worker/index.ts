@@ -82,6 +82,22 @@ const staticMediaPattern =
 const stripTrailingSlash = (url: string): string =>
   url.endsWith("/") ? url.slice(0, -1) : url;
 
+// Term pages have percent-encoded URLs using Go's `url.PathEscape` (e.g.
+// `/people/Zoe%20O%27Reilly/`), but the assets binding redirects any path that
+// isn't encoded with `encodeURIComponent` (e.g. `/people/Zoe%20O'Reilly/`).
+// Re-encode paths before fetching assets so the canonical URLs don't redirect.
+const toAssetPath = (pathname: string): string =>
+  pathname
+    .split("/")
+    .map((segment) => {
+      try {
+        return encodeURIComponent(decodeURIComponent(segment));
+      } catch {
+        return segment;
+      }
+    })
+    .join("/");
+
 // The quality the client assigns to a media type in its `Accept` header, using
 // the most specific matching media range.
 const acceptQuality = (accept: string, mediaType: string): number => {
@@ -187,7 +203,9 @@ export default {
       prefersJsonLd(request.headers.get("Accept"))
     ) {
       const jsonLdUrl = new URL(request.url);
-      jsonLdUrl.pathname = `${stripTrailingSlash(requestUrl.pathname)}/index.jsonld`;
+      jsonLdUrl.pathname = toAssetPath(
+        `${stripTrailingSlash(requestUrl.pathname)}/index.jsonld`,
+      );
       jsonLdUrl.search = "";
 
       const jsonLdResponse = await env.ASSETS.fetch(jsonLdUrl, {
@@ -199,7 +217,10 @@ export default {
       }
     }
 
-    const response = await env.ASSETS.fetch(request);
+    const assetUrl = new URL(request.url);
+    assetUrl.pathname = toAssetPath(requestUrl.pathname);
+
+    const response = await env.ASSETS.fetch(assetUrl, request);
     return applyHeaders(response, requestUrl.pathname);
   },
 };

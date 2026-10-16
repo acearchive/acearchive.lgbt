@@ -80,19 +80,10 @@ taxonomies:
   decade: "decades"
   collection: "collections"
 
-# Generate JSON-LD documents for the taxonomy terms the Omeka Data Connector
-# has documents for. There are none for decades.
-cascade:
-  - target:
-      kind: "term"
-      path: "{/people/**,/identities/**,/collections/**}"
-    outputs: ["HTML", "JSONLD"]
-
+# The URLs of people, identities, and collections terms are set by the content
+# adapters in `content/`.
 permalinks:
-  people: "/people/:title/"
-  identities: "/identities/:title/"
   decades: "/decades/:title/"
-  collections: "/collections/:title/"
 
 minify:
   # Settings for the HTML minifier.
