@@ -20,6 +20,6 @@ You can download a full copy of the Ace Archive collection using the link below.
 You can use this copy to keep a backup, share with friends, browse the
 collection offline, do research, or even host your own digital archive project.
 
-{{< link-button url="https:/export/latest" >}}
+{{< link-button url="/export/latest" >}}
 Download the archive
 {{< /link-button >}}
