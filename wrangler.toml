@@ -19,8 +19,16 @@ enabled = true
 pattern = "dev.acearchive.lgbt"
 custom_domain = true
 
+[[env.dev.r2_buckets]]
+binding = "EXPORTS_BUCKET"
+bucket_name = "acearchive-data-exports"
+
 [env.prod]
 
 [env.prod.route]
 pattern = "acearchive.lgbt"
 custom_domain = true
+
+[[env.prod.r2_buckets]]
+binding = "EXPORTS_BUCKET"
+bucket_name = "acearchive-data-exports"

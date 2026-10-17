@@ -1,7 +1,12 @@
-import { type Fetcher, type Request } from "@cloudflare/workers-types";
+import {
+  type Fetcher,
+  R2Bucket,
+  type Request,
+} from "@cloudflare/workers-types";
 
 interface Env {
   ASSETS: Fetcher;
+  EXPORTS_BUCKET: R2Bucket;
 }
 
 interface Redirect {
@@ -161,6 +166,31 @@ export default {
     // analytics solution to preserve users' privacy.
     if (requestUrl.pathname === "/stats.js") {
       return await fetch("https://umami.acearchive.lgbt/script.js");
+    }
+
+    if (requestUrl.pathname === "/export/latest") {
+      const object = await env.EXPORTS_BUCKET.get("latest.zip", {
+        onlyIf: request.headers,
+        range: request.headers,
+      });
+
+      if (object === null) {
+        return new Response(null, { status: 404 });
+      }
+
+      const headers = new Headers();
+      object.writeHttpMetadata(headers);
+      headers.set("ETag", object.httpEtag);
+      headers.set("Content-Type", "application/zip");
+      headers.set(
+        "Content-Disposition",
+        'attachment; filename="ace-archive-export.zip"',
+      );
+
+      return new Response("body" in object ? object.body : undefined, {
+        status: "body" in object ? 200 : 412,
+        headers,
+      });
     }
 
     if (staticMediaPattern.test(requestUrl.pathname)) {
